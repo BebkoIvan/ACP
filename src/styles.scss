@@ -2,5 +2,9 @@
 @import "abstracts/functions";
 @import "abstracts/variables";
 @import "abstracts/mixins";
-@import "base/iconmoon";
+@import "base/icomoon";
 @import "layout/general";
+
+i{
+    font-size: 24px;
+}
