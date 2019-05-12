@@ -1,0 +1,18 @@
+mixin header(name)
+ -var imgurl="/assets/images/"+name.substr(0,name.indexOf(' '))+".png"
+ header
+  #logo
+   a(href="#")
+    img(src="/assets/images/logo.png")
+  div(class="menu-label",*ngIf="!search_active",(click)="handleMenuClick($event)")
+   i(class="icon-menu",*ngIf="!menu_active")
+   i(class="icon-cross",*ngIf="menu_active")  
+  .search-box
+   div(id="search_btn",(click)="handleSearchClick($event)")
+    i(class="icon-search",*ngIf="!search_active")
+    i(class="icon-cross",*ngIf="search_active")
+   input(type="text", id="search-bar", *ngIf="search_active", placeholder="Search..") 
+  a(class="profile",*ngIf="!(mobile&&search_active)")
+   span=name
+   img(src=imgurl, alt=name)
+  

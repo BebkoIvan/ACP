@@ -1,0 +1,14 @@
+@mixin header_icons(){
+    .menu-label{
+        display:none;
+    }
+    .search-box>a>i{
+        font-size: 30px;
+    }
+    .profile{
+        min-width: 100px;
+        span{
+            display: inline-block;
+        }
+    }
+}

@@ -1,10 +1,43 @@
-import { Component } from '@angular/core';
+import { Component,HostListener} from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.pug',
   styleUrls: ['./app.component.scss']
-})
+}
+)
 export class AppComponent {
   title = 'ACP';
+  search_active:Boolean=false;
+  mobile:Boolean=false;
+  innerWidth:any;
+  menu_active:Boolean=false;
+  ngOnInit() {
+        this.innerWidth = window.innerWidth;
+        if(this.innerWidth>=576){
+          this.mobile=false;
+        }
+        else{
+          this.mobile=true;
+        }
+    }
+  @HostListener('window:resize', ['$event']) onResize(event) {
+    if((this.innerWidth<576 && window.innerWidth>=576) ||(this.innerWidth>=576 && window.innerWidth<576) ){
+      this.search_active=false;
+    }
+    this.innerWidth = window.innerWidth;
+    if(this.innerWidth>=576){
+      this.mobile=false;
+    }
+    else{
+      this.mobile=true;
+    }
+  }
+  handleSearchClick(){
+  this.search_active=!this.search_active;
+  }
+  handleMenuClick(){
+    this.menu_active=!this.menu_active;
+  }
 }
+
