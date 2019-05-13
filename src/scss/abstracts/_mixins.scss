@@ -2,6 +2,10 @@
     .menu-label{
         display:none;
     }
+    #logo{
+        display: flex;
+        justify-content: center;
+    }
     .search-box>a>i{
         font-size: 30px;
     }

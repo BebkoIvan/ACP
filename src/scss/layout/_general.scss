@@ -5,5 +5,9 @@
 @import "../abstracts/variables.scss";
 @import "../base/normalize_scss";
 body{
-    background-color:$bg-color;
+    // background-color:$bg-color;
+    background-color: $grey1;
+}
+.content{
+    display: flex;
 }

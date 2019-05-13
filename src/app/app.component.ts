@@ -31,7 +31,6 @@ export class AppComponent {
   }
 ];
   ngOnInit() {
-        console.log(this.profile);
         this.innerWidth = window.innerWidth;
         if(this.innerWidth>=576){
           this.mobile=false;
@@ -43,6 +42,7 @@ export class AppComponent {
   @HostListener('window:resize', ['$event']) onResize(event) {
     if((this.innerWidth<576 && window.innerWidth>=576) ||(this.innerWidth>=576 && window.innerWidth<576) ){
       this.search_active=false;
+      this.menu_active=false;
     }
     this.innerWidth = window.innerWidth;
     if(this.innerWidth>=576){
@@ -57,6 +57,16 @@ export class AppComponent {
   }
   handleMenuClick(){
     this.menu_active=!this.menu_active;
+    let menu:HTMLElement=document.querySelector(".side-menu");
+    let main_content:HTMLElement=document.querySelector(".main-content");
+    if(this.menu_active){
+      menu.className+=" menu-active";
+      main_content.className+=" darken";
+    }
+    else{
+      menu.className="side-menu";
+      main_content.className="main-content";
+    }
   }
 }
 

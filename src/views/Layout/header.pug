@@ -1,26 +1,19 @@
-mixin header()
- header
+header
   #logo
-   a(href="#")
+    a(href="#")
     img(src="/assets/images/logo.png")
   div(class="menu-label",*ngIf="!search_active",(click)="handleMenuClick($event)")
-   i(class="icon-menu",*ngIf="!menu_active")
-   i(class="icon-cross",*ngIf="menu_active")  
+    i(class="icon-menu",*ngIf="!menu_active")
+    i(class="icon-cross",*ngIf="menu_active")  
   .search-box
-   div(id="search_btn",(click)="handleSearchClick($event)")
-    i(class="icon-search",*ngIf="!search_active")
-    i(class="icon-cross",*ngIf="search_active")
-   input(type="text", id="search-bar", *ngIf="search_active", placeholder="Search..") 
+    div(id="search_btn",(click)="handleSearchClick($event)")
+     i(class="icon-search",*ngIf="!search_active")
+     i(class="icon-cross",*ngIf="search_active")
+    input(type="text", id="search-bar", *ngIf="search_active", placeholder="Search..") 
   a(class="profile",*ngIf="!(mobile&&search_active)")
-   span {{ profile.user_name }}
-   img(src= '{{profile.get_img()}}', alt='{{ profile.user_name }}')
- .side-menu
-  ul
-   - for (var i = 0; i < 3; ++i) {
-     li
-      i(class=`{{ menu_items[${i}].icon }}`) 
-      span {{ menu_items[#{i}].title }}
-   - }
+    span {{ profile.user_name }}
+    img(src= '{{profile.get_img()}}', alt='{{ profile.user_name }}')
+ 
     
     
   

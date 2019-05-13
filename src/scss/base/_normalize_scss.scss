@@ -90,7 +90,9 @@ html {
 body {
   margin: 0;
 }
-
+ul{
+  list-style:none;
+}
 /**
  * Add the correct display in IE 9-.
  */
@@ -166,7 +168,6 @@ h1 {
   blockquote {
     @include normalize-margin(1 $indent-amount);
   }
-
   dl,
   ol,
   ul {
