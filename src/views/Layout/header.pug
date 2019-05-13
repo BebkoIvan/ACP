@@ -1,5 +1,4 @@
-mixin header(name)
- -var imgurl="/assets/images/"+name.substr(0,name.indexOf(' '))+".png"
+mixin header()
  header
   #logo
    a(href="#")
@@ -13,6 +12,15 @@ mixin header(name)
     i(class="icon-cross",*ngIf="search_active")
    input(type="text", id="search-bar", *ngIf="search_active", placeholder="Search..") 
   a(class="profile",*ngIf="!(mobile&&search_active)")
-   span=name
-   img(src=imgurl, alt=name)
+   span {{ profile.user_name }}
+   img(src= '{{profile.get_img()}}', alt='{{ profile.user_name }}')
+ .side-menu
+  ul
+   - for (var i = 0; i < 3; ++i) {
+     li
+      i(class=`{{ menu_items[${i}].icon }}`) 
+      span {{ menu_items[#{i}].title }}
+   - }
+    
+    
   

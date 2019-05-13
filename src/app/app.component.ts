@@ -12,7 +12,26 @@ export class AppComponent {
   mobile:Boolean=false;
   innerWidth:any;
   menu_active:Boolean=false;
+  profile:{user_name:string,get_img():string;}={
+   user_name:"Jeff Bezos",
+   get_img(){return "/assets/images/"+ this.user_name.substr(0,this.user_name.indexOf(' '))+".png"}
+  };
+  menu_items=[
+    {
+    title:"Dashboard",
+    icon:"icon-dashboard"
+  },
+  {
+    title:"Lessons",
+    icon:"icon-study"
+  },
+  {
+    title:"Settings",
+    icon:"icon-cog"
+  }
+];
   ngOnInit() {
+        console.log(this.profile);
         this.innerWidth = window.innerWidth;
         if(this.innerWidth>=576){
           this.mobile=false;
