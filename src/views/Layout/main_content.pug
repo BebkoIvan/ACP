@@ -1,13 +1,5 @@
-div.main-content 
- .card
-  h3 Article header
-  img(src="/assets/images/Jeff.png", alt="kkk")
-  p Lorem ipsum dolor sit, amet consectetur adipisicing elit. Enim cupiditate molestiae deleniti debitis atque amet vitae ipsam quis asperiores, harum ad dolor earum minima? Eaque minus harum impedit a iure.
- .card
-  h3 Article header
-  img(src="/assets/images/Jeff.png", alt="kkk")
-  p Lorem ipsum dolor sit, amet consectetur adipisicing elit. Enim cupiditate molestiae deleniti debitis atque amet vitae ipsam quis asperiores, harum ad dolor earum minima? Eaque minus harum impedit a iure.
- .card
-  h3 Article header
-  img(src="/assets/images/Jeff.png", alt="kkk")
-  p Lorem ipsum dolor sit, amet consectetur adipisicing elit. Enim cupiditate molestiae deleniti debitis atque amet vitae ipsam quis asperiores, harum ad dolor earum minima? Eaque minus harum impedit a iure.  
+div(class="main-content",(click)="menu_active ? hideMenu() : false")
+ div(class="card",*ngFor="let article of articles")
+  h3 {{ article.title }}
+  img(src="{{article.img}}", alt="kkk")
+  p {{article.text}}

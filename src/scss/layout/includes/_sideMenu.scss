@@ -30,7 +30,7 @@
 }
 @include mq($from:tablet){
     .side-menu{
-        width: 70px;
+        width: 80px;
         &>ul>li{
             text-align: center;
             flex-direction: column;
@@ -47,6 +47,7 @@
     color:#bfc6ca;
     transition: 0.5s;
     z-index: 99;
+    height: 93vh;
     ul{
         padding: 0;
         margin: 0;
@@ -62,6 +63,7 @@
                 font-size:30px;
             }
             span{
+                padding: 0 7px 0 7px;
                 font-size:15px; 
             }
         }

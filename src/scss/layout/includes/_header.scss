@@ -20,9 +20,24 @@ header{
     }
     @include mq($from: mobile,$until:tablet) {
         @include header_icons();
+        .profile{
+            span{
+                display:none;
+            }
+        }
     }
     @include mq($from:tablet){
         @include header_icons();
+        #logo{
+            width: 80px;
+        }
+        .profile>span{
+                display: inline-block;
+        }
+    }
+    #logo{
+        transition: 0.5s;
+        cursor: pointer;
     }
     .icon-cross{
         color:lighten( $red_color, 25% );
@@ -31,14 +46,13 @@ header{
             color:$red_color;
         }
     }
-    .icon-search:hover{
-        color:#757575;
-    }
+    height: 7vh;
     background-color:$white;
     color:black;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    
     &> *{
         padding: 5px;
     }
@@ -60,10 +74,10 @@ header{
             transition: 0.4s;
         }
     }
-    .icon-search{
-        color: #bfc6ca;
+    .icon-search,.icon-menu{
+        color: $grey1;
     &:hover{
-        color:#757575;
+        color:$grey2;
     }
 } 
     #search-bar{
@@ -76,7 +90,7 @@ header{
         display: flex;
         align-items: center;
         justify-content: flex-end;
-        padding: 0 0 0 20px;
+        padding: 0 20px 0 20px;
         width: auto;
         cursor: pointer;
         span{
