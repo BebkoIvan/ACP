@@ -4,27 +4,27 @@
 @import "./includes/header.scss";
 @import "../abstracts/variables.scss";
 @import "../base/normalize_scss";
-body{
+body {
     background-color: $grey1;
 }
-.content{
+.content {
     display: flex;
 }
 ::-webkit-scrollbar {
     width: 5px;
-  }
-  
-  /* Track */
-  ::-webkit-scrollbar-track {
-    background: #f1f1f1; 
-  }
-  
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    background: $red_color; 
-  }
-  
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
-    background: darken($red_color, 20%) ; 
-  }
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: $red_color;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: darken($red_color, 20%);
+}

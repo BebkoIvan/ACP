@@ -1,15 +1,18 @@
-@mixin header_icons(){
-    .menu-label{
-        display:none;
+@mixin header_icons() {
+    .menu-label {
+        display: none;
     }
-    #logo{
+
+    #logo {
         display: flex;
         justify-content: center;
     }
-    .search-box>a>i{
+
+    .search-box > a > i {
         font-size: 30px;
     }
-    .profile{
+
+    .profile {
         min-width: 100px;
     }
 }
