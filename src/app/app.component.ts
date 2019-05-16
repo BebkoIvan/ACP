@@ -7,21 +7,9 @@ import { Component, HostListener } from "@angular/core";
 })
 export class AppComponent {
     title = "ACP";
-    search_active: Boolean = false;
     mobile: Boolean = false;
-    innerWidth: any;
     menu_active: Boolean = false;
     aca_active: Boolean = false;
-    profile: { user_name: string; get_img(): string } = {
-        user_name: "Jeff Bezos",
-        get_img() {
-            return (
-                "/assets/images/" +
-                this.user_name.substr(0, this.user_name.indexOf(" ")) +
-                ".png"
-            );
-        }
-    };
     articles = [
         {
             title: "TAG Heuer Gets 'Tagged",
@@ -42,43 +30,29 @@ export class AppComponent {
                 "I did an art show for Donald Trump at his house in Palm Beach, Florida. It was a bunch of pop art and stuff like that, so I wasn't doing any graffiti at that time, so I'd say from about 2000 to 2006, I wasn't doing any graffiti."
         }
     ];
-    menu_items = [
-        {
-            title: "Dashboard",
-            icon: "icon-dashboard"
-        },
-        {
-            title: "Lessons",
-            icon: "icon-study"
-        },
-        {
-            title: "Settings",
-            icon: "icon-cog"
-        }
-    ];
     ngOnInit() {
-        this.innerWidth = window.innerWidth;
-        if (this.innerWidth >= 576) {
-            this.mobile = false;
-        } else {
-            this.mobile = true;
-        }
+        // this.innerWidth = window.innerWidth;
+        // if (this.innerWidth >= 576) {
+        //     this.mobile = false;
+        // } else {
+        //     this.mobile = true;
+        // }
     }
-    @HostListener("window:resize", ["$event"]) onResize(event) {
-        if (
-            (this.innerWidth < 576 && window.innerWidth >= 576) ||
-            (this.innerWidth >= 576 && window.innerWidth < 576)
-        ) {
-            this.search_active = false;
-            this.menu_active = false;
-        }
-        this.innerWidth = window.innerWidth;
-        if (this.innerWidth >= 576) {
-            this.mobile = false;
-        } else {
-            this.mobile = true;
-        }
-    }
+    // @HostListener("window:resize", ["$event"]) onResize(event) {
+    //     if (
+    //         (this.innerWidth < 576 && window.innerWidth >= 576) ||
+    //         (this.innerWidth >= 576 && window.innerWidth < 576)
+    //     ) {
+    //         this.search_active = false;
+    //         this.menu_active = false;
+    //     }
+    //     this.innerWidth = window.innerWidth;
+    //     if (this.innerWidth >= 576) {
+    //         this.mobile = false;
+    //     } else {
+    //         this.mobile = true;
+    //     }
+    // }
     hideMenu() {
         let menu: HTMLElement = document.querySelector(".side-menu");
         let main_content: HTMLElement = document.querySelector(".main-content");
@@ -86,21 +60,10 @@ export class AppComponent {
         menu.className = "side-menu";
         main_content.className = "main-content";
     }
-    handleSearchClick(e: Event) {
-        this.search_active = !this.search_active;
-    }
-    handleMenuClick(e: Event) {
-        this.menu_active = !this.menu_active;
-        let menu: HTMLElement = document.querySelector(".side-menu");
-        let main_content: HTMLElement = document.querySelector(".main-content");
-        if (this.menu_active) {
-            menu.className += " menu-active";
-            main_content.className += " darken";
-        } else {
-            menu.className = "side-menu";
-            main_content.className = "main-content";
-        }
-    }
+    // handleSearchClick(e: Event) {
+    //     this.search_active = !this.search_active;
+    // }
+    
     aca_toggle() {
         let aca: HTMLElement = document.querySelector(".aca");
         if (this.aca_active) {

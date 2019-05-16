@@ -1,0 +1,85 @@
+@import "../../../scss/abstracts/variables";
+
+@include mq($until: mobile) {
+    .side-menu {
+        position: absolute;
+        height: 100vh;
+        background:rgba(0, 0, 0, 0.3);
+        width: 0;
+        &>ul{
+            width: 0vw;
+            height: 100vh;
+            background-color: #42494d;
+            transition: 0.4s;
+        }
+        &.menu-active {
+            width: 100vw;
+        ul{
+            width: 80%;
+        }
+        
+    }
+        & > * {
+            overflow: hidden;
+        }
+        & > ul > li {
+            width: min-content;
+        }
+    }
+}
+@include mq($from: mobile, $until: tablet) {
+    .side-menu {
+        width: 45px;
+    }
+    .side-menu > ul > li {
+        height: 40px;
+        text-align: center;
+        flex-direction: column;
+        justify-content: center;
+        span {
+            display: none;
+        }
+    }
+}
+@include mq($from: tablet) {
+    .side-menu {
+        width: 80px;
+        & > ul > li {
+            text-align: center;
+            flex-direction: column;
+            height: 70px;
+        }
+    }
+}
+
+.side-menu {
+    
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    color: #bfc6ca;
+    transition: 0.5s;
+    height: 93vh;
+    ul {
+        padding: 0;
+        margin: 0;
+        height: 100vh;
+        background-color: #42494d;
+        li {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            &:hover {
+                color: white;
+            }
+            i {
+                padding: 5px;
+                font-size: 30px;
+            }
+            span {
+                padding: 0 7px 0 7px;
+                font-size: 15px;
+            }
+        }
+    }
+}

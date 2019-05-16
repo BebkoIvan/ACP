@@ -1,0 +1,7 @@
+div(class="side-menu")
+  ul
+   - for (var i = 0; i < 3; ++i) {
+     li
+      i(class=`{{ menu_items[${i}].icon }}`) 
+      span {{ menu_items[#{i}].title }}
+   - }
