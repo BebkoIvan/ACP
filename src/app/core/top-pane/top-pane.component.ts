@@ -5,20 +5,21 @@ import { Component, OnInit,EventEmitter,Input,Output, ErrorHandler } from "@angu
     templateUrl: "./top-pane.component.pug",
     styleUrls: ["./top-pane.component.scss"]
 })
+
 export class TopPaneComponent implements OnInit {
+
     constructor() {}
+
+    logoSrc="/assets/images/logo.png";
     search_active: Boolean = false;
-    profile: { user_name: string; get_img(): string } = {
-        user_name: "Jeff Bezos",
-        get_img() {
-            return (
-                "/assets/images/" +
-                this.user_name.substr(0, this.user_name.indexOf(" ")) +
-                ".png"
-            );
-        }
+    profile: { userName: string; imgSrc: string } = {
+        userName: "Jeff Bezos",
+        imgSrc:"/assets/images/Jeff.png"
     };
+
+
     @Input() menu_active:boolean;
+
     @Output()menu_click = new EventEmitter();
 
     menu_handler(e:Event):void{
@@ -27,6 +28,7 @@ export class TopPaneComponent implements OnInit {
   
     ngOnInit() {
     }
+
     handleSearchClick(e: Event) {
         this.search_active = !this.search_active;
     }

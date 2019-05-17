@@ -2,6 +2,7 @@ div(class="side-menu",[class.menu-active]="menu_active",(click)="hide_menu($even
   ul
    - for (var i = 0; i < 3; ++i) {
      li
-      i(class=`{{ menu_items[${i}].icon }}`) 
-      span {{ menu_items[#{i}].title }}
+      a
+       i(class=`{{ menu_items[${i}].icon }}`) 
+       span {{ menu_items[#{i}].title }}
    - }

@@ -2,55 +2,77 @@
 @import "../../../scss/abstracts/mixins";
 header {
     @include mq($until: mobile) {
+
         .menu-label {
             cursor: pointer;
         }
+
         .profile {
+
             span {
                 display: none;
             }
+
         }
+
         #logo {
             display: none;
         }
+
         .search-box {
             display: flex;
         }
+
     }
     @include mq($from: mobile, $until: tablet) {
+
         @include header_icons();
+        
         .profile {
+        
             span {
                 display: none;
             }
+        
         }
     }
+
     @include mq($from: tablet) {
+    
         @include header_icons();
+    
         #logo {
             width: 80px;
         }
+    
         .profile > span {
             display: inline-block;
         }
+    
     }
-    #logo {
-        transition: 0.5s;
-        cursor: pointer;
-    }
-    .icon-cross {
-        color: lighten($red_color, 25%);
-        font-size: 30px;
-        &:hover {
-            color: $red_color;
-        }
-    }
+
     height: 7vh;
     background-color: $white;
     color: black;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    
+    #logo {
+        transition: 0.5s;
+        cursor: pointer;
+    }
+
+    .icon-cross {
+        color: lighten($red_color, 25%);
+        font-size: 30px;
+
+        &:hover {
+            color: $red_color;
+        }
+
+    }
+
 
     & > * {
         padding: 5px;

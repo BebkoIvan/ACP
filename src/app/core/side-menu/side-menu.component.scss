@@ -4,17 +4,18 @@
     .side-menu {
         position: absolute;
         height: 100vh;
-        background:rgba(0, 0, 0, 0.3);
         width: 0;
+        
         &>ul{
-            width: 0vw;
+            width: 0;
             height: 100vh;
             background-color: #42494d;
-            transition: 0.4s;
+            transition: 0.5s;
         }
         &.menu-active {
             width: 100vw;
         ul{
+            transition: 0.5s;
             width: 80%;
         }
         
@@ -31,7 +32,7 @@
     .side-menu {
         width: 45px;
     }
-    .side-menu > ul > li {
+    .side-menu > ul > li>a {
         height: 40px;
         text-align: center;
         flex-direction: column;
@@ -44,7 +45,7 @@
 @include mq($from: tablet) {
     .side-menu {
         width: 80px;
-        & > ul > li {
+        & > ul > li>a {
             text-align: center;
             flex-direction: column;
             height: 70px;
@@ -57,14 +58,14 @@
     display: flex;
     flex-direction: column;
     color: #bfc6ca;
-    transition: 0.5s;
+    background:rgba(0, 0, 0, 0.3);
     height: 93vh;
     ul {
         padding: 0;
         margin: 0;
         height: 100vh;
         background-color: #42494d;
-        li {
+        li>a {
             display: flex;
             align-items: center;
             cursor: pointer;
