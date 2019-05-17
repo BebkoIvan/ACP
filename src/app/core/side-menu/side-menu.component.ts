@@ -1,29 +1,36 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 
 @Component({
-  selector: 'app-side-menu',
-  templateUrl: './side-menu.component.pug',
-  styleUrls: ['./side-menu.component.scss']
+    selector: "app-side-menu",
+    templateUrl: "./side-menu.component.pug",
+    styleUrls: ["./side-menu.component.scss"]
 })
 export class SideMenuComponent implements OnInit {
+    constructor() {}
 
-  constructor() { }
+    ngOnInit() {}
+    @Input() menu_active: boolean;
+    @Output() menu_click = new EventEmitter();
 
-  ngOnInit() {
-  }
-
-  menu_items = [
-    {
-        title: "Dashboard",
-        icon: "icon-dashboard"
-    },
-    {
-        title: "Lessons",
-        icon: "icon-study"
-    },
-    {
-        title: "Settings",
-        icon: "icon-cog"
+    hide_menu(e: Event): void {
+        let element = event.target as HTMLElement;
+        if (element.className == "side-menu menu-active") {
+            this.menu_click.emit();
+        }
     }
-];
+
+    menu_items = [
+        {
+            title: "Dashboard",
+            icon: "icon-dashboard"
+        },
+        {
+            title: "Lessons",
+            icon: "icon-study"
+        },
+        {
+            title: "Settings",
+            icon: "icon-cog"
+        }
+    ];
 }

@@ -7,8 +7,7 @@ import { Component, HostListener } from "@angular/core";
 })
 export class AppComponent {
     title = "ACP";
-    mobile: Boolean = false;
-    menu_active: Boolean = false;
+    menu_active: Boolean = false ;
     aca_active: Boolean = false;
     articles = [
         {
@@ -31,39 +30,11 @@ export class AppComponent {
         }
     ];
     ngOnInit() {
-        // this.innerWidth = window.innerWidth;
-        // if (this.innerWidth >= 576) {
-        //     this.mobile = false;
-        // } else {
-        //     this.mobile = true;
-        // }
     }
-    // @HostListener("window:resize", ["$event"]) onResize(event) {
-    //     if (
-    //         (this.innerWidth < 576 && window.innerWidth >= 576) ||
-    //         (this.innerWidth >= 576 && window.innerWidth < 576)
-    //     ) {
-    //         this.search_active = false;
-    //         this.menu_active = false;
-    //     }
-    //     this.innerWidth = window.innerWidth;
-    //     if (this.innerWidth >= 576) {
-    //         this.mobile = false;
-    //     } else {
-    //         this.mobile = true;
-    //     }
-    // }
-    hideMenu() {
-        let menu: HTMLElement = document.querySelector(".side-menu");
-        let main_content: HTMLElement = document.querySelector(".main-content");
-        this.menu_active = false;
-        menu.className = "side-menu";
-        main_content.className = "main-content";
+    handleMenuClick() {
+        this.menu_active = !this.menu_active;
     }
-    // handleSearchClick(e: Event) {
-    //     this.search_active = !this.search_active;
-    // }
-    
+
     aca_toggle() {
         let aca: HTMLElement = document.querySelector(".aca");
         if (this.aca_active) {
