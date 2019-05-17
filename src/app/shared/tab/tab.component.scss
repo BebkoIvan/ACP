@@ -1,0 +1,40 @@
+@import "../../../scss/abstracts/variables";
+
+@include mq($from: mobile, $until: tablet) {
+    a {
+        height: 40px;
+        text-align: center;
+        flex-direction: column;
+        justify-content: center;
+        span {
+            display: none;
+        }
+    }
+}
+
+@include mq($from: tablet) {
+  a {
+            text-align: center;
+            flex-direction: column;
+            height: 70px;
+    }
+  
+}
+
+a {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        &:hover {
+            color: white;
+        }
+        span {
+            padding: 0 7px 0 7px;
+            font-size: 15px;
+        }
+    }
+
+     :host /deep/  i {
+        padding: 5px;
+        font-size: 30px;
+    }

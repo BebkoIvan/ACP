@@ -1,4 +1,4 @@
-import { Component, HostListener } from "@angular/core";
+import { Component } from "@angular/core";
 
 @Component({
     selector: "app-root",
@@ -35,13 +35,4 @@ export class AppComponent {
         this.menu_active = !this.menu_active;
     }
 
-    aca_toggle() {
-        let aca: HTMLElement = document.querySelector(".aca");
-        if (this.aca_active) {
-            aca.className = "aca";
-        } else {
-            aca.className += " aca-active";
-        }
-        this.aca_active = !this.aca_active;
-    }
 }

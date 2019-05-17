@@ -4,7 +4,7 @@ import { SideMenuComponent } from './side-menu/side-menu.component';
 import { TopPaneComponent } from './top-pane/top-pane.component';
 
 @NgModule({
-  declarations: [SideMenuComponent, TopPaneComponent],
+  declarations: [SideMenuComponent,TopPaneComponent],
   imports: [
     CommonModule
   ],

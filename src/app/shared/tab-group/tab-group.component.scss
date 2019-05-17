@@ -1,0 +1,16 @@
+@import "../../../scss/abstracts/variables";
+
+@include mq($until: mobile) {
+    ul{
+            width: 0;
+            height: 100vh;
+            background-color: #42494d;
+            transition: 0.5s;
+        }
+}
+ul {
+        padding: 0;
+        margin: 0;
+        height: stretch;
+        background-color: #42494d;
+}

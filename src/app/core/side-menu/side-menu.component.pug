@@ -1,8 +1,10 @@
 div(class="side-menu",[class.menu-active]="menu_active",(click)="hide_menu($event)")
-  ul
-   - for (var i = 0; i < 3; ++i) {
-     li
-      a
-       i(class=`{{ menu_items[${i}].icon }}`) 
-       span {{ menu_items[#{i}].title }}
-   - }
+ ng-content
+  //- ul
+  //-  - for (var i = 0; i < 3; ++i) {
+  //-    li
+  //-     a
+  //-      i(class=`{{ menu_items[${i}].icon }}`) 
+  //-      span {{ menu_items[#{i}].title }}
+  //-  - }
+

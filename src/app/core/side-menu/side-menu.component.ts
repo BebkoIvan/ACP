@@ -9,6 +9,7 @@ export class SideMenuComponent implements OnInit {
     constructor() {}
 
     ngOnInit() {}
+
     @Input() menu_active: boolean;
     @Output() menu_click = new EventEmitter();
 
@@ -18,19 +19,21 @@ export class SideMenuComponent implements OnInit {
             this.menu_click.emit();
         }
     }
-
-    menu_items = [
+    menuItems:MenuData[] = [
         {
-            title: "Dashboard",
-            icon: "icon-dashboard"
+            label: "Dashboard",
+            icon: "icon-dashboard",
+            link:""
         },
         {
-            title: "Lessons",
-            icon: "icon-study"
+            label: "Lessons",
+            icon: "icon-study",
+            link:""
         },
         {
-            title: "Settings",
-            icon: "icon-cog"
+            label: "Settings",
+            icon: "icon-cog",
+            link:""
         }
     ];
 }

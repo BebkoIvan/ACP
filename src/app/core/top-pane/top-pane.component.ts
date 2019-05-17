@@ -25,7 +25,7 @@ export class TopPaneComponent implements OnInit {
     menu_handler(e:Event):void{
       this.menu_click.emit();
     }
-  
+
     ngOnInit() {
     }
 
