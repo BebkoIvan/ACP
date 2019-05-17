@@ -4,29 +4,15 @@
     .side-menu {
         position: absolute;
         height: 100vh;
-        width: 0;
-        
-        // &>ul{
-        //     width: 0;
-        //     height: 100vh;
-        //     background-color: #42494d;
-        //     transition: 0.5s;
-        // }
+        width: 100%;
+        left:-100%;
+        transition:0.5s;
         &.menu-active {
             width: 100vw;
-        // ul{
-        //     transition: 0.5s;
-        //     width: 80%;
-        // }
-        
+            left: 0;
     }
-        // & > * {
-        //     overflow: hidden;
-        // }
-        // & > ul > li {
-        //     width: min-content;
-        // }
     }
+
 }
 @include mq($from: mobile, $until: tablet) {
     .side-menu {
@@ -47,3 +33,5 @@
     background:rgba(0, 0, 0, 0.3);
     height: 93vh;
 }
+
+

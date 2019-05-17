@@ -15,7 +15,9 @@ export class SideMenuComponent implements OnInit {
 
     hide_menu(e: Event): void {
         let element = event.target as HTMLElement;
+        console.log(element.className);
         if (element.className == "side-menu menu-active") {
+            
             this.menu_click.emit();
         }
     }
