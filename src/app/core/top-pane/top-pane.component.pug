@@ -1,13 +1,13 @@
 header
-  div(id="logo",*ngIf="!search_active")
+  div(id="logo",*ngIf="!searchActive")
     a(href="#")
      img(src="{{ logoSrc }}")
-  div(class="menu-label",*ngIf="!search_active",(click)="menu_handler($event)")
-    i([ngClass]="!menu_active ? 'icon-menu' : 'icon-cross'")  
+  div(class="menu-label",*ngIf="!searchActive",(click)="menu_handler($event)")
+    i([ngClass]="!menuActive ? 'icon-menu' : 'icon-cross'")  
   .search-box
     div(id="search_btn",(click)="handleSearchClick($event)")
-     i([ngClass]="!search_active ? 'icon-search' : 'icon-cross'")
-    input(type="text", id="search-bar", *ngIf="search_active", placeholder="Search..") 
-  a(class="profile",*ngIf="!search_active")
+     i([ngClass]="!searchActive ? 'icon-search' : 'icon-cross'")
+    input(type="text", id="search-bar", *ngIf="searchActive", placeholder="Search..") 
+  a(class="profile",*ngIf="!searchActive")
     span {{ profile.userName }}
     img(src= '{{profile.imgSrc}}', alt='{{ profile.userName }}')

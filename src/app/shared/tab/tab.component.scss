@@ -6,7 +6,6 @@
         text-align: center;
         flex-direction: column;
         justify-content: center;
-        width: fit-content;
         span {
             display: none;
         }
@@ -19,16 +18,19 @@
             flex-direction: column;
             height: 70px;
     }
-  
+
 }
 
 a {
         display: flex;
         align-items: center;
         cursor: pointer;
+        width: fit-content;
+        
         &:hover {
             color: white;
         }
+
         span {
             padding: 0 7px 0 7px;
             font-size: 15px;

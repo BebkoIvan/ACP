@@ -7,8 +7,8 @@ import { Component } from "@angular/core";
 })
 export class AppComponent {
     title = "ACP";
-    menu_active: Boolean = false ;
-    aca_active: Boolean = false;
+    menuActive: boolean = false ;
+    aca_active: boolean = false;
     articles = [
         {
             title: "TAG Heuer Gets 'Tagged",
@@ -32,7 +32,7 @@ export class AppComponent {
     ngOnInit() {
     }
     handleMenuClick() {
-        this.menu_active = !this.menu_active;
+        this.menuActive = !this.menuActive;
     }
 
 }

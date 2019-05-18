@@ -11,25 +11,25 @@ export class TopPaneComponent implements OnInit {
     constructor() {}
 
     logoSrc="/assets/images/logo.png";
-    search_active: Boolean = false;
+    searchActive: boolean = false;
     profile: { userName: string; imgSrc: string } = {
         userName: "Jeff Bezos",
         imgSrc:"/assets/images/Jeff.png"
     };
 
 
-    @Input() menu_active:boolean;
+    @Input() menuActive:boolean;
 
-    @Output()menu_click = new EventEmitter();
+    @Output()menuClick = new EventEmitter();
 
     menu_handler(e:Event):void{
-      this.menu_click.emit();
+      this.menuClick.emit();
     }
 
     ngOnInit() {
     }
 
     handleSearchClick(e: Event) {
-        this.search_active = !this.search_active;
+        this.searchActive = !this.searchActive;
     }
 }
