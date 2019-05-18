@@ -12,9 +12,11 @@ export class TopPaneComponent implements OnInit {
 
     logoSrc="/assets/images/logo.png";
     searchActive: boolean = false;
-    profile: { userName: string; imgSrc: string } = {
-        userName: "Jeff Bezos",
-        imgSrc:"/assets/images/Jeff.png"
+    profile: User = {
+        name: "Jeff",
+        lastname:"Bezos",
+        imgSrc:"/assets/images/Jeff.png",
+        link:""
     };
 
 
