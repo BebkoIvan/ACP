@@ -13,15 +13,10 @@ export class SideMenuComponent implements OnInit {
     @Input() menuActive: boolean;
     @Output() menuClick = new EventEmitter();
 
-    hide_menu(e: Event): void {
-        let element = event.target as HTMLElement;
-        console.log(element.className);
-        if (element.className == "side-menu menu-active") {
-            
+    hideMenu(e: Event): void {
             this.menuClick.emit();
-        }
     }
-    
+
     menuItems:MenuData[] = [
         {
             label: "Dashboard",

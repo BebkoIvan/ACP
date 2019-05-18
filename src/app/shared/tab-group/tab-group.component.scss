@@ -9,6 +9,7 @@
         }
         :host{
             width: 80%;
+            position: absolute;
         }
     }
 
@@ -17,4 +18,5 @@ ul {
         margin: 0;
         height: stretch;
         background-color: #42494d;
+
 }

@@ -1,4 +1,7 @@
-div(class="side-menu",[class.menu-active]="menuActive",(click)="hide_menu($event)")
+div(class="side-menu",[class.menu-active]="menuActive")
+ div(class="backdrop",*ngIf="menuActive",(click)="hideMenu($event)")
  ng-content
+ 
+ 
 
 
