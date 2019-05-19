@@ -9,5 +9,5 @@ header
      i([ngClass]="!search_active ? 'icon-search' : 'icon-cross'")
     input(type="text", id="search-bar", *ngIf="search_active", placeholder="Search..") 
   a(class="profile",*ngIf="!search_active")
-    span {{ profile.userName }}
-    img(src= '{{profile.imgSrc}}', alt='{{ profile.userName }}')
+    span {{ profile.name }} {{ profile.lastname }}
+    ng-content

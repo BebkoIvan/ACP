@@ -12,13 +12,10 @@ export class TopPaneComponent implements OnInit {
 
     logoSrc="/assets/images/logo.png";
     search_active: Boolean = false;
-    profile: { userName: string; imgSrc: string } = {
-        userName: "Jeff Bezos",
-        imgSrc:"/assets/images/Jeff.png"
-    };
-
-
+  
     @Input() menu_active:boolean;
+
+    @Input() profile:User;
 
     @Output()menu_click = new EventEmitter();
 

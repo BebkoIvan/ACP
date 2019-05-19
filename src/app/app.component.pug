@@ -1,5 +1,7 @@
-app-top-pane([menu_active]="menu_active",(menu_click)="handleMenuClick()")
+app-top-pane([menu_active]="menu_active",[profile]="profile",(menu_click)="handleMenuClick()")
+ app-user-pic([profile]="profile")
 div.content
- app-side-menu([menu_active]="menu_active",(menu_click)="handleMenuClick()")
+ app-side-menu([menu_active]="menu_active", (menu_click)="handleMenuClick()")
   app-tab-group
+ app-viewport 
 

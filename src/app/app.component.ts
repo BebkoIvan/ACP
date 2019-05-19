@@ -9,6 +9,14 @@ export class AppComponent {
     title = "ACP";
     menu_active: Boolean = false ;
     aca_active: Boolean = false;
+
+    profile:User  = {
+        name: "Jeff",
+        lastname:"Bezos",
+        imgSrc:"/assets/images/Jeff.png",
+        link:""
+    };
+
     articles = [
         {
             title: "TAG Heuer Gets 'Tagged",
