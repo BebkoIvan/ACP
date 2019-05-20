@@ -1,0 +1,11 @@
+@import "../../../scss/abstracts/variables";
+i{
+    color:$red_color;
+    font-size: 30px;
+    cursor: pointer;
+
+&:hover{
+    color:darken($red_color,10%)
+}
+
+}

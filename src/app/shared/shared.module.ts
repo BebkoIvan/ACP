@@ -8,12 +8,14 @@ import { CardComponent } from './card/card.component';
 import { TagComponent } from './tag/tag.component';
 import { TimestampComponent } from './timestamp/timestamp.component';
 import { CommentCardComponent } from './comment-card/comment-card.component';
+import { ToTopButtonComponent } from './to-top-button/to-top-button.component';
+import { LikeComponent } from './like/like.component';
 
 @NgModule({
-  declarations: [TabComponent,TabGroupComponent, UserPicComponent, ViewportComponent, CardComponent, TagComponent, TimestampComponent, CommentCardComponent],
+  declarations: [TabComponent,TabGroupComponent, UserPicComponent, ViewportComponent, CardComponent, TagComponent, TimestampComponent, CommentCardComponent, ToTopButtonComponent, LikeComponent],
   imports: [
     CommonModule
   ],
-  exports:[TabComponent,TabGroupComponent, UserPicComponent, ViewportComponent]
+  exports:[TabComponent,TabGroupComponent,LikeComponent,TimestampComponent,TagComponent, UserPicComponent, ViewportComponent,CardComponent,ToTopButtonComponent]
 })
 export class SharedModule { }

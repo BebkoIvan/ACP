@@ -1,9 +1,24 @@
-.card{
-    height: auto;
+@import "../../../scss/abstracts/variables.scss";
 
-    .card-header,.card-content,.card-footer{
+.card{
+    @include mq($from: tablet) {
+        margin: 3% 19%;
+    }
+
+    @include mq($until: tablet) {
+        margin:5%;
+    }
+    
+    height: auto;
+    background: white;
+    
+    .card-content,.card-footer{
         display: flex;
-        margin: 20px auto;
+    }
+
+    .card-header{
+        padding:10px 10px 0 20px;
+        margin-top:0 ;
     }
 
 }
