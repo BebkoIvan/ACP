@@ -1,0 +1,31 @@
+@import "../../../scss/abstracts/variables.scss";
+
+:host{
+    @include mq($until: tablet) {
+        display: none;
+    }
+}
+
+.auxilContent{
+    width: 0vw;
+    height: 93vh;
+    overflow-y: scroll;
+    transition: .5s;
+    
+    &.active{
+        width: 30vw;
+    }
+
+    #open-aca{
+    position: absolute;
+    top: 8vh;
+    right: 0;
+    background-color: #757575;
+    border-radius: 30px 0 0 30px;
+    width: 6vw;
+    padding: 5px;
+    font-size: 32px;
+    color: #f39aa7;
+    cursor: pointer;
+    }
+}

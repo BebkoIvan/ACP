@@ -10,12 +10,13 @@ import { TimestampComponent } from './timestamp/timestamp.component';
 import { CommentCardComponent } from './comment-card/comment-card.component';
 import { ToTopButtonComponent } from './to-top-button/to-top-button.component';
 import { LikeComponent } from './like/like.component';
+import { AuxiliaryContentComponent } from './auxiliary-content/auxiliary-content.component';
 
 @NgModule({
-  declarations: [TabComponent,TabGroupComponent, UserPicComponent, ViewportComponent, CardComponent, TagComponent, TimestampComponent, CommentCardComponent, ToTopButtonComponent, LikeComponent],
+  declarations: [TabComponent,TabGroupComponent, UserPicComponent, ViewportComponent, CardComponent, TagComponent, TimestampComponent, CommentCardComponent, ToTopButtonComponent, LikeComponent, AuxiliaryContentComponent],
   imports: [
     CommonModule
   ],
-  exports:[TabComponent,TabGroupComponent,LikeComponent,TimestampComponent,TagComponent, UserPicComponent, ViewportComponent,CardComponent,ToTopButtonComponent]
+  exports:[TabComponent,TabGroupComponent,AuxiliaryContentComponent,LikeComponent,TimestampComponent,TagComponent, UserPicComponent, ViewportComponent,CardComponent,ToTopButtonComponent]
 })
 export class SharedModule { }

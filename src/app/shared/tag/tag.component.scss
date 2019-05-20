@@ -14,6 +14,7 @@
 
     &.tag-active{
         background-color: lighten($red_color,15);
+        
         &:hover{
             background-color: $red_color;
         }
