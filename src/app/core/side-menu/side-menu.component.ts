@@ -30,7 +30,7 @@ export class SideMenuComponent implements OnInit {
         },
         {
             label: "Settings",
-            icon: "icon-cog",
+            icon: "icon-question_answer",
             link:""
         }
     ];

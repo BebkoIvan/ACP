@@ -6,18 +6,18 @@ import { Component, OnInit,Input } from '@angular/core';
   styleUrls: ['./timestamp.component.scss']
 })
 export class TimestampComponent implements OnInit {
-
-  constructor() { }
-
- @Input() date:string;
+  @Input() date:string;
  
- dateFormatted:Date;
- year:string;
- month:string;
- dt:string;
-  
+  dateFormatted:Date;
+  year:string;
+  month:string;
+  dt:string;
+ 
+  constructor() { 
+   
+  }
+
  ngOnInit() {
-  
   this.dateFormatted=new Date(this.date);
   this.year =`${this.dateFormatted.getFullYear()}`;
   this.month = `${this.dateFormatted.getMonth()+1}`;

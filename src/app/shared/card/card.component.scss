@@ -8,15 +8,15 @@
     @include mq($until: tablet) {
         margin:5%;
     }
-    
+
     height: auto;
     background: white;
     
-    .card-content,.card-footer{
+    .card-content{
         display: flex;
     }
 
-    .card-header{
+    .card-header,.card-footer{
         padding:10px 10px 0 20px;
         margin-top:0 ;
     }

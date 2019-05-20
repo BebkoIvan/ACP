@@ -1,0 +1,21 @@
+@import "../../../scss/abstracts/variables";
+
+.tag-box{
+    padding: 10px;
+    background-color: $tag-color;
+    color:$white;
+    border-radius: 40px;
+    font-size: 12px;
+    cursor: pointer;
+
+    &:hover{
+        background-color: lighten($tag-color,15);
+    }
+
+    &.tag-active{
+        background-color: lighten($red_color,15);
+        &:hover{
+            background-color: $red_color;
+        }
+    }
+}
