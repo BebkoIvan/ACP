@@ -1,7 +1,7 @@
-app-top-pane([menu_active]="menu_active",[profile]="profile",(menu_click)="handleMenuClick()")
- app-user-pic([profile]="profile")
-div.content
- app-side-menu([menu_active]="menu_active", (menu_click)="handleMenuClick()")
-  app-tab-group
+app-top-pane([menuActive]="menu_active",[profile]="profile",(menuClick)="handleMenuClick()")
+.wrapper
+ app-side-menu([menuActive]="menu_active", (menuClick)="handleMenuClick()")
  app-viewport 
+  app-workshops-feed
+  
 

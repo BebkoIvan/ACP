@@ -13,8 +13,10 @@ export class UserPicComponent implements OnInit {
   ngOnInit() {
   }
 
-  @Input() profile:User;   
+  @Input() name:string;
+  @Input() lastname:string;
+  @Input() imgSrc:string;   
 
-  initials():string{return this.profile.name.charAt(0)+this.profile.lastname.charAt(0) }
+  initials():string{return this.name.charAt(0)+this.lastname.charAt(0) }
   
 }

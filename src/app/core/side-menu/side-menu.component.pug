@@ -1,4 +1,10 @@
-div(class="side-menu",[class.menu-active]="menu_active",(click)="hide_menu($event)")
- ng-content
+div(class="side-menu",[class.menu-active]="menuActive")
+ div(class="backdrop",*ngIf="menuActive",(click)="hideMenu($event)")
+ ul
+  li(*ngFor="let item of menuItems")
+   a
+    i([class]='item.icon')
+    span {{ item.label }}
+
 
 

@@ -10,17 +10,13 @@ export class SideMenuComponent implements OnInit {
 
     ngOnInit() {}
 
-    @Input() menu_active: boolean;
-    @Output() menu_click = new EventEmitter();
+    @Input() menuActive: boolean;
+    @Output() menuClick = new EventEmitter();
 
-    hide_menu(e: Event): void {
-        let element = event.target as HTMLElement;
-        console.log(element.className);
-        if (element.className == "side-menu menu-active") {
-            
-            this.menu_click.emit();
-        }
+    hideMenu(e: Event): void {
+        this.menuClick.emit();
     }
+
     menuItems:MenuData[] = [
         {
             label: "Dashboard",
@@ -28,7 +24,7 @@ export class SideMenuComponent implements OnInit {
             link:""
         },
         {
-            label: "Lessons",
+            label: "Workshops",
             icon: "icon-study",
             link:""
         },

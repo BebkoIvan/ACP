@@ -1,5 +1,13 @@
+@import "../../../scss/abstracts/variables";
+
 :host{
     width: 100vw;
     height: 93vh;
-    background: red;
+    background-color: $grey1;
+}
+
+.content{
+    max-width: 1440px;
+    height: 93vh;
+    background-color: $grey1;
 }

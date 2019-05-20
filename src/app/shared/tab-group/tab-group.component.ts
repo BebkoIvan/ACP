@@ -19,7 +19,7 @@ export class TabGroupComponent implements OnInit {
         link:""
     },
     {
-        label: "Lessons",
+        label: "Workshops",
         icon: "icon-study",
         link:""
     },

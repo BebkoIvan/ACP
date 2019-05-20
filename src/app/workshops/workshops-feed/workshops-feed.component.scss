@@ -1,0 +1,14 @@
+@import "../../../scss/abstracts/variables";
+   
+   .workshops{ 
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    scrollbar-color: $red_color #f1f1f1;
+    background: $grey1;
+    scrollbar-width: thin;
+    height: 93vh;
+    min-width: 300px;
+    max-width: 1440px;
+    transition: 0.5s;
+   }

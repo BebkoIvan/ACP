@@ -2,12 +2,26 @@
 @import "./includes/mca.scss";
 @import "../abstracts/variables.scss";
 @import "../base/normalize_scss";
+
+@font-face {
+    font-family: 'Montserrat', sans-serif;
+    src: url('assets/fonts/Montserrat-Regular.ttf') format("opentype");
+  }
+
 body {
     background-color: $grey1;
+    margin: 0;
 }
+
 .content {
     display: flex;
 }
+
+
+*{
+    font-family: 'Montserrat', sans-serif;
+}
+
 ::-webkit-scrollbar {
     width: 5px;
 }

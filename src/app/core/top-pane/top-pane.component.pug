@@ -10,4 +10,4 @@ header
     input(type="text", id="search-bar", *ngIf="search_active", placeholder="Search..") 
   a(class="profile",*ngIf="!search_active")
     span {{ profile.name }} {{ profile.lastname }}
-    ng-content
+    app-user-pic([imgSrc]="profile.imgSrc",[name]="profile.name",[lastname]="profile.lastname")

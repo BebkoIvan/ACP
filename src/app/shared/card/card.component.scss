@@ -1,0 +1,9 @@
+.card{
+    height: auto;
+
+    .card-header,.card-content,.card-footer{
+        display: flex;
+        margin: 20px auto;
+    }
+
+}

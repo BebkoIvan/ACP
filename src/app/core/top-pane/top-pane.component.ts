@@ -13,14 +13,14 @@ export class TopPaneComponent implements OnInit {
     logoSrc="/assets/images/logo.png";
     search_active: Boolean = false;
   
-    @Input() menu_active:boolean;
+    @Input() menuActive:boolean;
 
     @Input() profile:User;
 
-    @Output()menu_click = new EventEmitter();
+    @Output()menuClick = new EventEmitter();
 
     menu_handler(e:Event):void{
-      this.menu_click.emit();
+      this.menuClick.emit();
     }
 
     ngOnInit() {
