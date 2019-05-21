@@ -8,6 +8,7 @@ header
     button(id="search_btn",(click)="handleSearchClick($event)")
      i([ngClass]="!searchActive ? 'icon-search' : 'icon-cross'")
     input(type="text", id="search-bar", *ngIf="searchActive", placeholder="Search..") 
-  a(class="profile",*ngIf="!searchActive")
-    span {{ profile.name }} {{ profile.lastname }}
-    app-user-pic([imgSrc]="profile.imgSrc",[name]="profile.name",[lastname]="profile.lastname")
+  button#profileBtn 
+   a(class="profile",*ngIf="!searchActive")
+     span {{ profile.name }} {{ profile.lastname }}
+     app-user-pic([imgSrc]="profile.imgSrc",[name]="profile.name",[lastname]="profile.lastname")
