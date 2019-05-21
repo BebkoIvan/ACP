@@ -12,13 +12,14 @@ import { ToTopButtonComponent } from './to-top-button/to-top-button.component';
 import { LikeComponent } from './like/like.component';
 import { AuxiliaryContentComponent } from './auxiliary-content/auxiliary-content.component';
 import { SharedRoutingModule } from './shared-routing.module';
+import { UnderConstructionComponent } from './under-construction/under-construction.component';
 
 @NgModule({
-  declarations: [TabComponent,TabGroupComponent, UserPicComponent, ViewportComponent, CardComponent, TagComponent, TimestampComponent, CommentCardComponent, ToTopButtonComponent, LikeComponent, AuxiliaryContentComponent],
+  declarations: [TabComponent,TabGroupComponent, UserPicComponent, ViewportComponent, CardComponent, TagComponent, TimestampComponent, CommentCardComponent, ToTopButtonComponent, LikeComponent, AuxiliaryContentComponent, UnderConstructionComponent],
   imports: [
     CommonModule,
     SharedRoutingModule
   ],
-  exports:[TabComponent,TabGroupComponent,AuxiliaryContentComponent,LikeComponent,TimestampComponent,TagComponent, UserPicComponent, ViewportComponent,CardComponent,ToTopButtonComponent]
+  exports:[TabComponent,UnderConstructionComponent,TabGroupComponent,AuxiliaryContentComponent,LikeComponent,TimestampComponent,TagComponent, UserPicComponent, ViewportComponent,CardComponent,ToTopButtonComponent]
 })
 export class SharedModule { }

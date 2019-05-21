@@ -2,7 +2,7 @@ div(class="side-menu",[class.menu-active]="menuActive")
  div(class="backdrop",*ngIf="menuActive",(click)="hideMenu($event)")
  ul
   li(*ngFor="let item of menuItems")
-   a
+   a(routerLink='{{item.link}}')
     i([class]='item.icon')
     span {{ item.label }}
 

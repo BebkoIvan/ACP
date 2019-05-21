@@ -1,0 +1,32 @@
+@import "../../../scss/abstracts/variables.scss";
+
+.content-wrapper{
+
+    @include mq($until: mobile) {
+        width: 100vw;
+        height: 93vh;
+    }
+
+    @include mq($from: mobile) {
+        width: 90vw;
+        height: 80vh;
+    }
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    img{
+
+        @include mq($until: mobile) {
+            width: 80vw;
+            height: 70vh;
+        }
+
+        @include mq($from: mobile) {
+            width: 60vw;
+            height: 50vh;
+        }
+        
+    }
+}

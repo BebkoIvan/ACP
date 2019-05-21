@@ -21,17 +21,17 @@ export class SideMenuComponent implements OnInit {
         {
             label: "Dashboard",
             icon: "icon-dashboard",
-            link:""
+            link:"/dashboard"
         },
         {
             label: "Workshops",
             icon: "icon-study",
-            link:""
+            link:"/workshops/feed"
         },
         {
             label: "Quizzes",
             icon: "icon-question_answer",
-            link:""
+            link:"/quizzes"
         }
     ];
 }
