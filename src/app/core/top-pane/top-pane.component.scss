@@ -63,6 +63,10 @@ header {
         cursor: pointer;
     }
 
+    .menu-label{
+        border-radius: 0;
+        border: none;
+    }
     .icon-cross {
         color: lighten($red_color, 25%);
         font-size: 30px;
@@ -85,6 +89,8 @@ header {
         align-items: center;
         flex: 1;
         #search_btn {
+            border-radius: 0;
+            border: none;
             cursor: pointer;
             height: 40px;
             width: 40px;

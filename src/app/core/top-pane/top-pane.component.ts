@@ -11,7 +11,7 @@ export class TopPaneComponent implements OnInit {
     constructor() {}
 
     logoSrc="/assets/images/logo.png";
-    search_active: Boolean = false;
+    searchActive: Boolean = false;
   
     @Input() menuActive:boolean;
 
@@ -27,6 +27,6 @@ export class TopPaneComponent implements OnInit {
     }
 
     handleSearchClick(e: Event) {
-        this.search_active = !this.search_active;
+        this.searchActive = !this.searchActive;
     }
 }

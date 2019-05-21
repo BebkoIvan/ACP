@@ -1,0 +1,36 @@
+@import "../../../scss/abstracts/variables.scss";
+img{
+    
+    @include mq($from: tablet) {
+        max-height: 350px;
+    }
+
+    width: 100%;
+    
+}
+
+.content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 60%;
+    padding: 0 20px 0 20px;
+}
+
+.article-footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-bottom:8px; 
+}
+
+.likes{
+    display: flex;
+
+    span{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-right: 7px;
+    }
+}

@@ -11,5 +11,9 @@ export class TabComponent implements OnInit {
 
   ngOnInit() {
   }
-@Input() tabLabel:string;
+
+  @Input() title = '';
+  @Input() active = false;
+  @Input() disabled = false;
+  
 }

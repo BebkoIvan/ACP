@@ -1,22 +1,21 @@
-import { Component, OnInit,Output,Input,EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, Input, EventEmitter } from "@angular/core";
 
 @Component({
-  selector: 'app-tag',
-  templateUrl: './tag.component.pug',
-  styleUrls: ['./tag.component.scss']
+    selector: "app-tag",
+    templateUrl: "./tag.component.pug",
+    styleUrls: ["./tag.component.scss"]
 })
 export class TagComponent implements OnInit {
+    constructor() {}
 
-  constructor() { }
+    @Input() tagActive: boolean;
+    @Input() tagTitle: string;
 
-  @Input() tagActive:boolean;
-  @Input() tagTitle:string;
+    // @Output() tagClicked = new EventEmitter();
 
-  // @Output() tagClicked = new EventEmitter();
-  changeState(e:Event):void{
-    this.tagActive=!this.tagActive;
-  }
-  ngOnInit() {
-  }
+    changeState(e: Event): void {
+        this.tagActive = !this.tagActive;
+    }
 
+    ngOnInit() {}
 }

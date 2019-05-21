@@ -1,10 +1,20 @@
 @import "../../../scss/abstracts/variables";
+
+.like-box{
+    border-radius: 0;
+    border: none;
+}
+
 i{
     color:$red_color;
     font-size: 30px;
     cursor: pointer;
+    
+&.icon-heart1:hover{
+    color:black;
+}
 
-&:hover{
+&.icon-heart:hover{
     color:darken($red_color,10%)
 }
 

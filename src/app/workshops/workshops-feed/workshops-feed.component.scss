@@ -3,12 +3,19 @@
    .workshops{ 
     display: flex;
     flex-direction: column;
-    overflow-y: scroll;
-    scrollbar-color: $red_color #f1f1f1;
     background: $grey1;
-    scrollbar-width: thin;
+    align-items: center;
     height: 93vh;
-    min-width: 300px;
+    padding: 0 5%;
     max-width: 1440px;
     transition: 0.5s;
+    overflow-y: scroll;
+       scrollbar-color: $red_color #f1f1f1;
+       scrollbar-width: thin;
+   }
+
+   :host{
+       flex: 1; 
+       display: flex;
+       
    }

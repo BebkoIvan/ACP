@@ -1,6 +1,7 @@
 @import "../../../scss/abstracts/variables.scss";
 
 .card{
+    
     @include mq($from: tablet) {
         margin: 3% 19%;
     }

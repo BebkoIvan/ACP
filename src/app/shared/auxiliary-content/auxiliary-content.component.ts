@@ -1,21 +1,20 @@
-import { Component, OnInit,Input,Output,EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 
 @Component({
-  selector: 'app-auxiliary-content',
-  templateUrl: './auxiliary-content.component.pug',
-  styleUrls: ['./auxiliary-content.component.scss']
+    selector: "app-auxiliary-content",
+    templateUrl: "./auxiliary-content.component.pug",
+    styleUrls: ["./auxiliary-content.component.scss"]
 })
 export class AuxiliaryContentComponent implements OnInit {
+    constructor() {}
 
-  constructor() { }
-  @Input() auxContActive:boolean;
+    @Input() auxContActive: boolean;
 
-  @Output()acaClick = new EventEmitter();
+    @Output() acaClick = new EventEmitter();
 
-    aca_handler(e:Event):void{
-      this.acaClick.emit();
+    aca_handler(e: Event): void {
+        this.acaClick.emit();
     }
-  ngOnInit() {
-  }
 
+    ngOnInit() {}
 }

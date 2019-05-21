@@ -1,0 +1,16 @@
+app-card
+ .title
+  h3 {{article.title}}
+ .content
+  img(src='{{article.img}}')
+  p {{article.shortDesc}}
+ .footer
+  .article-footer
+   .tags-list
+    app-tag(*ngFor="let tag of article.tagsList",[tagTitle]="tag",[tagActive]="false")
+   .likes
+    span Likes:{{article.likes}} 
+    app-like([likeActive]="likeactive",(likeClicked)="likec()")  
+  app-timestamp([date]="article.creationDate") 
+     
+

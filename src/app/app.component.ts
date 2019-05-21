@@ -7,20 +7,18 @@ import { Component } from "@angular/core";
 })
 export class AppComponent {
     title = "ACP";
-    menu_active: Boolean = false ;
+    menu_active: Boolean = false;
     aca_active: Boolean = false;
 
-    profile:User  = {
+    profile: User = {
         name: "Jeff",
-        lastname:"Bezos",
-        imgSrc:"/assets/images/Jeff.png",
-        link:""
+        lastname: "Bezos",
+        imgSrc: "/assets/images/Jeff.png",
+        link: ""
     };
 
-    ngOnInit() {
-    }
+    ngOnInit() {}
     handleMenuClick() {
         this.menu_active = !this.menu_active;
     }
-
 }

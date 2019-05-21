@@ -1,6 +1,7 @@
 @import "../../../scss/abstracts/variables";
 
 @include mq($until: mobile) {
+
     .side-menu {
         position: absolute;
         height: 100vh;
@@ -26,7 +27,6 @@
         background-color: #42494d;
         transition: 0.5s;
     }
-
     }
 
     a{

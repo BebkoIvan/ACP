@@ -2,12 +2,12 @@ header
   div(id="logo",*ngIf="!search_active")
     a(href="#")
      img(src="{{ logoSrc }}")
-  div(class="menu-label",*ngIf="!search_active",(click)="menu_handler($event)")
-    i([ngClass]="!menu_active ? 'icon-menu' : 'icon-cross'")  
+  button(class="menu-label",*ngIf="!searchActive",(click)="menu_handler($event)")
+    i([ngClass]="!menuActive ? 'icon-menu' : 'icon-cross'")  
   .search-box
-    div(id="search_btn",(click)="handleSearchClick($event)")
-     i([ngClass]="!search_active ? 'icon-search' : 'icon-cross'")
-    input(type="text", id="search-bar", *ngIf="search_active", placeholder="Search..") 
-  a(class="profile",*ngIf="!search_active")
+    button(id="search_btn",(click)="handleSearchClick($event)")
+     i([ngClass]="!searchActive ? 'icon-search' : 'icon-cross'")
+    input(type="text", id="search-bar", *ngIf="searchActive", placeholder="Search..") 
+  a(class="profile",*ngIf="!searchActive")
     span {{ profile.name }} {{ profile.lastname }}
     app-user-pic([imgSrc]="profile.imgSrc",[name]="profile.name",[lastname]="profile.lastname")
