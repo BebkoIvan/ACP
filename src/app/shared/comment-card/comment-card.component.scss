@@ -1,0 +1,63 @@
+@import "../../../scss/abstracts/variables.scss";
+
+.commentCard{
+    background-color: $white;
+}
+
+.header{
+    display: flex;
+    padding: 5px;
+}
+
+.user{
+    display: flex;
+    outline: none;
+    border: none;
+    align-items: center;
+
+    span{
+        padding: 7px;
+        font-weight: bold;
+    }
+}
+
+
+
+.time{
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    color:$grey2;
+}
+
+.main-content{
+    padding: 10px 38px;
+    word-wrap: break-word;
+
+    span{
+        width: 30vw;
+        background-color: $grey1;
+        border-radius:16px;
+        padding: 10px;
+        width: auto;
+    }
+
+}
+
+.commentFooter{
+    display: flex;
+    justify-content: flex-end;
+    padding: 6px;
+    font-size: 14px;
+
+    span{
+        display: flex;
+        align-items: flex-start;
+        padding: 2px 4px 0 0;
+    }
+
+}
+
+:host ::ng-deep i{
+    font-size: 18px;
+}

@@ -1,0 +1,14 @@
+.commentCard
+ .header
+  button.user
+   app-user-pic([name]="comment.authorName",[lastname]="comment.authorLastname",[imgSrc]="comment.authorImg")
+   span {{comment.authorName}} {{comment.authorLastname}}
+  .time 
+   span at
+   app-timestamp([date]="comment.date") 
+ .main-content
+  span {{comment.commentText}}  
+ .commentFooter
+  span Likes: {{comment.likes}}
+  app-like([likeActive]="likeActive",(likeClicked)="likeClick()") 
+

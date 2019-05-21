@@ -20,6 +20,6 @@ import { UnderConstructionComponent } from './under-construction/under-construct
     CommonModule,
     SharedRoutingModule
   ],
-  exports:[TabComponent,UnderConstructionComponent,TabGroupComponent,AuxiliaryContentComponent,LikeComponent,TimestampComponent,TagComponent, UserPicComponent, ViewportComponent,CardComponent,ToTopButtonComponent]
+  exports:[TabComponent,CommentCardComponent,UnderConstructionComponent,TabGroupComponent,AuxiliaryContentComponent,LikeComponent,TimestampComponent,TagComponent, UserPicComponent, ViewportComponent,CardComponent,ToTopButtonComponent]
 })
 export class SharedModule { }
