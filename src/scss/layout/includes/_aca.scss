@@ -9,26 +9,33 @@
     font-size: 32px;
     color: lighten($red_color, 20%);
     cursor: pointer;
+
     & > i {
         padding: 8px;
     }
+
     &:hover {
         color: $red_color;
     }
+    
     @include mq($until: tablet) {
         display: none;
     }
 }
+
 .aca {
+
     @include mq($from: tablet) {
         scrollbar-color: $red_color #f1f1f1;
         scrollbar-width: thin;
         height: 93vh;
         width: 0;
-        overflow: scroll;
+        overflow-y: scroll;
         transition: 0.5s;
+
         &.aca-active {
-            width: 30vw;
+            width: 300px;
         }
+
     }
 }

@@ -1,5 +1,6 @@
-div(class="main-content",(click)="menu_active ? hideMenu() : false")
- div(class="card",*ngFor="let article of articles")
-  h3 {{ article.title }}
-  img(src="{{article.img}}", alt="kkk")
-  p {{article.text}}
+.wrapper
+ div(class="main-content",(click)="menu_active ? hideMenu() : false")
+  div(class="card",*ngFor="let article of articles")
+   h3 {{ article.title }}
+   img(src="{{article.img}}", alt="kkk")
+   p {{article.text}}
