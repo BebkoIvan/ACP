@@ -7,15 +7,13 @@
     align-items: center;
     height: 93vh;
     padding: 0 5%;
-    max-width: 1440px;
     transition: 0.5s;
     overflow-y: scroll;
-       scrollbar-color: $red_color #f1f1f1;
-       scrollbar-width: thin;
+    scrollbar-color: $red_color #f1f1f1;
+    scrollbar-width: thin;
    }
 
    :host{
        flex: 1; 
        display: flex;
-       
    }

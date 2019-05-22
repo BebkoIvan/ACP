@@ -1,0 +1,19 @@
+.workshop-page
+ .workshop
+  .title
+   h3 {{workshop.title}}
+  .content-area
+   img(src='{{workshop.img}}')
+   p {{workshop.shortDesc}}
+  .workshop-footer
+   .tags-likes
+    .tags-list
+     app-tag(*ngFor="let tag of workshop.tagsList",[tagTitle]="tag",[tagActive]="false")
+    .likes
+     span Likes:{{workshop.likes}} 
+     app-like([likeActive]="likeactive",(likeClicked)="likec()")  
+   .date published at
+    app-timestamp([date]="workshop.creationDate") 
+   .comments
+    .comment(*ngFor="let comment of workshop.comments")
+     app-comment-card([comment]="comment") 

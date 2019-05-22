@@ -7,7 +7,7 @@
    span at
    app-timestamp([date]="comment.date") 
  .main-content
-  span {{comment.commentText}}  
+  p {{comment.commentText}}  
  .commentFooter
   span Likes: {{comment.likes}}
   app-like([likeActive]="likeActive",(likeClicked)="likeClick()") 

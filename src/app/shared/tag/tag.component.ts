@@ -1,9 +1,10 @@
-import { Component, OnInit, Output, Input, EventEmitter } from "@angular/core";
+import { Component, OnInit, Output, Input, EventEmitter, ChangeDetectionStrategy } from "@angular/core";
 
 @Component({
     selector: "app-tag",
     templateUrl: "./tag.component.pug",
-    styleUrls: ["./tag.component.scss"]
+    styleUrls: ["./tag.component.scss"],
+    changeDetection:ChangeDetectionStrategy.OnPush
 })
 export class TagComponent implements OnInit {
     constructor() {}

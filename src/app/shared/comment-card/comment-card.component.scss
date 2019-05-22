@@ -1,7 +1,8 @@
 @import "../../../scss/abstracts/variables.scss";
 
 .commentCard{
-    background-color: $white;
+    display: flex;
+    flex-direction: column;
 }
 
 .header{
@@ -14,10 +15,13 @@
     outline: none;
     border: none;
     align-items: center;
+    padding: 7px;
+    font-weight: bold;
+    display: flex;
+    cursor: pointer;
 
     span{
-        padding: 7px;
-        font-weight: bold;
+        padding-left: 7px;
     }
 }
 
@@ -31,15 +35,13 @@
 }
 
 .main-content{
-    padding: 10px 38px;
-    word-wrap: break-word;
+    // margin-left: 10px;
+    background-color: $grey1;
+    border-radius:16px;
+    word-break: break-all;
 
-    span{
-        width: 30vw;
-        background-color: $grey1;
-        border-radius:16px;
-        padding: 10px;
-        width: auto;
+    p{
+        padding: 5px;
     }
 
 }

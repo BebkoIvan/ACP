@@ -32,6 +32,10 @@
     a{
         width: fit-content;
     
+        &.active{
+           width: 100%;
+        }
+
         span{
         font-size: 15px;
         }
@@ -94,7 +98,16 @@ a {
     cursor: pointer;
     color: inherit;
     text-decoration: none;
-    
+
+    &.active{
+        background: darken($grey2,30);
+        color: $red_color;
+
+        &:hover{
+            color:lighten($red_color,10);
+        }
+    }
+
     &:hover {
         color: white;
     }

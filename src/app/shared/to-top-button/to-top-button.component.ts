@@ -1,35 +1,35 @@
-import { Component, OnInit,Inject,HostListener } from '@angular/core';
-import { DOCUMENT } from "@angular/platform-browser";
+import { Component, OnInit,HostListener,Output,EventEmitter, ChangeDetectionStrategy, Input } from '@angular/core';
+
 @Component({
   selector: 'app-to-top-button',
   templateUrl: './to-top-button.component.pug',
-  styleUrls: ['./to-top-button.component.scss']
+  styleUrls: ['./to-top-button.component.scss'],
+  changeDetection:ChangeDetectionStrategy.OnPush
 })
 export class ToTopButtonComponent implements OnInit {
-  windowScrolled: boolean;
 
-  constructor(@Inject(DOCUMENT) private document: Document) {}
-    @HostListener("window:scroll", [])
-    onWindowScroll() {
-        if (window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop > 100) {
-            this.windowScrolled = true;
-        } 
-       else if (this.windowScrolled && window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop < 10) {
-            this.windowScrolled = false;
-        }
-    }
-
-    scrollToTop() {
-      (function smoothscroll() {
-          var currentScroll = document.documentElement.scrollTop || document.body.scrollTop;
-          if (currentScroll > 0) {
-              window.requestAnimationFrame(smoothscroll);
-              window.scrollTo(0, currentScroll - (currentScroll / 8));
-          }
-      })();
+  constructor() {}
+ 
+  ngOnInit() {
   }
 
-  ngOnInit() {
+ 
+  topPosToStartShowing:number = 150;
+  @Input() scrollPosition:number;
+  @Output()scrollTop = new EventEmitter();
+
+  btnHandler(e:Event):void{
+    this.scrollTop.emit();
+  }
+
+ 
+  // TODO: Cross browsing
+  gotoTop() {
+    window.scroll({ 
+      top: 0, 
+      left: 0, 
+      behavior: 'smooth' 
+    });
   }
 
 }

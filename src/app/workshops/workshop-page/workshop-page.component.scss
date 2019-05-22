@@ -1,0 +1,93 @@
+@import "../../../scss/abstracts/variables";
+   
+   .workshop-page{ 
+    display: flex;
+    background: $grey1;
+    justify-content: center;
+    height: 93vh;
+    padding: 0 5%;
+    max-width: 1440px;
+    transition: 0.5s;
+    overflow-y: scroll;
+    scrollbar-color: $red_color #f1f1f1;
+    scrollbar-width: thin;
+   }
+
+   .workshop{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    @include mq($from: tablet) {
+        margin:5% 20% 5% 20%;
+    }
+
+    @include mq($until: tablet) {
+    margin:5%;
+    }
+       background: $white;
+       
+   }
+
+   .title{
+    padding:10px 10px 0 20px;
+   }
+   .content-area{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 20px 0 20px;
+    word-break: break-all;
+    flex:1;
+   }
+
+
+   .likes{
+    display: flex;
+
+    span{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-right: 7px;
+    }
+}
+
+
+img{
+
+    @include mq($until: tablet) {
+        width: 90%;
+     }
+
+   @include mq($from: tablet) {
+
+    width: 60%;
+    }
+    
+    margin: 2% 5%;
+}
+   
+    .workshop-footer{
+       display: flex;
+       flex-direction: column;
+       padding:0 20px;
+       background: $white; 
+       .tags-likes{
+        display: flex;
+        justify-content: space-between;
+       }
+
+       .date{
+           display: flex;
+           align-items: center;
+       }
+    }
+
+   .comments{
+    display: flex;
+    flex-direction: column;
+   }
+   :host{
+       flex: 1; 
+       display: flex;
+   }

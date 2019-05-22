@@ -1,3 +1,2 @@
-div(class="scroll-to-top",[ngClass]="{'show-scrollTop': windowScrolled}")
- button((click)="scrollToTop()")
-  i.icon-cross
+button(id="toTop", *ngIf="scrollPosition > topPosToStartShowing", (click)="btnHandler($event)")
+ i.icon-point-up

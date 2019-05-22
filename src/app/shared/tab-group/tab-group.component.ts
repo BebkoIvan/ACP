@@ -12,22 +12,4 @@ export class TabGroupComponent implements OnInit {
   ngOnInit() {
   }
 
-  menuItems:MenuData[] = [
-    {
-        label: "Dashboard",
-        icon: "icon-dashboard",
-        link:""
-    },
-    {
-        label: "Workshops",
-        icon: "icon-study",
-        link:""
-    },
-    {
-        label: "Settings",
-        icon: "icon-cog",
-        link:""
-    }
-];
-
 }

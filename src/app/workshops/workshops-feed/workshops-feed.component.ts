@@ -1,24 +1,46 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit,Input,HostListener, ChangeDetectionStrategy } from "@angular/core";
 import "../models/article-interface";
 @Component({
     selector: "app-workshops-feed",
     templateUrl: "./workshops-feed.component.pug",
-    styleUrls: ["./workshops-feed.component.scss"]
+    styleUrls: ["./workshops-feed.component.scss"],
+    changeDetection:ChangeDetectionStrategy.OnPush
 })
 export class WorkshopsFeedComponent implements OnInit {
+
     constructor() {}
 
     ngOnInit() {}
 
     acaActive: boolean = false;
+    scrollTop1:number;
+
+    
+    @HostListener('scroll', ['$event'])onScroll($event:Event):void {
+            this.scrollTop1=$event.srcElement.scrollTop;
+            scroll({
+                top: 0, 
+            left: 0, 
+            behavior: 'smooth' 
+            });
+
+    };
+
+        //   scroll({ 
+        //     top: 0, 
+        //     left: 0, 
+        //     behavior: 'smooth' 
+        //   });  
+        // }
 
     acaHandler(): void {
         this.acaActive = !this.acaActive;
     }
+    
 
     articles: Article[] = [
         {
-            id: 1,
+            id: 0,
             title: "TAG Heuer Gets 'Tagged'",
             img: "/assets/images/tag_heuer.jpg",
             shortDesc:
@@ -30,7 +52,7 @@ export class WorkshopsFeedComponent implements OnInit {
         },
 
         {
-            id: 2,
+            id: 1,
             title: "Case is better",
             img: "/assets/images/case.jpg",
             shortDesc:
@@ -41,7 +63,7 @@ export class WorkshopsFeedComponent implements OnInit {
             likes: 30
         },
         {
-            id: 3,
+            id: 2,
             title: "Alec is priceless",
             img: "/assets/images/tag_heuer.jpg",
             shortDesc:

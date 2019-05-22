@@ -1,6 +1,7 @@
 import { NgModule, Component } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { WorkshopsFeedComponent } from "./workshops-feed/workshops-feed.component";
+import { WorkshopPageComponent } from './workshop-page/workshop-page.component';
 
 const routes: Routes = [
     {
@@ -12,11 +13,18 @@ const routes: Routes = [
     {
         path:"feed",
         component:WorkshopsFeedComponent
-    }
+    },
+
+    {
+        path:":id",
+        component:WorkshopPageComponent
+    },
+
+
+
 ];
 
 @NgModule({
-    declarations: [],
     imports: [RouterModule.forChild(routes)],
     exports: [RouterModule]
 })

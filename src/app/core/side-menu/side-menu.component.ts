@@ -1,9 +1,10 @@
-import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
+import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy } from "@angular/core";
 
 @Component({
     selector: "app-side-menu",
     templateUrl: "./side-menu.component.pug",
-    styleUrls: ["./side-menu.component.scss"]
+    styleUrls: ["./side-menu.component.scss"],
+    changeDetection:ChangeDetectionStrategy.OnPush
 })
 export class SideMenuComponent implements OnInit {
     constructor() {}
