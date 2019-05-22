@@ -3,6 +3,6 @@ interface Comment{
     authorLastname:string,
     authorImg:string,
     date:string,
-    comment:string,
+    commentText:string,
     likes:number
 }

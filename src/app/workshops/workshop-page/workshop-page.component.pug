@@ -8,7 +8,7 @@
   .workshop-footer
    .tags-likes
     .tags-list
-     app-tag(*ngFor="let tag of workshop.tagsList",[tagTitle]="tag",[tagActive]="false")
+     app-tag(*ngFor="let tag of workshop.tagsList", [tagTitle]="tag")
     .likes
      span Likes:{{workshop.likes}} 
      app-like([likeActive]="likeactive",(likeClicked)="likec()")  

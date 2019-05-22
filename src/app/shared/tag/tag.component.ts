@@ -9,10 +9,10 @@ import { Component, OnInit, Output, Input, EventEmitter, ChangeDetectionStrategy
 export class TagComponent implements OnInit {
     constructor() {}
 
-    @Input() tagActive: boolean;
+    tagActive: boolean=false;
+
     @Input() tagTitle: string;
 
-    // @Output() tagClicked = new EventEmitter();
 
     changeState(e: Event): void {
         this.tagActive = !this.tagActive;

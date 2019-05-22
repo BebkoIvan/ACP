@@ -1,5 +1,5 @@
 header
-  div(id="logo",*ngIf="!search_active")
+  div(id="logo",*ngIf="!searchActive")
     a(href="#")
      img(src="{{ logoSrc }}")
   button(class="menu-label",*ngIf="!searchActive",(click)="menu_handler($event)")

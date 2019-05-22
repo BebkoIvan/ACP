@@ -8,7 +8,7 @@ app-card
  .footer
   .article-footer
    .tags-list
-    app-tag(*ngFor="let tag of article.tagsList",[tagTitle]="tag",[tagActive]="false")
+    app-tag(*ngFor="let tag of article.tagsList",[tagTitle]="tag")
    .likes
     span Likes:{{article.likes}} 
     app-like([likeActive]="likeactive",(likeClicked)="likec()")  
