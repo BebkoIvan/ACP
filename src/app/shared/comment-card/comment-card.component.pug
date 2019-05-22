@@ -5,7 +5,7 @@
    span {{comment.authorName}} {{comment.authorLastname}}
   .time 
    span at
-   app-timestamp([date]="comment.date") 
+   app-timestamp([date]="comment.date",[format]="'short'") 
  .main-content
   p {{comment.commentText}}  
  .commentFooter

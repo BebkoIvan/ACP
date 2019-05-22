@@ -12,6 +12,6 @@ app-card
    .likes
     span Likes:{{article.likes}} 
     app-like([likeActive]="likeactive",(likeClicked)="likec()")  
-  app-timestamp([date]="article.creationDate") 
+  app-timestamp([date]="article.creationDate",[format]="'fullDate'") 
      
 

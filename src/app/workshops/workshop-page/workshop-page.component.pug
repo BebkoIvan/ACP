@@ -13,7 +13,7 @@
      span Likes:{{workshop.likes}} 
      app-like([likeActive]="likeactive",(likeClicked)="likec()")  
    .date published at
-    app-timestamp([date]="workshop.creationDate") 
+    app-timestamp([date]="workshop.creationDate",[format]="'short'") 
    .comments
     .comment(*ngFor="let comment of workshop.comments")
      app-comment-card([comment]="comment") 
