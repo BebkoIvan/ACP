@@ -9,6 +9,7 @@ import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy
 export class AuxiliaryContentComponent implements OnInit {
     constructor() {}
 
+    title="olol";
     @Input() auxContActive: boolean;
 
     @Output() acaClick = new EventEmitter();

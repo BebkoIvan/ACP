@@ -13,23 +13,5 @@ export class ToTopButtonComponent implements OnInit {
   ngOnInit() {
   }
 
- 
-  topPosToStartShowing:number = 150;
-  @Input() scrollPosition:number;
-  @Output()scrollTop = new EventEmitter();
-
-  btnHandler(e:Event):void{
-    this.scrollTop.emit();
-  }
-
- 
-  // TODO: Cross browsing
-  gotoTop() {
-    window.scroll({ 
-      top: 0, 
-      left: 0, 
-      behavior: 'smooth' 
-    });
-  }
 
 }

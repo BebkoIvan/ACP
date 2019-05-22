@@ -13,25 +13,22 @@ export class WorkshopsFeedComponent implements OnInit {
     ngOnInit() {}
 
     acaActive: boolean = false;
-    scrollTop1:number;
-
+    scrollTop:number;
+    topPosToStartShowing:number = 150;
     
     @HostListener('scroll', ['$event'])onScroll($event:Event):void {
-            this.scrollTop1=$event.srcElement.scrollTop;
-            scroll({
-                top: 0, 
-            left: 0, 
-            behavior: 'smooth' 
-            });
-
+            this.scrollTop=$event.srcElement.scrollTop;
     };
 
-        //   scroll({ 
-        //     top: 0, 
-        //     left: 0, 
-        //     behavior: 'smooth' 
-        //   });  
-        // }
+    scroll():void {
+        let el=document.getElementById("topel");
+        console.log(el);
+        el.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+            inline: "nearest"
+        })
+      }
 
     acaHandler(): void {
         this.acaActive = !this.acaActive;

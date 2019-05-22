@@ -13,9 +13,10 @@ import { LikeComponent } from './like/like.component';
 import { AuxiliaryContentComponent } from './auxiliary-content/auxiliary-content.component';
 import { SharedRoutingModule } from './shared-routing.module';
 import { UnderConstructionComponent } from './under-construction/under-construction.component';
+import { CommentFormComponent } from './comment-form/comment-form.component';
 
 @NgModule({
-  declarations: [TabComponent,TabGroupComponent, UserPicComponent, ViewportComponent, CardComponent, TagComponent, TimestampComponent, CommentCardComponent, ToTopButtonComponent, LikeComponent, AuxiliaryContentComponent, UnderConstructionComponent],
+  declarations: [TabComponent,TabGroupComponent, UserPicComponent, ViewportComponent, CardComponent, TagComponent, TimestampComponent, CommentCardComponent, ToTopButtonComponent, LikeComponent, AuxiliaryContentComponent, UnderConstructionComponent, CommentFormComponent],
   imports: [
     CommonModule,
     SharedRoutingModule

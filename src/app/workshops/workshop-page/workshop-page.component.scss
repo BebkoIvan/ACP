@@ -17,6 +17,7 @@
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    
     @include mq($from: tablet) {
         margin:5% 20% 5% 20%;
     }
@@ -60,8 +61,7 @@ img{
      }
 
    @include mq($from: tablet) {
-
-    width: 60%;
+        width: 60%;
     }
     
     margin: 2% 5%;
@@ -72,6 +72,7 @@ img{
        flex-direction: column;
        padding:0 20px;
        background: $white; 
+
        .tags-likes{
         display: flex;
         justify-content: space-between;
@@ -87,6 +88,7 @@ img{
     display: flex;
     flex-direction: column;
    }
+
    :host{
        flex: 1; 
        display: flex;

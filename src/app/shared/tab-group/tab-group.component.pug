@@ -1,5 +1,9 @@
-//- ul(class="nav nav-tabs")
-//-  li(*ngFor="let tab of tabs" (click)="selectTab(tab)" [class.active]="tab.active") 
-//-   a(href="#") {{tab.title}}
-//- ng-content  
+ul.tabs
+    li.tabItem(
+        *ngFor='let tab of tabs' 
+        '[class.active]'='tab.active' 
+        '(click)'='selectTab(tab)'
+    )
+        button.tabButton {{tab.title}}
+ng-content
    

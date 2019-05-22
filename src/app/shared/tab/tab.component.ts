@@ -4,17 +4,19 @@ import { Component, OnInit,Input, ChangeDetectionStrategy } from '@angular/core'
   selector: 'app-tab',
   templateUrl: './tab.component.pug',
   styleUrls: ['./tab.component.scss'],
-  changeDetection:ChangeDetectionStrategy.OnPush
 })
 export class TabComponent implements OnInit {
 
   constructor() { }
 
+  @Input() title:string;
+  @Input() active:boolean=false;
+
+
   ngOnInit() {
   }
 
-  @Input() title = '';
-  @Input() active = false;
-  @Input() disabled = false;
+
+
   
 }

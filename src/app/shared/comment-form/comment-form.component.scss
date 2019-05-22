@@ -1,0 +1,14 @@
+form{
+    display: flex;
+    flex-direction: column;
+}
+
+.form-footer{
+    display: flex;
+    justify-content: flex-end;
+
+    button{
+        padding: 5px;
+        border-radius: 15px;
+    }
+}
