@@ -3,9 +3,9 @@ import { Routes, RouterModule } from "@angular/router";
 import { WorkshopsFeedComponent } from "./workshops-feed/workshops-feed.component";
 import { WorkshopPageComponent } from './workshop-page/workshop-page.component';
 
-const routes: Routes = [
+const WorkShopsroutes: Routes = [
     {
-        path: "",
+        path: '',
         redirectTo: "feed",
         pathMatch: "full"
     },
@@ -25,7 +25,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-    imports: [RouterModule.forChild(routes)],
+    imports: [RouterModule.forChild(WorkShopsroutes)],
     exports: [RouterModule]
 })
 export class WorkshopsRoutingModule {}
