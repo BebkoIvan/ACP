@@ -1,4 +1,9 @@
-//- form.comment-form((submit)="createComment($event,titleInput.value)")
-//-  input(type="text",placeholder="Enter your comment" #titleInput)
-//-  .form-footer
-//-   button(type="submit") Submit
+form.comment-form([formGroup]="CommentForm")
+ .name-field
+  label.name Your name
+  input(type="text",id="nameInput", formControlName="name", placeholder="Your Name")
+ .comment-field
+  label.comment Leave your comment
+  textarea(rows="4",id="commentInput", formControlName="name", placeholder="Enter your comment") 
+ .form-footer
+  button(type="submit") Submit
