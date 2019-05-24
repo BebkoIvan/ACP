@@ -2,7 +2,7 @@ header
   div(id="logo",*ngIf="!searchActive")
     a(href="#")
      img(src="{{ logoSrc }}")
-  button(class="menu-label",*ngIf="!searchActive",(click)="menu_handler($event)")
+  button(class="menu-label",*ngIf="!searchActive",(click)="menuHandler($event)")
     i([ngClass]="!menuActive ? 'icon-menu' : 'icon-cross'")  
   .search-box
     button(id="search_btn",(click)="handleSearchClick($event)")

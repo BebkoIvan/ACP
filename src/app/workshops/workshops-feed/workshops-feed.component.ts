@@ -1,10 +1,9 @@
-import { Component, OnInit,Input,HostListener, ChangeDetectionStrategy } from "@angular/core";
+import { Component, OnInit,Input,HostListener } from "@angular/core";
 import "../models/article-interface";
 @Component({
     selector: "app-workshops-feed",
     templateUrl: "./workshops-feed.component.pug",
     styleUrls: ["./workshops-feed.component.scss"],
-    changeDetection:ChangeDetectionStrategy.OnPush
 })
 export class WorkshopsFeedComponent implements OnInit {
 

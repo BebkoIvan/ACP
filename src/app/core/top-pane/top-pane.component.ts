@@ -1,10 +1,9 @@
-import { Component, OnInit,EventEmitter,Input,Output, ErrorHandler, ChangeDetectionStrategy } from "@angular/core";
+import { Component, OnInit,EventEmitter,Input,Output } from "@angular/core";
 
 @Component({
     selector: "app-top-pane",
     templateUrl: "./top-pane.component.pug",
     styleUrls: ["./top-pane.component.scss"],
-    changeDetection:ChangeDetectionStrategy.OnPush
 })
 
 export class TopPaneComponent implements OnInit {
@@ -20,7 +19,7 @@ export class TopPaneComponent implements OnInit {
 
     @Output()menuClick = new EventEmitter();
 
-    menu_handler(e:Event):void{
+    menuHandler(e:Event):void{
       this.menuClick.emit();
     }
 
