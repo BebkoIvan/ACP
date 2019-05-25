@@ -1,11 +1,13 @@
 @import "../../../scss/abstracts/variables";
 
 .tag-box{
-    padding: 10px;
-    background-color: $tag-color;
-    color:$white;
-    border-radius: 40px;
+    padding: 5px;
+    margin:5px;
+    background-color:lighten($grey1,5);
+    color:black;
+    border-radius: 5px;
     font-size: 12px;
+    border: none;
     cursor: pointer;
 
     &:hover{
