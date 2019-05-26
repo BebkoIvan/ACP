@@ -26,7 +26,7 @@ export class SideMenuComponent implements OnInit {
         {
             label: "Workshops",
             icon: "icon-study",
-            link:"/workshops/feed"
+            link:"/workshops"
         },
         {
             label: "Quizzes",
