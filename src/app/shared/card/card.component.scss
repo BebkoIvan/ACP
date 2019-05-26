@@ -3,7 +3,7 @@
 .card{
     
     @include mq($from: tablet) {
-        margin: 3% 19%;
+        margin: 3% 30%;
     }
 
     @include mq($until: tablet) {

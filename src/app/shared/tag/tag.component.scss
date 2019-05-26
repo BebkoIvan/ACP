@@ -10,15 +10,8 @@
     border: none;
     cursor: pointer;
 
-    &:hover{
-        background-color: lighten($tag-color,15);
+    &.tag-active{
+        background-color: $grey2;
     }
 
-    &.tag-active{
-        background-color: lighten($red_color,15);
-        
-        &:hover{
-            background-color: $red_color;
-        }
-    }
 }

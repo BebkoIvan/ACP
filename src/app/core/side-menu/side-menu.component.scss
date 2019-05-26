@@ -104,7 +104,7 @@ a {
         color: $red_color;
 
         &:hover{
-            color:lighten($red_color,10);
+            color:$red_color;
         }
     }
 
