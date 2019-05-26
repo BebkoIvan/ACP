@@ -5,6 +5,7 @@ import { WorkshopPageComponent } from "./workshop-page/workshop-page.component";
 import { ArticleComponent } from "./article/article.component";
 import { SharedModule } from "../shared/shared.module";
 import { WorkshopsRoutingModule } from './workshops-routing.module';
+import { WorkshopsService } from './workshops.service';
 
 @NgModule({
     declarations: [
@@ -13,6 +14,7 @@ import { WorkshopsRoutingModule } from './workshops-routing.module';
         ArticleComponent
     ],
     imports: [CommonModule, SharedModule, WorkshopsRoutingModule],
-    exports: [WorkshopsFeedComponent, ArticleComponent]
+    exports: [WorkshopsFeedComponent, ArticleComponent],
+    providers:[WorkshopsService]
 })
 export class WorkshopsModule {}

@@ -18,3 +18,4 @@
     .comment(*ngFor="let comment of workshop.comments")
      app-comment-card([comment]="comment")
     app-comment-form  
+app-auxiliary-content([auxContActive]="acaActive",(acaClick)="acaHandler()")    
