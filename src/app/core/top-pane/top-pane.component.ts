@@ -28,5 +28,6 @@ export class TopPaneComponent implements OnInit {
 
     handleSearchClick(e: Event) {
         this.searchActive = !this.searchActive;
+        console.log("aaa");
     }
 }
