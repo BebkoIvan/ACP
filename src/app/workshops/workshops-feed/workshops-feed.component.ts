@@ -16,6 +16,7 @@ export class WorkshopsFeedComponent implements OnInit {
     
     @HostListener('scroll', ['$event'])onScroll($event:Event):void {
             this.scrollTop=$event.srcElement.scrollTop;
+            
     };
 
     

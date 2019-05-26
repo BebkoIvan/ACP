@@ -2,6 +2,7 @@ import { NgModule, Component } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { WorkshopsFeedComponent } from "./workshops-feed/workshops-feed.component";
 import { WorkshopPageComponent } from './workshop-page/workshop-page.component';
+import { PageNotFoundComponent } from '../shared/page-not-found/page-not-found.component';
 
 const WorkShopsroutes: Routes = [
     {
@@ -12,15 +13,21 @@ const WorkShopsroutes: Routes = [
 
     {
         path:"feed",
-        component:WorkshopsFeedComponent
+        component:WorkshopsFeedComponent,
+        pathMatch: "full"
     },
 
     {
         path:":id",
-        component:WorkshopPageComponent
+        component:WorkshopPageComponent,
+        pathMatch: "full"
     },
 
-
+    { 
+        path: '**',
+        component: PageNotFoundComponent,
+        pathMatch: "full"
+        }
 
 ];
 
