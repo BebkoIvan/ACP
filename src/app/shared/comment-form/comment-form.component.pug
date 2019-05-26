@@ -1,6 +1,6 @@
 form.comment-form([formGroup]="CommentForm")
  .comment-field
   app-user-pic([name]="profile.name",[lastname]="profile.lastname",[imgSrc]="profile.imgSrc")
-  textarea(rows="1",id="commentInput", formControlName="name", placeholder="Enter your comment") 
+  textarea(rows="2",id="commentInput", formControlName="name", placeholder="Enter your comment") 
  .form-footer
   button(type="submit") Submit

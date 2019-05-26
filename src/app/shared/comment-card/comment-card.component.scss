@@ -48,15 +48,18 @@
 
 .commentFooter{
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     padding: 6px;
     font-size: 14px;
-
-    span{
+    .likes{
         display: flex;
-        align-items: flex-start;
-        padding: 2px 4px 0 0;
+
+        span{
+        display: flex;
+        align-items: center;
+        padding-right: 4px;
     }
+}
 
 }
 

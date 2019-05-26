@@ -17,3 +17,13 @@
     }
 }
 
+@mixin tagsList() {
+    display: flex;
+    flex-wrap: wrap;
+    span{
+        background: $grey1;
+        border-radius: 7px;
+        margin: 5px;
+        padding: 5px;
+    }
+}
