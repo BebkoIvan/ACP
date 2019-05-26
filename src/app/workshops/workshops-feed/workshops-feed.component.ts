@@ -27,7 +27,6 @@ export class WorkshopsFeedComponent implements OnInit {
     
     scroll():void {
         let el=document.getElementById("topel");
-        console.log(el);
         el.scrollIntoView({
             behavior: "smooth",
             block: "start",

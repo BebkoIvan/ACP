@@ -16,14 +16,15 @@ import { UnderConstructionComponent } from './under-construction/under-construct
 import { CommentFormComponent } from './comment-form/comment-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { TagCloudComponent } from './tag-cloud/tag-cloud.component';
 
 @NgModule({
-  declarations: [TabComponent,TabGroupComponent, UserPicComponent, ViewportComponent, CardComponent, TagComponent, TimestampComponent, CommentCardComponent, ToTopButtonComponent, LikeComponent, AuxiliaryContentComponent, UnderConstructionComponent, CommentFormComponent, PageNotFoundComponent],
+  declarations: [TabComponent,TabGroupComponent, UserPicComponent, ViewportComponent, CardComponent, TagComponent, TimestampComponent, CommentCardComponent, ToTopButtonComponent, LikeComponent, AuxiliaryContentComponent, UnderConstructionComponent, CommentFormComponent, PageNotFoundComponent, TagCloudComponent],
   imports: [
     CommonModule,
     SharedRoutingModule,
     ReactiveFormsModule
   ],
-  exports:[TabComponent,CommentFormComponent,CommentCardComponent,UnderConstructionComponent,TabGroupComponent,AuxiliaryContentComponent,LikeComponent,TimestampComponent,TagComponent, UserPicComponent, ViewportComponent,CardComponent,ToTopButtonComponent]
+  exports:[TabComponent,CommentFormComponent,CommentCardComponent,UnderConstructionComponent,TabGroupComponent,AuxiliaryContentComponent,LikeComponent,TimestampComponent,TagComponent, UserPicComponent, ViewportComponent,CardComponent,ToTopButtonComponent,TagCloudComponent]
 })
 export class SharedModule { }
