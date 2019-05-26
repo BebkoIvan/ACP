@@ -1,6 +1,13 @@
 @import "../../../scss/abstracts/variables.scss";
+
+.title>a{
+    outline: none;
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+}
+
 img{
-    
     @include mq($from: tablet) {
         max-height: 350px;
     }

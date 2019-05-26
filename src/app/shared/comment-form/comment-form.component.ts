@@ -13,12 +13,21 @@ export class CommentFormComponent implements OnInit {
   ngOnInit() {
   }
 
+  profile: User = {
+    name: "Jeff",
+    lastname: "Bezos",
+    imgSrc: "/assets/images/Jeff.png",
+    link: ""
+};
+
   CommentForm: FormGroup=new FormGroup({
+
     name: new FormControl('',[
       Validators.minLength(2),
       Validators.maxLength(23),
       Validators.required
     ]),
+
     comment: new FormControl('',[
     Validators.minLength(10),
       Validators.maxLength(999),
@@ -32,4 +41,5 @@ export class CommentFormComponent implements OnInit {
     event.preventDefault();
     let comment=title;
   }
+
 }

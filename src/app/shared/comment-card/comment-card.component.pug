@@ -4,11 +4,10 @@
    app-user-pic([name]="comment.authorName",[lastname]="comment.authorLastname",[imgSrc]="comment.authorImg")
    span {{comment.authorName}} {{comment.authorLastname}}
   .time 
-   span at
    app-timestamp([date]="comment.date",[format]="'short'") 
  .main-content
   p {{comment.commentText}}  
  .commentFooter
-  span Likes: {{comment.likes}}
+  span {{comment.likes}}
   app-like([likeActive]="likeActive",(likeClicked)="likeClick()") 
 

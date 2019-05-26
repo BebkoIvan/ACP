@@ -1,5 +1,9 @@
 @import "../../../scss/abstracts/variables";
 
+
+:host{
+    display: flex;
+}
 .like-box{
     border-radius: 0;
     border: none;

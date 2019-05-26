@@ -10,7 +10,7 @@
     .tags-list
      app-tag(*ngFor="let tag of workshop.tagsList", [tagTitle]="tag")
     .likes
-     span Likes:{{workshop.likes}} 
+     span {{workshop.likes}} 
      app-like([likeActive]="likeactive",(likeClicked)="likec()")  
    .date published at
     app-timestamp([date]="workshop.creationDate",[format]="'short'") 

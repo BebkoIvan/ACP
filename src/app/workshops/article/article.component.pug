@@ -1,6 +1,7 @@
 app-card
  .title
-  h3 {{workshop.title}}
+  a(routerLink="../{{workshop.id}}" )
+   h3 {{workshop.title}}
  .content
   img(src='{{workshop.img}}')
   p {{workshop.shortDesc}}
