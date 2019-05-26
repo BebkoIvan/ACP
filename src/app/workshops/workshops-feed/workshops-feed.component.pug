@@ -1,6 +1,6 @@
 .workshops((scroll)="onScroll($event)")
  #topel
- app-article(*ngFor="let article of articles",[article]="article",(scrollTop)="scrollTop()")
+ app-article(*ngFor="let workshop of workshops",[workshop]="workshop",(scrollTop)="scrollTop()")
  .to-top
   app-to-top-button(*ngIf="scrollTop>topPosToStartShowing",(click)="scroll()")
 app-auxiliary-content([auxContActive]="acaActive",(acaClick)="acaHandler()")

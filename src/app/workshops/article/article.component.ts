@@ -9,15 +9,15 @@ import { Component, OnInit, Input, ChangeDetectionStrategy } from "@angular/core
 export class ArticleComponent implements OnInit {
     constructor() {}
 
-    @Input() article: Article;
+    @Input() workshop: Workshop;
     likeactive: boolean = false;
 
     likec() {
         if (this.likeactive) {
-            this.article.likes -= 1;
+            this.workshop.likes -= 1;
         } 
         else {
-            this.article.likes += 1;
+            this.workshop.likes += 1;
         }
 
         this.likeactive = !this.likeactive;

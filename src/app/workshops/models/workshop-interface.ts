@@ -3,6 +3,7 @@ interface Workshop{
     title:string,
     img:string,
     shortDesc:string,
+    fulltext:string,
     tagsList:string[],
     link:string,
     creationDate:string,

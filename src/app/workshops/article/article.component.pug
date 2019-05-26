@@ -1,17 +1,17 @@
 app-card
  .title
-  h3 {{article.title}}
+  h3 {{workshop.title}}
  .content
-  img(src='{{article.img}}')
-  p {{article.shortDesc}}
-   a(routerLink="../{{article.id}}" ) Read more
+  img(src='{{workshop.img}}')
+  p {{workshop.shortDesc}}
+   a(routerLink="../{{workshop.id}}" ) Read more
  .footer
   .article-footer
    .tags-list
-    app-tag(*ngFor="let tag of article.tagsList",[tagTitle]="tag")
+    app-tag(*ngFor="let tag of workshop.tagsList",[tagTitle]="tag")
    .likes
-    span Likes:{{article.likes}} 
+    span Likes:{{workshop.likes}} 
     app-like([likeActive]="likeactive",(likeClicked)="likec()")  
-  app-timestamp([date]="article.creationDate",[format]="'fullDate'") 
+  app-timestamp([date]="workshop.creationDate",[format]="'fullDate'") 
      
 
