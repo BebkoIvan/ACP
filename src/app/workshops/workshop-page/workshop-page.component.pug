@@ -14,8 +14,8 @@
      app-like([likeActive]="likeactive",(likeClicked)="likec()")  
    .date published at
     app-timestamp([date]="workshop.creationDate",[format]="'short'") 
-   .comments
-    .comment(*ngFor="let comment of workshop.comments")
-     app-comment-card([comment]="comment")
-    app-comment-form  
+  //-  .comments
+  //-   .comment(*ngFor="let comment of workshop.comments")
+  //-    app-comment-card([comment]="comment")
+  //-   app-comment-form  
 app-auxiliary-content([auxContActive]="acaActive",(acaClick)="acaHandler()")    

@@ -1,6 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy } from "@angular/core";
 import { ActivatedRoute } from '@angular/router';
-import { WorkshopsService } from '../workshops.service';
+import { WorkshopsService } from '../services/workshops.service';
 
 @Component({
     selector: "app-workshop-page",

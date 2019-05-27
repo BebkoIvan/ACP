@@ -5,7 +5,7 @@ import { WorkshopPageComponent } from "./workshop-page/workshop-page.component";
 import { ArticleComponent } from "./article/article.component";
 import { SharedModule } from "../shared/shared.module";
 import { WorkshopsRoutingModule } from './workshops-routing.module';
-import { WorkshopsService } from './workshops.service';
+import { WorkshopsService } from './services/workshops.service';
 
 @NgModule({
     declarations: [

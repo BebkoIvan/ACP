@@ -1,5 +1,5 @@
 import { Component, OnInit,Input,HostListener } from "@angular/core";
-import { WorkshopsService } from '../workshops.service';
+import { WorkshopsService } from '../services/workshops.service';
 @Component({
     selector: "app-workshops-feed",
     templateUrl: "./workshops-feed.component.pug",
@@ -12,7 +12,7 @@ export class WorkshopsFeedComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.workshops=this._workshopsService.getWorkShops();
+        this.workshops=this._workshopsService.getAllWorkShops();
     }
 
     scrollTop:number;
