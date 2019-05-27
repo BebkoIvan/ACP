@@ -1,0 +1,48 @@
+@import "../../../scss/abstracts/variables";
+
+.categories{
+    position: absolute;
+    top:10vh;
+    background: $white;
+    border-radius: 5px;
+    @include mq($from:mobile){
+        left: 9vw;
+    }
+
+    @include mq($from:tablet){
+        left: 8vw;
+        width: 20vw;
+    }
+
+    @include mq($until:mobile){
+        display:none;
+    }
+
+    ul{
+        padding: 0;
+        margin: 0;
+
+        li>a{
+
+            &.active{
+                border-bottom: 2px solid $red_color;
+                background-color: lighten($grey1,5);
+            }
+
+            justify-content: center;
+            color: inherit;
+            text-decoration: none;
+            padding: 4px;
+            display: flex;
+            font-size: 15px;
+            border: none;
+            border-bottom: 1px solid $grey2;
+            cursor: pointer;
+
+            &:hover{
+                background-color: darken($grey1,10);
+            }
+
+        }
+    }
+}

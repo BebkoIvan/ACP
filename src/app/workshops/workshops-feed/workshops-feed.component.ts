@@ -11,10 +11,10 @@ export class WorkshopsFeedComponent implements OnInit {
     scrollTop:number;
     topPosToStartShowing:number = 150;
     workshops:Workshop[];
+    categories:string[]=["All","My Workshops","Favorite"];
+    constructor(private ActivatedRoute:ActivatedRoute) {}
 
-    constructor(private ActivatedRoute:ActivatedRoute) {
 
-    }
 
     ngOnInit() {
         this.ActivatedRoute.data.subscribe(data => this.workshops=data.workshops);

@@ -1,0 +1,4 @@
+.categories
+ ul
+  li(*ngFor="let category of categories")
+   a(routerLink="",[queryParams]="{ category: category}",routerLinkActive="active")  {{category}} 

@@ -27,6 +27,6 @@ import { CategoriesComponent } from './categories/categories.component';
     SharedRoutingModule,
     ReactiveFormsModule
   ],
-  exports:[TabComponent,CommentFormComponent,CommentCardComponent,UnderConstructionComponent,TabGroupComponent,AuxiliaryContentComponent,LikeComponent,TimestampComponent,TagComponent, UserPicComponent, ViewportComponent,CardComponent,ToTopButtonComponent,TagCloudComponent]
+  exports:[TabComponent,CategoriesComponent,CommentFormComponent,CommentCardComponent,UnderConstructionComponent,TabGroupComponent,AuxiliaryContentComponent,LikeComponent,TimestampComponent,TagComponent, UserPicComponent, ViewportComponent,CardComponent,ToTopButtonComponent,TagCloudComponent]
 })
 export class SharedModule { }
