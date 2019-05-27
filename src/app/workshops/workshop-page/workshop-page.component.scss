@@ -16,10 +16,10 @@
    .workshop{
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    height: fit-content;
     
     @include mq($from: tablet) {
-        margin:5% 20% 5% 20%;
+        margin:15px 20% 15px 20%;
     }
 
     @include mq($until: tablet) {
