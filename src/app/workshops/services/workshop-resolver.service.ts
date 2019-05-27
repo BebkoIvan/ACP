@@ -11,8 +11,8 @@ export class WorkshopResolverService implements Resolve<Workshop[]> {
 
     resolve(
         route: ActivatedRouteSnapshot,
-        state: RouterStateSnapshot
-    ): Observable<Workshop[]> | Promise<Workshop[]> | Workshop[]{
-        return this._workshopsService.getAllWorkShops();
+        state: RouterStateSnapshot,
+    ): Observable<Workshop[]> |Promise<Workshop[]>| Workshop[]{
+        return this._workshopsService.getWorkShops(route.params.id);
     };
 }

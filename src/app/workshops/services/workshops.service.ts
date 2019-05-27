@@ -8,16 +8,18 @@ export class WorkshopsService {
   constructor() { }
 
   workshops:Workshop[]=Workshops;
-  getAllWorkShops():Workshop[]{
-    return this.workshops;
-  }
 
-  getWorkShop(id:number):Workshop{
+  getWorkShops(id:number):Workshop[]{
     function isNeeded(element:Workshop) {
-      return element.id==id;
+        return element.id==id;
+      }
+    if(id){
+        return this.workshops.filter(isNeeded);
+    }
+    else{
+        return this.workshops;
     }
     
-    return this.workshops.find(isNeeded);
-    
-}
+  }
+
 }

@@ -14,6 +14,7 @@ export class WorkshopPageComponent implements OnInit {
     workshop:Workshop;
     likeactive: boolean = false;
     acaActive: boolean = false;
+
     acaHandler(): void {
         this.acaActive = !this.acaActive;
     }
@@ -25,7 +26,7 @@ export class WorkshopPageComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.workshop=this._workshopsService.getWorkShop(this.id);
+        this.workshop=this._workshopsService.getWorkShops(this.id)[0];
     }
 
 
