@@ -3,6 +3,7 @@ import { Routes, RouterModule } from "@angular/router";
 import { WorkshopsFeedComponent } from "./workshops-feed/workshops-feed.component";
 import { WorkshopPageComponent } from './workshop-page/workshop-page.component';
 import { PageNotFoundComponent } from '../shared/page-not-found/page-not-found.component';
+import { AuthGuardGuard } from '../guards/auth-guard.guard';
 
 const WorkShopsroutes: Routes = [
     {
@@ -14,20 +15,22 @@ const WorkShopsroutes: Routes = [
     {
         path:"feed",
         component:WorkshopsFeedComponent,
-        pathMatch: "full"
+        pathMatch: "full",
+        canActivate:[AuthGuardGuard]
     },
 
     {
         path:":id",
         component:WorkshopPageComponent,
-        pathMatch: "full"
+        pathMatch: "full",
+        canActivate:[AuthGuardGuard]
     },
 
     { 
         path: '**',
         component: PageNotFoundComponent,
         pathMatch: "full"
-        }
+     }
 
 ];
 
