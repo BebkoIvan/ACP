@@ -4,6 +4,7 @@ import { WorkshopsFeedComponent } from "./workshops-feed/workshops-feed.componen
 import { WorkshopPageComponent } from './workshop-page/workshop-page.component';
 import { PageNotFoundComponent } from '../shared/page-not-found/page-not-found.component';
 import { AuthGuardGuard } from '../guards/auth-guard.guard';
+import { WorkshopResolverService } from './services/workshop-resolver.service';
 
 const WorkShopsroutes: Routes = [
     {
@@ -16,7 +17,8 @@ const WorkShopsroutes: Routes = [
         path:"feed",
         component:WorkshopsFeedComponent,
         pathMatch: "full",
-        canActivate:[AuthGuardGuard]
+        canActivate:[AuthGuardGuard],
+        resolve:{workshops:WorkshopResolverService}
     },
 
     {
@@ -36,6 +38,7 @@ const WorkShopsroutes: Routes = [
 
 @NgModule({
     imports: [RouterModule.forChild(WorkShopsroutes)],
-    exports: [RouterModule]
+    exports: [RouterModule],
+    providers:[WorkshopResolverService]
 })
 export class WorkshopsRoutingModule {}

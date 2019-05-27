@@ -1,5 +1,6 @@
 import { Component, OnInit,Input,HostListener } from "@angular/core";
 import { WorkshopsService } from '../services/workshops.service';
+import { ActivatedRoute } from '@angular/router';
 @Component({
     selector: "app-workshops-feed",
     templateUrl: "./workshops-feed.component.pug",
@@ -7,17 +8,19 @@ import { WorkshopsService } from '../services/workshops.service';
 })
 export class WorkshopsFeedComponent implements OnInit {
 
-    constructor(private _workshopsService:WorkshopsService) {
+    scrollTop:number;
+    topPosToStartShowing:number = 150;
+    workshops:Workshop[];
+
+    constructor(private ActivatedRoute:ActivatedRoute) {
 
     }
 
     ngOnInit() {
-        this.workshops=this._workshopsService.getAllWorkShops();
+        this.ActivatedRoute.data.subscribe(data => this.workshops=data.workshops);
     }
 
-    scrollTop:number;
-    topPosToStartShowing:number = 150;
-    workshops:Workshop[];
+  
     
     @HostListener('scroll', ['$event'])onScroll($event:Event):void {
             this.scrollTop=$event.srcElement.scrollTop;
