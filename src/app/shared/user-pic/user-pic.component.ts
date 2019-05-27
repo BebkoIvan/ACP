@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, ChangeDetectionStrategy } from "@angular/core";
-import { Profile } from "selenium-webdriver/firefox";
+import { UserInfoService } from 'src/app/services/user-info.service';
 
 @Component({
     selector: "app-user-pic",
@@ -8,15 +8,18 @@ import { Profile } from "selenium-webdriver/firefox";
     changeDetection:ChangeDetectionStrategy.OnPush
 })
 export class UserPicComponent implements OnInit {
-    constructor() {}
 
-    ngOnInit() {}
+    user:User;
 
-    @Input() name: string;
-    @Input() lastname: string;
-    @Input() imgSrc: string;
+    constructor(private _user:UserInfoService) {}
+
+    ngOnInit() {
+        this.user=this._user.profile;
+    }
+
+
 
     initials(): string {
-        return this.name.charAt(0) + this.lastname.charAt(0);
+        return this.user.name.charAt(0) + this.user.lastname.charAt(0);
     }
 }

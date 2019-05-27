@@ -1,6 +1,6 @@
 import { Component, OnInit,Input,HostListener } from "@angular/core";
-import { WorkshopsService } from '../services/workshops.service';
 import { ActivatedRoute } from '@angular/router';
+import { UserInfoService } from 'src/app/services/user-info.service';
 @Component({
     selector: "app-workshops-feed",
     templateUrl: "./workshops-feed.component.pug",
@@ -12,12 +12,14 @@ export class WorkshopsFeedComponent implements OnInit {
     topPosToStartShowing:number = 150;
     workshops:Workshop[];
     categories:string[]=["All","My Workshops","Favorite"];
-    constructor(private ActivatedRoute:ActivatedRoute) {}
-
+    user:User;
+    constructor(private route:ActivatedRoute,private _user:UserInfoService) {}
 
 
     ngOnInit() {
-        this.ActivatedRoute.data.subscribe(data => this.workshops=data.workshops);
+        this.route.data.subscribe(data => this.workshops=data.workshops);
+        this.route.queryParams.subscribe(params => console.log(params));
+        this.user=this._user.profile;
     }
 
   

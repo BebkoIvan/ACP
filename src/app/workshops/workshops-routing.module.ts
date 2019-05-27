@@ -18,7 +18,8 @@ const WorkShopsroutes: Routes = [
         component:WorkshopsFeedComponent,
         pathMatch: "full",
         canActivate:[AuthGuardGuard],
-        resolve:{workshops:WorkshopResolverService}
+        resolve:{workshops:WorkshopResolverService},
+        runGuardsAndResolvers: 'paramsOrQueryParamsChange'
     },
 
     {

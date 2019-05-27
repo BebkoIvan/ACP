@@ -14,7 +14,9 @@ export class AppComponent {
         name: "Jeff",
         lastname: "Bezos",
         imgSrc: "/assets/images/Jeff.png",
-        link: ""
+        link: "",
+        myWorkshops:[1,3],
+        favoriteWorkshops:[2,4]
     };
 
     ngOnInit() {}

@@ -13,6 +13,11 @@ export class WorkshopResolverService implements Resolve<Workshop[]> {
         route: ActivatedRouteSnapshot,
         state: RouterStateSnapshot,
     ): Observable<Workshop[]> |Promise<Workshop[]>| Workshop[]{
+        if(route.queryParams.category){
+            return this._workshopsService.filteredWorkshops(route.queryParams.category);
+        }
+        else{
         return this._workshopsService.getWorkShops(route.params.id);
+        }
     };
 }
