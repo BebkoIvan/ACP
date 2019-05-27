@@ -23,7 +23,7 @@
     }
 
     @include mq($until: tablet) {
-    margin:5%;
+    margin:5% 0;
 
     .date{
         font-size: 13px;
@@ -36,6 +36,7 @@
    .title{
     padding:10px 10px 0 20px;
    }
+
    .content-area{
     display: flex;
     flex-direction: column;
