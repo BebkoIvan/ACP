@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, ChangeDetectionStrategy } from "@angular/core";
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
     selector: "app-article",
@@ -7,9 +8,10 @@ import { Component, OnInit, Input, ChangeDetectionStrategy } from "@angular/core
     changeDetection:ChangeDetectionStrategy.OnPush
 })
 export class ArticleComponent implements OnInit {
-    constructor() {}
+    constructor(private route: ActivatedRoute, private router: Router) {}
 
     @Input() workshop: Workshop;
+    tagsList:Array<Tag>=[];
     likeactive: boolean = false;
 
     likec() {
@@ -23,5 +25,7 @@ export class ArticleComponent implements OnInit {
         this.likeactive = !this.likeactive;
     }
 
-    ngOnInit() {}
+    ngOnInit() {
+        this.workshop.tagsList.forEach(element=>{this.tagsList.push({tagTitle:element,isActive:false})});
+    }
 }

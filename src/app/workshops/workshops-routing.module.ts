@@ -27,16 +27,7 @@ const WorkShopsroutes: Routes = [
     {
         path:":id",
         component:WorkshopPageComponent,
-        pathMatch: "full",
         canActivate:[AuthGuardGuard],
-
-        children:[
-            {
-                path:'child1',
-                component:CommentFormComponent,
-                outlet:"aside"
-            }
-        ]
     }
 
 

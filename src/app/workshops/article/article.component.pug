@@ -9,7 +9,7 @@ app-card
  .footer
   .article-footer
    .tags-list
-    span(*ngFor="let tag of workshop.tagsList") {{tag}}
+    span('*ngFor'="let tag of tagsList" '[class.active]'="tag.isActive") {{tag.tagTitle}}
    .likes
     span {{workshop.likes}} 
     app-like([likeActive]="likeactive",(likeClicked)="likec()")  

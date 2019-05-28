@@ -21,6 +21,12 @@ export class WorkshopsFeedComponent implements OnInit {
         },
 
         {
+            tagTitle: "Social",
+            isActive: false 
+   
+           },
+
+        {
             tagTitle: "NodeJs",
             isActive: false
         },
@@ -93,12 +99,6 @@ export class WorkshopsFeedComponent implements OnInit {
             inline: "nearest"
         })
       }
-
-      categoriesClick(e:Event){
-          console.log(this.tagsList);
-          this.tagsList.forEach((elem)=>{elem.isActive=false})
-      }
-
-        
+ 
     
 }

@@ -11,10 +11,15 @@ export class TagCloudComponent implements OnInit {
 
     ngOnInit() {
         this.route.queryParams.subscribe(params => {
+
             if (params.tags) {
                 this.tagsActivated = params.tags;
-            } else {
+            } 
+            
+            else {
                 this.tagsActivated = "";
+                this.tagsInactive();
+                
             }
         });
     }
@@ -29,7 +34,6 @@ export class TagCloudComponent implements OnInit {
     handleTagClick(tag: Tag) {
         if (this.tagsActivated.split(",").includes(tag.tagTitle)) {
             let index = this.tagsActivated.split(",").indexOf(tag.tagTitle);
-            console.log(index);
             let str = this.tagsActivated.split(",");
             str.splice(index, 1);
             this.tagsActivated = str.join(",");
@@ -39,11 +43,19 @@ export class TagCloudComponent implements OnInit {
             );
         }
 
+        if(this.tagsActivated){
+            this.router.navigate([""], {
+                queryParams: {  tags: this.tagsActivated },
+                queryParamsHandling: "merge"
+            });
+        }
+        else{
+            this.router.navigate([""], {
+                queryParams: {  tags: null },
+                queryParamsHandling: "merge"
+            });
+        }
         
-        this.router.navigate([""], {
-            queryParams: { tags: this.tagsActivated },
-            queryParamsHandling: "merge"
-        });
 
         tag.isActive = !tag.isActive;
     }

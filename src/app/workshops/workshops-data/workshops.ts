@@ -209,6 +209,90 @@ export let Workshops:Workshop[]=[
                 }
     
         ]
+        },
+
+        {
+            id: 6,
+            title: "How to set-up a powerful API with Nodejs, GraphQL, MongoDB, Hapi, and Swagger",
+            img: "/assets/images/NodeJs-app.png",
+            shortDesc:"I’m all for hiring juniors and training your staff, and that’s exactly why you should separate concerns. With separation of concerns, you can reduce the complexity of your application by splitting responsibilities into “micro-services” where each team is specialized in their micro-service.",
+            tagsList: ["NodeJs","OOP"],
+            fulltext:"The second dependency we installed was the good-ole nodemon. Nodemon restarts our server automatically whenever we make changes. It speeds up our development by a big factor.Let’s open our project with a text editor. I chose Visual Studio Code.Setting up a Hapi server is very straightforward. Create a index.js file at the root directory with the contents of the following:",
+            link: "",
+            creationDate: "2019-06-11T13:10:02Z",
+            likes: 1997,
+            comments:[
+                
+                {
+                    authorName:"Vasya",
+                    authorLastname:"Pupkin",
+                    authorImg:"/assets/images/Jeff.png",
+                    date:"2016-02-11T02:00:00Z",
+                    commentText:"Very interesting!",
+                    likes:38
+                },
+        
+                {
+                    authorName:"Vanya",
+                    authorLastname:"Pupkin",
+                    authorImg:"",
+                    date:"2016-03-11T02:00:00Z",
+                    commentText:"CTAG Heuer’s headquarters during Art Basel Miami 2016 was the Mondrian Hotel, where the company announced",
+                    likes:389
+                },
+        
+                {
+                    authorName:"Jason",
+                    authorLastname:"Stalone",
+                    authorImg:"",
+                    date:"2012-03-11T02:00:00Z",
+                    commentText:"I do it better folks",
+                    likes:3829
+                }
+    
+        ]
+        },
+
+        {
+            id: 7,
+            title: "Java will kill your startup. PHP will save it.",
+            img: "/assets/images/java-sumo.jpeg",
+            shortDesc:"Everyone stay calm. This isn’t another PHP or Java is better or worse than your preferred language argument. What this is really about is enterprise technology, for example Java Enterprise, and how it could kill your web-based startup or small to medium web-based business.",  
+            tagsList: ["Java","REST API"],
+            fulltext:"What a small web-based business needs, no matter how big you think you will eventually get, is LAMP. For those who don’t know, LAMP is an acronym defining your operating system, web server, database, and programming language. In this case, Linux, Apache, MySQL, and PHP. If you are a business oriented founder or senior non-technical leader and you rely on others to advise you on technology, you have likely heard LAMP (specifically the PHP or MySQL part) is passe, not good enough, “too simple,” and doesn’t have the performance you need. That is complete nonsense. Facts…",
+            link: "",
+            creationDate: "2019-06-11T13:10:02Z",
+            likes: 1097,
+            comments:[
+                
+                {
+                    authorName:"Vasya",
+                    authorLastname:"Pupkin",
+                    authorImg:"/assets/images/Jeff.png",
+                    date:"2016-02-11T02:00:00Z",
+                    commentText:"Very interesting!",
+                    likes:38
+                },
+        
+                {
+                    authorName:"Vanya",
+                    authorLastname:"Pupkin",
+                    authorImg:"",
+                    date:"2016-03-11T02:00:00Z",
+                    commentText:"CTAG Heuer’s headquarters during Art Basel Miami 2016 was the Mondrian Hotel, where the company announced",
+                    likes:389
+                },
+        
+                {
+                    authorName:"Jason",
+                    authorLastname:"Stalone",
+                    authorImg:"",
+                    date:"2012-03-11T02:00:00Z",
+                    commentText:"I do it better folks",
+                    likes:3829
+                }
+    
+        ]
         }
 
 

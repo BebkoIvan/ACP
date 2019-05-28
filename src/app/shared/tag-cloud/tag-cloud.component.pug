@@ -1,2 +1,2 @@
 .tagCloud
- app-tag(*ngFor="let tag of tagsList",[tag]="tag",(click)="handleTagClick(tag)")
+ app-tag('*ngFor'="let tag of tagsList" '[isActive]'="tag.isActive" '[tagTitle]'="tag.tagTitle" '(click)'="handleTagClick(tag)")

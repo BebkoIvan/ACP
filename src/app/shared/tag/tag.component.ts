@@ -11,8 +11,9 @@ export class TagComponent implements OnInit {
 
     constructor(private route:ActivatedRoute,private router: Router) {}
 
-    @Input() tag:Tag;
+    @Input() tagTitle:string;
+    @Input() isActive:boolean;
 
     ngOnInit() {
-    }
+     }  
 }

@@ -7,6 +7,7 @@ import {SharedModule} from "./shared/shared.module";
 import { DateAgoPipe } from './pipes/date-ago.pipe';
 
 
+
 @NgModule({
     declarations: [AppComponent, DateAgoPipe],
     imports: [BrowserModule, AppRoutingModule,CoreModule,SharedModule],

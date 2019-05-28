@@ -38,7 +38,6 @@ export class WorkshopPageComponent implements OnInit {
         else {
             this.workshop.likes += 1;
         }
-
         this.likeactive = !this.likeactive;
     }
 

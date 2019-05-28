@@ -1,9 +1,6 @@
 .auxilContent([class.active]="auxContActive")
  button#open-aca((click)="aca_handler($event)")
   i([ngClass]="!auxContActive ? 'icon-circle-left' : 'icon-circle-right' ")
- app-tab-group
-  app-tab([title]="'tab1'") tab 1 content
-  app-tab([title]="'tab2'") tab 2 content
-  app-tab([title]="'tab3'") tab 3 content
+ router-outlet(name="'aside'")
 
    
