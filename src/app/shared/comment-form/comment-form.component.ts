@@ -13,12 +13,6 @@ export class CommentFormComponent implements OnInit {
   ngOnInit() {
   }
 
-  profile: User = {
-    name: "Jeff",
-    lastname: "Bezos",
-    imgSrc: "/assets/images/Jeff.png",
-    link: ""
-};
 
   CommentForm: FormGroup=new FormGroup({
 

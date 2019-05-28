@@ -13,10 +13,66 @@ export class WorkshopsFeedComponent implements OnInit {
     workshops:Workshop[];
     categories:string[]=["All","My Workshops","Favorite"];
     user:User;
+    tagsList: Array<Tag> = [
+        {
+         tagTitle: "JavaScript",
+         isActive: false 
+
+        },
+
+        {
+            tagTitle: "NodeJs",
+            isActive: false
+        },
+
+        {
+            tagTitle: "OOP",
+            isActive: false
+        },
+
+        {
+            tagTitle: "Angular",
+            isActive: false
+        },
+
+        {
+            tagTitle: "React",
+            isActive: false
+        },
+
+        {
+            tagTitle: "Vue",
+            isActive: false
+        },
+
+        {
+            tagTitle: "C++",
+            isActive: false
+        },
+
+        {
+            tagTitle: "Java",
+            isActive: false
+        },
+
+        {
+            tagTitle: "REST API",
+            isActive: false
+        },
+        {
+            tagTitle: "Pascal",
+            isActive: false
+        },
+        {
+            tagTitle: "Scala",
+            isActive: false
+        }
+    ];
+    
     constructor(private route:ActivatedRoute,private _user:UserInfoService) {}
 
 
-    ngOnInit() {
+    ngOnInit() {       
         this.route.data.subscribe(data => this.workshops=data.workshops);
         this.user=this._user.profile;
     }
@@ -36,6 +92,11 @@ export class WorkshopsFeedComponent implements OnInit {
             block: "start",
             inline: "nearest"
         })
+      }
+
+      categoriesClick(e:Event){
+          console.log(this.tagsList);
+          this.tagsList.forEach((elem)=>{elem.isActive=false})
       }
 
         

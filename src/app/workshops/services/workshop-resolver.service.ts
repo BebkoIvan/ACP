@@ -14,8 +14,8 @@ export class WorkshopResolverService implements Resolve<Workshop[]> {
         state: RouterStateSnapshot,
     ): Observable<Workshop[]> |Promise<Workshop[]>| Workshop[]{
 
-        if(route.queryParams.category){
-            return this._workshopsService.filteredByCategory(route.queryParams.category,route.queryParams.tags);
+        if(route.queryParams.category||route.queryParams.tags){
+            return this._workshopsService.filtered(route.queryParams.category,route.queryParams.tags);
         }
 
         else{

@@ -23,19 +23,34 @@ export class WorkshopsService {
     
   }
 
-  filteredByCategory(category:string,tag:string){
-      let filteredWorkshops:Workshop[];
+  filtered(category:string,tag:string){
+      let filteredWorkshops:Workshop[]=this.workshops;
+      if(category){
     if(category==="All"){
         filteredWorkshops = this.workshops;
     }
     else if(category==="My Workshops"){
-        filteredWorkshops= this.workshops.filter((elem:Workshop)=>{return this.user.profile.myWorkshops.indexOf(elem.id)>-1});   
+        filteredWorkshops= this.workshops.filter((elem:Workshop)=>{return this.user.profile.myWorkshops.includes(elem.id)});   
     }
+
     else if(category==="Favorite"){
-        filteredWorkshops= this.workshops.filter((elem:Workshop)=>{return this.user.profile.favoriteWorkshops.indexOf(elem.id)>-1});
+        filteredWorkshops= this.workshops.filter((elem:Workshop)=>{return this.user.profile.favoriteWorkshops.includes(elem.id)});
     }
+  }
+
     if(tag){
-        filteredWorkshops=filteredWorkshops.filter((elem:Workshop)=>{return elem.tagsList.indexOf(tag)>-1});
+      console.log(tag);
+        if(tag.indexOf(',')>-1){
+          let tagsList:string[]=tag.split(',');
+          filteredWorkshops=filteredWorkshops.filter((elem:Workshop)=>{return tagsList.every((tag)=>elem.tagsList.includes(tag))});
+        }
+
+        else{
+          filteredWorkshops=filteredWorkshops.filter((elem:Workshop)=>{return elem.tagsList.includes(tag)});
+        }
+        
+        
+        
     }
     
 

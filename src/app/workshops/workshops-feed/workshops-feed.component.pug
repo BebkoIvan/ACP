@@ -3,7 +3,7 @@
  app-article(*ngFor="let workshop of workshops",[workshop]="workshop",(scrollTop)="scrollTop()")
  .to-top
   app-to-top-button(*ngIf="scrollTop>topPosToStartShowing",(click)="scroll()")
-app-tag-cloud  
-app-categories([categories]="categories")
+app-tag-cloud('[tagsList]'="tagsList")  
+app-categories('[categories]'="categories")
 
  

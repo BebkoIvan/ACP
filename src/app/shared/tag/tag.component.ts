@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, Input, EventEmitter, ChangeDetectionStrategy } from "@angular/core";
+import { ActivatedRoute,Router } from '@angular/router';
 
 @Component({
     selector: "app-tag",
@@ -7,13 +8,11 @@ import { Component, OnInit, Output, Input, EventEmitter, ChangeDetectionStrategy
     changeDetection:ChangeDetectionStrategy.OnPush
 })
 export class TagComponent implements OnInit {
-    constructor() {}
 
-    tagActive: boolean=false;
+    constructor(private route:ActivatedRoute,private router: Router) {}
 
-    @Input() tagTitle: string;
+    @Input() tag:Tag;
 
-
-
-    ngOnInit() {}
+    ngOnInit() {
+    }
 }

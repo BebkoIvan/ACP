@@ -1,1 +1,1 @@
-button(class="tag-box",routerLink="",[queryParams]="{ tags: tagTitle}",queryParamsHandling="merge",routerLinkActive="active") {{tagTitle}}
+button(class="tag-box",[class.active]="tag.isActive") {{tag.tagTitle}}

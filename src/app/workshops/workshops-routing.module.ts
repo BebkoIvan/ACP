@@ -5,6 +5,8 @@ import { WorkshopPageComponent } from './workshop-page/workshop-page.component';
 import { PageNotFoundComponent } from '../shared/page-not-found/page-not-found.component';
 import { AuthGuardGuard } from '../guards/auth-guard.guard';
 import { WorkshopResolverService } from './services/workshop-resolver.service';
+import { AuxiliaryContentComponent } from '../shared/auxiliary-content/auxiliary-content.component';
+import { CommentFormComponent } from '../shared/comment-form/comment-form.component';
 
 const WorkShopsroutes: Routes = [
     {
@@ -26,14 +28,17 @@ const WorkShopsroutes: Routes = [
         path:":id",
         component:WorkshopPageComponent,
         pathMatch: "full",
-        canActivate:[AuthGuardGuard]
-    },
+        canActivate:[AuthGuardGuard],
 
-    { 
-        path: '**',
-        component: PageNotFoundComponent,
-        pathMatch: "full"
-     }
+        children:[
+            {
+                path:'child1',
+                component:CommentFormComponent,
+                outlet:"aside"
+            }
+        ]
+    }
+
 
 ];
 
