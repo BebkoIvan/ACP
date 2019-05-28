@@ -14,9 +14,6 @@ export class TagComponent implements OnInit {
     @Input() tagTitle: string;
 
 
-    changeState(e: Event): void {
-        this.tagActive = !this.tagActive;
-    }
 
     ngOnInit() {}
 }

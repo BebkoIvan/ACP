@@ -18,7 +18,6 @@ export class WorkshopsFeedComponent implements OnInit {
 
     ngOnInit() {
         this.route.data.subscribe(data => this.workshops=data.workshops);
-        this.route.queryParams.subscribe(params => console.log(params));
         this.user=this._user.profile;
     }
 

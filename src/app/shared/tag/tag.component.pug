@@ -1,1 +1,1 @@
-button(class="tag-box",[class.tag-active]="tagActive",(click)="changeState($event)") {{tagTitle}}
+button(class="tag-box",routerLink="",[queryParams]="{ tags: tagTitle}",queryParamsHandling="merge",routerLinkActive="active") {{tagTitle}}
