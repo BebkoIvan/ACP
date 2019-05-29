@@ -43,7 +43,7 @@ export class WorkshopsService {
                 let tagsList: string[] = tag.split(",");
                 filteredWorkshops = filteredWorkshops.filter(
                     (elem: Workshop) => {
-                        return tagsList.every(tag =>
+                        return tagsList.some(tag =>
                             elem.tagsList.includes(tag)
                         );
                     }
