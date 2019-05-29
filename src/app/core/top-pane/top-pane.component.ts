@@ -1,4 +1,5 @@
 import { Component, OnInit,EventEmitter,Input,Output } from "@angular/core";
+import { UserInfoService } from 'src/app/services/user-info.service';
 
 @Component({
     selector: "app-top-pane",
@@ -8,10 +9,12 @@ import { Component, OnInit,EventEmitter,Input,Output } from "@angular/core";
 
 export class TopPaneComponent implements OnInit {
 
-    constructor() {}
+    user: User;
 
-    logoSrc="/assets/images/logo.png";
-    searchActive: Boolean = false;
+    constructor(private _user:UserInfoService) {}
+
+    logoSrc:string="/assets/images/logo.png";
+    searchActive: boolean = false;
   
     @Input() menuActive:boolean;
 
@@ -24,10 +27,10 @@ export class TopPaneComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.user=this._user.profile;
     }
 
     handleSearchClick(e: Event) {
         this.searchActive = !this.searchActive;
-        console.log("aaa");
     }
 }

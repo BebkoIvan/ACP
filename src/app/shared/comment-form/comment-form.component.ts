@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup,Validators, FormControl } from '@angular/forms';
+import { UserInfoService } from 'src/app/services/user-info.service';
 @Component({
   selector: 'app-comment-form',
   templateUrl: './comment-form.component.pug',
@@ -7,20 +8,16 @@ import { FormGroup,Validators, FormControl } from '@angular/forms';
 })
 export class CommentFormComponent implements OnInit {
 
-  constructor() {
-  }
+  user: User;
+
+  constructor(private _user:UserInfoService) {}
 
   ngOnInit() {
+    this.user=this._user.profile;
   }
 
 
   CommentForm: FormGroup=new FormGroup({
-
-    name: new FormControl('',[
-      Validators.minLength(2),
-      Validators.maxLength(23),
-      Validators.required
-    ]),
 
     comment: new FormControl('',[
     Validators.minLength(10),

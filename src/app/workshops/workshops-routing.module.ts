@@ -7,6 +7,9 @@ import { AuthGuardGuard } from '../guards/auth-guard.guard';
 import { WorkshopResolverService } from './services/workshop-resolver.service';
 import { AuxiliaryContentComponent } from '../shared/auxiliary-content/auxiliary-content.component';
 import { CommentFormComponent } from '../shared/comment-form/comment-form.component';
+import { WorkshopQuizzesComponent } from './workshop-quizzes/workshop-quizzes.component';
+import { WorkshopCommentsComponent } from './workshop-comments/workshop-comments.component';
+import { WorkshopResourcesComponent } from './workshop-resources/workshop-resources.component';
 
 const WorkShopsroutes: Routes = [
     {
@@ -28,6 +31,31 @@ const WorkShopsroutes: Routes = [
         path:":id",
         component:WorkshopPageComponent,
         canActivate:[AuthGuardGuard],
+        children:[
+            {
+                path:'',
+                outlet:"aside",
+                redirectTo:"comments"
+            },
+
+            {
+                path:'comments',
+                outlet:"aside",
+                component:WorkshopCommentsComponent
+            },
+
+            {
+                path:'resources',
+                outlet:"aside",
+                component:WorkshopResourcesComponent
+            },
+
+            {
+                path:'quizzes',
+                outlet:"aside",
+                component:WorkshopQuizzesComponent
+            }
+        ]
     }
 
 

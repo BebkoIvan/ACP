@@ -11,4 +11,4 @@ header
   button#profileBtn 
    a(class="profile",*ngIf="!searchActive")
      span {{ profile.name }} {{ profile.lastname }}
-     app-user-pic
+     app-user-pic('[imgSrc]'="user.imgSrc" '[name]'="user.name" '[lastname]'="user.lastname" )

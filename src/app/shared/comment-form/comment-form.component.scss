@@ -1,6 +1,7 @@
 form{
     display: flex;
     flex-direction: column;
+    padding: 5px;
 }
 
 .form-footer{
@@ -12,6 +13,7 @@ form{
         padding: 5px;
         border-radius: 10px;
         background-color: green;
+        margin:5px 0;
         cursor: pointer;
     }
 }
@@ -20,6 +22,7 @@ form{
     display: flex;
     margin:5px 0;
     align-items: flex-start;
+
 }
 
 #commentInput{

@@ -9,17 +9,18 @@ import { UserInfoService } from 'src/app/services/user-info.service';
 })
 export class UserPicComponent implements OnInit {
 
-    user:User;
+    @Input() imgSrc:string;
+    @Input() name:string;
+    @Input() lastname:string;
 
-    constructor(private _user:UserInfoService) {}
+    constructor() {}
 
     ngOnInit() {
-        this.user=this._user.profile;
     }
 
 
 
     initials(): string {
-        return this.user.name.charAt(0) + this.user.lastname.charAt(0);
+        return this.name.charAt(0) + this.lastname.charAt(0);
     }
 }

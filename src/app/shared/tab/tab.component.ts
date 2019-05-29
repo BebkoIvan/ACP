@@ -10,6 +10,7 @@ export class TabComponent implements OnInit {
   constructor() { }
 
   @Input() title:string;
+  @Input() link:string;
   @Input() active:boolean=false;
 
 
