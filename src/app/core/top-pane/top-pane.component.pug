@@ -1,14 +1,14 @@
 header
-  div(id="logo",*ngIf="!searchActive")
+  div('id'="logo" '*ngIf'="!searchActive")
     a(href="#")
      img(src="{{ logoSrc }}")
-  button(class="menu-label",*ngIf="!searchActive",(click)="menuHandler($event)")
-    i([ngClass]="!menuActive ? 'icon-menu' : 'icon-cross'")  
+  button('class'="menu-label" '*ngIf'="!searchActive" '(click)'="menuHandler($event)")
+    i('[ngClass]'="!menuActive ? 'icon-menu' : 'icon-cross'")  
   .search-box
-    button(id="search_btn",(click)="handleSearchClick($event)")
+    button('id'="search_btn" '(click)'="handleSearchClick($event)")
      i([ngClass]="!searchActive ? 'icon-search' : 'icon-cross'")
-    input(type="text", id="search-bar", *ngIf="searchActive", placeholder="Search..",(blur)="handleSearchClick($event)") 
+    input('type'="text"  'id'="search-bar" '*ngIf'="searchActive" 'placeholder'="Search.." '(blur)'="handleSearchClick($event)") 
   button#profileBtn 
-   a(class="profile",*ngIf="!searchActive")
+   a('class'="profile" '*ngIf'="!searchActive")
      span {{ profile.name }} {{ profile.lastname }}
      app-user-pic('[imgSrc]'="user.imgSrc" '[name]'="user.name" '[lastname]'="user.lastname" )

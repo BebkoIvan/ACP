@@ -51,6 +51,20 @@
     justify-content: space-between;
     padding: 6px;
     font-size: 14px;
+
+    .edit-delete{
+        display: flex;
+
+        button{
+        border: none;
+        padding: 3px;
+        cursor: pointer;
+
+        &:hover{
+            text-decoration: underline;
+        }
+    }
+    }
     .likes{
         display: flex;
 

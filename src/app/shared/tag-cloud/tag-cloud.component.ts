@@ -7,6 +7,7 @@ import { ActivatedRoute, Router } from "@angular/router";
     styleUrls: ["./tag-cloud.component.scss"]
 })
 export class TagCloudComponent implements OnInit {
+   
     constructor(private route: ActivatedRoute, private router: Router) { }
 
     ngOnInit() {
@@ -23,6 +24,7 @@ export class TagCloudComponent implements OnInit {
             }
         });
     }
+    
     @Input()tagsList:Array<Tag>;
 
     tagsActivated: string;
