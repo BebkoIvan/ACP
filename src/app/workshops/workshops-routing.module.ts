@@ -32,11 +32,6 @@ const WorkShopsroutes: Routes = [
         component:WorkshopPageComponent,
         canActivate:[AuthGuardGuard],
         children:[
-            {
-                path:'',
-                outlet:"aside",
-                redirectTo:"comments"
-            },
 
             {
                 path:'comments',

@@ -25,8 +25,6 @@ export class AuthGuardGuard implements CanActivate {
             if(this._userAuthService.isAuth()){
                 return true;
             }
-            console.log("guard works");
-
             return false;
         
     }

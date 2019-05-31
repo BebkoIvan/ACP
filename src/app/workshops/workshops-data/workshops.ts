@@ -86,7 +86,7 @@ export let Workshops:Workshop[]=[
         {
             id: 3,
             title: "Alec is priceless",
-            img: "/assets/images/tag_heuer.jpg",
+            img: "/assets/images/cross.jpg",
             shortDesc:
                 "I did an art show for Donald Trump at his house in Palm Beach, Florida. It was a bunch of pop art and stuff like that, so I wasn't doing any graffiti at that time, so I'd say from about 2000 to 2006, I wasn't doing any graffiti.",
             tagsList: ["Pascal", "Java", "C++"],
