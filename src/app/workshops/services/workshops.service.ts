@@ -1,9 +1,9 @@
-import { Injectable } from "@angular/core";
-import { Workshops } from "../workshops-data/workshops";
-import { UserInfoService } from "src/app/services/user-info.service";
+import { Injectable } from '@angular/core';
+import { Workshops } from '../workshops-data/workshops';
+import { UserInfoService } from 'src/app/services/user-info.service';
 
 @Injectable({
-    providedIn: "root"
+    providedIn: 'root'
 })
 export class WorkshopsService {
     constructor(private user: UserInfoService) {}
@@ -13,7 +13,7 @@ export class WorkshopsService {
     getWorkShops(id: number): Workshop[] {
         if (id) {
             return this.workshops.filter((elem: Workshop) => {
-                return elem.id == id;
+                return elem.id === id;
             });
         } else {
             return this.workshops;
@@ -23,16 +23,15 @@ export class WorkshopsService {
     filtered(category: string, tag: string) {
         let filteredWorkshops: Workshop[] = this.workshops;
         if (category) {
-            
-            if (category === "All") {
+            if (category === 'All') {
                 filteredWorkshops = this.workshops;
-            } 
-            else if (category === "My Workshops") {
+            }
+            else if (category === 'My Workshops') {
                 filteredWorkshops = this.workshops.filter((elem: Workshop) => {
                     return this.user.profile.myWorkshops.includes(elem.id);
                 });
-            } 
-            else if (category === "Favorite") {
+            }
+            else if (category === 'Favorite') {
                 filteredWorkshops = this.workshops.filter((elem: Workshop) => {
                     return this.user.profile.favoriteWorkshops.includes(
                         elem.id
@@ -42,8 +41,8 @@ export class WorkshopsService {
         }
 
         if (tag) {
-            if (tag.indexOf(",") > -1) {
-                let tagsList: string[] = tag.split(",");
+            if (tag.indexOf(',') > -1) {
+                let tagsList: string[] = tag.split(',');
 
                 filteredWorkshops = filteredWorkshops.filter(
                     (elem: Workshop) => {

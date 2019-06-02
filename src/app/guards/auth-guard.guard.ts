@@ -1,19 +1,19 @@
-import { Injectable } from "@angular/core";
-import {UserAuthService} from "../services/user-auth.service"
+import { Injectable } from '@angular/core';
+import {UserAuthService} from '../services/user-auth.service'
 import {
     CanActivate,
     ActivatedRouteSnapshot,
     RouterStateSnapshot,
     UrlTree
-} from "@angular/router";
-import { Observable } from "rxjs";
+} from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Injectable({
-    providedIn: "root"
+    providedIn: 'root'
 })
 export class AuthGuardGuard implements CanActivate {
 
-    constructor(private _userAuthService:UserAuthService){}
+    constructor(private _userAuthService: UserAuthService){}
 
     canActivate(
         next: ActivatedRouteSnapshot,
@@ -26,6 +26,5 @@ export class AuthGuardGuard implements CanActivate {
                 return true;
             }
             return false;
-        
     }
 }

@@ -3,22 +3,21 @@ import {
     OnInit,
     Input,
     ChangeDetectionStrategy
-} from "@angular/core";
+} from '@angular/core';
 
 @Component({
-    selector: "app-comment-card",
-    templateUrl: "./comment-card.component.pug",
-    styleUrls: ["./comment-card.component.scss"],
+    selector: 'app-comment-card',
+    templateUrl: './comment-card.component.pug',
+    styleUrls: ['./comment-card.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CommentCardComponent implements OnInit {
+    likeActive = false;
+    @Input() comment: Comment;
+
     constructor() {}
 
     ngOnInit() {}
-
-    likeActive: boolean = false;
-    @Input() comment: Comment;
-
     likeClick(): void {
         if (this.likeActive) {
             this.comment.likes -= 1;

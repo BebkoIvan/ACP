@@ -22,6 +22,5 @@ export class TabGroupComponent implements OnInit {
   selectTab(tab: TabComponent) {
       this.tabs.toArray().forEach(tab => (tab.active = false));
       tab.active = true;
-      
   }
 }

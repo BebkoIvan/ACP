@@ -1,4 +1,4 @@
-interface Tag{
-    tagTitle:string,
-    isActive:boolean
+interface Tag {
+    tagTitle: string;
+    isActive: boolean;
 }

@@ -5,10 +5,10 @@ import { Injectable } from '@angular/core';
 })
 export class UserAuthService {
 
-  private auth:boolean=true;
+  private auth = true;
   constructor() { }
 
-  isAuth():boolean{
+  isAuth(): boolean {
     return this.auth;
   }
 
