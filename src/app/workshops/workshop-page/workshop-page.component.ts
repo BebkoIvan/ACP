@@ -21,7 +21,6 @@ export class WorkshopPageComponent implements OnInit {
 
     constructor(private route: ActivatedRoute, private _workshopsService: WorkshopsService) {
         this.id = parseInt(route.snapshot.params['id']);
-        console.log(route.snapshot.params);
     }
 
     ngOnInit() {
