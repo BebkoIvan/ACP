@@ -18,7 +18,7 @@ export class AuxiliaryContentComponent implements OnInit {
 
     @Output() acaClick = new EventEmitter();
 
-    aca_handler(e: Event): void {
+    acaHandler(e: Event): void {
         this.acaClick.emit();
     }
 
