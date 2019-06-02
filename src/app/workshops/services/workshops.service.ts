@@ -10,14 +10,14 @@ export class WorkshopsService {
 
     workshops: Workshop[] = Workshops;
 
-    getWorkShops(id: number): Workshop[] {
-        if (id) {
-            return this.workshops.filter((elem: Workshop) => {
-                return elem.id === id;
-            });
-        } else {
+    getWorkShops(): Workshop[] {
             return this.workshops;
-        }
+    }
+
+    getOneWorkShop(id: number) {
+        return this.workshops.filter((elem: Workshop) => {
+            return elem.id === id;
+        })[0];
     }
 
     filtered(category: string, tag: string) {

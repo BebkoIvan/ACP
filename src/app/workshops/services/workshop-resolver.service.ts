@@ -17,9 +17,8 @@ export class WorkshopResolverService implements Resolve<Workshop[]> {
         if(route.queryParams.category || route.queryParams.tags){
             return this._workshopsService.filtered(route.queryParams.category,route.queryParams.tags);
         }
-
         else {
-        return this._workshopsService.getWorkShops(route.params.id);
+        return this._workshopsService.getWorkShops();
         }
 
     };

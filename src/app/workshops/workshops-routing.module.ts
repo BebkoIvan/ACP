@@ -1,6 +1,6 @@
-import { NgModule, Component } from "@angular/core";
-import { Routes, RouterModule } from "@angular/router";
-import { WorkshopsFeedComponent } from "./workshops-feed/workshops-feed.component";
+import { NgModule, Component } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+import { WorkshopsFeedComponent } from './workshops-feed/workshops-feed.component';
 import { WorkshopPageComponent } from './workshop-page/workshop-page.component';
 import { PageNotFoundComponent } from '../shared/page-not-found/page-not-found.component';
 import { AuthGuardGuard } from '../guards/auth-guard.guard';
@@ -14,41 +14,41 @@ import { WorkshopResourcesComponent } from './workshop-resources/workshop-resour
 const WorkShopsroutes: Routes = [
     {
         path: '',
-        redirectTo: "feed",
-        pathMatch: "full"
+        redirectTo: 'feed',
+        pathMatch: 'full'
     },
 
     {
-        path:"feed",
+        path: 'feed',
         component:WorkshopsFeedComponent,
-        pathMatch: "full",
+        pathMatch: 'full',
         canActivate:[AuthGuardGuard],
         resolve:{workshops:WorkshopResolverService},
         runGuardsAndResolvers: 'paramsOrQueryParamsChange'
     },
 
     {
-        path:":id",
-        component:WorkshopPageComponent,
-        canActivate:[AuthGuardGuard],
-        children:[
+        path: ':id',
+        component: WorkshopPageComponent,
+        canActivate: [AuthGuardGuard],
+        children: [
 
             {
-                path:'comments',
-                outlet:"aside",
-                component:WorkshopCommentsComponent
+                path: 'comments',
+                outlet: 'aside',
+                component: WorkshopCommentsComponent
             },
 
             {
-                path:'resources',
-                outlet:"aside",
-                component:WorkshopResourcesComponent
+                path: 'resources',
+                outlet: 'aside',
+                component: WorkshopResourcesComponent
             },
 
             {
-                path:'quizzes',
-                outlet:"aside",
-                component:WorkshopQuizzesComponent
+                path: 'quizzes',
+                outlet: 'aside',
+                component: WorkshopQuizzesComponent
             }
         ]
     }

@@ -1,32 +1,31 @@
-import { Component, OnInit, ChangeDetectionStrategy } from "@angular/core";
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { WorkshopsService } from '../services/workshops.service';
 
 @Component({
-    selector: "app-workshop-page",
-    templateUrl: "./workshop-page.component.pug",
-    styleUrls: ["./workshop-page.component.scss"],
+    selector: 'app-workshop-page',
+    templateUrl: './workshop-page.component.pug',
+    styleUrls: ['./workshop-page.component.scss'],
     changeDetection:ChangeDetectionStrategy.OnPush
 })
 export class WorkshopPageComponent implements OnInit {
 
     id: number;
-    workshop:Workshop;
-    likeactive: boolean = false;
-    acaActive: boolean = false;
+    workshop: Workshop;
+    likeactive = false;
+    acaActive = false;
 
     acaHandler(): void {
         this.acaActive = !this.acaActive;
     }
 
-    constructor(private route: ActivatedRoute,private _workshopsService:WorkshopsService) {
-        
-        this.id=route.snapshot.params['id']; 
-    
+    constructor(private route: ActivatedRoute, private _workshopsService: WorkshopsService) {
+        this.id = parseInt(route.snapshot.params['id']);
+        console.log(route.snapshot.params);
     }
 
     ngOnInit() {
-        this.workshop=this._workshopsService.getWorkShops(this.id)[0];
+        this.workshop = this._workshopsService.getOneWorkShop(this.id);
     }
 
 
@@ -41,5 +40,4 @@ export class WorkshopPageComponent implements OnInit {
         this.likeactive = !this.likeactive;
     }
 
-    
 }

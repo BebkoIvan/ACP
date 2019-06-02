@@ -1,5 +1,5 @@
-interface tag{
-    title:string,
-    active:boolean
+interface tag {
+    title: string;
+    active: boolean;
 }
 
