@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { WorkshopsFeedComponent } from './workshops-feed/workshops-feed.component';
 import { WorkshopPageComponent } from './workshop-page/workshop-page.component';
 import { PageNotFoundComponent } from '../shared/page-not-found/page-not-found.component';
-import { AuthGuardGuard } from '../guards/auth-guard.guard';
+import { AuthGuard } from '../guards/auth-guard.guard';
 import { WorkshopResolverService } from './services/workshop-resolver.service';
 import { AuxiliaryContentComponent } from '../shared/auxiliary-content/auxiliary-content.component';
 import { CommentFormComponent } from '../shared/comment-form/comment-form.component';
@@ -22,7 +22,7 @@ const WorkShopsroutes: Routes = [
         path: 'feed',
         component:WorkshopsFeedComponent,
         pathMatch: 'full',
-        canActivate:[AuthGuardGuard],
+        canActivate:[AuthGuard],
         resolve:{workshops:WorkshopResolverService},
         runGuardsAndResolvers: 'paramsOrQueryParamsChange'
     },
@@ -30,7 +30,7 @@ const WorkShopsroutes: Routes = [
     {
         path: ':id',
         component: WorkshopPageComponent,
-        canActivate: [AuthGuardGuard],
+        canActivate: [AuthGuard],
         children: [
 
             {
