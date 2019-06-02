@@ -1,5 +1,5 @@
 ul.tabs
-    li.tabItem('*ngFor'='let tab of tabs' '[class.active]'='tab.active' '(click)'='selectTab(tab)')
+    li.tab-item('*ngFor'='let tab of tabs' '[class.active]'='tab.active' '(click)'='selectTab(tab)')
      a([routerLink]="[{ outlets: { aside: [ tab.link ] } }]") 
       button.tabButton {{tab.title}}
 ng-content
