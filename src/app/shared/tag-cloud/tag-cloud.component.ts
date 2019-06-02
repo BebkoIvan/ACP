@@ -11,6 +11,7 @@ export class TagCloudComponent implements OnInit {
     constructor(private route: ActivatedRoute, private router: Router) { }
 
     ngOnInit() {
+        
         this.route.queryParams.subscribe(params => {
 
             if (params.tags) {
@@ -19,8 +20,6 @@ export class TagCloudComponent implements OnInit {
             
             else {
                 this.tagsActivated = "";
-                this.tagsInactive();
-                
             }
         });
     }
@@ -29,17 +28,16 @@ export class TagCloudComponent implements OnInit {
 
     tagsActivated: string;
 
-    tagsInactive():void{
-        this.tagsList.forEach((elem)=>{elem.isActive=false});
-    }
 
     handleTagClick(tag: Tag) {
+
         if (this.tagsActivated.split(",").includes(tag.tagTitle)) {
             let index = this.tagsActivated.split(",").indexOf(tag.tagTitle);
             let str = this.tagsActivated.split(",");
             str.splice(index, 1);
             this.tagsActivated = str.join(",");
-        } else {
+        } 
+        else {
             this.tagsActivated = this.tagsActivated.concat(
                 this.tagsActivated ? "," + tag.tagTitle : tag.tagTitle
             );
@@ -58,8 +56,6 @@ export class TagCloudComponent implements OnInit {
             });
         }
         
-
-        tag.isActive = !tag.isActive;
     }
 
     

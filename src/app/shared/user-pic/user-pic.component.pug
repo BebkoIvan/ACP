@@ -1,3 +1,3 @@
 .user-circle
  img('src'= '{{imgSrc}}' '*ngIf'="imgSrc")
- span('*ngIf'="!imgSrc") {{ initials() }}
+ span('*ngIf'="!imgSrc" appTextToColor [config]="{title:initials()}") {{ initials() }}

@@ -1,6 +1,5 @@
-import { Component, OnInit, Output, Input, EventEmitter, ChangeDetectionStrategy } from "@angular/core";
+import { Component, OnInit,  Input, ChangeDetectionStrategy, ElementRef } from "@angular/core";
 import { ActivatedRoute,Router } from '@angular/router';
-
 @Component({
     selector: "app-tag",
     templateUrl: "./tag.component.pug",
@@ -9,10 +8,10 @@ import { ActivatedRoute,Router } from '@angular/router';
 })
 export class TagComponent implements OnInit {
 
-    constructor(private route:ActivatedRoute,private router: Router) {}
+    constructor() {}
 
     @Input() tagTitle:string;
-    @Input() isActive:boolean;
+    // @Input() isActive:boolean;
 
     ngOnInit() {
      }  

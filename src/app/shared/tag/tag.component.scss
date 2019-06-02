@@ -3,7 +3,6 @@
 .tag-box{
     padding: 5px;
     margin:5px;
-    background-color:$tag-color2;
     color:$white;
     border-radius: 5px;
     font-size: 17px;
@@ -11,7 +10,7 @@
     cursor: pointer;
 
     &.active{
-        background-color: $tag-color;
+        border: 2px solid $red_color;
     }
 
 }
