@@ -25,7 +25,7 @@
         li>a{
 
             &.active{
-                border-bottom: 2px solid $red_color;
+                border-bottom: 1.5px solid $red_color;
                 background-color: lighten($grey1,5);
             }
 
@@ -36,7 +36,7 @@
             display: flex;
             font-size: 15px;
             border: none;
-            border-bottom: 1px solid $grey2;
+            border-bottom: 1.5px solid $grey2;
             cursor: pointer;
 
             &:hover{
