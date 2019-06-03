@@ -7,11 +7,11 @@
     }
     
     @include mq($from: tablet) {
-        margin: 3% 30%;
+        margin: 3vh 20vw;
     }
 
     @include mq($from: mobile,$until:tablet) {
-        margin:3% 20%;
+        margin:3vh 16vw;
     }
 
     height: auto;
