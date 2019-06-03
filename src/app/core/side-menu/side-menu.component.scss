@@ -104,17 +104,17 @@ a {
         background: darken($grey2,30);
         color: $red_color;
 
-        &:hover{
-            color:$red_color;
-        }
+        // &:hover{
+        //     color:$red_color;
+        // }
     }
 
-    &:hover {
+    &:not(.active):hover {
         color: white;
     }
 
     span {
-        padding: 0 7px 0 7px;
+        padding: 0 7px;
         font-size:13px;
     }
 
