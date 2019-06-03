@@ -7,9 +7,6 @@ import { UserInfoService } from 'src/app/services/user-info.service';
     styleUrls: ['./workshops-feed.component.scss'],
 })
 export class WorkshopsFeedComponent implements OnInit {
-
-    scrollTop: number;
-    topPosToStartShowing = 150;
     workshops: Workshop[];
     categories: string[] = ['All', 'My Workshops', 'Favorite'];
     user: User;
@@ -90,17 +87,5 @@ export class WorkshopsFeedComponent implements OnInit {
         this.route.data.subscribe(data => this.workshops=data.workshops);
         this.user = this._user.profile;
     }
-
-    @HostListener('scroll', ['$event'])onScroll($event: Event): void {
-            this.scrollTop = $event.srcElement.scrollTop;
-    };
-
-    scroll(): void {
-        let el = document.getElementsByClassName('workshops')[0];
-        el.scrollTo({
-            behavior: 'smooth',
-            top: 0
-        })
-      }
 
 }

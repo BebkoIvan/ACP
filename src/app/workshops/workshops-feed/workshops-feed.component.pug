@@ -1,4 +1,4 @@
-.workshops('(scroll)'="onScroll($event)" '#scrolEl'='')
+.workshops('#scrolEl'='')
  app-article(*ngFor="let workshop of workshops",[workshop]="workshop",(scrollTop)="scrollTop()")
  .to-top
   app-to-top-button('[scrollElement]' = 'scrolEl')
