@@ -32,7 +32,7 @@
     a{
         
         width: fit-content;
-    
+        cursor: pointer;
         &.active{
            width: 100%;
         }
@@ -103,10 +103,6 @@ a {
     &.active{
         background: darken($grey2,30);
         color: $red_color;
-
-        // &:hover{
-        //     color:$red_color;
-        // }
     }
 
     &:not(.active):hover {
