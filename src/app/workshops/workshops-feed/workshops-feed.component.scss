@@ -19,13 +19,6 @@
        display: flex;
    }
 
-   #topel{
-        top:30px;
-       width: 20px;
-       height: 20px;
-       visibility: hidden;
-   }
-
    .to-top{
     @include mq($until: mobile) {
         margin-left: 95%;

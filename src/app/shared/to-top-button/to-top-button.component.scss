@@ -3,12 +3,16 @@ button {
     height:10vh;
     font-size: 25px;
     text-align: center;
-    
     border-radius: 15px;
     border: 2px solid $red_color;
     outline: none;
     color:$red_color;
     background: $grey1;
+    display: none;
+
+    &.active{
+      display: block;
+    }
     cursor: pointer;
 
     @include mq($until:mobile) {

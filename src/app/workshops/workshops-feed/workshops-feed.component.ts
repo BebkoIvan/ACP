@@ -96,11 +96,10 @@ export class WorkshopsFeedComponent implements OnInit {
     };
 
     scroll(): void {
-        let el = document.getElementById('topel');
-        el.scrollIntoView({
+        let el = document.getElementsByClassName('workshops')[0];
+        el.scrollTo({
             behavior: 'smooth',
-            block: 'start',
-            inline: 'nearest'
+            top: 0
         })
       }
 
