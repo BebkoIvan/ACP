@@ -5,7 +5,7 @@ import { AppComponent } from "./app.component";
 import {CoreModule} from "./core/core.module";
 import {SharedModule} from "./shared/shared.module";
 import { DateAgoPipe } from './pipes/date-ago.pipe';
-import { QueryParamsActiveDirective } from './directives/query-params-active.directive';
+
 
 
 

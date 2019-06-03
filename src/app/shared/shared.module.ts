@@ -20,14 +20,15 @@ import { TagCloudComponent } from './tag-cloud/tag-cloud.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { TextToColorDirective } from '../directives/text-to-color.directive';
 import { QueryParamsActiveDirective } from '../directives/query-params-active.directive';
+import { CollapsableDirective } from '../directives/collapsable.directive';
 
 @NgModule({
-  declarations: [TabComponent,TextToColorDirective,QueryParamsActiveDirective,TabGroupComponent, UserPicComponent, ViewportComponent, CardComponent, TagComponent, TimestampComponent, CommentCardComponent, ToTopButtonComponent, LikeComponent, AuxiliaryContentComponent, UnderConstructionComponent, CommentFormComponent, PageNotFoundComponent, TagCloudComponent, CategoriesComponent],
+  declarations: [TabComponent, TextToColorDirective,CollapsableDirective, QueryParamsActiveDirective, TabGroupComponent, UserPicComponent, ViewportComponent, CardComponent, TagComponent, TimestampComponent, CommentCardComponent, ToTopButtonComponent, LikeComponent, AuxiliaryContentComponent, UnderConstructionComponent, CommentFormComponent, PageNotFoundComponent, TagCloudComponent, CategoriesComponent],
   imports: [
     CommonModule,
     SharedRoutingModule,
     ReactiveFormsModule,
   ],
-  exports:[TabComponent,CategoriesComponent,TextToColorDirective,QueryParamsActiveDirective,CommentFormComponent,CommentCardComponent,UnderConstructionComponent,TabGroupComponent,AuxiliaryContentComponent,LikeComponent,TimestampComponent,TagComponent, UserPicComponent, ViewportComponent,CardComponent,ToTopButtonComponent,TagCloudComponent]
+  exports: [TabComponent, CategoriesComponent, CollapsableDirective,TextToColorDirective, QueryParamsActiveDirective, CommentFormComponent, CommentCardComponent, UnderConstructionComponent, TabGroupComponent, AuxiliaryContentComponent, LikeComponent, TimestampComponent, TagComponent, UserPicComponent, ViewportComponent, CardComponent, ToTopButtonComponent, TagCloudComponent]
 })
 export class SharedModule { }
