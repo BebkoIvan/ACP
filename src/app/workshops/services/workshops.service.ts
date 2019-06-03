@@ -14,7 +14,7 @@ export class WorkshopsService {
             return this.workshops;
     }
 
-    getOneWorkShop(id: number) {
+    getOneWorkShop(id: any) {
         return this.workshops.filter((elem: Workshop) => {
             return elem.id === id;
         })[0];

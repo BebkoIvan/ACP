@@ -34,6 +34,12 @@ const WorkShopsroutes: Routes = [
         children: [
 
             {
+                path: '',
+                outlet: 'aside',
+                redirectTo: 'resources'
+            },
+
+            {
                 path: 'comments',
                 outlet: 'aside',
                 component: WorkshopCommentsComponent
