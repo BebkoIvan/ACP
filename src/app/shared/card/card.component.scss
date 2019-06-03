@@ -3,7 +3,7 @@
 .card{
 
     @include mq($until: mobile) {
-        margin: 5%;
+        margin: 10px auto;
     }
     
     @include mq($from: tablet) {
