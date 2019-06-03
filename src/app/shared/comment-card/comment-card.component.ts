@@ -2,7 +2,9 @@ import {
     Component,
     OnInit,
     Input,
-    ChangeDetectionStrategy
+    ChangeDetectionStrategy,
+    Output,
+    EventEmitter
 } from '@angular/core';
 
 @Component({
@@ -13,11 +15,15 @@ import {
 })
 export class CommentCardComponent implements OnInit {
     likeActive = false;
-    @Input() comment: Comment;
 
+    @Input() comment: Comment1;
+
+    @Output() commentDeleted: EventEmitter<Comment1> =   new EventEmitter();
+    
     constructor() {}
 
     ngOnInit() {}
+
     likeClick(): void {
         if (this.likeActive) {
             this.comment.likes -= 1;
@@ -25,5 +31,10 @@ export class CommentCardComponent implements OnInit {
             this.comment.likes += 1;
         }
         this.likeActive = !this.likeActive;
+    }
+
+    deleteComment(e:Event){
+        e.preventDefault();
+        this.commentDeleted.emit(this.comment);
     }
 }

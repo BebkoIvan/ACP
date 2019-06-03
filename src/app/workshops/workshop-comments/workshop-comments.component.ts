@@ -25,11 +25,10 @@ export class WorkshopCommentsComponent implements OnInit {
     }
 
     addComment(comment: Comment1){
-        this.comments.push(comment);
-        this.comments.sort(function(a, b) {
-            let a1 = new Date(a.date);
-            let b2 = new Date(b.date);
-            return a1 > b2 ? -1 : a1 < b2 ? 1 : 0;
-        });
+        this.comments.unshift(comment);
+    }
+
+    deleteComment(comment: Comment1){
+        this.comments.splice(this.comments.indexOf(comment),1);
     }
 }

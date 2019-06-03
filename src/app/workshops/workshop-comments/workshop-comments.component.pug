@@ -1,4 +1,4 @@
 .comments
   .comment(*ngFor="let comment of comments")
-    app-comment-card([comment]="comment")
+    app-comment-card([comment]="comment" '(commentDeleted)'="deleteComment($event)")
   app-comment-form((commentCreated)="addComment($event)")

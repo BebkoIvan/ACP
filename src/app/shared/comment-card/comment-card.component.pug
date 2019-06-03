@@ -10,7 +10,7 @@
    app-timestamp('[date]'="comment.date" '[format]'="'short'") 
   .edit-delete
    button Edit
-   button Delete 
+   button('(click)'="deleteComment($event)") Delete 
   .likes 
    span {{comment.likes}}
    app-like('[likeActive]'="likeActive" '(likeClicked)'="likeClick()") 
