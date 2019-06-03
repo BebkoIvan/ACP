@@ -7,13 +7,10 @@ header {
             cursor: pointer;
         }
 
-        .profile {
-
-            span {
+        .profile>span {
                 display: none;
             }
 
-        }
 
         #logo {
             display: none;
@@ -28,13 +25,10 @@ header {
 
         @include header_icons();
         
-        .profile {
-        
-            span {
+        .profile>span {
                 display: none;
             }
         
-        }
     }
 
     @include mq($from: tablet) {
@@ -101,6 +95,7 @@ header {
             transition: 0.4s;
         }
     }
+
     .icon-search,
     .icon-menu {
         color: $grey1;
