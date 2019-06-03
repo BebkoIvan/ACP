@@ -24,7 +24,8 @@ export class WorkshopPageComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.workshop = this._workshopsService.getOneWorkShop(this.id);
+        this.route.data.subscribe(data => this.workshop=data.workshops);
+        // this.workshop = this._workshopsService.getOneWorkShop(this.id);
     }
 
 

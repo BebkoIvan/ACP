@@ -10,6 +10,7 @@ import { CommentFormComponent } from '../shared/comment-form/comment-form.compon
 import { WorkshopQuizzesComponent } from './workshop-quizzes/workshop-quizzes.component';
 import { WorkshopCommentsComponent } from './workshop-comments/workshop-comments.component';
 import { WorkshopResourcesComponent } from './workshop-resources/workshop-resources.component';
+import { OneWorkshopResolverService } from './services/one-workshop-resolver.service';
 
 const WorkShopsroutes: Routes = [
     {
@@ -20,10 +21,10 @@ const WorkShopsroutes: Routes = [
 
     {
         path: 'feed',
-        component:WorkshopsFeedComponent,
+        component: WorkshopsFeedComponent,
         pathMatch: 'full',
-        canActivate:[AuthGuard],
-        resolve:{workshops:WorkshopResolverService},
+        canActivate: [AuthGuard],
+        resolve: {workshops: WorkshopResolverService},
         runGuardsAndResolvers: 'paramsOrQueryParamsChange'
     },
 
@@ -31,6 +32,8 @@ const WorkShopsroutes: Routes = [
         path: ':id',
         component: WorkshopPageComponent,
         canActivate: [AuthGuard],
+        resolve: {workshops: OneWorkshopResolverService},
+        runGuardsAndResolvers: 'paramsOrQueryParamsChange',
         children: [
 
             {
