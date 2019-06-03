@@ -13,7 +13,7 @@ export class WorkshopPageComponent implements OnInit {
     id: number;
     workshop: Workshop;
     likeactive = false;
-    acaActive = false;
+    acaActive = true;
 
     acaHandler(): void {
         this.acaActive = !this.acaActive;
