@@ -23,4 +23,13 @@ export class WorkshopCommentsComponent implements OnInit {
             return a1 > b2 ? -1 : a1 < b2 ? 1 : 0;
         });
     }
+
+    addComment(comment: Comment1){
+        this.comments.push(comment);
+        this.comments.sort(function(a, b) {
+            let a1 = new Date(a.date);
+            let b2 = new Date(b.date);
+            return a1 > b2 ? -1 : a1 < b2 ? 1 : 0;
+        });
+    }
 }

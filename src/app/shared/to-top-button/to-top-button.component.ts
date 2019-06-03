@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener, Output, EventEmitter, ChangeDetectionStrategy, Input, ElementRef, Renderer2 } from '@angular/core';
+import { Component, OnInit, Input, Renderer2 } from '@angular/core';
 
 @Component({
   selector: 'app-to-top-button',
