@@ -7,7 +7,7 @@ header
   .search-box
     button('id'="search_btn" '(click)'="handleSearchClick($event)")
      i([ngClass]="!searchActive ? 'icon-search' : 'icon-cross'")
-    input('type'="text"  'id'="search-bar" '*ngIf'="searchActive" 'placeholder'="Search.." '(blur)'="handleSearchClick($event)") 
+    input('type'="text"  'id'="search-bar" '*ngIf'="searchActive" #searchInput='' 'placeholder'="Search.." '(blur)'="handleSearchClick($event)") 
   button#profileBtn 
    a('class'="profile" '*ngIf'="!searchActive")
      span {{ profile.name }} {{ profile.lastname }}
