@@ -9,7 +9,7 @@
   .time    
    app-timestamp('[date]'="comment.date" '[format]'="'short'") 
   .edit-delete
-   button Edit
+   button('*ngIf'="isEditable") Edit
    button('(click)'="deleteComment($event)") Delete 
   .likes 
    span {{comment.likes}}

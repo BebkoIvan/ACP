@@ -6,6 +6,7 @@ import {
     Output,
     EventEmitter
 } from '@angular/core';
+import { UserInfoService } from 'src/app/services/user-info.service';
 
 @Component({
     selector: 'app-comment-card',
@@ -15,14 +16,21 @@ import {
 })
 export class CommentCardComponent implements OnInit {
     likeActive = false;
-
+    isEditable: boolean;
     @Input() comment: Comment1;
 
     @Output() commentDeleted: EventEmitter<Comment1> =   new EventEmitter();
     
-    constructor() {}
+    constructor(private _user: UserInfoService) {}
 
-    ngOnInit() {}
+    ngOnInit() {
+        if (this.comment.authorLastname === this._user.profile.lastname && this.comment.authorName === this._user.profile.name) {
+            this.isEditable = true;
+        }
+        else{
+            this.isEditable = false;
+        }
+    }
 
     likeClick(): void {
         if (this.likeActive) {
@@ -33,7 +41,7 @@ export class CommentCardComponent implements OnInit {
         this.likeActive = !this.likeActive;
     }
 
-    deleteComment(e:Event){
+    deleteComment(e: Event){
         e.preventDefault();
         this.commentDeleted.emit(this.comment);
     }
