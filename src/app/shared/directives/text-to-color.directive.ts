@@ -5,13 +5,14 @@ import {
     HostListener,
     HostBinding,
     Input,
-    OnInit
+    OnInit,
+    OnChanges
 } from '@angular/core';
 
 @Directive({
     selector: '[appTextToColor]'
 })
-export class TextToColorDirective implements OnInit {
+export class TextToColorDirective implements OnChanges {
     
     @HostBinding('class.onHover') private ishovering: boolean;
     color: string;
@@ -47,8 +48,8 @@ export class TextToColorDirective implements OnInit {
         },
 
         {
-            title: 'lightpink',
-            color: '#e6b1c3'
+            title: 'crimson',
+            color: '#ca172c'
         },
 
         {
@@ -66,18 +67,25 @@ export class TextToColorDirective implements OnInit {
         title: '',
         colorMap: this.colorMap,
         hoverReact: false,
-        hoverLighten: false
+        hoverLighten: false,
+        disabled: false
     };
     
     constructor(private el: ElementRef, private renderer: Renderer) { }
 
-    ngOnInit(): void {
-        this.color = this.getColor();
-        this.renderer.setElementStyle(
-            this.el.nativeElement,
-            'backgroundColor',
-            this.getColor()
-        );
+    ngOnChanges(): void {
+        if (this.config.disabled) {
+            this.color = 'grey';
+        }
+        else {
+            this.color = this.getColor();
+            this.renderer.setElementStyle(
+                this.el.nativeElement,
+                'backgroundColor',
+                this.getColor()
+            );
+        }
+        
     }
 
 
@@ -149,17 +157,20 @@ export class TextToColorDirective implements OnInit {
     };
 
     @HostListener('mouseover') onHover() {
-        if (this.config.hoverReact) {
-            this.renderer.setElementStyle(
-                this.el.nativeElement,
-                'backgroundColor',
-                this.LightenColor(
-                    this.color,
-                    this.config.hoverLighten ? 30 : -30
-                )
-            );
-            this.ishovering = true;
+        if (!this.config.disabled) {
+            if (this.config.hoverReact) {
+                this.renderer.setElementStyle(
+                    this.el.nativeElement,
+                    'backgroundColor',
+                    this.LightenColor(
+                        this.color,
+                        this.config.hoverLighten ? 20 : -20
+                    )
+                );
+                this.ishovering = true;
+            }
         }
+        
     }
 
     @HostListener('mouseout') onMouseOut() {

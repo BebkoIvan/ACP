@@ -16,7 +16,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class QueryParamsActiveDirective implements OnChanges {
     @Input() title: string;
-    isActive: boolean;
+    @HostBinding('class.active') private isActive: boolean;
     constructor(
         private route: ActivatedRoute,
         private router: Router,
