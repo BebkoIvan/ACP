@@ -1,6 +1,6 @@
 .workshop-page
  .workshop
-  .title
+  .title('*appRange' = 'let a of arra;range:range')
    h3 {{workshop.title}}
   .content-area
    img(src='{{workshop.img}}')
@@ -8,10 +8,10 @@
   .workshop-footer
    .tags-likes
     .tags-list
-     span(*ngFor="let tag of workshop.tagsList") {{tag}} 
+     span('*ngFor'="let tag of workshop.tagsList") {{tag}} 
     .likes
      span {{workshop.likes}} 
-     app-like([likeActive]="likeactive",(likeClicked)="likec()")  
+     app-like('[likeActive]'="likeActive" '(likeClicked)'="likec()")  
    .date published at
     app-timestamp([date]="workshop.creationDate",[format]="'short'") 
 app-auxiliary-content([auxContActive]="acaActive",(acaClick)="acaHandler()") 

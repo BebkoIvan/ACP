@@ -6,16 +6,17 @@ import {
     Input,
     OnInit,
     HostListener,
-    Renderer2
+    Renderer2,
+    OnChanges
 } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Directive({
     selector: '[appQueryParamsActive]'
 })
-export class QueryParamsActiveDirective implements OnInit {
+export class QueryParamsActiveDirective implements OnChanges {
     @Input() title: string;
-    @HostBinding('class.active') private isActive: boolean;
+    isActive: boolean;
     constructor(
         private route: ActivatedRoute,
         private router: Router,
@@ -23,7 +24,7 @@ export class QueryParamsActiveDirective implements OnInit {
         private renderer2: Renderer2
     ) {}
 
-    ngOnInit(): void {
+    ngOnChanges(): void {
         this.route.queryParams.subscribe(params => {
             if (params.tags) {
                 if (params.tags.split(',').includes(this.title)) {

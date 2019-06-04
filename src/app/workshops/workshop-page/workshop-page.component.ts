@@ -6,14 +6,16 @@ import { WorkshopsService } from '../services/workshops.service';
     selector: 'app-workshop-page',
     templateUrl: './workshop-page.component.pug',
     styleUrls: ['./workshop-page.component.scss'],
-    changeDetection:ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class WorkshopPageComponent implements OnInit {
 
     id: number;
     workshop: Workshop;
-    likeactive = false;
+    likeActive = false;
     acaActive = true;
+    arra: Array<number>= [1,2,3];
+    range: Array<number>=[3,7];
 
     acaHandler(): void {
         this.acaActive = !this.acaActive;
@@ -24,20 +26,19 @@ export class WorkshopPageComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.route.data.subscribe(data => this.workshop=data.workshops);
-        // this.workshop = this._workshopsService.getOneWorkShop(this.id);
+        this.route.data.subscribe(data => this.workshop = data.workshops);
     }
 
 
 
     likec() {
-        if (this.likeactive) {
+        if (this.likeActive) {
             this.workshop.likes -= 1;
         } 
         else {
             this.workshop.likes += 1;
         }
-        this.likeactive = !this.likeactive;
+        this.likeActive = !this.likeActive;
     }
 
 }
