@@ -10,6 +10,7 @@ import { WorkshopResourcesComponent } from './workshop-resources/workshop-resour
 import { WorkshopCommentsComponent } from './workshop-comments/workshop-comments.component';
 import { WorkshopQuizzesComponent } from './workshop-quizzes/workshop-quizzes.component';
 
+
 @NgModule({
     declarations: [
         WorkshopsFeedComponent,
@@ -17,7 +18,7 @@ import { WorkshopQuizzesComponent } from './workshop-quizzes/workshop-quizzes.co
         ArticleComponent,
         WorkshopResourcesComponent,
         WorkshopCommentsComponent,
-        WorkshopQuizzesComponent
+        WorkshopQuizzesComponent,
     ],
     imports: [CommonModule, SharedModule, WorkshopsRoutingModule],
     exports: [WorkshopsFeedComponent, ArticleComponent],
