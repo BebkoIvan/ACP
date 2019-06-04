@@ -5,12 +5,13 @@ import { AppComponent } from "./app.component";
 import {CoreModule} from "./core/core.module";
 import {SharedModule} from "./shared/shared.module";
 import { DateAgoPipe } from './pipes/date-ago.pipe';
+import { RangeDirective } from './directives/range.directive';
 
 
 
 
 @NgModule({
-    declarations: [AppComponent, DateAgoPipe],
+    declarations: [AppComponent, DateAgoPipe, RangeDirective],
     imports: [BrowserModule, AppRoutingModule,CoreModule,SharedModule],
     providers: [],
     bootstrap: [AppComponent]
