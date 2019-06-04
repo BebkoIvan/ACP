@@ -12,7 +12,10 @@ import {
     selector: '[appTextToColor]'
 })
 export class TextToColorDirective implements OnInit {
+    
     @HostBinding('class.onHover') private ishovering: boolean;
+    color: string;
+
     colorMap: Array<Color> = [
         {
             title: 'chocolate',
@@ -59,15 +62,13 @@ export class TextToColorDirective implements OnInit {
         }
     ];
 
-    color: string;
-
     @Input() config = {
         title: '',
         colorMap: this.colorMap,
         hoverReact: false,
         hoverLighten: false
     };
-
+    
     constructor(private el: ElementRef, private renderer: Renderer) { }
 
     ngOnInit(): void {
@@ -128,6 +129,7 @@ export class TextToColorDirective implements OnInit {
         }
         return color;
     }
+
     LightenColor = (color, percent) => {
         if (color[0] === '#') {
             color = color.slice(1);
