@@ -1,5 +1,5 @@
 app-viewport
- app-article(*ngFor="let workshop of workshops",[workshop]="workshop",(scrollTop)="scrollTop()")
+ app-article('*ngFor'="let workshop of workshops" '[workshop]'="workshop" '(scrollTop)'="scrollTop()")
  app-tag-cloud('[tagsList]'="tagsList")  
  app-categories('[categories]'="categories")
 
