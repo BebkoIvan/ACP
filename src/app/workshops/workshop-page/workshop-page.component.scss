@@ -1,24 +1,25 @@
 @import "../../../scss/abstracts/variables";
 @import "../../../scss/abstracts/mixins.scss";
    
-   .workshop-page{ 
-    display: flex;
-    background: $grey1;
-    justify-content: center;
-    height: 93vh;
-    padding: 0 5%;
-    transition: 0.5s;
-    overflow-y: scroll;
-    scrollbar-color: $red_color #f1f1f1;
-    scrollbar-width: thin;
-    flex: 1;
-   }
+//    .workshop-page{ 
+//     display: flex;
+//     flex: 1;
+//     background: $grey1;
+//     justify-content: center;
+//     height: 93vh;
+//     padding: 0 5%;
+//     transition: 0.5s;
+//     overflow-y: scroll;
+//     scrollbar-color: $red_color #f1f1f1;
+//     scrollbar-width: thin;
+    
+//    }
 
    .workshop{
-    display: flex;
     flex-direction: column;
     height: fit-content;
-    
+    background: $white;
+
     @include mq($from: tablet) {
         margin:15px 20% 15px 20%;
     }
@@ -29,9 +30,8 @@
     .date{
         font-size: 13px;
     }
-    }
-       background: $white;
-       
+    
+    }  
    }
 
    .title{
@@ -45,6 +45,11 @@
     padding: 0 20px 0 20px;
     word-break: break-all;
     flex:1;
+    background: white;
+    .fulltext{
+        display: flex;
+        flex-direction: column;
+    }
    }
 
 

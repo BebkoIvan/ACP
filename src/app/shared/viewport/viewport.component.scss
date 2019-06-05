@@ -1,7 +1,19 @@
 @import "../../../scss/abstracts/variables";
 
 :host{
-    width: 100vw;
-    height: 93vh;
-    background-color: $grey1;
+    display: flex;
 }
+   
+   .mainContent{ 
+    display: flex;
+    flex:1;
+    flex-direction: column;
+    background: $grey1;
+    align-items: center;
+    height: 93vh;
+    padding:0 5vw;
+    transition: 0.5s;
+    overflow-y: scroll;
+    scrollbar-color: $red_color #f1f1f1;
+    scrollbar-width: thin;
+   }

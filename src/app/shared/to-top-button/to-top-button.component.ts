@@ -15,6 +15,7 @@ export class ToTopButtonComponent implements OnInit {
   constructor(private _renderer2: Renderer2) {}
  
   ngOnInit() {
+
     this._renderer2.listen(this.scrollElement, 'scroll', () => {
       if (this.scrollElement.scrollTop > this.topPosToStartShowing) {
         this.active = true;

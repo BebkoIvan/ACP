@@ -1,2 +1,7 @@
-ng-content
-
+.mainContent('#scrolEl'='') 
+ ng-content
+ .to-top
+  app-to-top-button('[scrollElement]' = 'scrolEl')
+.auxContent 
+ ng-content(select='app-auxiliary-content') 
+ 
