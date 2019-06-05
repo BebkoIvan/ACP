@@ -1,4 +1,5 @@
 @import "../../../scss/abstracts/variables";
+
 button {
     height:10vh;
     font-size: 25px;
@@ -9,17 +10,24 @@ button {
     color:$red_color;
     background: $grey1;
     display: none;
+    position: absolute;
+    bottom: 20px;
+    cursor: pointer;
+
+    @include mq($until: mobile) {
+     right: 10px;
+     padding: 7px;
+    }
+
+    @include mq($from: mobile) {
+      right:20px;
+      padding: 10px;
+    }
+
 
     &.active{
       display: block;
     }
-    cursor: pointer;
+    
 
-    @include mq($until:mobile) {
-      padding: 7px;
-    }
-
-    @include mq($from: mobile) {
-      padding: 10px;
-    }
   }
