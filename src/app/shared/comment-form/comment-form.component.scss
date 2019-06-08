@@ -1,13 +1,13 @@
 form{
-    // display: flex;
-    // flex-direction: column;
-    // margin: 8px;
+    display: flex;
+    flex-direction: column;
+    margin: 8px;
 }
 
 .form-footer{
     display: flex;
     justify-content: flex-end;
-    // margin-bottom: 10px;
+    margin-bottom: 10px;
 
     button{
         padding: 5px;
@@ -21,14 +21,14 @@ form{
 
 .comment-field{
     display: flex;
-    // margin:5px 0;
+    margin:5px 0;
     align-items: flex-start;
 
 }
 
 #commentInput{
     outline: none;
-    // margin: 3px;
+    margin: 3px;
     border-radius: 16px;
     border:2px solid grey;
     padding:10px;

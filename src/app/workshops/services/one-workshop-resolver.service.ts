@@ -13,11 +13,10 @@ export class OneWorkshopResolverService {
       route: ActivatedRouteSnapshot,
       state: RouterStateSnapshot,
   ): Observable<Workshop> |Promise<Workshop>| Workshop{
-      const workshop = this._workshopsService.getOneWorkShop(parseInt(route.params['id']));
-      if(workshop) {
+      const workshop = this._workshopsService.getOneWorkShop(route.params['id']);
+      if (workshop) {
         return workshop;
-      }
-      else{
+      } else {
         this._router.navigate(['/Page404']);
       }
     };
