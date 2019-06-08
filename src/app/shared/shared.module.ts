@@ -22,11 +22,12 @@ import { TextToColorDirective } from './directives/text-to-color.directive';
 import { QueryParamsActiveDirective } from './directives/query-params-active.directive';
 import { CollapsableDirective } from './directives/collapsable.directive';
 import { RangeDirective } from './directives/range.directive';
+import { HoverGrowDirective } from './directives/hover-grow.directive';
 
 
 
 @NgModule({
-  declarations: [TabComponent, RangeDirective, TextToColorDirective,CollapsableDirective, QueryParamsActiveDirective, TabGroupComponent, UserPicComponent, ViewportComponent, CardComponent, TagComponent, TimestampComponent, CommentCardComponent, ToTopButtonComponent, LikeComponent, AuxiliaryContentComponent, UnderConstructionComponent, CommentFormComponent, PageNotFoundComponent, TagCloudComponent, CategoriesComponent],
+  declarations: [TabComponent, RangeDirective, TextToColorDirective,CollapsableDirective, QueryParamsActiveDirective, TabGroupComponent, UserPicComponent, ViewportComponent, CardComponent, TagComponent, TimestampComponent, CommentCardComponent, ToTopButtonComponent, LikeComponent, AuxiliaryContentComponent, UnderConstructionComponent, CommentFormComponent, PageNotFoundComponent, TagCloudComponent, CategoriesComponent, HoverGrowDirective],
   imports: [
     CommonModule,
     SharedRoutingModule,
