@@ -1,20 +1,13 @@
 @import "../../../scss/abstracts/variables";
 @import "../../../scss/abstracts/mixins.scss";
-   
-//    .workshop-page{ 
-//     display: flex;
-//     flex: 1;
-//     background: $grey1;
-//     justify-content: center;
-//     height: 93vh;
-//     padding: 0 5%;
-//     transition: 0.5s;
-//     overflow-y: scroll;
-//     scrollbar-color: $red_color #f1f1f1;
-//     scrollbar-width: thin;
-    
-//    }
 
+.btnCollapse{
+    padding: 3px;
+    border:none;
+    color: $tag-color;
+    cursor: pointer;
+    font-size: 15px;
+}
    .workshop{
     flex-direction: column;
     height: fit-content;

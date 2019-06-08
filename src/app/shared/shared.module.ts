@@ -24,12 +24,13 @@ import { CollapsableDirective } from './directives/collapsable.directive';
 import { RangeDirective } from './directives/range.directive';
 
 
+
 @NgModule({
   declarations: [TabComponent, RangeDirective, TextToColorDirective,CollapsableDirective, QueryParamsActiveDirective, TabGroupComponent, UserPicComponent, ViewportComponent, CardComponent, TagComponent, TimestampComponent, CommentCardComponent, ToTopButtonComponent, LikeComponent, AuxiliaryContentComponent, UnderConstructionComponent, CommentFormComponent, PageNotFoundComponent, TagCloudComponent, CategoriesComponent],
   imports: [
     CommonModule,
     SharedRoutingModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule
   ],
   exports: [TabComponent, CategoriesComponent, RangeDirective, CollapsableDirective,TextToColorDirective, QueryParamsActiveDirective, CommentFormComponent, CommentCardComponent, UnderConstructionComponent, TabGroupComponent, AuxiliaryContentComponent, LikeComponent, TimestampComponent, TagComponent, UserPicComponent, ViewportComponent, CardComponent, ToTopButtonComponent, TagCloudComponent]
 })

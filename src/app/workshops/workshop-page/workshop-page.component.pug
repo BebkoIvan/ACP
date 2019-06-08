@@ -4,8 +4,9 @@ app-viewport
    h3 {{workshop.title}}
   .content-area
    img(src='{{workshop.img}}')
-   .fulltext('*appCollapsable'='400;let ctrl = controller') {{workshop.fulltext}}
-    button('(click)' = 'ctrl.toggle()')  {{ false ? 'Show More' : 'Case 2' }}
+   .fulltext('*appCollapsable'='100 button button1 turnedOn true animationOn true defState "expanded"') {{workshop.fulltext}}
+   ng-template('#button1'='' let-control='control' let-title='title')
+    button.btnCollapse('(click)'='control()') {{title}}
   .workshop-footer
    .tags-likes
     .tags-list
