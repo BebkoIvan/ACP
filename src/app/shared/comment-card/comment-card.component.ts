@@ -17,6 +17,7 @@ import { UserInfoService } from 'src/app/services/user-info.service';
 export class CommentCardComponent implements OnInit {
     likeActive = false;
     isEditable: boolean;
+    editing = false;
     @Input() comment: Comment1;
 
     @Output() commentDeleted: EventEmitter<Comment1> =   new EventEmitter();
@@ -44,5 +45,10 @@ export class CommentCardComponent implements OnInit {
     deleteComment(e: Event){
         e.preventDefault();
         this.commentDeleted.emit(this.comment);
+    }
+
+    editComment(e: Event){
+        e.preventDefault();
+        this.editing = true;
     }
 }

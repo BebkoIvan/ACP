@@ -14,7 +14,9 @@
     
     .tab-content{
         overflow-y: scroll;
-        height: 83vh;
+        scrollbar-color: $red_color #f1f1f1;
+        scrollbar-width: thin;
+        height: 81vh;
     }
 
     .tabGroup{
