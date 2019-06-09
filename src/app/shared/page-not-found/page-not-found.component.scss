@@ -1,6 +1,11 @@
+:host{
+    display:flex;
+    flex: 1;  
+}
+
 .wrapper{
     display:flex;
-
+    flex: 1;
     img{
         width: 100%;
         height: 93vh;
