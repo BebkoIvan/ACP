@@ -12,7 +12,7 @@ export class WorkshopCommentsComponent implements OnInit {
     comments: Array<Comment1>;
 
     constructor(private route: ActivatedRoute, private _workshopsService: WorkshopsService) {
-        this.id = parseInt(route.parent.snapshot.params['id']);
+        this.id = route.parent.snapshot.params['id'];
     }
 
     ngOnInit() {

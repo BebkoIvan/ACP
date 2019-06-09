@@ -22,7 +22,7 @@ export class WorkshopPageComponent implements OnInit {
     }
 
     constructor(private route: ActivatedRoute, private _workshopsService: WorkshopsService) {
-        this.id = parseInt(route.snapshot.params['id']);
+        this.id = route.snapshot.params['id'];
     }
 
     ngOnInit() {
