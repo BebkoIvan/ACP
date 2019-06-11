@@ -1,6 +1,8 @@
-import { Component, OnInit,Input,HostListener } from '@angular/core';
+import { Component, OnInit, Input, HostListener } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserInfoService } from 'src/app/services/user-info.service';
+import { WorkshopsService } from '../services/workshops.service';
+import { Tags } from '../workshops-data/tags';
 @Component({
     selector: 'app-workshops-feed',
     templateUrl: './workshops-feed.component.pug',
@@ -10,69 +12,10 @@ export class WorkshopsFeedComponent implements OnInit {
     workshops: Workshop[];
     categories: string[] = ['All', 'My Workshops', 'Favorite'];
     user: User;
-    tagsList: Array<Tag> = [
-        {
-         tagTitle: 'JavaScript',
-         isActive: false 
-
-        },
-
-        {
-            tagTitle: 'Social',
-            isActive: false 
-   
-           },
-
-        {
-            tagTitle: 'NodeJs',
-            isActive: false
-        },
-
-        {
-            tagTitle: 'OOP',
-            isActive: false
-        },
-
-        {
-            tagTitle: 'Angular',
-            isActive: false
-        },
-
-        {
-            tagTitle: 'React',
-            isActive: false
-        },
-
-        {
-            tagTitle: 'Vue',
-            isActive: false
-        },
-
-        {
-            tagTitle: 'C++',
-            isActive: false
-        },
-
-        {
-            tagTitle: 'Java',
-            isActive: false
-        },
-
-        {
-            tagTitle: 'REST API',
-            isActive: false
-        },
-        {
-            tagTitle: 'Pascal',
-            isActive: false
-        },
-        {
-            tagTitle: 'Scala',
-            isActive: false
-        }
-    ];
-
-    constructor(private route: ActivatedRoute,private _user: UserInfoService, private router: Router) {
+    tagsList = Tags;
+    
+    constructor(private route: ActivatedRoute, private _user: UserInfoService,
+                private _workshopsService: WorkshopsService, private router: Router) {
         if (!route.snapshot.params.category) {
             this.router.navigate([''], {
                 queryParams: {  category: 'All' },
@@ -84,8 +27,9 @@ export class WorkshopsFeedComponent implements OnInit {
 
 
     ngOnInit() {
-        this.route.data.subscribe(data => this.workshops=data.workshops);
+        this.route.data.subscribe(data => this.workshops = data.workshops);
         this.user = this._user.profile;
+        // this._workshopsService.getFromServer().subscribe(data => console.log(data));
     }
 
 }

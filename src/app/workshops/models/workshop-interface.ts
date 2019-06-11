@@ -4,7 +4,7 @@ interface Workshop{
     img:string,
     shortDesc:string,
     fulltext:string,
-    tagsList:string[],
+    tagsList:number[],
     link:string,
     creationDate:string,
     likes:number,

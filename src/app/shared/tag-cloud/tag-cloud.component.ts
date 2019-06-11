@@ -7,7 +7,7 @@ import { ActivatedRoute, Router } from '@angular/router';
     styleUrls: ['./tag-cloud.component.scss']
 })
 export class TagCloudComponent implements OnInit {
-    @Input()tagsList: Array<Tag>;
+    @Input() tagsList;
     tagsActivated: string;
 
     constructor(private route: ActivatedRoute, private router: Router) { }
@@ -26,17 +26,16 @@ export class TagCloudComponent implements OnInit {
     }
 
 
-    handleTagClick(tag: Tag) {
-
-        if (this.tagsActivated.split(',').includes(tag.tagTitle)) {
-            let index = this.tagsActivated.split(',').indexOf(tag.tagTitle);
-            let str = this.tagsActivated.split(',');
+    handleTagClick(tag) {
+        if (this.tagsActivated.split(',').includes(tag.id.toString())) {
+            const index = this.tagsActivated.split(',').indexOf(tag.id.toString());
+            const str = this.tagsActivated.split(',');
             str.splice(index, 1);
             this.tagsActivated = str.join(',');
         }
         else {
             this.tagsActivated = this.tagsActivated.concat(
-                this.tagsActivated ? ',' + tag.tagTitle : tag.tagTitle
+                this.tagsActivated ? ',' + tag.id : tag.id
             );
         }
 

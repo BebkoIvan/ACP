@@ -16,7 +16,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class QueryParamsActiveDirective implements OnChanges {
     
-    @Input() title: string;
+    @Input() tag;
     @HostBinding('class.active') private isActive: boolean;
 
     constructor(
@@ -29,7 +29,7 @@ export class QueryParamsActiveDirective implements OnChanges {
     ngOnChanges(): void {
         this.route.queryParams.subscribe(params => {
             if (params.tags) {
-                if (params.tags.split(',').includes(this.title)) {
+                if (params.tags.split(',').includes(this.tag.id.toString())) {
                     this.renderer2.addClass(this.el.nativeElement, 'active');
                     this.isActive = true;
                 } else {

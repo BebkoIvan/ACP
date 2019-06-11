@@ -10,7 +10,7 @@ app-card
  .footer
   .article-footer
    .tags-list
-    span('*ngFor'="let tag of tagsList" '[class.active]'="tag.isActive" appQueryParamsActive [title]="tag.tagTitle") {{tag.tagTitle}}
+    span('*ngFor'="let tag of tagsList" '[class.active]'="tag.isActive" appQueryParamsActive [tag]="tag") {{tag.tagTitle}}
    .likes
     span {{workshop.likes}} 
     app-like([likeActive]="likeactive",(likeClicked)="likec()")  

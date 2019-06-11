@@ -1,6 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { WorkshopsService } from '../services/workshops.service';
+import { Tags } from '../workshops-data/tags';
 
 @Component({
     selector: 'app-workshop-page',
@@ -14,8 +15,8 @@ export class WorkshopPageComponent implements OnInit {
     workshop: Workshop;
     likeActive = false;
     acaActive = true;
-    arra: Array<number>= [1,2,3];
-    range: Array<number>=[3,7];
+    tagsList: Array<string> = [];
+    allTags = Tags;
 
     acaHandler(): void {
         this.acaActive = !this.acaActive;
@@ -26,7 +27,11 @@ export class WorkshopPageComponent implements OnInit {
     }
 
     ngOnInit() {
+       
         this.route.data.subscribe(data => this.workshop = data.workshops);
+        this.workshop.tagsList.forEach(elem => {
+            this.tagsList.push(this.allTags.find(x => x.id === elem).tagTitle);
+        });
     }
 
 

@@ -12,10 +12,11 @@ export class WorkshopResolverService implements Resolve<Workshop[]> {
     resolve(
         route: ActivatedRouteSnapshot,
         state: RouterStateSnapshot,
-    ): Observable<Workshop[]> |Promise<Workshop[]>| Workshop[]{
+    ): Observable<Workshop[]> |Promise<Workshop[]>| Workshop[] {
 
-        if(route.queryParams.category || route.queryParams.tags){
-            return this._workshopsService.filtered(route.queryParams.category,route.queryParams.tags);
+        if (route.queryParams.category || route.queryParams.tags) {
+            console.log(route.queryParams.tags);
+            return this._workshopsService.filtered(route.queryParams.category, route.queryParams.tags);
         }
         else {
         return this._workshopsService.getWorkShops();

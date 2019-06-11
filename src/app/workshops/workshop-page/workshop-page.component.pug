@@ -10,7 +10,7 @@ app-viewport
   .workshop-footer
    .tags-likes
     .tags-list
-     span('*ngFor'="let tag of workshop.tagsList") {{tag}} 
+     span('*ngFor'="let tag of tagsList") {{tag}} 
     .likes
      span {{workshop.likes}} 
      app-like('[likeActive]'="likeActive" '(likeClicked)'="likec()")  

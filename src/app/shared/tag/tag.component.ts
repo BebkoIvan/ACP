@@ -4,12 +4,12 @@ import { ActivatedRoute, Router } from '@angular/router';
     selector: 'app-tag',
     templateUrl: './tag.component.pug',
     styleUrls: ['./tag.component.scss'],
-    changeDetection:ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TagComponent implements OnInit {
 
     constructor() {}
 
-    @Input() tagTitle: string;
+    @Input() tag;
     ngOnInit() {}
 }
