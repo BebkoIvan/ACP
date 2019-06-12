@@ -1,5 +1,6 @@
 import { Component, OnInit,EventEmitter,Input,Output, ViewChild, ElementRef } from '@angular/core';
 import { UserInfoService } from 'src/app/services/user-info.service';
+import { UserAuthService } from 'src/app/services/user-auth.service';
 
 @Component({
     selector: 'app-top-pane',
@@ -10,23 +11,24 @@ import { UserInfoService } from 'src/app/services/user-info.service';
 export class TopPaneComponent implements OnInit {
     logoSrc = '/assets/images/logo.png';
     searchActive = false;
-    user: User;
     @ViewChild('searchInput') searchField: ElementRef;
     
     @Input() menuActive: boolean;
 
-    @Input() profile: User;
+    profile;
 
     @Output()menuClick = new EventEmitter();
 
-    constructor(private _user: UserInfoService) {}
+    constructor(public userService: UserAuthService) {}
 
     menuHandler(e: Event): void {
       this.menuClick.emit();
     }
 
     ngOnInit() {
-        this.user = this._user.profile;
+        if (this.userService.isAuth) {
+            this.userService.setUser();
+        }
     }
 
     handleSearchClick(e: Event) {
