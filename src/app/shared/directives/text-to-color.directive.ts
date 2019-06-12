@@ -157,7 +157,7 @@ export class TextToColorDirective implements OnChanges {
     };
 
     @HostListener('mouseover') onHover() {
-        if (!this.config.disabled) {
+        if (this.config.hoverReact) {
             if (this.config.hoverReact) {
                 this.renderer.setElementStyle(
                     this.el.nativeElement,
@@ -174,11 +174,13 @@ export class TextToColorDirective implements OnChanges {
     }
 
     @HostListener('mouseout') onMouseOut() {
-        this.renderer.setElementStyle(
-            this.el.nativeElement,
-            'backgroundColor',
-            this.color
-        );
-        this.ishovering = false;
+        if (this.config.hoverReact){
+            this.renderer.setElementStyle(
+                this.el.nativeElement,
+                'backgroundColor',
+                this.color
+            );
+            this.ishovering = false;
+        }
     }
 }
