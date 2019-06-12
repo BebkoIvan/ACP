@@ -24,13 +24,13 @@ export class MyInterceptor implements HttpInterceptor {
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-       const token = this._userAuth.token;
-       const paramReq = req.clone({
-        headers: req.headers.append('Accept', ' application/json')
+       const token = this._userAuth.getToken();
+       let paramReq = req.clone({
+        headers: req.headers.append('Content-Type', ' application/json')
     });
 
        if (token) {
-        const paramReq = req.clone({
+         paramReq = req.clone({
             headers: req.headers.append('Authorization', `Bearer ${token}`)
         });
     }
