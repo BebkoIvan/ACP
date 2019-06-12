@@ -36,7 +36,7 @@ export class ApiService {
     return `${environment.api}/${url}`;
   }
 
-  postRequest(url: string, headers?: HttpHeaders, body?, params?: HttpParams): Observable<any>{
+  postRequest(url: string, body?, headers?: HttpHeaders,  params?: HttpParams): Observable<any>{
     return this.http.post(this.getEndPoint(url), body, ApiService.prepareOptions(headers,params));
   }
 
@@ -44,12 +44,12 @@ export class ApiService {
     return this.http.get(this.getEndPoint(url), ApiService.prepareOptions(headers, params));
   }
 
-  putRequest(url: string, headers: HttpHeaders, body, params?: HttpParams): Observable<any> {
+  putRequest(url: string, body?, headers?: HttpHeaders,  params?: HttpParams): Observable<any> {
     return this.http.put(this.getEndPoint(url), body, ApiService.prepareOptions(headers, params));
   }
 
   deleteRequest(url: string, headers?: HttpHeaders): Observable<any> {
-    return this.http.put(this.getEndPoint(url), ApiService.prepareOptions(headers));
+    return this.http.delete(this.getEndPoint(url), ApiService.prepareOptions(headers));
   }
 
 }
