@@ -13,7 +13,7 @@ export class CommentsService {
     return this._api.getRequest(`comments/${postId}`);
   }
 
-  createComment(postId,comment): Observable<any> {
+  createComment(postId, comment): Observable<any> {
     const body = {
       'text':`${comment}`
     };

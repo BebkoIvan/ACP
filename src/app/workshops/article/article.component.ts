@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Tags } from '../workshops-data/tags';
+import { TagsService } from 'src/app/shared/services/tags-service/tags.service';
 
 @Component({
     selector: 'app-article',
@@ -9,12 +10,12 @@ import { Tags } from '../workshops-data/tags';
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ArticleComponent implements OnInit {
-    constructor(private route: ActivatedRoute, private router: Router) {}
-
-    @Input() workshop: Workshop;
+    constructor(private route: ActivatedRoute, private router: Router, private _tagsService: TagsService) {}
+    @Input() workshop: any;
+    // @Input() workshop: Workshop;
     tagsList: Array<any> = [];
     likeactive = false;
-    allTags = Tags;
+    @Input() allTags = [];
 
     likec() {
         if (this.likeactive) {
@@ -28,11 +29,8 @@ export class ArticleComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.workshop.tagsList.forEach(elem => {
-            this.tagsList.push();
+        this.workshop.tags.forEach(el => {
+            this.tagsList.push(this._tagsService.getTagName(el));
         });
-        this.workshop.tagsList.forEach(element => {this.tagsList.push({
-            tagTitle: this.allTags.find(x => x.id === element).tagTitle, isActive: false, id: element
-        })});
     }
 }

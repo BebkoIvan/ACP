@@ -1,26 +1,42 @@
 import { Injectable } from '@angular/core';
-import { Resolve,ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { Observable,combineLatest } from 'rxjs';
 import {WorkshopsService} from './workshops.service';
+import { TagsService } from 'src/app/shared/services/tags-service/tags.service';
+import { UserAuthService } from 'src/app/services/user-auth.service';
+import { TSInterfaceBody } from 'babel-types';
 
 @Injectable({
     providedIn: 'root'
 })
 export class WorkshopResolverService implements Resolve<Workshop[]> {
-    constructor(private _workshopsService: WorkshopsService) {}
-
+    constructor(private _workshopsService: WorkshopsService, private _user: UserAuthService, private _tagsService: TagsService) {}
+    body;
     resolve(
         route: ActivatedRouteSnapshot,
         state: RouterStateSnapshot,
-    ): Observable<Workshop[]> |Promise<Workshop[]>| Workshop[] {
-
+    ): Observable<any> |Promise<Workshop[]>| Workshop[] {
         if (route.queryParams.category || route.queryParams.tags) {
-            console.log(route.queryParams.tags);
-            return this._workshopsService.filtered(route.queryParams.category, route.queryParams.tags);
-        }
-        else {
-        return this._workshopsService.getWorkShops();
+            if (route.queryParams.category === 'All') {
+                if (this._workshopsService.allWorkshops && !route.queryParams.tags) {
+                    return this._workshopsService.allWorkshops;
+                } else {
+                    return combineLatest(this._workshopsService.getPosts(null, route.queryParams.tags), this._tagsService.getTags('all'));
+                }
+            } else if (route.queryParams.category === 'My Workshops' || route.queryParams.category === 'Favorite') {
+                return combineLatest(this._workshopsService.getPosts('My', route.queryParams.tags), this._tagsService.getTags('all'));
+            }
+            else{
+                return combineLatest(this._workshopsService.getPosts(null, route.queryParams.tags), this._tagsService.getTags('all'));
+            }
+        } else {
+            if (this._workshopsService.allWorkshops ) {
+                return this._workshopsService.allWorkshops;
+            } else {
+
+                return combineLatest(this._workshopsService.getPosts(null, route.queryParams.tags), this._tagsService.getTags('all'));
+            }
         }
 
-    };
+    }
 }

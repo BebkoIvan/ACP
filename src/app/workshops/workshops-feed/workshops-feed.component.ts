@@ -3,19 +3,20 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { UserInfoService } from 'src/app/services/user-info.service';
 import { WorkshopsService } from '../services/workshops.service';
 import { Tags } from '../workshops-data/tags';
+import { TagsService } from 'src/app/shared/services/tags-service/tags.service';
 @Component({
     selector: 'app-workshops-feed',
     templateUrl: './workshops-feed.component.pug',
     styleUrls: ['./workshops-feed.component.scss'],
 })
 export class WorkshopsFeedComponent implements OnInit {
-    workshops: Workshop[];
+    workshops: [];
     categories: string[] = ['All', 'My Workshops', 'Favorite'];
     user: User;
-    tagsList = Tags;
-    
+    serverTags = [];
+
     constructor(private route: ActivatedRoute, private _user: UserInfoService,
-                private _workshopsService: WorkshopsService, private router: Router) {
+                private _workshopsService: WorkshopsService, private router: Router, private _tagsService: TagsService) {
         if (!route.snapshot.params.category) {
             this.router.navigate([''], {
                 queryParams: {  category: 'All' },
@@ -25,11 +26,29 @@ export class WorkshopsFeedComponent implements OnInit {
         }
     }
 
+    getPosts() {
+    //    this._tagsService.createTag("Scala").subscribe(data => console.log(data));
+        // this._workshopsService.allFromServer().subscribe(data=>console.log(data));
+        // this._workshopsService.updatePost('5cfff7a21169ca285e4aa0ca',body).subscribe(data=>console.log(data));
+        // this._workshopsService.newUser().subscribe(data=>console.log(data));
+
+    }
 
     ngOnInit() {
-        this.route.data.subscribe(data => this.workshops = data.workshops);
-        this.user = this._user.profile;
-        // this._workshopsService.getFromServer().subscribe(data => console.log(data));
+        if (!this._workshopsService.allWorkshops) {
+            this._workshopsService.setPosts();
+        }
+        this.route.data.subscribe(data => {this.workshops = data.workshops[0].posts ? data.workshops[0].posts : data.workshops;
+
+                                           if (!this._tagsService.allTags.length) {
+                                            this._tagsService.allTags = data.workshops[1];
+                                           }
+                                           if (!this.serverTags.length) {
+                                            this._tagsService.allTags.forEach(el => this.serverTags.push(el));
+                                            }
+
+                                        } );
+
     }
 
 }

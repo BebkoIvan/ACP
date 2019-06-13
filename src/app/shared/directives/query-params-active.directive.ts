@@ -29,7 +29,7 @@ export class QueryParamsActiveDirective implements OnChanges {
     ngOnChanges(): void {
         this.route.queryParams.subscribe(params => {
             if (params.tags) {
-                if (params.tags.split(',').includes(this.tag.id.toString())) {
+                if (params.tags.split(',').includes(this.tag.seq.toString())) {
                     this.renderer2.addClass(this.el.nativeElement, 'active');
                     this.isActive = true;
                 } else {

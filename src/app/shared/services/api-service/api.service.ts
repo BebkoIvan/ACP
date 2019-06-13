@@ -14,12 +14,10 @@ export class ApiService {
     if (!params) {
       return null;
     }
-
     let httpParams: HttpParams = new HttpParams();
-
     for (const item in params) {
       if (params.hasOwnProperty(item)) {
-        httpParams = httpParams.append(item,params[item]);
+        httpParams = httpParams.append(item, params[item]);
       }
     }
     return httpParams;
@@ -36,15 +34,15 @@ export class ApiService {
     return `${environment.api}/${url}`;
   }
 
-  postRequest(url: string, body?, headers?: HttpHeaders,  params?: HttpParams): Observable<any>{
-    return this.http.post(this.getEndPoint(url), body, ApiService.prepareOptions(headers,params));
+  postRequest(url: string, body?, headers?: HttpHeaders,  params?): Observable<any>{
+    return this.http.post(this.getEndPoint(url), body, ApiService.prepareOptions(headers, params));
   }
 
-  getRequest(url: string, headers?: HttpHeaders, params?: HttpParams): Observable<any> {
+  getRequest(url: string, headers?: HttpHeaders, params?): Observable<any> {
     return this.http.get(this.getEndPoint(url), ApiService.prepareOptions(headers, params));
   }
 
-  putRequest(url: string, body?, headers?: HttpHeaders,  params?: HttpParams): Observable<any> {
+  putRequest(url: string, body?, headers?: HttpHeaders,  params?): Observable<any> {
     return this.http.put(this.getEndPoint(url), body, ApiService.prepareOptions(headers, params));
   }
 

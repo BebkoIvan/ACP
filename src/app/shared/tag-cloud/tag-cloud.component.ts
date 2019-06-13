@@ -27,19 +27,19 @@ export class TagCloudComponent implements OnInit {
 
 
     handleTagClick(tag) {
-        if (this.tagsActivated.split(',').includes(tag.id.toString())) {
-            const index = this.tagsActivated.split(',').indexOf(tag.id.toString());
+        if (this.tagsActivated.split(',').includes(tag.seq.toString())) {
+            const index = this.tagsActivated.split(',').indexOf(tag.seq.toString());
             const str = this.tagsActivated.split(',');
             str.splice(index, 1);
             this.tagsActivated = str.join(',');
         }
         else {
             this.tagsActivated = this.tagsActivated.concat(
-                this.tagsActivated ? ',' + tag.id : tag.id
+                this.tagsActivated ? ',' + tag.seq : tag.seq
             );
         }
 
-        if (this.tagsActivated){
+        if (this.tagsActivated) {
             this.router.navigate([''], {
                 queryParams: {  tags: this.tagsActivated },
                 queryParamsHandling: 'merge'

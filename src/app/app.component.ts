@@ -19,9 +19,14 @@ export class AppComponent implements OnInit {
     //     favoriteWorkshops: [2, 4]
     // };
 
-    constructor(private _userService:UserAuthService) {}
+    constructor(public userService:UserAuthService) {}
 
-    ngOnInit() {}
+    ngOnInit() {
+        if (localStorage.getItem('token')){
+            this.userService.setUser();
+        }
+
+    }
 
     handleMenuClick() {
         this.menuActive = !this.menuActive;

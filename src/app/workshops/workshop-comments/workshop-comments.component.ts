@@ -16,12 +16,12 @@ export class WorkshopCommentsComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.comments = this._workshopsService.getOneWorkShop(this.id).comments;
-        this.comments.sort(function(a, b) {
-            let a1 = new Date(a.date);
-            let b2 = new Date(b.date);
-            return a1 > b2 ? -1 : a1 < b2 ? 1 : 0;
-        });
+        // this.comments = this._workshopsService.getOneWorkShop(this.id).comments;
+        // this.comments.sort(function(a, b) {
+        //     let a1 = new Date(a.date);
+        //     let b2 = new Date(b.date);
+        //     return a1 > b2 ? -1 : a1 < b2 ? 1 : 0;
+        // });
     }
 
     addComment(comment: Comment1){

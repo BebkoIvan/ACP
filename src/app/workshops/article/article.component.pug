@@ -4,8 +4,8 @@ app-card
    h3 {{workshop.title}}
  .content
   a(routerLink="../{{workshop.id}}" )
-   img(src='{{workshop.img}}')
-  p {{workshop.shortDesc}}
+   img(src='{{workshop.image}}')
+  p {{workshop.description}}
    a(routerLink="../{{workshop.id}}" ) Read more
  .footer
   .article-footer
@@ -14,6 +14,6 @@ app-card
    .likes
     span {{workshop.likes}} 
     app-like([likeActive]="likeactive",(likeClicked)="likec()")  
-  app-timestamp([date]="workshop.creationDate",[format]="'fullDate'") 
+  app-timestamp([date]="workshop.createdAt",[format]="'fullDate'") 
      
 

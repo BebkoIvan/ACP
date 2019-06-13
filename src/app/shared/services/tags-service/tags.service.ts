@@ -6,13 +6,18 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class TagsService {
-
+  allTags: Array<any> = [];
   constructor(private _api: ApiService) { }
 
-  getTags(path): Observable<any>{
+  getTags(path): Observable<any> {
     return this._api.getRequest(`tags/${path}`);
   }
 
+  getTagName(tag) {
+    return {
+      tagTitle: this.allTags.find(x => x.seq === tag).name, isActive: false, seq: tag
+    }
+  }
   createTag(name): Observable<any> {
     const body = {
       'name':`${name}`
