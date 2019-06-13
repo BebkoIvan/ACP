@@ -3,8 +3,8 @@ app-viewport
   .title
    h3 {{workshop.title}}
   .content-area
-   img(src='{{workshop.img}}')
-   .fulltext('*appCollapsable'='100 button button1 turnedOn true animationOn true defState "expanded"') {{workshop.fulltext}}
+   img(src='{{workshop.image}}')
+   .fulltext('*appCollapsable'='100 button button1 turnedOn true animationOn true defState "expanded"') {{workshop.text}}
    ng-template('#button1'='' let-control='control' let-title='title')
     button.btnCollapse('(click)'='control()') {{title}}
   .workshop-footer
@@ -15,6 +15,6 @@ app-viewport
      span {{workshop.likes}} 
      app-like('[likeActive]'="likeActive" '(likeClicked)'="likec()")  
    .date published at
-    app-timestamp([date]="workshop.creationDate",[format]="'short'") 
+    app-timestamp([date]="workshop.createdAt",[format]="'short'") 
  app-auxiliary-content([auxContActive]="acaActive",(acaClick)="acaHandler()") 
 
