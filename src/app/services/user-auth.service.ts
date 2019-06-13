@@ -20,11 +20,7 @@ export class UserAuthService implements OnInit {
     return new HttpHeaders().set('Authorization', `Basic ${btoa(`${username}` + ':' + `${password}`)}`);
   }
 
-  ngOnInit() {
-    if (localStorage.getItem('token')) {
-      this.getCurrentUser().subscribe(data => this.user = data);
-    }
-  }
+  ngOnInit() { }
 
 
   setToken(token: any) {
@@ -36,7 +32,6 @@ export class UserAuthService implements OnInit {
   getToken() {
     return this.token;
   }
-
   signIn(username, password): Observable<any> {
     return this._api.getRequest('users/login', UserAuthService.prepareHeaders(username, password));
   }
