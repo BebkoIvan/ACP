@@ -18,7 +18,13 @@ export class UserPicComponent implements OnInit {
     constructor(private _userService:UserAuthService) {}
 
     ngOnInit() {
-        this.initials = this.name.charAt(0) + this.lastname.charAt(0);
+        if(!this.name || !this.lastname){
+            this.initials='XX';
+        }
+        else{
+            this.initials = this.name.charAt(0) + this.lastname.charAt(0);
+        }
+    
     }
 
 }

@@ -27,7 +27,7 @@ export class UserAuthService implements OnInit {
     this.token = token;
     localStorage.clear();
     localStorage.setItem('token', this.token);
-    localStorage.setItem('id', this.user.id);
+    localStorage.setItem('id', id);
   }
 
   getToken() {
