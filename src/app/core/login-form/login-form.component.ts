@@ -30,7 +30,7 @@ export class LoginFormComponent implements OnInit {
       this.submitted = true;
 
       this._userAuth.signIn(this.f.username.value, this.f.password.value).subscribe(data =>
-        { console.log(data); this._userAuth.setTokenId(data.token,data._id); this._userAuth.isAuth = true;
+        { this._userAuth.setTokenId(data.token,data._id); this._userAuth.isAuth = true;
           this._router.navigate(['/workshops']); this._userAuth.setUser();
          } );
 

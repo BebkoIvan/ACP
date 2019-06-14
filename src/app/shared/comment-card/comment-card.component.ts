@@ -26,7 +26,6 @@ export class CommentCardComponent implements OnInit {
     isEditable: boolean;
     author: Observable<any>;
     editing = false;
-    comment$: Observable<Comment1>;
 
     @Input() comment:Comment1;
 
