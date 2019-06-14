@@ -1,4 +1,4 @@
-export let Workshops: Workshop[] = [
+export let Workshops = [
         {
             id: 1,
             title: 'TAG Heuer Gets \'Tagged\'',

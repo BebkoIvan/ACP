@@ -15,7 +15,7 @@ export class OneWorkshopResolverService {
   resolve(
       route: ActivatedRouteSnapshot,
       state: RouterStateSnapshot,
-  ): Observable<Workshop> |Observable<[any,any]> |Promise<Workshop>| Workshop {
+  ): Observable<any> |Observable<[any,any]> |Promise<any>| any {
     const workshop = this._workshopsService.getPostById(route.params.id);
     if (workshop && this._tagsService.allTags.length) {
         return workshop;
