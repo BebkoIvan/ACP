@@ -17,7 +17,7 @@ export class WorkshopsFeedComponent implements OnInit {
 
     constructor(private route: ActivatedRoute, private _user: UserInfoService,
                 private _workshopsService: WorkshopsService, private router: Router, private _tagsService: TagsService) {
-        if (!route.snapshot.params.category) {
+        if (!route.snapshot.queryParams.category) {
             this.router.navigate([''], {
                 queryParams: {  category: 'All' },
                 queryParamsHandling: 'merge'
@@ -26,11 +26,6 @@ export class WorkshopsFeedComponent implements OnInit {
         }
     }
 
-    getPosts() {
-        console.log(this._workshopsService.totalPosts);
-        // this._workshopsService.getPosts().subscribe(data=>console.log(data));
-
-    }
 
     ngOnInit() {
         if (!this._workshopsService.allWorkshops) {

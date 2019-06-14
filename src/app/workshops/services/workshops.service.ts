@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { ApiService } from 'src/app/shared/services/api-service/api.service';
 import { HttpParams } from '@angular/common/http';
 import { UserAuthService } from 'src/app/services/user-auth.service';
+import { mergeMap, tap } from 'rxjs/operators';
 
 @Injectable({
     providedIn: 'root'
@@ -27,13 +28,22 @@ export class WorkshopsService {
             params.page = '1';
         }
         
-        if (category) {
+        if (category && this._userService.user) {
             params.page = '1';
-            params.authorId = `${localStorage.getItem('id')}`;
+            params.authorId = this._userService.user.id;
         }
 
         if (tags) {
             params.tags = tags.split(',').join('|');
+        }
+        if (!this._userService.user && category) {
+            params.page = '1';
+            return this._userService.getCurrentUser().pipe(
+                tap((user) => {
+                   params.authorId = user.id;
+                  }),
+                mergeMap((user) => this._api.getRequest(`posts`, null, params))
+            );
         }
         return this._api.getRequest(`posts`, null, params);
 

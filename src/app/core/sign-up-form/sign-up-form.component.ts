@@ -36,8 +36,8 @@ export class SignUpFormComponent implements OnInit {
       this.submitted = true;
       this._userAuth.signUp(this.f.username.value, this.f.password.value).pipe(
         mergeMap((res1) => this._userAuth.signIn(this.f.username.value, this.f.password.value))
-      ).subscribe(data => {this._userAuth.setTokenId(data.token, data._id); this._userAuth.isAuth = true;
-                           this._router.navigate(['/workshops']); this._userAuth.setUser();
+      ).subscribe(data => {this._userAuth.setToken(data.token); this._userAuth.isAuth = true;
+                           this._router.navigate(['/workshops']); this._userAuth.user = data;
        });
 
         //   this._userAuth.signUp(this.f.username.value, this.f.password.value).subscribe(data =>

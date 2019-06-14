@@ -23,11 +23,10 @@ export class UserAuthService implements OnInit {
   ngOnInit() { }
 
 
-  setTokenId(token: any,id: any) {
+  setToken(token: any) {
     this.token = token;
     localStorage.clear();
     localStorage.setItem('token', this.token);
-    localStorage.setItem('id', id);
   }
 
   getToken() {
