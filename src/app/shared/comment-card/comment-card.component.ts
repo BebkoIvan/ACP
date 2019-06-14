@@ -7,7 +7,8 @@ import {
     EventEmitter,
     DoCheck,
     SimpleChanges,
-    OnChanges
+    OnChanges,
+    ChangeDetectorRef
 } from '@angular/core';
 import { UserInfoService } from 'src/app/services/user-info.service';
 import { UserAuthService } from 'src/app/services/user-auth.service';
@@ -18,19 +19,21 @@ import { Observable } from 'rxjs';
     selector: 'app-comment-card',
     templateUrl: './comment-card.component.pug',
     styleUrls: ['./comment-card.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CommentCardComponent implements OnInit {
     likeActive = false;
     isEditable: boolean;
     author: Observable<any>;
     editing = false;
-    isLoaded = false;
+    comment$: Observable<Comment1>;
+
     @Input() comment:Comment1;
 
 
     @Output() commentDeleted: EventEmitter<Comment1> =   new EventEmitter();
     
-    constructor(private _user: UserAuthService, private _commentsService: CommentsService) { 
+    constructor(private _user: UserAuthService, private cdr: ChangeDetectorRef, private _commentsService: CommentsService) { 
     }
 
     ngOnInit() {
@@ -63,10 +66,9 @@ export class CommentCardComponent implements OnInit {
     }
 
     updateComment(comment: Comment1) {
-        this._commentsService.updateComment(this.comment._post, this.comment.id, comment.text).subscribe(data => {
-            console.log(data);
-        });
-        this.comment.text = comment.text;
+        this._commentsService.updateComment(this.comment._post, this.comment.id, comment.text).subscribe(data =>
+            {this.comment.text = comment.text;this.cdr.detectChanges()} );
+        
         this.editing = false;
     }
 }

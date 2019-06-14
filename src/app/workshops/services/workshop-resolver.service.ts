@@ -9,13 +9,13 @@ import { TSInterfaceBody } from 'babel-types';
 @Injectable({
     providedIn: 'root'
 })
-export class WorkshopResolverService implements Resolve<Workshop[]> {
+export class WorkshopResolverService implements Resolve<any[]> {
     constructor(private _workshopsService: WorkshopsService, private _user: UserAuthService, private _tagsService: TagsService) {}
     body;
     resolve(
         route: ActivatedRouteSnapshot,
         state: RouterStateSnapshot,
-    ): Observable<any> |Promise<Workshop[]>| Workshop[] {
+    ): Observable<any> |Promise<any[]>| any[] {
         if (route.queryParams.category || route.queryParams.tags) {
             if (route.queryParams.category === 'All') {
                 if (this._workshopsService.allWorkshops && !route.queryParams.tags) {
