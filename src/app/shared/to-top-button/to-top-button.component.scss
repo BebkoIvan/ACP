@@ -15,12 +15,12 @@ button {
     cursor: pointer;
 
     @include mq($until: mobile) {
-     right: 10px;
+     left: 10px;
      padding: 7px;
     }
 
     @include mq($from: mobile) {
-      right:20px;
+      left:13vw;
       padding: 10px;
     }
 

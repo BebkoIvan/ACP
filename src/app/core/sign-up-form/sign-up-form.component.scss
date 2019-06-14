@@ -1,0 +1,49 @@
+@import "../../../scss/abstracts/variables";
+
+:host{
+    display: flex;
+    flex: 1;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 20px;
+}
+
+.form-group{
+    display: flex;
+    flex-direction: column;
+
+
+    input{
+        border-bottom: 2px solid $grey1;
+        margin: 5px 0;
+        &:focus{
+            border-bottom: 2px solid blue;
+        }
+    }
+
+    button{
+        padding: 10px;
+        background-color: $grey1;
+        margin: 10px 0;
+        color: $grey2;
+        cursor: pointer;
+        border-radius: 6px;
+        &:hover{
+            background-color:$tag-color;
+            color: white;
+        }
+    }
+}
+
+.signUpForm{
+    background: white;
+
+    h2{
+        text-align: center;
+    }
+}
+
+form{
+    padding: 20px;
+}
+

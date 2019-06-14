@@ -23,10 +23,11 @@ export class UserAuthService implements OnInit {
   ngOnInit() { }
 
 
-  setToken(token: any) {
+  setTokenId(token: any,id: any) {
     this.token = token;
     localStorage.clear();
     localStorage.setItem('token', this.token);
+    localStorage.setItem('id', this.user.id);
   }
 
   getToken() {
@@ -46,6 +47,18 @@ export class UserAuthService implements OnInit {
 
   updateUser(id: string, body ): Observable<any> {
     return this._api.putRequest(`users/${id}`, body);
+  }
+
+  signUp(username,password){
+
+    let body = {
+      username:`${username}`,
+      password:`${password}`
+    };
+    return this._api.postRequest('users/signup',body);
+  }
+  getUserById(id: string): Observable<any> {
+    return this._api.getRequest(`users/${id}`);
   }
 
 

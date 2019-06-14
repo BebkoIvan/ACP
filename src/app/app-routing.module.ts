@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component';
-import { LoginFormComponent } from './shared/login-form/login-form.component';
+import { LoginFormComponent } from './core/login-form/login-form.component';
+import { SignUpFormComponent } from './core/sign-up-form/sign-up-form.component';
 
 const routes: Routes = [
     {
@@ -16,12 +17,12 @@ const routes: Routes = [
     },
 
     {
-        path:'dashboard',
+        path: 'dashboard',
         loadChildren: './dashboard/dashboard.module#DashboardModule'
     },
 
     {
-        path:'quizzes',
+        path: 'quizzes',
         loadChildren: './quizzes/quizzes.module#QuizzesModule'
     },
 
@@ -29,6 +30,12 @@ const routes: Routes = [
         path: 'login',
         pathMatch: 'full',
         component: LoginFormComponent
+    },
+
+    {
+        path: 'sign-up',
+        pathMatch: 'full',
+        component: SignUpFormComponent
     },
 
     {

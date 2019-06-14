@@ -1,0 +1,11 @@
+.signUpForm
+ h2 Sign Up
+ form('[formGroup]'="signUpForm" )
+  .form-group
+   label(for="username") Username
+   input(type="text" formControlName="username" class="form-control")
+  .form-group
+   label(for="password") Password
+   input(type="text" formControlName="password" class="form-control") 
+  .form-group
+   button('(click)'="onSubmit($event)") Sign Up

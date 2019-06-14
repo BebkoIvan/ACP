@@ -1,4 +1,4 @@
-.comments
-  .comment(*ngFor="let comment of comments")
-    app-comment-card([comment]="comment" '(commentDeleted)'="deleteComment($event)")
+.comments('*ngIf'="isLoaded | async as isLoaded")
+  .comment('*ngFor'="let comment of comments ")
+    app-comment-card('[comment]'="comment" '(commentDeleted)'="deleteComment($event)")
   app-comment-form((commentCreated)="addComment($event)")

@@ -24,7 +24,10 @@ export class WorkshopResolverService implements Resolve<Workshop[]> {
                     return combineLatest(this._workshopsService.getPosts(null, route.queryParams.tags), this._tagsService.getTags('all'));
                 }
             } else if (route.queryParams.category === 'My Workshops' || route.queryParams.category === 'Favorite') {
-                return combineLatest(this._workshopsService.getPosts('My', route.queryParams.tags), this._tagsService.getTags('all'));
+                
+                    return combineLatest(this._workshopsService.getPosts('My', route.queryParams.tags), this._tagsService.getTags('all'));
+                
+               
             }
             else{
                 return combineLatest(this._workshopsService.getPosts(null, route.queryParams.tags), this._tagsService.getTags('all'));

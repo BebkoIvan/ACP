@@ -27,10 +27,8 @@ export class WorkshopsFeedComponent implements OnInit {
     }
 
     getPosts() {
-    //    this._tagsService.createTag("Scala").subscribe(data => console.log(data));
-        // this._workshopsService.allFromServer().subscribe(data=>console.log(data));
-        // this._workshopsService.updatePost('5cfff7a21169ca285e4aa0ca',body).subscribe(data=>console.log(data));
-        // this._workshopsService.newUser().subscribe(data=>console.log(data));
+        console.log(this._workshopsService.totalPosts);
+        // this._workshopsService.getPosts().subscribe(data=>console.log(data));
 
     }
 

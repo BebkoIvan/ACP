@@ -1,18 +1,18 @@
-.commentCard('*ngIf'="!editing")
+.commentCard('*ngIf'="!editing && author | async as author")
  .header
   button.user
-   app-user-pic('[name]'="comment.authorName" '[lastname]'="comment.authorLastname" '[imgSrc]'="comment.authorImg")
-   span {{comment.authorName}} {{comment.authorLastname}}
+   app-user-pic( '[name]'="author.firstName" '[lastname]'="author.lastName" '[imgSrc]'="author.picture")
+   span {{author.firstName}} {{author.lastName}}
  .main-content
-  p {{comment.commentText}}
+  p {{comment.text}}
  .commentFooter
   .time    
-   app-timestamp('[date]'="comment.date" '[format]'="'short'") 
+   app-timestamp('[date]'="comment.createdAt" '[format]'="'short'") 
   .edit-delete
    button('*ngIf'="isEditable" '(click)'="editComment($event)") Edit
-   button('(click)'="deleteComment($event)") Delete 
+   button('*ngIf'="isEditable" '(click)'="deleteComment($event)") Delete 
   .likes 
-   span {{comment.likes}}
-   app-like('[likeActive]'="likeActive" '(likeClicked)'="likeClick()") 
-app-comment-form('*ngIf'="editing")   
+  //-  span 
+  //-  app-like('[likeActive]'="likeActive" '(likeClicked)'="likeClick()") 
+app-comment-form('*ngIf'="editing" '[value]'="comment.text" '(commentCreated)'="updateComment($event)")   
 

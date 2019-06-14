@@ -13,11 +13,9 @@ export class WorkshopsService {
     constructor(private _userService: UserAuthService, private _api: ApiService) {}
 
     allWorkshops: [];
+    totalPosts;
 
-
-    getWorkShops(): Workshop[] {
-            return this.allWorkshops;
-    }
+   
 
     getPosts (category?, tags?: string): Observable<any> {
         let   params = {
@@ -31,7 +29,7 @@ export class WorkshopsService {
         
         if (category) {
             params.page = '1';
-            params.authorId = `${this._userService.user.id}`;
+            params.authorId = `${localStorage.getItem('id')}`;
         }
 
         if (tags) {
@@ -54,7 +52,7 @@ export class WorkshopsService {
     }
 
     setPosts() {
-        this.getPosts().subscribe(data => this.allWorkshops = data.posts);
+        this.getPosts().subscribe(data => {this.allWorkshops = data.posts; this.totalPosts = data.total; });
     }
 
     // newUser(){

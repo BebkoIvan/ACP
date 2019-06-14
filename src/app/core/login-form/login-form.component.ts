@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { HttpHeaders } from '@angular/common/http';
-import { ApiService } from '../services/api-service/api.service';
 import { UserAuthService } from 'src/app/services/user-auth.service';
 import { Router } from '@angular/router';
 
@@ -32,7 +30,7 @@ export class LoginFormComponent implements OnInit {
       this.submitted = true;
 
       this._userAuth.signIn(this.f.username.value, this.f.password.value).subscribe(data =>
-        { this._userAuth.setToken(data.token); this._userAuth.isAuth = true;
+        { this._userAuth.setTokenId(data.token,data.id); this._userAuth.isAuth = true;
           this._router.navigate(['/workshops']); this._userAuth.setUser();
          } );
 

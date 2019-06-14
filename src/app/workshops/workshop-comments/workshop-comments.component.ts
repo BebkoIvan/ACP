@@ -1,6 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, SimpleChanges, OnChanges } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { WorkshopsService } from '../services/workshops.service';
+import { CommentsService } from 'src/app/shared/services/comments-service/comments.service';
+import { Observable } from 'rxjs';
 
 @Component({
     selector: 'app-workshop-comments',
@@ -8,27 +10,27 @@ import { WorkshopsService } from '../services/workshops.service';
     styleUrls: ['./workshop-comments.component.scss']
 })
 export class WorkshopCommentsComponent implements OnInit {
-    id: number;
+    id: string;
+    isLoaded: Observable<any>;
     comments: Array<Comment1>;
-
-    constructor(private route: ActivatedRoute, private _workshopsService: WorkshopsService) {
+    constructor(private route: ActivatedRoute, private _workshopsService: WorkshopsService,public _commentsService: CommentsService) {
         this.id = route.parent.snapshot.params['id'];
     }
 
     ngOnInit() {
-        // this.comments = this._workshopsService.getOneWorkShop(this.id).comments;
-        // this.comments.sort(function(a, b) {
-        //     let a1 = new Date(a.date);
-        //     let b2 = new Date(b.date);
-        //     return a1 > b2 ? -1 : a1 < b2 ? 1 : 0;
-        // });
+        this.isLoaded = this._commentsService.getComments(this.id);
+        this.isLoaded.subscribe(data => this.comments = data);
     }
 
-    addComment(comment: Comment1){
+
+
+    addComment(comment: Comment1) {
+        this._commentsService.createComment(this.id, comment.text).subscribe(data => alert("Thank you for your comment!"));
         this.comments.unshift(comment);
     }
 
-    deleteComment(comment: Comment1){
-        this.comments.splice(this.comments.indexOf(comment),1);
+    deleteComment(comment: Comment1) {
+        this._commentsService.deleteComment(this.id, comment._id).subscribe(data =>console.log(data));
+        this.comments.splice(this.comments.indexOf(comment), 1);
     }
 }

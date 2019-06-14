@@ -1,8 +1,9 @@
-interface Comment1{
-    authorName: string;
-    authorLastname: string;
-    authorImg: string;
-    date: string;
-    commentText: string;
-    likes: number;
+interface Comment1 {
+    createdAt:Date,
+    id: string,
+    text: string,
+    updatedAt: Date,
+    _author: string
+    _id: string,
+    _post: string
 }

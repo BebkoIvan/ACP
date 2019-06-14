@@ -9,6 +9,8 @@ export class CommentsService {
 
   constructor(private _api: ApiService) { }
 
+  comments: Array<Comment1>;
+
   getComments(postId): Observable<any>{
     return this._api.getRequest(`comments/${postId}`);
   }

@@ -1,15 +1,18 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { FormGroup,Validators, FormControl } from '@angular/forms';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { UserInfoService } from 'src/app/services/user-info.service';
+import { UserAuthService } from 'src/app/services/user-auth.service';
 @Component({
   selector: 'app-comment-form',
   templateUrl: './comment-form.component.pug',
   styleUrls: ['./comment-form.component.scss']
 })
 export class CommentFormComponent implements OnInit {
+  constructor(private _user: UserAuthService) {}
 
   user: User;
   comment: Comment1;
+  @Input() value? : string;
   CommentForm: FormGroup = new FormGroup({
 
     commentText: new FormControl('', [
@@ -18,26 +21,29 @@ export class CommentFormComponent implements OnInit {
       Validators.required
     ]),
   });
-  constructor(private _user: UserInfoService) {}
-
-  ngOnInit() {
-    this.user = this._user.profile;
-  }
 
   @Output() commentCreated: EventEmitter<Comment1> =   new EventEmitter();
+
+  ngOnInit() {
+    if(this.value){
+      this.CommentForm.get('commentText').setValue(this.value);
+    }
+ 
+   }
 
   createComment(event: Event): void {
     event.preventDefault();
 
     this.comment = {
-      authorImg: this._user.profile.imgSrc,
-      authorLastname: this._user.profile.lastname,
-      authorName: this.user.name,
-      date:(new Date()).toDateString(),
-      commentText: this.CommentForm.get('commentText').value,
-      likes: 0
-    }
+      _author: this._user.user.id,
+      createdAt: new Date(),
+      text: this.CommentForm.get('commentText').value,
+      _id:'',
+      id:'',
+      updatedAt:new Date(),
+      _post:''
 
+    }
     this.commentCreated.emit(this.comment);
     this.CommentForm.reset('commentText');
   

@@ -94,12 +94,10 @@ export class TextToColorDirective implements OnChanges {
         let color = this.colorMap[1].color;
         switch (title.length) {
             case 2:
-                if (title.match(/J/)) {
+                if (title.match(/I/)) {
                     color = this.colorMap[1].color;
                 } else {
-                    color = this.colorMap[
-                        Math.floor(Math.random() * this.colorMap.length)
-                    ].color;
+                    color = this.colorMap[6].color;
                 }
                 break;
 
