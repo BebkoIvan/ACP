@@ -12,14 +12,15 @@ import { Observable } from 'rxjs';
 export class WorkshopCommentsComponent implements OnInit {
     id: string;
     isLoaded: Observable<any>;
-    comments: Array<Comment1>;
+    comments$: Observable<Comment1[]>;
+    comments:Array<Comment1>;
     constructor(private route: ActivatedRoute, private _workshopsService: WorkshopsService,public _commentsService: CommentsService) {
         this.id = route.parent.snapshot.params['id'];
     }
 
     ngOnInit() {
-        this.isLoaded = this._commentsService.getComments(this.id);
-        this.isLoaded.subscribe(data => this.comments = data);
+        this.comments$ = this._commentsService.getComments(this.id);
+        this.comments$.subscribe(data => this.comments = data);
     }
 
 
@@ -30,7 +31,7 @@ export class WorkshopCommentsComponent implements OnInit {
     }
 
     deleteComment(comment: Comment1) {
-        this._commentsService.deleteComment(this.id, comment._id).subscribe(data =>console.log(data));
+        this._commentsService.deleteComment(this.id, comment._id).subscribe(data => console.log(data));
         this.comments.splice(this.comments.indexOf(comment), 1);
     }
 }
