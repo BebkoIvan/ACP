@@ -524,7 +524,7 @@ button,
 /**
  * Show the overflow in Edge.
  */
-input[type="text"] {
+input[type="text"],input[type="password"] {
     outline-style: none;
     box-shadow: none;
     border-color: transparent;
