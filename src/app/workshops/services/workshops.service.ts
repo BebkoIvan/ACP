@@ -29,17 +29,14 @@ export class WorkshopsService {
         }
         
         if (category && this._userService.user) {
-            console.log("user is created");
             params.page = '1';
             params.authorId = this._userService.user._id;
-            console.log(this._userService.user);
         }
 
         if (tags) {
             params.tags = tags.split(',').join('|');
         }
         if (!this._userService.user && category) {
-            console.log('not created');
             params.page = '1';
             return this._userService.getCurrentUser().pipe(
                 tap((user) => {
