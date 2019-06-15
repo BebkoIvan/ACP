@@ -48,13 +48,8 @@ export class UserAuthService implements OnInit {
     return this._api.putRequest(`users/${id}`, body);
   }
 
-  signUp(username,password){
-
-    let body = {
-      username:`${username}`,
-      password:`${password}`
-    };
-    return this._api.postRequest('users/signup',body);
+  signUp(user){
+    return this._api.postRequest('users/signup', user);
   }
   getUserById(id: string): Observable<any> {
     return this._api.getRequest(`users/${id}`);
