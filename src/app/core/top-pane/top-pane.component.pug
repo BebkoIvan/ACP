@@ -9,6 +9,7 @@ header
      i([ngClass]="!searchActive ? 'icon-search' : 'icon-cross'")
     input('type'="text"  'id'="search-bar" '*ngIf'="searchActive" #searchInput='' 'placeholder'="Search.." '(blur)'="handleSearchClick($event)") 
   button#profileBtn(*ngIf="userService.user") 
-   a('class'="profile" '*ngIf'="!searchActive")
+   a.profile('*ngIf'="!searchActive")
      span('*ngIf'="userService.user.firstName") {{ userService.user.firstName }} {{ userService.user.lastName }}
-     app-user-pic('[imgSrc]'="userService.user.picture" '[name]'="userService.user.firstName" '[lastname]'="userService.user.lastName" )
+     .userProfile
+      app-user-pic('[imgSrc]'="userService.user.picture" '[name]'="userService.user.firstName" '[lastname]'="userService.user.lastName" )

@@ -7,9 +7,10 @@ import { Routes, RouterModule } from "@angular/router";
 import { SignUpFormComponent } from './sign-up-form/sign-up-form.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
-  declarations: [SideMenuComponent,TopPaneComponent, SignUpFormComponent,LoginFormComponent],
+  declarations: [SideMenuComponent,TopPaneComponent, SignUpFormComponent,LoginFormComponent, ProfileComponent],
   imports: [
     CommonModule,SharedModule,RouterModule,ReactiveFormsModule
   ],

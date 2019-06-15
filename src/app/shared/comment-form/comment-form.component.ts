@@ -25,7 +25,8 @@ export class CommentFormComponent implements OnInit {
   @Output() commentCreated: EventEmitter<Comment1> =   new EventEmitter();
 
   ngOnInit() {
-    if(this.value){
+
+    if (this.value) {
       this.CommentForm.get('commentText').setValue(this.value);
     }
  
@@ -44,8 +45,11 @@ export class CommentFormComponent implements OnInit {
       _post:''
 
     }
-    this.commentCreated.emit(this.comment);
-    this.CommentForm.reset('commentText');
+    if (this.comment.text) {
+      this.commentCreated.emit(this.comment);
+      this.CommentForm.reset('commentText');
+    }
+
   
   }
 

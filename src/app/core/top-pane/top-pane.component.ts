@@ -1,6 +1,7 @@
 import { Component, OnInit,EventEmitter,Input,Output, ViewChild, ElementRef } from '@angular/core';
 import { UserInfoService } from 'src/app/services/user-info.service';
 import { UserAuthService } from 'src/app/services/user-auth.service';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-top-pane',
@@ -19,10 +20,14 @@ export class TopPaneComponent implements OnInit {
 
     @Output()menuClick = new EventEmitter();
 
-    constructor(public userService: UserAuthService) {}
+    constructor(public userService: UserAuthService,private _router: Router) {}
 
     menuHandler(e: Event): void {
       this.menuClick.emit();
+    }
+
+    goProfile(e:Event):void {
+        this._router.navigate(['/profile'])
     }
 
     ngOnInit() {
