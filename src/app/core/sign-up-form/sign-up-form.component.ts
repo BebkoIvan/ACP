@@ -48,10 +48,5 @@ export class SignUpFormComponent implements OnInit {
                            this._router.navigate(['/workshops']); this._userAuth.user = data;
        });
 
-        //   this._userAuth.signUp(this.f.username.value, this.f.password.value).subscribe(data =>
-    //     {console.log(data);
-    //     this._router.navigate(['/login'])});
-
-    // }
         }
 }
