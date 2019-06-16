@@ -1,0 +1,23 @@
+.profile('*ngIf' = "userService.user")
+  .userPic
+   app-user-pic('[imgSrc]'="userService.user.picture" '[name]'="userService.user.firstName" '[lastname]'="userService.user.lastName" )
+  span {{userService.user.firstName}}
+  span {{userService.user.lastName}}
+  button.changePassword('(click)' = "changePassword($event)") CHANGE PASSWORD 
+  button.logOut('(click)' = "logOut($event)") LOG OUT
+.passwordForm('[class.active]' = "passwordChanging")
+ .backdrop('(click)'="hideForm()")
+ .mainContent
+  h2 CHANGE PASSWORD
+  form('[formGroup]'="passwordForm" '[class.active]'="passwordChanging" )
+   .form-group
+    label(for="password") Password
+    input(type="password" formControlName="password" class="form-control")
+   .form-group
+    label(for="password") Confirm password
+    input(type="password" formControlName="confirmPassword" class="form-control") 
+   .formFooter
+    button('(click)'="onSubmit()") Save
+    button('(click)' = "hideForm()")  Cancel
+  
+ 

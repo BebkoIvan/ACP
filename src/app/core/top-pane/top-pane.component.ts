@@ -34,6 +34,8 @@ export class TopPaneComponent implements OnInit {
         if (this.userService.isAuth) {
             this.userService.setUser();
         }
+
+        this._router.navigate(['/profile']);
     }
 
     handleSearchClick(e: Event) {

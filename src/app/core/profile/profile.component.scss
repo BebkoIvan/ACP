@@ -1,0 +1,111 @@
+@import "../../../scss/abstracts/variables.scss";
+:host{
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    height: 93vh;
+    // position: fixed;
+}
+
+.profile{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    background: $white;
+    padding: 20px;
+    border-radius: 10px;
+
+    span{
+        font-size: 25px;
+        margin: 10px 0;
+    }
+
+    .changePassword{
+        background-color:$red_color;
+        padding: 15px;
+        border-radius: 25px;
+        color: $white;
+        margin-bottom: 10px;
+        cursor: pointer;
+    }
+
+    .logOut{
+        border: none;
+        color: $red_color;
+        cursor: pointer;
+    }
+    .userPic{
+        font-size: 130px;
+        border-radius: 50%;
+        border: 2px solid $red_color;
+        padding: 10px;
+        @include mq($from: mobile) {
+        width: 30vw;
+        height: 30vh;
+    }
+}
+
+}
+
+.passwordForm{
+    display: flex;
+    right: -100%;
+    width: 100%;
+    height: 93vh;
+    transition:0.5s;
+    position: fixed;
+
+    &.active{
+    right: 0;
+    }
+}
+
+.backdrop{
+    // position: absolute;
+    height: 93vh;
+    width: 100%;
+    flex: 1;
+    background:rgba(0, 0, 0, 0.3); 
+}
+
+.mainContent{
+    display: flex;
+    height: 93vh;
+    flex-direction: column;
+    background-color: $white;
+    padding:0 10vw;
+}
+.form-group{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+
+
+    input{
+        border-bottom: 2px solid $grey1;
+        margin: 5px 0;
+        padding: 8px;
+
+        &:focus{
+            border-bottom: 2px solid $red_color;
+        }
+
+    }
+}
+
+    .formFooter{
+        display: flex;
+        justify-content: space-between;
+
+        button{
+            padding: 10px 20px;
+            border-radius: 15px;
+            cursor: pointer;
+        }
+
+        &>:nth-last-child(2){
+            background-color: $red_color;
+            color:$white;
+        }
+    }

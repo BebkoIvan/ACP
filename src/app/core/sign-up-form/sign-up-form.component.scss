@@ -17,8 +17,9 @@
     input{
         border-bottom: 2px solid $grey1;
         margin: 5px 0;
+        padding: 8px;
         &:focus{
-            border-bottom: 2px solid blue;
+            border-bottom: 2px solid $red_color;
         }
     }
 

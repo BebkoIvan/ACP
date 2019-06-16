@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component';
 import { LoginFormComponent } from './core/login-form/login-form.component';
 import { SignUpFormComponent } from './core/sign-up-form/sign-up-form.component';
+import { ProfileComponent } from './core/profile/profile.component';
 
 const routes: Routes = [
     {
@@ -36,6 +37,11 @@ const routes: Routes = [
         path: 'sign-up',
         pathMatch: 'full',
         component: SignUpFormComponent
+    },
+    {
+        path: 'profile',
+        pathMatch: 'full',
+        component: ProfileComponent
     },
 
     {

@@ -8,8 +8,8 @@ header
     button('id'="search_btn" '(click)'="handleSearchClick($event)")
      i([ngClass]="!searchActive ? 'icon-search' : 'icon-cross'")
     input('type'="text"  'id'="search-bar" '*ngIf'="searchActive" #searchInput='' 'placeholder'="Search.." '(blur)'="handleSearchClick($event)") 
-  button#profileBtn(*ngIf="userService.user") 
-   a.profile('*ngIf'="!searchActive")
+  button#profileBtn('*ngIf'="userService.user" '(click)' = 'goProfile($event)') 
+   .profile('*ngIf'="!searchActive" 'href'='/profile')
      span('*ngIf'="userService.user.firstName") {{ userService.user.firstName }} {{ userService.user.lastName }}
      .userProfile
       app-user-pic('[imgSrc]'="userService.user.picture" '[name]'="userService.user.firstName" '[lastname]'="userService.user.lastName" )
