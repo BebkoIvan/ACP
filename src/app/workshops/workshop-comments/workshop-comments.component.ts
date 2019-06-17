@@ -32,7 +32,7 @@ export class WorkshopCommentsComponent implements OnInit {
     addComment(comment: Comment1) {
         this._commentsService.createComment(this.id, comment.text).subscribe(data => {
             let comment1 = data.comment;
-            this.comments.unshift(comment1);
+            this.comments.push(comment1);
             this.cdr.detectChanges();
         });
        
