@@ -1,4 +1,4 @@
-.profile('*ngIf' = "userService.user")
+.profile
   .userPic
    app-user-pic('[imgSrc]'="userService.user.picture" '[name]'="userService.user.firstName" '[lastname]'="userService.user.lastName" )
   span {{userService.user.firstName}}
@@ -17,7 +17,7 @@
     label(for="password") Confirm password
     input(type="password" formControlName="confirmPassword" class="form-control") 
    .formFooter
-    button('(click)'="onSubmit()") Save
+    button('(click)'="onSubmit($event)") Save
     button('(click)' = "hideForm()")  Cancel
   
  

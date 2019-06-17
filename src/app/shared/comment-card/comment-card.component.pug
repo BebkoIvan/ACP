@@ -1,7 +1,8 @@
 .commentCard('*ngIf'="!editing && author | async as author")
  .header
   button.user
-   app-user-pic( '[name]'="author.firstName" '[lastname]'="author.lastName" '[imgSrc]'="author.picture")
+   .userPic
+    app-user-pic( '[name]'="author.firstName" '[lastname]'="author.lastName" '[imgSrc]'="author.picture")
    span {{author.firstName}} {{author.lastName}}
  .main-content
   p {{comment.text}}

@@ -27,7 +27,7 @@ export class ProfileComponent implements OnInit {
 
   }
 
-  logOut(){
+  logOut(e: Event){
     localStorage.clear();
     this.userService.isAuth = false;
     this.userService.user = null;

@@ -34,16 +34,19 @@ const routes: Routes = [
     },
 
     {
-        path: 'sign-up',
-        pathMatch: 'full',
-        component: SignUpFormComponent
-    },
-    {
         path: 'profile',
         pathMatch: 'full',
         component: ProfileComponent
     },
 
+
+    {
+        path: 'sign-up',
+        pathMatch: 'full',
+        component: SignUpFormComponent
+    },
+
+  
     {
     path: '**',
     component: PageNotFoundComponent
