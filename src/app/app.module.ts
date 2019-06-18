@@ -7,9 +7,10 @@ import {CoreModule} from "./core/core.module";
 import {SharedModule} from "./shared/shared.module";
 import { DateAgoPipe } from './pipes/date-ago.pipe';
 import { HttpClientModule,HTTP_INTERCEPTORS } from '@angular/common/http';
-import { UserAuthService } from './services/user-auth.service';
 import { MyInterceptor } from './interceptors/auth.interceptor';
 import { ApiService } from './shared/services/api-service/api.service';
+import { DynamicFormModule } from './dynamic-form/dynamic-form.module';
+import { FormControlsModule } from './form-controls/form-controls.module';
 
 
 
@@ -18,11 +19,10 @@ import { ApiService } from './shared/services/api-service/api.service';
 
 @NgModule({
     declarations: [AppComponent, DateAgoPipe],
-    imports: [BrowserModule, HttpClientModule, AppRoutingModule, BrowserAnimationsModule, CoreModule, SharedModule],
+    imports: [BrowserModule, HttpClientModule, AppRoutingModule, DynamicFormModule, BrowserAnimationsModule, CoreModule,  SharedModule],
     providers: [ApiService,
         {
           provide: HTTP_INTERCEPTORS,
-          // Этим interceptor`ом будем добавлять auth header
           useClass: MyInterceptor,
           multi: true
         }, ],

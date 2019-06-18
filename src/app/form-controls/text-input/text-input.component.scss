@@ -1,6 +1,6 @@
 @import "../../../scss/abstracts/variables";
 @import "../../../scss/abstracts/mixins";
 
-select{
+input{
     @include input();       
 }

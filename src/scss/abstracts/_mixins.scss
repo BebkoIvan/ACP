@@ -17,6 +17,17 @@
     }
 }
 
+@mixin input() {
+    border-bottom: 2px solid $grey1;
+    display: block;
+    width: 100%;
+    margin: 5px 0;
+    padding: 8px 0;
+    &:focus{
+        outline: none;
+        border-bottom: 2px solid $red_color;
+    }
+}
 @mixin tagsList() {
     display: flex;
     flex-wrap: wrap;

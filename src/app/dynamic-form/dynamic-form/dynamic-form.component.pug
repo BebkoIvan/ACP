@@ -1,0 +1,6 @@
+form('[formGroup]'='form' '(ngSubmit)'='onSubmit(form)')
+ ng-container('*ngFor'='let field of config')
+  .dynamic-form__control
+   label('*ngIf'='field.label') {{field.label}}
+   ng-container(appDynamicField '[config]'='field' '[group]'='form')
+ 

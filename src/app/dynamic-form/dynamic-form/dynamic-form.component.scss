@@ -1,0 +1,10 @@
+@import "../../../scss/abstracts/variables";
+
+form{
+    height: 40vh;
+    width: 40vw;
+    background-color: white;
+    &>div{
+        padding: 10px;
+    }
+}
