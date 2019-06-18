@@ -17,4 +17,9 @@ app-viewport
    .date published at
     app-timestamp([date]="workshop.createdAt",[format]="'short'") 
  app-auxiliary-content([auxContActive]="acaActive",(acaClick)="acaHandler()") 
+  .tabGroup 
+   app-tab-group
+    app-tab('[title]'="'Сomments'" '[link]'='"comments"') 
+    app-tab('[title]'="'Resources'" '[link]'='"resources"') 
+    app-tab([title]="'Quizzes'" '[link]'='"quizzes"')
 
