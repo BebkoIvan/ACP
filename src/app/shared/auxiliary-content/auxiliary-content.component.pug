@@ -2,6 +2,7 @@
  button#open-aca((click)="acaHandler($event)")
   i([ngClass]="!auxContActive ? 'icon-circle-left' : 'icon-circle-right' ")
  ng-content
- router-outlet(name="aside") 
+ .content
+  router-outlet(name="aside") 
 
    

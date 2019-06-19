@@ -6,18 +6,20 @@
     }
 }
 
+.content{
+    height: 83vh;
+    overflow-y: scroll;
+    scrollbar-color: $red_color #f1f1f1;
+    scrollbar-width: thin;
+}
+
 .auxilContent{
     width: 0vw;
     height: 93vh;
     transition: .5s;
     overflow: hidden;
     
-    .content{
-        overflow-y: scroll;
-        scrollbar-color: $red_color #f1f1f1;
-        scrollbar-width: thin;
-        height: 81vh;
-    }
+  
 
     .tabGroup{
         margin-top: 15px;
