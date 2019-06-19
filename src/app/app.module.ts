@@ -11,6 +11,7 @@ import { MyInterceptor } from './interceptors/auth.interceptor';
 import { ApiService } from './shared/services/api-service/api.service';
 import { DynamicFormModule } from './dynamic-form/dynamic-form.module';
 import { FormControlsModule } from './form-controls/form-controls.module';
+import { ConfigPipe } from './pipes/config.pipe';
 
 
 

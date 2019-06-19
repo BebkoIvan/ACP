@@ -6,7 +6,7 @@ import { NG_VALUE_ACCESSOR, ControlValueAccessor, DefaultValueAccessor } from '@
   templateUrl: './dropdown.component.pug',
   providers: [{
     provide: NG_VALUE_ACCESSOR,
-    useExisting: forwardRef(() => DefaultValueAccessor),
+    useExisting: forwardRef(() => DropdownComponent),
     multi: true
   }],
   styleUrls: ['./dropdown.component.scss']
@@ -21,19 +21,24 @@ export class DropdownComponent implements ControlValueAccessor {
   private propagateChange = (value: string) => {}
   private propagateTouched = (value: FocusEvent) => {}
 
-ngOnInit() {}
 
 
 
-writeValue(value) { 
-  this.value = value;
+writeValue(value) {
+  if(!this.value){
+    this.value = this.options[0];
+  }
+  else{
+    this.value = value;
+  }
+
 }
 
-registerOnChange(fn) {  
+registerOnChange(fn) { 
   this.propagateChange = fn;
  }
 
-registerOnTouched(fn) { 
+registerOnTouched(fn) {
   this.propagateTouched = fn;
  }
 

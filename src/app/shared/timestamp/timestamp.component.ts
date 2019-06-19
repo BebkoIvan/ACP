@@ -12,5 +12,5 @@ export class TimestampComponent implements OnInit {
 
     constructor() {}
 
-    ngOnInit() {}
+    ngOnInit() { }
 }

@@ -28,6 +28,12 @@ export class ConfigPipe implements PipeTransform {
         );
       }
     });
+    config.push(
+      {
+        type: 'button',
+        name: 'submit'
+      }
+    );
     return config;
   }
 

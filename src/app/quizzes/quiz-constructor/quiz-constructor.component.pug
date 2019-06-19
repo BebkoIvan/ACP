@@ -1,0 +1,18 @@
+.mainContent
+ form('[formGroup]'='form')
+  h3 Quiz name
+  app-text-input(placeholder='Type here...' 'formControlName'='quizName')
+  .questions('formArrayName'='questions')
+   .question('*ngFor'='let question of questionsForms.controls;let i = index' '[formGroupName]'='i')
+    .form-control
+     label Question 
+     app-text-input(placeholder='Type here...' 'formControlName'='question')
+    .form-control
+     label Question Type
+     app-dropdown('[options]'='questionTypes' 'formControlName'='questionType')
+    .form-control
+     label Correct Answer
+     app-text-input(placeholder='Type here...' 'formControlName'='correctAnswer')
+  button('(click)'="addQuestion()") Add question
+  
+ 

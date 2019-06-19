@@ -1,0 +1,11 @@
+@import "../../../scss/abstracts/variables.scss";
+div{
+    margin-top: 30px;
+}
+button{
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: $red_color;
+    color:$white;
+}

@@ -1,0 +1,4 @@
+app-viewport
+ .quiz
+  h2 {{quiz.name}}
+  app-dynamic-form('[config]'="quiz | config" '(submitted)'="formSubmitted($event)")

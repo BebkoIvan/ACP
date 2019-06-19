@@ -1,0 +1,54 @@
+@import "../../../scss/abstracts/variables";
+@import "../../../scss/abstracts/mixins";
+
+:host{
+    flex: 1;
+}
+
+h3::before {
+    content: '*';
+    color: red;
+
+}
+
+.mainContent{
+    padding: 15px;
+    background-color: white;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+}
+
+input{
+    @include input();       
+}
+
+.question{
+    border: 2px solid $red_color;
+    padding: 10px;
+    margin:10px 0;
+
+    .form-control{
+        margin:10px 0;
+    }
+    label{
+        font-weight: bold;
+
+        &::before{
+            content: '*';
+            color: red;
+        }
+    }
+}
+
+button{
+    border: 2px solid $grey1;
+    background-color: $red_color;
+    padding: 5px;
+    border-radius:8px;
+    margin-top: 10px;
+    cursor: pointer; 
+    color: white;
+}

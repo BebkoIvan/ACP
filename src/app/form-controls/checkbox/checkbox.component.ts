@@ -13,15 +13,15 @@ import { NG_VALUE_ACCESSOR, DefaultValueAccessor, ControlValueAccessor } from '@
 })
 export class CheckboxComponent implements ControlValueAccessor {
 
-  @Input() checked: boolean;
+  @Input() value: boolean;
   @Input() label: boolean;
   constructor() { }
 
   private propagateChange = (value: boolean) => {}
   private propagateTouched = (value: FocusEvent) => {}
 
-  writeValue(value: boolean) : void {
-    this.checked = value;
+  writeValue(value: boolean): void {
+    this.value = value;
    }
 
 registerOnChange(fn: any) {
@@ -36,7 +36,5 @@ registerOnTouched(fn: any) {
   this.propagateChange(value);
  }
 
-  ngOnInit() {
-  }
 
 }

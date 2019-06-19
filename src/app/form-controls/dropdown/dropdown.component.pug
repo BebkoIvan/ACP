@@ -1,3 +1,2 @@
 select('[id]'='inputId' '[(ngModel)]'='value' '(ngModelChange)'='onChange(value)')
- option(selected=true) {{placeHolder}}
- option('*ngFor'='let option of options') {{option}} 
+ option('*ngFor'='let option of options' '[ngValue]'='option') {{option}} 

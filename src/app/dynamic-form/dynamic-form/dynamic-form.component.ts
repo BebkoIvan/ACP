@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
@@ -10,6 +10,8 @@ export class DynamicFormComponent implements OnInit {
 
   @Input()
   config: any[] = [];
+  
+  @Output() submitted = new EventEmitter();
 
   form: FormGroup;
 
@@ -31,4 +33,5 @@ export class DynamicFormComponent implements OnInit {
     });
     return group;
   }
+
 }
