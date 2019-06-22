@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 export class QuizzesService {
   allQuizzes = [
     {
-      name: 'Final exam',
+      quizName: 'Final exam',
       author: 'Ivan Bebko',
       id: 0,
       date:'2019-06-12T18:33:00.447Z',
@@ -39,7 +39,7 @@ export class QuizzesService {
     ]
     },
     {
-      name: 'Money quiz',
+      quizName: 'Money quiz',
       id: 1,
       author: 'Ivan Bebko',
       date: '2019-06-12T18:33:00.447Z',
@@ -102,6 +102,13 @@ export class QuizzesService {
 
     getOneQuiz(id:any){
       return this.allQuizzes.find(x => x.id == id);
+    }
+
+    addQuiz(quiz:any){
+      quiz.id = this.allQuizzes.length;
+      quiz.author='Ivan Bebko';
+      quiz.date = '2019-06-12T18:33:00.447Z';
+      this.allQuizzes.push(quiz);
     }
 
 }

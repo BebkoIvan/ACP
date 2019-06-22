@@ -25,16 +25,10 @@ export class DropdownComponent implements ControlValueAccessor {
 
 
 writeValue(value) {
-  if(!this.value){
-    this.value = this.options[0];
-  }
-  else{
     this.value = value;
-  }
-
 }
 
-registerOnChange(fn) { 
+registerOnChange(fn) {
   this.propagateChange = fn;
  }
 

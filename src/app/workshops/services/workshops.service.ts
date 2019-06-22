@@ -25,11 +25,11 @@ export class WorkshopsService {
             tags: ''
         } ;
         if (!category) {
-            params.page = '1';
+            params.page = '0';
         }
         
         if (category && this._userService.user) {
-            params.page = '1';
+            params.page = '0';
             params.authorId = this._userService.user._id;
         }
 
@@ -37,7 +37,7 @@ export class WorkshopsService {
             params.tags = tags.split(',').join('|');
         }
         if (!this._userService.user && category) {
-            params.page = '1';
+            params.page = '0';
             return this._userService.getCurrentUser().pipe(
                 tap((user) => {
                    params.authorId = user.id;

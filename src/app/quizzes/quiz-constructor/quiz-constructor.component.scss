@@ -29,6 +29,13 @@ input{
     border: 2px solid $red_color;
     padding: 10px;
     margin:10px 0;
+    position: relative;
+
+    #deleteQuestion{
+        position: absolute;
+        right: 10px;
+        top:0;
+    }
 
     .form-control{
         margin:10px 0;
@@ -43,7 +50,7 @@ input{
     }
 }
 
-button{
+form>button[type='button'],.question>button,.answer-options>button{
     border: 2px solid $grey1;
     background-color: $red_color;
     padding: 5px;
@@ -52,3 +59,37 @@ button{
     cursor: pointer; 
     color: white;
 }
+
+button[type='submit']{
+    border: 2px solid $grey1;
+    background-color: $tag-color;
+    padding: 5px;
+    border-radius:8px;
+    margin-top: 10px;
+    cursor: pointer; 
+    color: white;
+}
+
+#deleteOption{
+    cursor: pointer;
+}
+
+.answer-variant{
+    display: flex;
+}
+
+.answer-options{
+    border: 2px solid $red_color;
+    padding: 10px;
+    border-top: none;
+    display: flex;
+    flex-direction: column;
+}
+
+.check-box{
+    display: flex;
+    width: 20%;
+    align-items: center;
+    padding: 10px ;
+}
+

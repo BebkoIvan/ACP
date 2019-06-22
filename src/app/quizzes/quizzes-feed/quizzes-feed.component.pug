@@ -1,9 +1,9 @@
 app-viewport
  .mainContent
-  .quizCard('*ngFor'='let quiz of quizzes')
+  .quizCard('*ngFor'='let quiz of quizS.allQuizzes')
    .quizName
     a(routerLink="../{{quiz.id}}" )
-     span {{quiz.name}}
+     span {{quiz.quizName}}
    .card-footer
     app-timestamp([date]="quiz.date",[format]="'fullDate'") 
     span {{quiz.author}}

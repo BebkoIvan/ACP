@@ -19,7 +19,6 @@ export class QuizPageComponent implements OnInit {
   }
 
   formSubmitted(value) {
-    console.log(value);
   }
 
 }

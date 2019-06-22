@@ -7,13 +7,13 @@ import { NG_VALUE_ACCESSOR, DefaultValueAccessor, ControlValueAccessor } from '@
   styleUrls: ['./checkbox.component.scss'],
   providers: [{
     provide: NG_VALUE_ACCESSOR,
-    useExisting: forwardRef(() => DefaultValueAccessor),
+    useExisting: forwardRef(() => CheckboxComponent),
     multi: true
   }],
 })
 export class CheckboxComponent implements ControlValueAccessor {
 
-  @Input() value: boolean;
+  @Input() value :boolean;
   @Input() label: boolean;
   constructor() { }
 
@@ -34,6 +34,7 @@ registerOnTouched(fn: any) {
 
  onChange(value: boolean): void {
   this.propagateChange(value);
+  console.log(value);
  }
 
 

@@ -1,18 +1,29 @@
 .mainContent
- form('[formGroup]'='form')
+ form('[formGroup]'='form' '(submit)'='onSubmit()')
   h3 Quiz name
   app-text-input(placeholder='Type here...' 'formControlName'='quizName')
   .questions('formArrayName'='questions')
-   .question('*ngFor'='let question of questionsForms.controls;let i = index' '[formGroupName]'='i')
+   .question('*ngFor'='let question of form.controls.questions.controls;let i = index' '[formGroupName]'='i')
+    button#deleteQuestion('(click)'='deleteQuestion(i)')
+     i.icon-cross
     .form-control
-     label Question 
+     label Question
      app-text-input(placeholder='Type here...' 'formControlName'='question')
     .form-control
      label Question Type
-     app-dropdown('[options]'='questionTypes' 'formControlName'='questionType')
-    .form-control
+     app-dropdown('[options]'='questionTypes'  'formControlName'='questionType')
+    .form-control('*ngIf'="this.questionsForms.controls[i].get('questionType').value === 'Short answer'")
      label Correct Answer
      app-text-input(placeholder='Type here...' 'formControlName'='correctAnswer')
-  button('(click)'="addQuestion()") Add question
-  
+    .form-control.answer-options('*ngIf'="this.questionsForms.controls[i].get('questionType').value === 'Choice'")
+     label Answer variants
+     .answer-variant('*ngFor'='let variant of question.controls.answerVariants.controls; let j = index')
+      .check-box
+       app-checkbox('[formControl]'='variant.controls["isCorrect"]')
+      app-text-input(placeholder='Type here...' '[formControl]'='variant.controls["answer"]')
+      button#deleteOption('(click)'='deleteVariant(i,j)')
+       i.icon-cross
+     button('type'='button' '(click)'="addAnswer(i)") Add answer 
+  button('type'='button' '(click)'="addQuestion()") Add question
+  button('type'='submit') Submit
  

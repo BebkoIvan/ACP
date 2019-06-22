@@ -8,7 +8,7 @@ export class ConfigPipe implements PipeTransform {
   transform(value: any, args?: any): any {
     let config = [];
     value.questions.forEach((el,i) => {
-      if ( el.questionType === 'input') {
+      if ( el.questionType === 'input' || el.questionType === 'Short answer') {
         config.push(
           {
             type: 'input',
@@ -17,7 +17,7 @@ export class ConfigPipe implements PipeTransform {
           }
         );
       }
-      else if (el.questionType === 'select') {
+      else if (el.questionType === 'select' || el.questionType === 'Choice') {
         config.push(
           {
             type: 'select',

@@ -11,7 +11,7 @@ export class QuizzesFeedComponent implements OnInit {
   acaActive = true;
 
   quizzes = [];
-  constructor(private quizS : QuizzesService,private router: Router) { }
+  constructor(public quizS : QuizzesService,private router: Router) { }
 
   ngOnInit() {
     this.quizzes = this.quizS.allQuizzes;
@@ -19,6 +19,7 @@ export class QuizzesFeedComponent implements OnInit {
 
   acaHandler(): void {
     this.acaActive = !this.acaActive;
+    console.log(this.quizS.allQuizzes);
 }
 
   deleteQuiz(quiz:any) {
