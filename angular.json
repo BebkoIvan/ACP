@@ -31,9 +31,9 @@
             ],
             "stylePreprocessorOptions": {
               "includePaths": [
-                  "src/scss"
+                "src/scss"
               ]
-          },          
+            },
             "scripts": [],
             "es5BrowserSupport": true
           },
@@ -141,5 +141,8 @@
       }
     }
   },
-  "defaultProject": "ACP"
+  "defaultProject": "ACP",
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
+  }
 }

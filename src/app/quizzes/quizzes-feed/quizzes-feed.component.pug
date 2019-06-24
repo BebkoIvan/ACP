@@ -1,11 +1,11 @@
 app-viewport
- .mainContent
-  .quizCard('*ngFor'='let quiz of quizS.allQuizzes')
+ .mainContent('*ngIf'="quizzes1 | async ")
+  .quizCard('*ngFor'='let quiz of quizzes')
    .quizName
     a(routerLink="../{{quiz.id}}" )
-     span {{quiz.quizName}}
+     span {{quiz.name}}
    .card-footer
-    app-timestamp([date]="quiz.date",[format]="'fullDate'") 
+    app-timestamp([date]="quiz.createdAt",[format]="'fullDate'") 
     span {{quiz.author}}
     button('(click)'='deleteQuiz(quiz)')
      i.icon-cross

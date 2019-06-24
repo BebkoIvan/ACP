@@ -34,7 +34,6 @@ registerOnTouched(fn: any) {
 
  onChange(value: boolean): void {
   this.propagateChange(value);
-  console.log(value);
  }
 
 

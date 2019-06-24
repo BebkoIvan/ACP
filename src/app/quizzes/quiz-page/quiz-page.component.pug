@@ -1,4 +1,4 @@
 app-viewport
- .quiz
-  h2 {{quiz.quizName}}
+ .quiz('*ngIf'="quiz1$ | async ")
+  h2 {{quiz.name}}
   app-dynamic-form('[config]'="quiz | config" '(submitted)'="formSubmitted($event)")

@@ -19,7 +19,6 @@ export class DynamicFormComponent implements OnInit {
 
   ngOnInit() {
     this.form = this.createGroup();
-    this.form.valueChanges.subscribe(console.log);
   }
 
   createGroup() {

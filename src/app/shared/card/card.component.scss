@@ -13,7 +13,7 @@
     @include mq($from: mobile,$until:tablet) {
         margin:3vh 16vw;
     }
-
+    padding: 10px 0;
     height: auto;
     background: white;
     

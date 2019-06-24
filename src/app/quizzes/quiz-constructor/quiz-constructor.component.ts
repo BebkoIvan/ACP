@@ -13,11 +13,11 @@ export class QuizConstructorComponent implements OnInit {
   form: FormGroup;
   questionTypes = ['Short answer', 'Choice'];
 
-  constructor(private fb: FormBuilder,private _quizS:QuizzesService) { }
+  constructor(private fb: FormBuilder, private _quizS: QuizzesService) { }
 
   ngOnInit() {
     this.form = this.fb.group({
-      quizName: ['', Validators.required],
+      name: ['', Validators.required],
       questions: this.fb.array([])
     })
   }
@@ -52,7 +52,7 @@ export class QuizConstructorComponent implements OnInit {
   
   }
 
-  deleteVariant(questionNumb:number,variant:number){
+  deleteVariant(questionNumb: number, variant: number) {
     const question = this.questionsForms.at(questionNumb);
     (question.get('answerVariants') as FormArray).removeAt(variant);
   }
@@ -63,7 +63,7 @@ export class QuizConstructorComponent implements OnInit {
 
   onSubmit(): void {
     const res = this.form.value;
-    this._quizS.addQuiz(res);  
+    this._quizS.addQuiz(res);
 
 }
 

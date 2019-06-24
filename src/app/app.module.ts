@@ -10,8 +10,11 @@ import { HttpClientModule,HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MyInterceptor } from './interceptors/auth.interceptor';
 import { ApiService } from './shared/services/api-service/api.service';
 import { DynamicFormModule } from './dynamic-form/dynamic-form.module';
-import { FormControlsModule } from './form-controls/form-controls.module';
-import { ConfigPipe } from './pipes/config.pipe';
+import { StoreModule } from '@ngrx/store';
+import { reducers, metaReducers } from './reducers';
+import { EffectsModule } from '@ngrx/effects';
+import { AppEffects } from './store/app.effects';
+import { AuthModule } from './auth/auth.module';
 
 
 
@@ -20,7 +23,8 @@ import { ConfigPipe } from './pipes/config.pipe';
 
 @NgModule({
     declarations: [AppComponent, DateAgoPipe],
-    imports: [BrowserModule, HttpClientModule, AppRoutingModule, DynamicFormModule, BrowserAnimationsModule, CoreModule,  SharedModule],
+    imports: [BrowserModule, HttpClientModule, AppRoutingModule, DynamicFormModule, BrowserAnimationsModule,AuthModule, CoreModule,
+        SharedModule, StoreModule.forRoot(reducers, { metaReducers }), EffectsModule.forRoot([AppEffects])],
     providers: [ApiService,
         {
           provide: HTTP_INTERCEPTORS,

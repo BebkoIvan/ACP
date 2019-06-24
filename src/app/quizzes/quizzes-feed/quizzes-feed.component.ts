@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { QuizzesService } from '../services/quizzes.service';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-quizzes-feed',
@@ -9,12 +10,14 @@ import { Router } from '@angular/router';
 })
 export class QuizzesFeedComponent implements OnInit {
   acaActive = true;
-
+  quizzes1: Observable<any>;
   quizzes = [];
   constructor(public quizS : QuizzesService,private router: Router) { }
 
   ngOnInit() {
-    this.quizzes = this.quizS.allQuizzes;
+    this.quizzes1 = this.quizS.getQuizzes();
+    this.quizzes1.subscribe(data => {this.quizzes = data.quizzes;    console.log(this.quizzes);});
+    
   }
 
   acaHandler(): void {

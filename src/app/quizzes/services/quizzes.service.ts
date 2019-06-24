@@ -1,4 +1,7 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { UserAuthService } from 'src/app/services/user-auth.service';
+import { ApiService } from 'src/app/shared/services/api-service/api.service';
 
 @Injectable({
   providedIn: 'root'
@@ -6,7 +9,7 @@ import { Injectable } from '@angular/core';
 export class QuizzesService {
   allQuizzes = [
     {
-      quizName: 'Final exam',
+      name: 'Final exam',
       author: 'Ivan Bebko',
       id: 0,
       date:'2019-06-12T18:33:00.447Z',
@@ -39,7 +42,7 @@ export class QuizzesService {
     ]
     },
     {
-      quizName: 'Money quiz',
+      name: 'Money quiz',
       id: 1,
       author: 'Ivan Bebko',
       date: '2019-06-12T18:33:00.447Z',
@@ -94,19 +97,26 @@ export class QuizzesService {
 
     ];
   
-    constructor() { }
+    constructor(private _userService: UserAuthService, private _api: ApiService) { }
 
     getAll(){
       return this.allQuizzes;
     }
 
     getOneQuiz(id:any){
-      return this.allQuizzes.find(x => x.id == id);
+
+      return this._api.getRequest(`quizzes/${id}`, null, {id: `${id}`});
+
+      // return this.allQuizzes.find(x => x.id == id);
     }
 
+    getQuizzes(): Observable<any> {
+      return this._api.getRequest(`quizzes/all`);
+    }
+    
     addQuiz(quiz:any){
       quiz.id = this.allQuizzes.length;
-      quiz.author='Ivan Bebko';
+      quiz.author =  'Ivan Bebko';
       quiz.date = '2019-06-12T18:33:00.447Z';
       this.allQuizzes.push(quiz);
     }

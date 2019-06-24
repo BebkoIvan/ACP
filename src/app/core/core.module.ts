@@ -4,15 +4,13 @@ import { SideMenuComponent } from './side-menu/side-menu.component';
 import { TopPaneComponent } from './top-pane/top-pane.component';
 import {SharedModule} from '../shared/shared.module';
 import { Routes, RouterModule } from "@angular/router";
-import { SignUpFormComponent } from './sign-up-form/sign-up-form.component';
-import { LoginFormComponent } from './login-form/login-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
-  declarations: [SideMenuComponent,TopPaneComponent, SignUpFormComponent,LoginFormComponent, ProfileComponent],
+  declarations: [SideMenuComponent,TopPaneComponent,ProfileComponent],
   imports: [
-    CommonModule,SharedModule,RouterModule,ReactiveFormsModule
+    CommonModule, SharedModule, RouterModule, ReactiveFormsModule
   ],
   exports:[TopPaneComponent,SideMenuComponent]
 })
