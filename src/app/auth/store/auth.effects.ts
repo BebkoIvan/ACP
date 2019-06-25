@@ -27,10 +27,8 @@ export class AuthEffects {
         return this.authService.signIn(credentials).pipe(
 
           map((authData: AuthData) => {
-            this.authService.isAuth = true;
             this.authService.setToken(authData.token);
             this.router.navigateByUrl(redirectTo || '/workshops/feed');
-
             return new SignedIn({authData});
           }),
           catchError((error) => {

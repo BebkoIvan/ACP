@@ -4,6 +4,7 @@ import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.co
 import { LoginFormComponent } from './auth/login-form/login-form.component';
 import { SignUpFormComponent } from './auth/sign-up-form/sign-up-form.component';
 import { ProfileComponent } from './core/profile/profile.component';
+import { AuthGuard } from './guards/auth-guard.guard';
 
 const routes: Routes = [
     {
@@ -36,7 +37,8 @@ const routes: Routes = [
     {
         path: 'profile',
         pathMatch: 'full',
-        component: ProfileComponent
+        component: ProfileComponent,
+        canActivate: [AuthGuard]
     },
 
 

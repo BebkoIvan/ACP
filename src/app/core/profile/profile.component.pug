@@ -1,8 +1,8 @@
-.profile
+.profile('*ngIf'='profile')
   .userPic
-   app-user-pic('[imgSrc]'="userService.user.picture" '[name]'="userService.user.firstName" '[lastname]'="userService.user.lastName" )
-  span {{userService.user.firstName}}
-  span {{userService.user.lastName}}
+   app-user-pic('[imgSrc]'="profile.picture" '[name]'="profile.firstName" '[lastname]'="profile.lastName" )
+  span {{profile.firstName}}
+  span {{profile.lastName}}
   button.changePassword('(click)' = "changePassword($event)") CHANGE PASSWORD 
   button.logOut('(click)' = "logOut($event)") LOG OUT
 .passwordForm('[class.active]' = "passwordChanging")

@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { AppState } from 'src/app/reducers';
+import { SignedOut } from 'src/app/auth/store/auth.actions';
+import { selectAuthData } from 'src/app/auth/store/auth.selectors';
 
 @Component({
   selector: 'app-profile',
@@ -11,7 +15,9 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 export class ProfileComponent implements OnInit {
   passwordChanging = false;
   passwordForm: FormGroup;
-  constructor(public userService: AuthService, private formBuilder: FormBuilder, private _router: Router) { }
+  profile;
+  constructor(public userService: AuthService,
+              private store: Store<AppState>, private formBuilder: FormBuilder, private router: Router) { }
 
   ngOnInit() {
 
@@ -20,18 +26,13 @@ export class ProfileComponent implements OnInit {
       confirmPassword: ['', Validators.required]
   });
 
-    if (this.userService.user)
-    {
-      this.userService.setUser();
-    }
+    this.store.select(selectAuthData).subscribe(data => this.profile = data);
 
   }
 
-  logOut(e: Event){
-    localStorage.clear();
-    this.userService.isAuth = false;
-    this.userService.user = null;
-    this._router.navigate(['/login']);
+  logOut(e: Event) {
+    this.store.dispatch(new SignedOut());
+    this.userService.signOut();
   }
 
   changePassword(e:Event){
@@ -53,7 +54,7 @@ export class ProfileComponent implements OnInit {
       newPassword : this.f.password.value
      }
 
-    this.userService.updateUser(this.userService.user._id, body).subscribe(data => alert("Password has changed"));
+    this.userService.updateUser(this.profile.id, body).subscribe(data => alert("Password has changed"));
     this.hideForm();
     this.passwordForm.reset();
   

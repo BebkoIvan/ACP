@@ -9,14 +9,9 @@ import { Router } from '@angular/router';
 })
 export class AuthService implements OnInit {
   private token: any;
-  isAuth = false;
   user;
-  constructor(private _api: ApiService,private router: Router) {
-    if (localStorage.getItem('token')) {
-      this.token = localStorage.getItem('token');
-      this.isAuth = true;
-    }
-  }
+  constructor(private _api: ApiService,private router: Router) {}
+
   static prepareHeaders(username, password) {
     return new HttpHeaders().set('Authorization', `Basic ${btoa(`${username}` + ':' + `${password}`)}`);
   }
@@ -31,7 +26,7 @@ export class AuthService implements OnInit {
   }
 
   getToken() {
-    return this.token;
+    return localStorage.getItem('token');
   }
   signIn(credentials: Credentials): Observable<any> {
     return this._api.getRequest('users/login', AuthService.prepareHeaders(credentials.username, credentials.password));
@@ -39,7 +34,6 @@ export class AuthService implements OnInit {
 
   signOut() {
     localStorage.clear();
-    this.isAuth = false;
     this.user = null;
     this.router.navigate(['/login']);
   }

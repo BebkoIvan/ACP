@@ -46,14 +46,6 @@ export class LoginFormComponent implements OnInit {
         }));
       }
 
-      // this.submitted = true;
-      // console.log(this.loginForm.value);
-      // this._userAuth.signIn(this.loginForm.value).subscribe(data =>
-      //   { console.log(this.loginForm.value);
-      //     this._userAuth.setToken(data.token); this._userAuth.isAuth = true;
-      //     this._router.navigate(['/workshops']); this._userAuth.user = data; this._userAuth.setUser();
-      //    } );
-
     }
 
 
