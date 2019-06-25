@@ -32,8 +32,9 @@ export class AuthService implements OnInit {
   getToken() {
     return this.token;
   }
-  signIn(username, password): Observable<any> {
-    return this._api.getRequest('users/login', AuthService.prepareHeaders(username, password));
+  signIn(credentials: Credentials): Observable<any> {
+
+    return this._api.getRequest('users/login', AuthService.prepareHeaders(credentials.username, credentials.password));
   }
 
   setUser() {
