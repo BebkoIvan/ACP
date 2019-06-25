@@ -1,14 +1,14 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { UserInfoService } from 'src/app/services/user-info.service';
-import { UserAuthService } from 'src/app/services/user-auth.service';
+import { AuthService } from 'src/app/services/auth.service';
 @Component({
   selector: 'app-comment-form',
   templateUrl: './comment-form.component.pug',
   styleUrls: ['./comment-form.component.scss']
 })
 export class CommentFormComponent implements OnInit {
-  constructor(private _user: UserAuthService) {}
+  constructor(private _user: AuthService) {}
 
   user: User;
   comment: Comment1;

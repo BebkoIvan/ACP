@@ -3,14 +3,14 @@ import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/r
 import { Observable,combineLatest } from 'rxjs';
 import {WorkshopsService} from './workshops.service';
 import { TagsService } from 'src/app/shared/services/tags-service/tags.service';
-import { UserAuthService } from 'src/app/services/user-auth.service';
+import { AuthService } from 'src/app/services/auth.service';
 import { TSInterfaceBody } from 'babel-types';
 
 @Injectable({
     providedIn: 'root'
 })
 export class WorkshopResolverService implements Resolve<any[]> {
-    constructor(private _workshopsService: WorkshopsService, private _user: UserAuthService, private _tagsService: TagsService) {}
+    constructor(private _workshopsService: WorkshopsService, private _user: AuthService, private _tagsService: TagsService) {}
     body;
     resolve(
         route: ActivatedRouteSnapshot,

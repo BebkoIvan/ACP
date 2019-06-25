@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { UserAuthService } from 'src/app/services/user-auth.service';
+import { AuthService } from 'src/app/services/auth.service';
 import { ApiService } from 'src/app/shared/services/api-service/api.service';
 
 @Injectable({
@@ -97,7 +97,7 @@ export class QuizzesService {
 
     ];
   
-    constructor(private _userService: UserAuthService, private _api: ApiService) { }
+    constructor(private _authService: AuthService, private _api: ApiService) { }
 
     getAll(){
       return this.allQuizzes;

@@ -11,7 +11,7 @@ import {
     ChangeDetectorRef
 } from '@angular/core';
 import { UserInfoService } from 'src/app/services/user-info.service';
-import { UserAuthService } from 'src/app/services/user-auth.service';
+import { AuthService } from 'src/app/services/auth.service';
 import { CommentsService } from '../services/comments-service/comments.service';
 import { Observable } from 'rxjs';
 
@@ -32,7 +32,7 @@ export class CommentCardComponent implements OnInit {
 
     @Output() commentDeleted: EventEmitter<Comment1> =   new EventEmitter();
     
-    constructor(private _user: UserAuthService, private cdr: ChangeDetectorRef, private _commentsService: CommentsService) { 
+    constructor(private _user: AuthService, private cdr: ChangeDetectorRef, private _commentsService: CommentsService) { 
     }
 
     ngOnInit() {

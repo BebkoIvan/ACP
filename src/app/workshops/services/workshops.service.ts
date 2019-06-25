@@ -4,14 +4,14 @@ import { UserInfoService } from 'src/app/services/user-info.service';
 import { Observable } from 'rxjs';
 import { ApiService } from 'src/app/shared/services/api-service/api.service';
 import { HttpParams } from '@angular/common/http';
-import { UserAuthService } from 'src/app/services/user-auth.service';
+import { AuthService } from 'src/app/services/auth.service';
 import { mergeMap, tap } from 'rxjs/operators';
 
 @Injectable({
     providedIn: 'root'
 })
 export class WorkshopsService {
-    constructor(private _userService: UserAuthService, private _api: ApiService) {}
+    constructor(private _userService: AuthService, private _api: ApiService) {}
 
     allWorkshops: [];
     totalPosts;

@@ -1,5 +1,6 @@
 import { Action } from '@ngrx/store';
 
+
 export enum AuthActionTypes {
   SignInRequested= '[Auth] Tried to Sign In',
   SignedIn= '[Auth] Successfully Signed In',
@@ -12,7 +13,7 @@ export enum AuthActionTypes {
 
 export class SignInRequested implements Action {
   readonly type = AuthActionTypes.SignInRequested;
-  constructor(public payload: { credentials, redirectTo: string}) {}
+  constructor(public payload: { credentials: Credentials, redirectTo: string}) {}
 }
 
 export class SignedIn implements Action {

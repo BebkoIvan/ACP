@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserAuthService } from './services/user-auth.service';
+import { AuthService } from './services/auth.service';
 
 @Component({
     selector: 'app-root',
@@ -19,7 +19,7 @@ export class AppComponent implements OnInit {
     //     favoriteWorkshops: [2, 4]
     // };
 
-    constructor(public userService:UserAuthService) {}
+    constructor(public userService:AuthService) {}
 
     ngOnInit() {
         if (localStorage.getItem('token')){

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 import { UserInfoService } from 'src/app/services/user-info.service';
-import { UserAuthService } from 'src/app/services/user-auth.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
     selector: 'app-user-pic',
@@ -15,7 +15,7 @@ export class UserPicComponent implements OnInit {
     @Input() lastname: string;
     initials: string;
 
-    constructor(private _userService:UserAuthService) {}
+    constructor(private _userService:AuthService) {}
 
     ngOnInit() {
         if(!this.name || !this.lastname){

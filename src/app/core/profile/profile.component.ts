@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserAuthService } from 'src/app/services/user-auth.service';
+import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
@@ -11,7 +11,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 export class ProfileComponent implements OnInit {
   passwordChanging = false;
   passwordForm: FormGroup;
-  constructor(public userService: UserAuthService, private formBuilder: FormBuilder, private _router: Router) { }
+  constructor(public userService: AuthService, private formBuilder: FormBuilder, private _router: Router) { }
 
   ngOnInit() {
 

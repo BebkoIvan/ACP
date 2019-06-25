@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class UserAuthService implements OnInit {
+export class AuthService implements OnInit {
   private token: any;
   isAuth = false;
   user;
@@ -33,7 +33,7 @@ export class UserAuthService implements OnInit {
     return this.token;
   }
   signIn(username, password): Observable<any> {
-    return this._api.getRequest('users/login', UserAuthService.prepareHeaders(username, password));
+    return this._api.getRequest('users/login', AuthService.prepareHeaders(username, password));
   }
 
   setUser() {
