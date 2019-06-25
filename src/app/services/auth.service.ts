@@ -2,6 +2,7 @@ import { Injectable, OnInit } from '@angular/core';
 import { ApiService } from '../shared/services/api-service/api.service';
 import { HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class AuthService implements OnInit {
   private token: any;
   isAuth = false;
   user;
-  constructor(private _api: ApiService) {
+  constructor(private _api: ApiService,private router: Router) {
     if (localStorage.getItem('token')) {
       this.token = localStorage.getItem('token');
       this.isAuth = true;
@@ -33,8 +34,14 @@ export class AuthService implements OnInit {
     return this.token;
   }
   signIn(credentials: Credentials): Observable<any> {
-
     return this._api.getRequest('users/login', AuthService.prepareHeaders(credentials.username, credentials.password));
+  }
+
+  signOut() {
+    localStorage.clear();
+    this.isAuth = false;
+    this.user = null;
+    this.router.navigate(['/login']);
   }
 
   setUser() {

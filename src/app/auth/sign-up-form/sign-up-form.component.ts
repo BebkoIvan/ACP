@@ -43,7 +43,7 @@ export class SignUpFormComponent implements OnInit {
         lastName: this.f.lastName.value ? `${this.f.lastName.value}` : ''
       };
       this._userAuth.signUp(user).pipe(
-        mergeMap((res1) => this._userAuth.signIn(this.f.username.value, this.f.password.value))
+        mergeMap((res1) => this._userAuth.signIn(this.signUpForm.value))
       ).subscribe(data => {this._userAuth.setToken(data.token); this._userAuth.isAuth = true;
                            this._router.navigate(['/workshops']); this._userAuth.user = data;
        });

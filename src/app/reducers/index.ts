@@ -6,10 +6,10 @@ import {
   MetaReducer
 } from '@ngrx/store';
 import { environment } from '../../environments/environment';
-import { AuthState,authReducer } from '../auth/store/auth.reducer';
+import { AuthState, authReducer } from '../auth/store/auth.reducer';
 
 export interface AppState {
- auth: AuthState
+ auth: AuthState;
 }
 
 export const reducers: ActionReducerMap<AppState> = {

@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { AppState } from 'src/app/reducers';
+import { AppState } from 'src/app/reducers/index';
+import { SignInRequested } from '../store/auth.actions';
 
 @Component({
   selector: 'app-login-form',
@@ -15,9 +16,9 @@ export class LoginFormComponent implements OnInit {
   loading = false;
   submitted = false;
   constructor(private formBuilder: FormBuilder,
-              private _userAuth: AuthService,
-              private store:Store <AppState>,
-              private _router: Router) { }
+              private store: Store<AppState>,
+              private activatedRoute: ActivatedRoute,
+              private router: Router) { }
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
@@ -30,7 +31,7 @@ export class LoginFormComponent implements OnInit {
 
 
   signUp(e: Event) {
-    this._router.navigate(['./sign-up']);
+    this.router.navigate(['./sign-up']);
   }
 
     onSubmit() {
@@ -38,13 +39,20 @@ export class LoginFormComponent implements OnInit {
       if (this.loginForm.invalid) {
           return;
          }
-      this.submitted = true;
-      console.log(this.loginForm.value);
-      this._userAuth.signIn(this.f.username.value, this.f.password.value).subscribe(data =>
-        { console.log(this.loginForm.value);
-          this._userAuth.setToken(data.token); this._userAuth.isAuth = true;
-          this._router.navigate(['/workshops']); this._userAuth.user = data; this._userAuth.setUser();
-         } );
+      else {
+        this.store.dispatch(new SignInRequested({
+          credentials: this.loginForm.value,
+          redirectTo: ''
+        }));
+      }
+
+      // this.submitted = true;
+      // console.log(this.loginForm.value);
+      // this._userAuth.signIn(this.loginForm.value).subscribe(data =>
+      //   { console.log(this.loginForm.value);
+      //     this._userAuth.setToken(data.token); this._userAuth.isAuth = true;
+      //     this._router.navigate(['/workshops']); this._userAuth.user = data; this._userAuth.setUser();
+      //    } );
 
     }
 
