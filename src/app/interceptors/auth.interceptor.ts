@@ -9,7 +9,7 @@ import { AuthService } from '../services/auth.service';
     providedIn: 'root'
 })
 export class MyInterceptor implements HttpInterceptor {
-    constructor(private _userAuth: AuthService) {}
+    constructor(private userAuth: AuthService) {}
 
     errorHandler = (errorResponse: HttpErrorResponse) => {
         const clonedError = {...errorResponse};
@@ -24,7 +24,7 @@ export class MyInterceptor implements HttpInterceptor {
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-       const token = this._userAuth.getToken();
+       const token = this.userAuth.getToken();
        let paramReq = req.clone({
         headers: req.headers.append('Content-Type', ' application/json')
     });

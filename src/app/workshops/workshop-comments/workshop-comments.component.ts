@@ -14,23 +14,23 @@ export class WorkshopCommentsComponent implements OnInit {
     id: string;
     isLoaded: Observable<any>;
     comments$: Observable<Comment1[]>;
-    comments:Array<Comment1>;
-    constructor(private route: ActivatedRoute, private _workshopsService: WorkshopsService,
-        private cdr: ChangeDetectorRef,public _commentsService: CommentsService) {
+    comments: Array<Comment1>;
+    constructor(private route: ActivatedRoute, private workshopsService: WorkshopsService,
+                private cdr: ChangeDetectorRef, public commentsService: CommentsService) {
         this.id = route.parent.snapshot.params['id'];
     }
 
     ngOnInit() {
-        this.comments$ = this._commentsService.getComments(this.id);
+        this.comments$ = this.commentsService.getComments(this.id);
         this.comments$.subscribe(data => {this.comments = data;
-            this.cdr.detectChanges();});
+                                          this.cdr.detectChanges();});
     
     }
 
 
 
     addComment(comment: Comment1) {
-        this._commentsService.createComment(this.id, comment.text).subscribe(data => {
+        this.commentsService.createComment(this.id, comment.text).subscribe(data => {
             let comment1 = data.comment;
             this.comments.push(comment1);
             this.cdr.detectChanges();
@@ -39,7 +39,7 @@ export class WorkshopCommentsComponent implements OnInit {
     }
 
     deleteComment(comment: Comment1) {
-        this._commentsService.deleteComment(this.id, comment._id).subscribe(data =>  console.log(data));
+        this.commentsService.deleteComment(this.id, comment._id).subscribe(data =>  console.log(data));
         this.comments.splice(this.comments.indexOf(comment), 1);
     }
 }
