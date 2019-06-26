@@ -19,7 +19,7 @@ import { SignedIn } from '../auth/store/auth.actions';
 })
 export class AuthGuard implements CanActivate {
 
-    constructor(private authService: AuthService,private store: Store<AppState>, private router: Router) {}
+    constructor(private authService: AuthService, private store: Store<AppState>, private router: Router) {}
 
     canActivate(
         next: ActivatedRouteSnapshot,
@@ -28,7 +28,6 @@ export class AuthGuard implements CanActivate {
         | Observable<boolean>
         | Promise<boolean>
         | boolean {
-            this.store.subscribe(data=>console.log(data));
             return this.store.pipe(
                 select(selectAuthenticated),
                 take(1),
@@ -36,10 +35,8 @@ export class AuthGuard implements CanActivate {
                     if (authenticated) {
                         return true;
                     }
-                    else{
-
+                    else {
                         const token = this.authService.getToken();
-                        
                         if (token) {
                             this.authService.getCurrentUser().subscribe( (data: AuthData) => {
                                 this.store.dispatch(new SignedIn({authData: data}));

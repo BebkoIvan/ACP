@@ -9,6 +9,11 @@ import { WorkshopsService } from './services/workshops.service';
 import { WorkshopResourcesComponent } from './workshop-resources/workshop-resources.component';
 import { WorkshopCommentsComponent } from './workshop-comments/workshop-comments.component';
 import { WorkshopQuizzesComponent } from './workshop-quizzes/workshop-quizzes.component';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { workshopsReducer } from './store/workshops.reducer';
+import { WorkshopsEffects } from './store/workshops.effects';
+
 
 
 @NgModule({
@@ -20,8 +25,11 @@ import { WorkshopQuizzesComponent } from './workshop-quizzes/workshop-quizzes.co
         WorkshopCommentsComponent,
         WorkshopQuizzesComponent,
     ],
-    imports: [CommonModule, SharedModule, WorkshopsRoutingModule],
+    imports: [CommonModule, SharedModule,
+        StoreModule.forFeature('workshops', workshopsReducer),
+        EffectsModule.forFeature([WorkshopsEffects]),
+     WorkshopsRoutingModule],
     exports: [WorkshopsFeedComponent, ArticleComponent],
-    providers:[WorkshopsService]
+    providers: [WorkshopsService]
 })
 export class WorkshopsModule {}

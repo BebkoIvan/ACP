@@ -5,29 +5,48 @@ import { Observable } from 'rxjs';
 import { ApiService } from 'src/app/shared/services/api-service/api.service';
 import { HttpParams } from '@angular/common/http';
 import { AuthService } from 'src/app/services/auth.service';
-import { mergeMap, tap } from 'rxjs/operators';
+import { mergeMap, tap, map, take } from 'rxjs/operators';
+import { Store } from '@ngrx/store';
+import { AppState } from 'src/app/reducers';
+import { selectAuthData } from 'src/app/auth/store/auth.selectors';
 
 @Injectable({
     providedIn: 'root'
 })
 export class WorkshopsService {
-    constructor(private _userService: AuthService, private _api: ApiService) {}
+    constructor(private _userService: AuthService, private store: Store<AppState>, private _api: ApiService) {}
 
     allWorkshops: [];
     totalPosts;
 
-   
 
-    getPosts (category?, tags?: string): Observable<any> {
-        let   params = {
+    getWorkshops(queryParams: any) {
+        let user = this.store.select(selectAuthData);
+        const   params = {
             page: '',
             authorId: '',
             tags: ''
-        } ;
+        };
+        if (queryParams.queryParams.tags) {
+            params.tags = queryParams.queryParams.tags.split(',').join('|');
+        }
+
+        if (queryParams.queryParams.category === 'My Workshops' || queryParams.queryParams.category === 'Favorite') {
+            user.subscribe(user => params.authorId = user._id);
+        }
+        return this._api.getRequest(`posts`, null, params);
+    }
+
+    getPosts(category?: any, tags?: string): Observable<any> {
+        const   params = {
+            page: '',
+            authorId: '',
+            tags: ''
+        };
+
         if (!category) {
             params.page = '0';
         }
-        
         if (category && this._userService.user) {
             params.page = '0';
             params.authorId = this._userService.user._id;
@@ -45,6 +64,7 @@ export class WorkshopsService {
                 mergeMap((user) => this._api.getRequest(`posts`, null, params))
             );
         }
+
         return this._api.getRequest(`posts`, null, params);
 
     }
@@ -53,7 +73,7 @@ export class WorkshopsService {
         return this._api.putRequest(`posts/${id}`, body);
     }
 
-    deletePost(id){
+    deletePost(id) {
         return this._api.deleteRequest(`posts/${id}`);
     }
 

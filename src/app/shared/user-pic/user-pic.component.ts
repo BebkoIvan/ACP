@@ -15,16 +15,15 @@ export class UserPicComponent implements OnInit {
     @Input() lastname: string;
     initials: string;
 
-    constructor(private _userService:AuthService) {}
+    constructor() {}
 
     ngOnInit() {
-        if(!this.name || !this.lastname){
-            this.initials='XX';
+        if (!this.name || !this.lastname){
+            this.initials = 'XX';
         }
         else{
             this.initials = this.name.charAt(0) + this.lastname.charAt(0);
         }
-    
     }
 
 }

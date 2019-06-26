@@ -38,9 +38,9 @@ export class AuthService implements OnInit {
     this.router.navigate(['/login']);
   }
 
-  setUser() {
-    this._api.getRequest('users/current').subscribe(data => this.user = data);
-  }
+  // setUser() {
+  //   this._api.getRequest('users/current').subscribe(data => this.user = data);
+  // }
 
   getCurrentUser(): Observable<any> {
     return this._api.getRequest('users/current');

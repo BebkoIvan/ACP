@@ -51,6 +51,7 @@ export class TagCloudComponent implements OnInit {
                 queryParamsHandling: 'merge'
             });
         }
+
     }
    
 }

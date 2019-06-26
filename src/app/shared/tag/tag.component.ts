@@ -11,5 +11,6 @@ export class TagComponent implements OnInit {
     constructor() {}
 
     @Input() tag;
+    
     ngOnInit() {}
 }

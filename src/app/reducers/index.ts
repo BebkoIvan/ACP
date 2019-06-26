@@ -7,13 +7,16 @@ import {
 } from '@ngrx/store';
 import { environment } from '../../environments/environment';
 import { AuthState, authReducer } from '../auth/store/auth.reducer';
+import { WorkshopsState, workshopsReducer } from '../workshops/store/workshops.reducer';
 
 export interface AppState {
  auth: AuthState;
+ workshops: WorkshopsState;
 }
 
 export const reducers: ActionReducerMap<AppState> = {
-  auth: authReducer
+  auth: authReducer,
+  workshops: workshopsReducer
 };
 
 
