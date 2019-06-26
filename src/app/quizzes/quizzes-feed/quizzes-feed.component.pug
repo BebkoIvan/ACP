@@ -1,5 +1,5 @@
 app-viewport
- .mainContent('*ngIf'="quizzes1 | async ")
+ .mainContent
   .quizCard('*ngFor'='let quiz of quizzes')
    .quizName
     a(routerLink="../{{quiz.id}}" )

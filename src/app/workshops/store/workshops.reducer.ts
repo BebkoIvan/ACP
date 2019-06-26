@@ -10,8 +10,10 @@ export const initialState: WorkshopsState = adapter.getInitialState({});
 
 export function workshopsReducer(state = initialState, action: WorkshopsActions): WorkshopsState {
   switch (action.type) {
+    
     case WorkshopsActionTypes.WorkshopsLoaded:
     return adapter.addAll(action.payload.workshops, state);
+
     default:
       return state;
   }

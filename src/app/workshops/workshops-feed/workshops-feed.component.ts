@@ -6,7 +6,7 @@ import { Tags } from '../workshops-data/tags';
 import { TagsService } from 'src/app/shared/services/tags-service/tags.service';
 import { Store, select } from '@ngrx/store';
 import { AppState } from 'src/app/reducers';
-import { WorkshopsRequested } from '../store/workshops.actions';
+import { WorkshopsRequested, WorkshopsTagsRequested } from '../store/workshops.actions';
 import { selectWorkshops } from '../store/workshops.selectors';
 import { take } from 'rxjs/operators';
 import { Observable } from 'rxjs';
@@ -39,15 +39,8 @@ export class WorkshopsFeedComponent implements OnInit {
 
 
     ngOnInit() {
-        this.intialParams = this.route.snapshot.queryParams;
-        // this.store.dispatch(new WorkshopsRequested({queryParams: this.intialParams }));
         this.workshops$ = this.store.pipe(select(selectWorkshops));
         this.workshops$.subscribe(data =>  this.workshops = data);
-
-
-        if (!this.workshopsService.allWorkshops) {
-            this.workshopsService.setPosts();
-        }
         this.route.data.subscribe(data => {
                                            if (!this._tagsService.allTags.length) {
                                             this._tagsService.allTags = data.workshops[1];

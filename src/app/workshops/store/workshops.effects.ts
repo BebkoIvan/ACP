@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { WorkshopsService } from '../services/workshops.service';
 import { map, exhaustMap, catchError } from 'rxjs/operators';
-import { WorkshopsRequested, WorkshopsActionTypes, WorkshopsLoaded, WorkshopsLoadingFailed } from './workshops.actions';
+import { WorkshopsRequested, WorkshopsActionTypes, WorkshopsLoaded, WorkshopsLoadingFailed, WorkshopsTagsRequested, WorkshopsTagsLoaded, WorkshopsTagsLoadingFailed } from './workshops.actions';
 import { of } from 'rxjs';
+import { TagsService } from 'src/app/shared/services/tags-service/tags.service';
 
 
 
@@ -12,7 +13,7 @@ export class WorkshopsEffects {
 
 
 
-  constructor(private actions$: Actions, private workshopsService: WorkshopsService) {}
+  constructor(private actions$: Actions, private workshopsService: WorkshopsService, private tagsService: TagsService) {}
 
   @Effect()
   WorkshopsRequested$ = this.actions$
@@ -37,5 +38,23 @@ export class WorkshopsEffects {
       );
     })
   );
+
+  // @Effect()
+  // WorkshopsTagsRequested$ = this.actions$
+  // .pipe(
+  //   ofType<WorkshopsTagsRequested>(WorkshopsActionTypes.WorkshopsTagsRequested),
+  //   map( (action: WorkshopsTagsRequested) => action.payload),
+  //   exhaustMap(() => {
+  //     return this.tagsService.getTags('all').pipe(
+  //       map((tags) => {
+  //           return new WorkshopsTagsLoaded(tags);
+  //       }),
+  //       catchError((error) => {
+  //         return of(new WorkshopsTagsLoadingFailed({error}));
+  //       })
+
+  //     );
+  //   })
+  // );
 
 }

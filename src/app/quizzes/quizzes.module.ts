@@ -10,6 +10,10 @@ import { QuizConstructorComponent } from './quiz-constructor/quiz-constructor.co
 import { ConfigPipe } from '../pipes/config.pipe';
 import { ReactiveFormsModule } from '@angular/forms';
 import { QuizQuestionComponent } from './quiz-question/quiz-question.component';
+import { StoreModule } from '@ngrx/store';
+import { quizzesReducer } from './store/quizzes.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { QuizzesEffects } from './store/quizzes.effects';
 
 
 @NgModule({
@@ -17,7 +21,9 @@ import { QuizQuestionComponent } from './quiz-question/quiz-question.component';
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    QuizzesRoutingModule, SharedModule, FormControlsModule, DynamicFormModule
+    QuizzesRoutingModule, SharedModule, FormControlsModule, DynamicFormModule,
+    StoreModule.forFeature('quizzes', quizzesReducer),
+    EffectsModule.forFeature([QuizzesEffects]),
   ]
 })
 export class QuizzesModule { }

@@ -1,7 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { QuizzesService } from '../services/quizzes.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
+import { WorkshopsRequested } from 'src/app/workshops/store/workshops.actions';
+import { Store, select } from '@ngrx/store';
+import { AppState } from 'src/app/reducers';
+import { selectQuizzes } from '../store/quizzes.selectors';
+import { QuizzesRequested } from '../store/quizzes.actions';
 
 @Component({
   selector: 'app-quizzes-feed',
@@ -11,21 +16,22 @@ import { Observable } from 'rxjs';
 export class QuizzesFeedComponent implements OnInit {
   acaActive = true;
   quizzes1: Observable<any>;
+  quizzes$;
   quizzes = [];
-  constructor(public quizS : QuizzesService,private router: Router) { }
+  constructor(public quizS: QuizzesService, private router: Router, private route: ActivatedRoute, private store: Store<AppState>){
+    route.queryParams.subscribe(p => this.store.dispatch(new QuizzesRequested({queryParams: p })));
+  }
 
   ngOnInit() {
-    this.quizzes1 = this.quizS.getQuizzes();
-    this.quizzes1.subscribe(data => {this.quizzes = data.quizzes;    console.log(this.quizzes);});
-    
+    this.quizzes$ = this.store.pipe(select(selectQuizzes));
+    this.quizzes$.subscribe(data =>  this.quizzes = data);
   }
 
   acaHandler(): void {
     this.acaActive = !this.acaActive;
-    console.log(this.quizS.allQuizzes);
 }
 
-  deleteQuiz(quiz:any) {
+  deleteQuiz(quiz: any) {
     this.quizzes.splice(this.quizzes.indexOf(quiz), 1);
   }
 }
