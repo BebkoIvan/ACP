@@ -4,6 +4,9 @@ import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 import { concatMap, switchMap, combineLatest, mergeMap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { AppState } from 'src/app/reducers';
+import { SignInRequested } from '../store/auth.actions';
 
 @Component({
   selector: 'app-sign-up-form',
@@ -17,7 +20,9 @@ export class SignUpFormComponent implements OnInit {
   submitted = false;
   a: any;
   b: any;
-  constructor(private formBuilder: FormBuilder, private _userAuth: AuthService, private _router: Router) { }
+  constructor(private formBuilder: FormBuilder,
+              private store: Store<AppState>,
+              private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
     this.signUpForm = this.formBuilder.group({
@@ -42,11 +47,13 @@ export class SignUpFormComponent implements OnInit {
         firstName: this.f.firstName.value ? `${this.f.firstName.value}` : '',
         lastName: this.f.lastName.value ? `${this.f.lastName.value}` : ''
       };
-      this._userAuth.signUp(user).pipe(
-        mergeMap((res1) => this._userAuth.signIn(this.signUpForm.value))
-      ).subscribe(data => {this._userAuth.setToken(data.token); this._userAuth.isAuth = true;
-                           this._router.navigate(['/workshops']); this._userAuth.user = data;
-       });
 
-        }
+      this.authService.signUp(user).subscribe(data => {
+        console.log(data);
+        this.store.dispatch(new SignInRequested({
+          credentials: {username: `${this.f.username.value}`, password: `${this.f.password.value}`},
+          redirectTo: ''
+        }));
+      });
+}
 }
