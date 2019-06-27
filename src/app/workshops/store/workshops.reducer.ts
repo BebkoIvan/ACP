@@ -3,7 +3,10 @@ import {createEntityAdapter, EntityAdapter, EntityState} from '@ngrx/entity';
 import { WorkshopsActions, WorkshopsActionTypes } from './workshops.actions';
 
 interface ArticlesState extends EntityState<Workshop> {
+}
 
+interface WorkshopState {
+  workshop: Workshop | null;
 }
 
 interface TagsState extends EntityState<any> {
@@ -12,6 +15,7 @@ interface TagsState extends EntityState<any> {
 export interface WorkshopsState {
   articles: ArticlesState;
   tags: TagsState;
+  workshopSelected: WorkshopState;
 }
 
 const adapterTags = createEntityAdapter<Tag>(
@@ -29,10 +33,15 @@ const adapterArticles = createEntityAdapter<Workshop>({
 
 const articlesInitialState: ArticlesState = adapterArticles.getInitialState({ });
 const tagsInitialState: TagsState = adapterTags.getInitialState({});
+const WorkshopInitialState: WorkshopState = {
+  workshop: null
+};
+
 
 const initialState = {
   articles: articlesInitialState,
-  tags: tagsInitialState
+  tags: tagsInitialState,
+  workshopSelected: WorkshopInitialState
 }
 
 
@@ -45,6 +54,9 @@ export function workshopsReducer(state = initialState, action: WorkshopsActions)
 
     case WorkshopsActionTypes.TagsLoaded:
     return { ...state, tags: adapterArticles.addAll(action.payload.tags, state.tags) };
+
+    case WorkshopsActionTypes.WorkshopLoaded:
+    return { ...state, workshopSelected: { workshop: action.payload.workshop } };
 
     default:
       return state;

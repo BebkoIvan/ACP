@@ -6,10 +6,15 @@ export enum WorkshopsActionTypes {
   ArticlesLoaded= '[Workshops Feed] Articles Loaded',
   ArticlesLoadingFailed = '[Workshops Feed] Articles Loading Failed',
   
- TagsRequested = '[Workshops Feed]  Tags Requested',
+  TagsRequested = '[Workshops Feed]  Tags Requested',
   TagsLoaded= '[Workshops Feed]  Tags Loaded',
   TagsLoadingFailed = '[Workshops Feed]  Tags Loading Failed',
+
+  WorkshopRequested = '[Workshops page]  Workshop Requested',
+  WorkshopLoaded= '[Workshops page]  Workshop Loaded',
+  WorkshopLoadingFailed = '[Workshops page]  Workshop Loading Failed',
   
+
   
 }
 
@@ -45,6 +50,21 @@ export class TagsLoadingFailed implements Action {
   constructor(public payload: { error: any }) {}
 }
 
+export class WorkshopRequested implements Action {
+  readonly type = WorkshopsActionTypes.WorkshopRequested;
+  constructor(public payload: {id: string}) {}
+}
+
+export class WorkshopLoaded implements Action {
+  readonly type = WorkshopsActionTypes.WorkshopLoaded;
+  constructor(public payload: {workshop: Workshop}) {}
+}
+
+export class WorkshopLoadingFailed implements Action {
+  readonly type = WorkshopsActionTypes.WorkshopLoadingFailed;
+  constructor(public payload: { error: any }) {}
+}
+
 
 
 export type WorkshopsActions =
@@ -53,5 +73,8 @@ ArticlesRequested |
 ArticlesLoadingFailed |
 TagsLoaded |
 TagsRequested |
-TagsLoadingFailed
+TagsLoadingFailed |
+WorkshopLoaded |
+WorkshopLoadingFailed |
+WorkshopRequested
 ;

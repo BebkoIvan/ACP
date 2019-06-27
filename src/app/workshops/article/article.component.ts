@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy, OnChanges } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Tags } from '../workshops-data/tags';
 import { TagsService } from 'src/app/shared/services/tags-service/tags.service';
@@ -14,7 +14,7 @@ import { selectAllTags } from '../store/workshops.selectors';
     styleUrls: ['./article.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ArticleComponent implements OnInit {
+export class ArticleComponent implements OnChanges {
     constructor(private route: ActivatedRoute, private router: Router, private store: Store<AppState>,
                 private _tagsService: TagsService) {}
     @Input() workshop: any;
@@ -34,13 +34,16 @@ export class ArticleComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.tags$ = this.store.pipe(select(selectAllTags));
-        this.tags$.subscribe(tags => {
-            this.workshop.tags.forEach(el => 
+            
+    }
+
+    ngOnChanges(): void {
+        if (this.allTags.length) {
+            this.workshop.tags.forEach(el =>
                 this.tagsList.push(
-                    {tagTitle: tags.find(x => x.seq === el).name, isActive: false, seq: el }
+                    {tagTitle: this.allTags.find(x => x.seq === el).name, isActive: false, seq: el }
                 )
             );
-        });
+        }
     }
 }

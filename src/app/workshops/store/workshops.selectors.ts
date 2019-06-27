@@ -9,3 +9,8 @@ export const selectTagsState = createSelector(selectWorkshopsState, fromWorkshop
 export const selectAllArticles = createSelector(selectArticlesState, fromWorkshops.selectAllArticles);
 export const selectAllTags = createSelector(selectTagsState, fromWorkshops.selectAllTags);
 
+export const selectWorkshop = createSelector(
+    selectWorkshopsState,
+    (state: fromWorkshops.WorkshopsState) => state.workshopSelected.workshop
+);
+
