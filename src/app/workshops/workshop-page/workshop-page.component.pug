@@ -4,7 +4,7 @@ app-viewport
    h3 {{workshop.title}}
   .content-area
    img(src='{{workshop.image}}')
-   .fulltext('*appCollapsable'='100 button button1 turnedOn true animationOn true defState "expanded"') {{workshop.text}}
+   .fulltext('[innerHTML]'='workshop.text' '*appCollapsable'='100 button button1 turnedOn true animationOn true defState "expanded"') 
    ng-template('#button1'='' let-control='control' let-title='title')
     button.btnCollapse('(click)'='control()') {{title}}
   .workshop-footer

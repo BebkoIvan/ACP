@@ -13,6 +13,10 @@ export enum WorkshopsActionTypes {
   WorkshopRequested = '[Workshops page]  Workshop Requested',
   WorkshopLoaded= '[Workshops page]  Workshop Loaded',
   WorkshopLoadingFailed = '[Workshops page]  Workshop Loading Failed',
+
+  WorkshopCommentsRequested = '[Workshops page]  Workshop Comments Requested',
+  WorkshopCommentsLoaded= '[Workshops page]  Workshop Comments Loaded',
+  WorkshopCommentsLoadingFailed = '[Workshops page]  Workshop Comments Loading Failed',
   
 
   
@@ -35,6 +39,7 @@ export class ArticlesLoadingFailed implements Action {
 }
 
 
+
 export class TagsRequested implements Action {
   readonly type = WorkshopsActionTypes.TagsRequested;
   constructor(public payload: {}) {}
@@ -42,13 +47,15 @@ export class TagsRequested implements Action {
 
 export class TagsLoaded implements Action {
   readonly type = WorkshopsActionTypes.TagsLoaded;
-  constructor(public payload: {tags: Array<any>}) {}
+  constructor(public payload: {tags: any[]}) {}
 }
 
 export class TagsLoadingFailed implements Action {
   readonly type = WorkshopsActionTypes.TagsLoadingFailed;
   constructor(public payload: { error: any }) {}
 }
+
+
 
 export class WorkshopRequested implements Action {
   readonly type = WorkshopsActionTypes.WorkshopRequested;
@@ -67,6 +74,24 @@ export class WorkshopLoadingFailed implements Action {
 
 
 
+
+export class WorkshopCommentsRequested implements Action {
+  readonly type = WorkshopsActionTypes.WorkshopCommentsRequested;
+  constructor(public payload: {id: string}) {}
+}
+
+export class WorkshopCommentsLoaded implements Action {
+  readonly type = WorkshopsActionTypes.WorkshopCommentsLoaded;
+  constructor(public payload: {comments: Comment1[]}) {}
+}
+
+export class WorkshopCommentsLoadingFailed implements Action {
+  readonly type = WorkshopsActionTypes.WorkshopCommentsLoadingFailed;
+  constructor(public payload: { error: any }) {}
+}
+
+
+
 export type WorkshopsActions =
 ArticlesLoaded |
 ArticlesRequested |
@@ -76,5 +101,8 @@ TagsRequested |
 TagsLoadingFailed |
 WorkshopLoaded |
 WorkshopLoadingFailed |
-WorkshopRequested
+WorkshopRequested |
+WorkshopCommentsLoadingFailed |
+WorkshopCommentsLoaded |
+WorkshopCommentsRequested
 ;

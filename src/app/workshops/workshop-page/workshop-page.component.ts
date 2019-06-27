@@ -58,7 +58,7 @@ export class WorkshopPageComponent implements OnInit {
                                     this.tagsList.push(
                                         {tagTitle: data[0].find(x => x.seq === el).name, isActive: false, seq: el }
                                     )
-                                ); 
+                                );
                     this.cdr.detectChanges();
                 }
             }

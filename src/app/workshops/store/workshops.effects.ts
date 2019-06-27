@@ -2,9 +2,10 @@ import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { WorkshopsService } from '../services/workshops.service';
 import { map, exhaustMap, catchError } from 'rxjs/operators';
-import { ArticlesRequested, WorkshopsActionTypes, ArticlesLoaded, ArticlesLoadingFailed, TagsRequested, TagsLoaded, TagsLoadingFailed, WorkshopRequested, WorkshopLoaded, WorkshopLoadingFailed } from './workshops.actions';
+import { ArticlesRequested, WorkshopsActionTypes, ArticlesLoaded, ArticlesLoadingFailed, TagsRequested, TagsLoaded, TagsLoadingFailed, WorkshopRequested, WorkshopLoaded, WorkshopLoadingFailed, WorkshopCommentsRequested, WorkshopCommentsLoaded, WorkshopCommentsLoadingFailed } from './workshops.actions';
 import { of } from 'rxjs';
 import { TagsService } from 'src/app/shared/services/tags-service/tags.service';
+import { CommentsService } from 'src/app/shared/services/comments-service/comments.service';
 
 
 
@@ -13,7 +14,8 @@ export class WorkshopsEffects {
 
 
 
-  constructor(private actions$: Actions, private workshopsService: WorkshopsService, private tagsService: TagsService) {}
+  constructor(private actions$: Actions, private workshopsService: WorkshopsService, private commentsService: CommentsService,
+              private tagsService: TagsService) {}
 
   @Effect()
   ArticlesRequested$ = this.actions$
@@ -26,9 +28,8 @@ export class WorkshopsEffects {
           if (workshops.posts) {
             workshops = workshops.posts;
             return new ArticlesLoaded({workshops});
-          }
-          else{
-            return new ArticlesLoaded({workshops:[]});
+          } else {
+            return new ArticlesLoaded({workshops: []});
           }
         }),
         catchError((error) => {
@@ -69,6 +70,24 @@ export class WorkshopsEffects {
           }),
           catchError((error) => {
             return of(new WorkshopLoadingFailed({error}));
+          })
+
+        );
+      })
+    );
+
+    @Effect()
+    WorkshopCommentsRequested$ = this.actions$
+    .pipe(
+      ofType<WorkshopCommentsRequested>(WorkshopsActionTypes.WorkshopCommentsRequested),
+      map( (action: WorkshopCommentsRequested) => action.payload),
+      exhaustMap( ({id}) => {
+        return this.commentsService.getComments(id).pipe(
+          map((comments) => {
+            return new WorkshopCommentsLoaded({comments});
+          }),
+          catchError((error) => {
+            return of(new WorkshopCommentsLoadingFailed({error}));
           })
 
         );

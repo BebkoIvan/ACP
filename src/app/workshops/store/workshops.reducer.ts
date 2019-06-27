@@ -5,6 +5,9 @@ import { WorkshopsActions, WorkshopsActionTypes } from './workshops.actions';
 interface ArticlesState extends EntityState<Workshop> {
 }
 
+interface CommentsState extends EntityState<Comment1> {
+}
+
 interface WorkshopState {
   workshop: Workshop | null;
 }
@@ -16,6 +19,7 @@ export interface WorkshopsState {
   articles: ArticlesState;
   tags: TagsState;
   workshopSelected: WorkshopState;
+  comments: CommentsState;
 }
 
 const adapterTags = createEntityAdapter<Tag>(
@@ -29,10 +33,13 @@ const adapterArticles = createEntityAdapter<Workshop>({
   selectId: workshop => workshop.createdAt
 });
 
+const adapterComments = createEntityAdapter<Comment1>();
+
 
 
 const articlesInitialState: ArticlesState = adapterArticles.getInitialState({ });
 const tagsInitialState: TagsState = adapterTags.getInitialState({});
+const commentsInitialState: CommentsState = adapterComments.getInitialState({ });
 const WorkshopInitialState: WorkshopState = {
   workshop: null
 };
@@ -41,7 +48,9 @@ const WorkshopInitialState: WorkshopState = {
 const initialState = {
   articles: articlesInitialState,
   tags: tagsInitialState,
-  workshopSelected: WorkshopInitialState
+  workshopSelected: WorkshopInitialState,
+  comments: commentsInitialState
+
 }
 
 
@@ -55,6 +64,9 @@ export function workshopsReducer(state = initialState, action: WorkshopsActions)
     case WorkshopsActionTypes.TagsLoaded:
     return { ...state, tags: adapterArticles.addAll(action.payload.tags, state.tags) };
 
+    case WorkshopsActionTypes.WorkshopCommentsLoaded:
+    return { ...state, comments: adapterComments.addAll(action.payload.comments, state.comments) };
+
     case WorkshopsActionTypes.WorkshopLoaded:
     return { ...state, workshopSelected: { workshop: action.payload.workshop } };
 
@@ -64,9 +76,11 @@ export function workshopsReducer(state = initialState, action: WorkshopsActions)
 }
 
 export const selectArticlesState = (state: WorkshopsState) => state.articles;
+export const selectCommentsState = (state: WorkshopsState) => state.comments;
 export const selectTagsState = (state: WorkshopsState) => state.tags;
 
 export const { selectAll: selectAllArticles } = adapterArticles.getSelectors();
+export const { selectAll: selectAllComments } = adapterComments.getSelectors();
 export const { selectAll: selectAllTags } = adapterTags.getSelectors();
 
 
