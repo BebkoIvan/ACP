@@ -1,0 +1,9 @@
+.quizCard('*ngIf'='quiz')
+   .quizName
+    a(routerLink="../{{quiz.id}}" )
+     span {{quiz.name}}
+   .card-footer
+    app-timestamp([date]="quiz.createdAt", [format]="'fullDate'") 
+    span {{author$ | async}}
+    button('(click)'='deleteQuiz(quiz)')
+     i.icon-cross
