@@ -1,5 +1,5 @@
 app-viewport
- .workshop('*ngIf'='workshop')
+ .workshop('*ngIf'='workshop$ | async as workshop')
   .title
    h3 {{workshop.title}}
   .content-area
@@ -9,8 +9,8 @@ app-viewport
     button.btnCollapse('(click)'='control()') {{title}}
   .workshop-footer
    .tags-likes
-    .tags-list
-     span('*ngFor'="let tag of tagsList") {{tag}} 
+    .tags-list('*ngIf'='tagsList.length')
+     span('*ngFor'="let tag of tagsList") {{tag.tagTitle}} 
     .likes
      span {{workshop.likes}} 
      app-like('[likeActive]'="likeActive" '(likeClicked)'="likec()")  
