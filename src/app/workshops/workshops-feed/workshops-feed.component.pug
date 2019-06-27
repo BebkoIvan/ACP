@@ -1,6 +1,6 @@
 app-viewport
  app-article('*ngFor'="let workshop of workshops$ | async" '[allTags]'="serverTags" '[workshop]'="workshop" '(scrollTop)'="scrollTop()")
- app-tag-cloud('[tagsList]'="serverTags")  
+ app-tag-cloud('[tagsList]'="tags$ | async")  
  app-categories('[categories]'="categories")
 
 

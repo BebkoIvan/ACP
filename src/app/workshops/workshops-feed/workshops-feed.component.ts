@@ -6,10 +6,11 @@ import { Tags } from '../workshops-data/tags';
 import { TagsService } from 'src/app/shared/services/tags-service/tags.service';
 import { Store, select } from '@ngrx/store';
 import { AppState } from 'src/app/reducers';
-import { WorkshopsRequested, WorkshopsTagsRequested } from '../store/workshops.actions';
-import { selectWorkshops } from '../store/workshops.selectors';
+import {ArticlesRequested, TagsRequested } from '../store/workshops.actions';
 import { take, map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { selectAllArticles, selectAllTags } from '../store/workshops.selectors';
+
 @Component({
     selector: 'app-workshops-feed',
     templateUrl: './workshops-feed.component.pug',
@@ -18,6 +19,7 @@ import { Observable } from 'rxjs';
 export class WorkshopsFeedComponent implements OnInit {
     workshops;
     workshops$: Observable<any>;
+    tags$: Observable<any>;
     categories: string[] = ['All', 'My Workshops', 'Favorite'];
     user: User;
     intialParams;
@@ -27,10 +29,18 @@ export class WorkshopsFeedComponent implements OnInit {
                 private workshopsService: WorkshopsService,
                 private store: Store<AppState>, private router: Router,
                 private _tagsService: TagsService) {
-                    route.queryParams.subscribe(p => this.store.dispatch(new WorkshopsRequested({queryParams: p })));
+                    
+                    route.queryParams.subscribe(p => this.store.dispatch(new ArticlesRequested({queryParams: p })));
+
                     this.workshops$ = this.store.pipe(
-                        select(selectWorkshops)
+                        select(selectAllArticles)
                         );
+
+                    this.tags$ = this.store.pipe(
+                         select(selectAllTags)
+                     );
+
+
 
                     if (!route.snapshot.queryParams.category) {
             this.router.navigate([''], {
@@ -43,16 +53,6 @@ export class WorkshopsFeedComponent implements OnInit {
 
 
     ngOnInit() {
-        this.route.data.subscribe(data => {
-                                            if (!this._tagsService.allTags.length) {
-                                            this._tagsService.allTags = data.workshops;
-                                           }
-                                            if (!this.serverTags.length) {
-                                            this._tagsService.allTags.forEach(el => this.serverTags.push(el));
-                                            }
-
-                                        } );
-
+        this.store.dispatch(new TagsRequested({}));
     }
-
 }

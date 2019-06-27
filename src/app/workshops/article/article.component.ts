@@ -2,6 +2,11 @@ import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core
 import { ActivatedRoute, Router } from '@angular/router';
 import { Tags } from '../workshops-data/tags';
 import { TagsService } from 'src/app/shared/services/tags-service/tags.service';
+import { map, take } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { Store, select } from '@ngrx/store';
+import { AppState } from 'src/app/reducers';
+import { selectAllTags } from '../store/workshops.selectors';
 
 @Component({
     selector: 'app-article',
@@ -10,18 +15,18 @@ import { TagsService } from 'src/app/shared/services/tags-service/tags.service';
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ArticleComponent implements OnInit {
-    constructor(private route: ActivatedRoute, private router: Router, private _tagsService: TagsService) {}
+    constructor(private route: ActivatedRoute, private router: Router, private store: Store<AppState>,
+                private _tagsService: TagsService) {}
     @Input() workshop: any;
-    // @Input() workshop: Workshop;
-    tagsList: Array<any> = [];
+    tagsList: Array<any> = [] ;
+    tags$: Observable<any>;
     likeactive = false;
     @Input() allTags = [];
 
     likec() {
         if (this.likeactive) {
             this.workshop.likes -= 1;
-        }
-        else {
+        } else {
             this.workshop.likes += 1;
         }
 
@@ -29,8 +34,13 @@ export class ArticleComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.workshop.tags.forEach(el => {
-            this.tagsList.push(this._tagsService.getTagName(el));
+        this.tags$ = this.store.pipe(select(selectAllTags));
+        this.tags$.subscribe(tags => {
+            this.workshop.tags.forEach(el => 
+                this.tagsList.push(
+                    {tagTitle: tags.find(x => x.seq === el).name, isActive: false, seq: el }
+                )
+            );
         });
     }
 }

@@ -3,7 +3,9 @@ import * as fromWorkshops from './workshops.reducer';
  
 export const selectWorkshopsState = createFeatureSelector<fromWorkshops.WorkshopsState>('workshops');
 
-export const selectWorkshops = createSelector(
-    selectWorkshopsState,
-    fromWorkshops.selectAll
-    );
+export const selectArticlesState = createSelector(selectWorkshopsState, fromWorkshops.selectArticlesState);
+export const selectTagsState = createSelector(selectWorkshopsState, fromWorkshops.selectTagsState);
+
+export const selectAllArticles = createSelector(selectArticlesState, fromWorkshops.selectAllArticles);
+export const selectAllTags = createSelector(selectTagsState, fromWorkshops.selectAllTags);
+

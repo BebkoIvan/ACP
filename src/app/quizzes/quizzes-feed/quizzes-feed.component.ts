@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { QuizzesService } from '../services/quizzes.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { WorkshopsRequested } from 'src/app/workshops/store/workshops.actions';
 import { Store, select } from '@ngrx/store';
 import { AppState } from 'src/app/reducers';
 import { selectQuizzes } from '../store/quizzes.selectors';

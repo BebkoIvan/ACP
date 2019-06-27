@@ -2,55 +2,56 @@ import { Action } from '@ngrx/store';
 import '../models/workshop-interface';
 
 export enum WorkshopsActionTypes {
-  WorkshopsRequested = '[Workshops Feed] Workshops Requested',
-  WorkshopsLoaded= '[Workshops Feed] Workshops Loaded',
-  WorkshopsLoadingFailed = '[Workshops Feed] Workshops Loading Failed',
+  ArticlesRequested = '[Workshops Feed] Articles Requested',
+  ArticlesLoaded= '[Workshops Feed] Articles Loaded',
+  ArticlesLoadingFailed = '[Workshops Feed] Articles Loading Failed',
   
-  WorkshopsTagsRequested = '[Workshops Feed] Workshops Tags Requested',
-  WorkshopsTagsLoaded= '[Workshops Feed] Workshops Tags Loaded',
-  WorkshopsTagsLoadingFailed = '[Workshops Feed] Workshops Tags Loading Failed',
+ TagsRequested = '[Workshops Feed]  Tags Requested',
+  TagsLoaded= '[Workshops Feed]  Tags Loaded',
+  TagsLoadingFailed = '[Workshops Feed]  Tags Loading Failed',
   
   
 }
 
 
-export class WorkshopsRequested implements Action {
-  readonly type = WorkshopsActionTypes.WorkshopsRequested;
+export class ArticlesRequested implements Action {
+  readonly type = WorkshopsActionTypes.ArticlesRequested;
   constructor(public payload: { queryParams: any }) {}
 }
 
-export class WorkshopsLoaded implements Action {
-  readonly type = WorkshopsActionTypes.WorkshopsLoaded;
+export class ArticlesLoaded implements Action {
+  readonly type = WorkshopsActionTypes.ArticlesLoaded;
   constructor(public payload: {workshops: Workshop[]}) {}
 }
 
-export class WorkshopsLoadingFailed implements Action {
-  readonly type = WorkshopsActionTypes.WorkshopsLoadingFailed;
+export class ArticlesLoadingFailed implements Action {
+  readonly type = WorkshopsActionTypes.ArticlesLoadingFailed;
   constructor(public payload: { error: any }) {}
 }
 
-export class WorkshopsTagsRequested implements Action {
-  readonly type = WorkshopsActionTypes.WorkshopsTagsRequested;
+
+export class TagsRequested implements Action {
+  readonly type = WorkshopsActionTypes.TagsRequested;
   constructor(public payload: {}) {}
 }
 
-export class WorkshopsTagsLoaded implements Action {
-  readonly type = WorkshopsActionTypes.WorkshopsTagsLoaded;
+export class TagsLoaded implements Action {
+  readonly type = WorkshopsActionTypes.TagsLoaded;
   constructor(public payload: {tags: Array<any>}) {}
 }
 
-export class WorkshopsTagsLoadingFailed implements Action {
-  readonly type = WorkshopsActionTypes.WorkshopsTagsLoadingFailed;
+export class TagsLoadingFailed implements Action {
+  readonly type = WorkshopsActionTypes.TagsLoadingFailed;
   constructor(public payload: { error: any }) {}
 }
 
 
 
 export type WorkshopsActions =
-WorkshopsLoaded |
-WorkshopsRequested |
-WorkshopsLoadingFailed |
-WorkshopsTagsLoaded |
-WorkshopsTagsRequested |
-WorkshopsTagsLoadingFailed
+ArticlesLoaded |
+ArticlesRequested |
+ArticlesLoadingFailed |
+TagsLoaded |
+TagsRequested |
+TagsLoadingFailed
 ;

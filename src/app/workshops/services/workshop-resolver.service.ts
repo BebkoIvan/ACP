@@ -7,8 +7,6 @@ import { AuthService } from 'src/app/services/auth.service';
 import { TSInterfaceBody } from 'babel-types';
 import { Store, select } from '@ngrx/store';
 import { AppState } from 'src/app/reducers';
-import { WorkshopsRequested } from '../store/workshops.actions';
-import { selectWorkshops } from '../store/workshops.selectors';
 import { map, take } from 'rxjs/operators';
 
 @Injectable({
