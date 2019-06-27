@@ -9,7 +9,6 @@ import { Router } from '@angular/router';
 })
 export class AuthService implements OnInit {
   private token: any;
-  user;
   constructor(private _api: ApiService,private router: Router) {}
 
   static prepareHeaders(username, password) {
@@ -34,13 +33,8 @@ export class AuthService implements OnInit {
 
   signOut() {
     localStorage.clear();
-    this.user = null;
     this.router.navigate(['/login']);
   }
-
-  // setUser() {
-  //   this._api.getRequest('users/current').subscribe(data => this.user = data);
-  // }
 
   getCurrentUser(): Observable<any> {
     return this._api.getRequest('users/current');

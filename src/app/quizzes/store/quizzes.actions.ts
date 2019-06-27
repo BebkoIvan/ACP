@@ -5,9 +5,8 @@ export enum QuizzesActionTypes {
   QuizzesLoaded= '[Quizzes Feed] Quizzes Loaded',
   QuizzesLoadingFailed = '[Quizzes Feed] Quizzes Loading Failed',
   
-  WorkshopsTagsRequested = '[Workshops Feed] Workshops Tags Requested',
-  WorkshopsTagsLoaded= '[Workshops Feed] Workshops Tags Loaded',
-  WorkshopsTagsLoadingFailed = '[Workshops Feed] Workshops Tags Loading Failed',
+  QuizzAdded = '[Quizzes Feed] Quizz Added',
+
   
   
 }
@@ -21,6 +20,11 @@ export class QuizzesRequested implements Action {
 export class QuizzesLoaded implements Action {
   readonly type = QuizzesActionTypes.QuizzesLoaded;
   constructor(public payload: {quizzes: Array<any>}) {}
+}
+
+export class QuizzAdded implements Action {
+  readonly type = QuizzesActionTypes.QuizzAdded;
+  constructor(public payload: {quiz: any}) {}
 }
 
 export class QuizzesLoadingFailed implements Action {

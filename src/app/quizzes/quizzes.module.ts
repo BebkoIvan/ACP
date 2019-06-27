@@ -9,15 +9,15 @@ import { QuizPageComponent } from './quiz-page/quiz-page.component';
 import { QuizConstructorComponent } from './quiz-constructor/quiz-constructor.component';
 import { ConfigPipe } from '../pipes/config.pipe';
 import { ReactiveFormsModule } from '@angular/forms';
-import { QuizQuestionComponent } from './quiz-question/quiz-question.component';
 import { StoreModule } from '@ngrx/store';
 import { quizzesReducer } from './store/quizzes.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { QuizzesEffects } from './store/quizzes.effects';
+import { QuizCardComponent } from './quizz-card/quizz-card.component';
 
 
 @NgModule({
-  declarations: [ConfigPipe, QuizzesFeedComponent, QuizPageComponent, QuizConstructorComponent, QuizQuestionComponent],
+  declarations: [ConfigPipe, QuizzesFeedComponent, QuizPageComponent, QuizConstructorComponent, QuizCardComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,

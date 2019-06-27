@@ -8,7 +8,7 @@ import { Store, select } from '@ngrx/store';
 import { AppState } from 'src/app/reducers';
 import { WorkshopsRequested, WorkshopsTagsRequested } from '../store/workshops.actions';
 import { selectWorkshops } from '../store/workshops.selectors';
-import { take } from 'rxjs/operators';
+import { take, map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 @Component({
     selector: 'app-workshops-feed',
@@ -28,6 +28,10 @@ export class WorkshopsFeedComponent implements OnInit {
                 private store: Store<AppState>, private router: Router,
                 private _tagsService: TagsService) {
                     route.queryParams.subscribe(p => this.store.dispatch(new WorkshopsRequested({queryParams: p })));
+                    this.workshops$ = this.store.pipe(
+                        select(selectWorkshops)
+                        );
+
                     if (!route.snapshot.queryParams.category) {
             this.router.navigate([''], {
                 queryParams: {  category: 'All' },
@@ -39,13 +43,11 @@ export class WorkshopsFeedComponent implements OnInit {
 
 
     ngOnInit() {
-        this.workshops$ = this.store.pipe(select(selectWorkshops));
-        this.workshops$.subscribe(data =>  this.workshops = data);
         this.route.data.subscribe(data => {
-                                           if (!this._tagsService.allTags.length) {
-                                            this._tagsService.allTags = data.workshops[1];
+                                            if (!this._tagsService.allTags.length) {
+                                            this._tagsService.allTags = data.workshops;
                                            }
-                                           if (!this.serverTags.length) {
+                                            if (!this.serverTags.length) {
                                             this._tagsService.allTags.forEach(el => this.serverTags.push(el));
                                             }
 

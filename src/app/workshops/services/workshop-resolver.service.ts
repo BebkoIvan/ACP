@@ -24,41 +24,8 @@ export class WorkshopResolverService implements Resolve<any[]> {
         state: RouterStateSnapshot,
     ): Observable<any> |Promise<any[]>| any[] {
 
-        // this.store.dispatch(new WorkshopsRequested({queryParams: {} }));
-        // this.store.pipe(select(selectWorkshops));
-        // return this.store.pipe(select(selectWorkshops));
-        // return this.store.pipe(select(selectWorkshops)).pipe(
-        //     take(1),
-        //     map((workshops) => {
-        //         console.log(workshops);
-        //         return workshops;
-        //     }
-        // ));
+    return this._tagsService.getTags('all');
+    
 
-        if (route.queryParams.category || route.queryParams.tags) {
-            if (route.queryParams.category === 'All') {
-                if (this._workshopsService.allWorkshops && !route.queryParams.tags) {
-                    return this._workshopsService.allWorkshops;
-                } else {
-                    return combineLatest(this._workshopsService.getPosts(null, route.queryParams.tags), this._tagsService.getTags('all'));
-                }
-            } else if (route.queryParams.category === 'My Workshops' || route.queryParams.category === 'Favorite') {
-                
-                    return combineLatest(this._workshopsService.getPosts('My', route.queryParams.tags), this._tagsService.getTags('all'));
-                
-               
-            }
-            else{
-                return combineLatest(this._workshopsService.getPosts(null, route.queryParams.tags), this._tagsService.getTags('all'));
-            }
-        } else {
-            if (this._workshopsService.allWorkshops ) {
-                return this._workshopsService.allWorkshops;
-            } else {
-
-                return combineLatest(this._workshopsService.getPosts(null, route.queryParams.tags), this._tagsService.getTags('all'));
-            }
-        }
-
-    }
+}
 }

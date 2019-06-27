@@ -14,6 +14,9 @@ import { UserInfoService } from 'src/app/services/user-info.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { CommentsService } from '../services/comments-service/comments.service';
 import { Observable } from 'rxjs';
+import { Store, select } from '@ngrx/store';
+import { AppState } from 'src/app/reducers';
+import { selectAuthData } from 'src/app/auth/store/auth.selectors';
 
 @Component({
     selector: 'app-comment-card',
@@ -24,7 +27,7 @@ import { Observable } from 'rxjs';
 export class CommentCardComponent implements OnInit {
     likeActive = false;
     isEditable: boolean;
-    author: Observable<any>;
+    author$: Observable<any>;
     editing = false;
 
     @Input() comment:Comment1;
@@ -32,17 +35,22 @@ export class CommentCardComponent implements OnInit {
 
     @Output() commentDeleted: EventEmitter<Comment1> =   new EventEmitter();
     
-    constructor(private _user: AuthService, private cdr: ChangeDetectorRef, private _commentsService: CommentsService) { 
+    constructor(private authService: AuthService,
+                private store: Store<AppState>,
+                private cdr: ChangeDetectorRef, private _commentsService: CommentsService) { 
     }
 
     ngOnInit() {
-        this.author = this._user.getUserById(this.comment._author);
-        if (this.comment._author === this._user.user.id) {
-            this.isEditable = true;
-        }
-        else{
-            this.isEditable = false;
-        }
+        this.store.pipe(select(selectAuthData)).subscribe(user => {
+            if (this.comment._author === user._id) {
+                this.isEditable = true;
+            }
+            else{
+                this.isEditable = false;
+            }
+        })
+        this.author$ = this.authService.getUserById(this.comment._author);
+        
     }
      
     // likeClick(): void {
@@ -66,8 +74,7 @@ export class CommentCardComponent implements OnInit {
 
     updateComment(comment: Comment1) {
         this._commentsService.updateComment(this.comment._post, this.comment.id, comment.text).subscribe(data =>
-            {this.comment.text = comment.text;this.cdr.detectChanges()} );
-        
+            { this.comment.text = comment.text; this.cdr.detectChanges()} );
         this.editing = false;
     }
 }

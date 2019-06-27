@@ -37,37 +37,6 @@ export class WorkshopsService {
         return this._api.getRequest(`posts`, null, params);
     }
 
-    getPosts(category?: any, tags?: string): Observable<any> {
-        const   params = {
-            page: '',
-            authorId: '',
-            tags: ''
-        };
-
-        if (!category) {
-            params.page = '0';
-        }
-        if (category && this._userService.user) {
-            params.page = '0';
-            params.authorId = this._userService.user._id;
-        }
-
-        if (tags) {
-            params.tags = tags.split(',').join('|');
-        }
-        if (!this._userService.user && category) {
-            params.page = '0';
-            return this._userService.getCurrentUser().pipe(
-                tap((user) => {
-                   params.authorId = user.id;
-                  }),
-                mergeMap((user) => this._api.getRequest(`posts`, null, params))
-            );
-        }
-
-        return this._api.getRequest(`posts`, null, params);
-
-    }
 
     updatePost(id, body) {
         return this._api.putRequest(`posts/${id}`, body);
@@ -81,63 +50,5 @@ export class WorkshopsService {
         return this._api.getRequest(`posts/${id}`);
     }
 
-    setPosts() {
-        this.getPosts().subscribe(data => {this.allWorkshops = data.posts; this.totalPosts = data.total; });
-    }
 
-    // newUser(){
-    //     let body={
-    //         'username':'ivanTest',
-    //         'password':'12345'
-    //     }
-    //     return this._api.postRequest('users', body);
-    // }
-// getOneWorkShop(id: any) {
-//         return this.workshops.filter((elem: Workshop) => {
-//             return elem.id.toString() === id;
-//         })[0];
-//     }
-
-
-
-// filtered(category: string, tag: string) {
-//         let filteredWorkshops: Workshop[] = this.workshops;
-//         if (category) {
-//             if (category === 'All') {
-//                 filteredWorkshops = this.workshops;
-//             } else if (category === 'My Workshops') {
-//                 filteredWorkshops = this.workshops.filter((elem: Workshop) => {
-//                     return this.user.profile.myWorkshops.includes(elem.id);
-//                 });
-//             } else if (category === 'Favorite') {
-//                 filteredWorkshops = this.workshops.filter((elem: Workshop) => {
-//                     return this.user.profile.favoriteWorkshops.includes(
-//                         elem.id
-//                     );
-//                 });
-//             }
-//         }
-
-//         if (tag) {
-//             if (tag.indexOf(',') > -1) {
-//                 const tagsList: string[] = tag.split(',');
-
-//                 filteredWorkshops = filteredWorkshops.filter(
-//                     (elem: Workshop) => {
-//                         return tagsList.some(tag =>
-//                             elem.tagsList.includes(parseInt(tag))
-//                         );
-//                     }
-//                 );
-//             } else {
-//                 filteredWorkshops = filteredWorkshops.filter(
-//                     (elem: Workshop) => {
-//                         return elem.tagsList.includes(parseInt(tag));
-//                     }
-//                 );
-//             }
-//         }
-
-//         return filteredWorkshops;
-//     }
 }
