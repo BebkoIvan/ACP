@@ -6,7 +6,7 @@ import { map, take } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { Store, select } from '@ngrx/store';
 import { AppState } from 'src/app/reducers';
-import { selectAllTags } from '../store/workshops.selectors';
+ 
 
 @Component({
     selector: 'app-article',

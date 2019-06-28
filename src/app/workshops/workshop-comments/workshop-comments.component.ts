@@ -5,7 +5,7 @@ import { CommentsService } from 'src/app/shared/services/comments-service/commen
 import { Observable } from 'rxjs';
 import { AppState } from 'src/app/reducers';
 import { Store, select } from '@ngrx/store';
-import { WorkshopCommentsRequested } from '../store/workshops.actions';
+import { WorkshopCommentsRequested, WorkshopAddComment } from '../store/workshops.actions';
 import { selectAllComments } from '../store/workshops.selectors';
 
 @Component({
@@ -30,14 +30,10 @@ export class WorkshopCommentsComponent implements OnInit {
 
 
 
-    // addComment(comment: Comment1) {
-    //     this.commentsService.createComment(this.id, comment.text).subscribe(data => {
-    //         const comment1 = data.comment;
-    //         this.comments.push(comment1);
-    //         this.cdr.detectChanges();
-    //     });
+    addComment(comment: Comment1) {
+        this.store.dispatch(new WorkshopAddComment({postId: this.id, comment: comment}));
 
-    // }
+    }
 
     // deleteComment(comment: Comment1) {
     //     this.commentsService.deleteComment(this.id, comment._id).subscribe(data =>  console.log(data));
