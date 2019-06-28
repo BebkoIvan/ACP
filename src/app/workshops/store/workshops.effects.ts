@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { WorkshopsService } from '../services/workshops.service';
 import { map, exhaustMap, catchError, take } from 'rxjs/operators';
-import { ArticlesRequested, WorkshopsActionTypes, ArticlesLoaded, ArticlesLoadingFailed, TagsRequested, TagsLoaded, TagsLoadingFailed, WorkshopRequested, WorkshopLoaded, WorkshopLoadingFailed, WorkshopCommentsRequested, WorkshopCommentsLoaded, WorkshopCommentsLoadingFailed, WorkshopAddComment, WorkshopCommentAdded } from './workshops.actions';
+import { ArticlesRequested, WorkshopsActionTypes, ArticlesLoaded, ArticlesLoadingFailed, TagsRequested, TagsLoaded, TagsLoadingFailed, WorkshopRequested, WorkshopLoaded, WorkshopLoadingFailed, WorkshopCommentsRequested, WorkshopCommentsLoaded, WorkshopCommentsLoadingFailed, WorkshopAddComment, WorkshopCommentAdded, WorkshopDeleteComment, WorkshopCommentDeleted } from './workshops.actions';
 import { of } from 'rxjs';
 import { TagsService } from 'src/app/shared/services/tags-service/tags.service';
 import { CommentsService } from 'src/app/shared/services/comments-service/comments.service';
@@ -111,6 +111,23 @@ export class WorkshopsEffects {
         map((data) => {
           data = data.comment;
           return new WorkshopCommentAdded({comment: data});
+        }),
+        catchError((error) => {
+          return of(new WorkshopCommentsLoadingFailed({error}));
+        })
+        );
+      })
+    );
+
+    @Effect()
+    WorkshopDeleteComment$ = this.actions$
+    .pipe(
+      ofType<WorkshopDeleteComment>(WorkshopsActionTypes.WorkshopDeleteComment),
+      map( (action: WorkshopDeleteComment) => action.payload),
+      exhaustMap( ({ postId, commentId  } : {postId: string, commentId: string}) => {
+       return this.commentsService.deleteComment(postId, commentId).pipe(
+        map((data) => {
+          return new WorkshopCommentDeleted({commentId: commentId});
         }),
         catchError((error) => {
           return of(new WorkshopCommentsLoadingFailed({error}));

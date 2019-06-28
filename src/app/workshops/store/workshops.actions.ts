@@ -21,7 +21,8 @@ export enum WorkshopsActionTypes {
   WorkshopAddComment = '[Workshops page]  Workshop Add Comment',
   WorkshopCommentAdded = '[Workshops page]  Workshop Comment Added',
 
-  WorkshopDeleteComment = '[Workshops page]  Workshop Delete Comment'
+  WorkshopDeleteComment = '[Workshops page]  Workshop Delete Comment',
+  WorkshopCommentDeleted = '[Workshops page]  Workshop Comment Deleted',
 
 
   
@@ -114,6 +115,11 @@ export class WorkshopDeleteComment implements Action {
   constructor(public payload: { postId: string, commentId: string }) {}
 }
 
+export class WorkshopCommentDeleted implements Action {
+  readonly type = WorkshopsActionTypes.WorkshopCommentDeleted;
+  constructor(public payload: { commentId: string }) {}
+}
+
 
 
 
@@ -132,5 +138,6 @@ WorkshopCommentsLoaded |
 WorkshopCommentsRequested |
 WorkshopAddComment |
 WorkshopDeleteComment |
-WorkshopCommentAdded
+WorkshopCommentAdded |
+WorkshopCommentDeleted
 ;
