@@ -9,7 +9,7 @@ import { AppState } from 'src/app/reducers';
 import {ArticlesRequested, TagsRequested } from '../store/workshops.actions';
 import { take, map, tap } from 'rxjs/operators';
 import { Observable, Subscription } from 'rxjs';
-import { selectAllArticles, selectAllTags } from '../store/workshops.selectors';
+import { selectAllArticles, selectTags } from '../store/workshops.selectors';
 import { selectAuthenticated } from 'src/app/auth/store/auth.selectors';
 
 @Component({
@@ -44,7 +44,7 @@ export class WorkshopsFeedComponent implements OnInit {
                         );
 
                     this.tags$ = this.store.pipe(
-                         select(selectAllTags)
+                         select(selectTags)
                      );
 
                     this.paramsSubscription = route.queryParams.subscribe(p =>
@@ -53,9 +53,8 @@ export class WorkshopsFeedComponent implements OnInit {
 
 
     ngOnInit() {
-
      this.tagsSubscription = this.tags$.pipe(take(1)).subscribe(tags => {
-         if (!tags.length) {
+         if (!tags) {
             this.store.dispatch(new TagsRequested({}));
          }
      });

@@ -7,7 +7,7 @@ import { CommentsService } from 'src/app/shared/services/comments-service/commen
 import { Observable, Subscription, Subscriber, combineLatest, pipe } from 'rxjs';
 import { Store, select } from '@ngrx/store';
 import { AppState } from 'src/app/reducers';
-import { selectAllTags, selectWorkshop } from '../store/workshops.selectors';
+import { selectTags, selectWorkshop } from '../store/workshops.selectors';
 import { WorkshopRequested, WorkshopLoaded, TagsRequested } from '../store/workshops.actions';
 import { take } from 'rxjs/operators';
 
@@ -45,15 +45,15 @@ export class WorkshopPageComponent implements OnInit {
         this.workshop$ = this.store.pipe(select(selectWorkshop));
         this.store.dispatch(new WorkshopRequested({id: this.id}));
 
-        this.tagsSubscription = this.store.pipe(select(selectAllTags), take(1)).subscribe(tags => {
-            if (!tags.length) {
+        this.tagsSubscription = this.store.pipe(select(selectTags), take(1)).subscribe(tags => {
+            if (!tags) {
                this.store.dispatch(new TagsRequested({}));
             }
         });
 
-        this.unitedSubscription =  combineLatest(this.store.pipe(select(selectAllTags), take(2)), this.workshop$).subscribe(
+        this.unitedSubscription =  combineLatest(this.store.pipe(select(selectTags), take(2)), this.workshop$).subscribe(
             data => {
-                if (data[0].length && data[1]) {
+                if (data[0] && data[1]) {
                     data[1].tags.forEach(el =>
                                     this.tagsList.push(
                                         {tagTitle: data[0].find(x => x.seq === el).name, isActive: false, seq: el }

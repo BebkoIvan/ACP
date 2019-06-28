@@ -47,7 +47,7 @@ export class TagsRequested implements Action {
 
 export class TagsLoaded implements Action {
   readonly type = WorkshopsActionTypes.TagsLoaded;
-  constructor(public payload: {tags: any[]}) {}
+  constructor(public payload: {tags: Tag[]}) {}
 }
 
 export class TagsLoadingFailed implements Action {

@@ -2,8 +2,7 @@ import { Injectable } from '@angular/core';
 import { ApiService } from '../api-service/api.service';
 import { Observable } from 'rxjs';
 import { AppState } from 'src/app/reducers';
-import { Store, select } from '@ngrx/store';
-import { selectAllTags } from 'src/app/workshops/store/workshops.selectors';
+import { Store, select } from '@ngrx/store';;
 import { map } from 'rxjs/operators';
 
 @Injectable({
@@ -21,15 +20,15 @@ export class TagsService {
     return 0;
   }
 
-  getTagName(tag) {
-    this.store.pipe(
-      select(selectAllTags),
-      map((tags) => {
-        return {
-        tagTitle: tags.find(x => x.seq === tag).name, isActive: false, seq: tag };
-      })
-  );
-  }
+  // getTagName(tag) {
+  //   this.store.pipe(
+  //     select(selectAllTags),
+  //     map((tags) => {
+  //       return {
+  //       tagTitle: tags.find(x => x.seq === tag).name, isActive: false, seq: tag };
+  //     })
+  // );
+  // }
 
   createTag(name): Observable<any> {
     const body = {
