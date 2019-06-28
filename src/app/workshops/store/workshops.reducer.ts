@@ -34,9 +34,7 @@ export interface WorkshopsState {
 // }
 // );
 
-const adapterArticles = createEntityAdapter<Workshop>({
-  selectId: workshop => workshop.createdAt
-});
+const adapterArticles = createEntityAdapter<Workshop>();
 
 const adapterComments = createEntityAdapter<Comment1>();
 
