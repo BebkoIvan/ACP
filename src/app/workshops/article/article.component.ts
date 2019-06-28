@@ -38,7 +38,7 @@ export class ArticleComponent implements OnChanges {
     }
 
     ngOnChanges(): void {
-        if (this.allTags.length) {
+        if (this.allTags) {
             this.workshop.tags.forEach(el =>
                 this.tagsList.push(
                     {tagTitle: this.allTags.find(x => x.seq === el).name, isActive: false, seq: el }

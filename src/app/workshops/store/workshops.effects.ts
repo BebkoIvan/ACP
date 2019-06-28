@@ -124,7 +124,7 @@ export class WorkshopsEffects {
     .pipe(
       ofType<WorkshopDeleteComment>(WorkshopsActionTypes.WorkshopDeleteComment),
       map( (action: WorkshopDeleteComment) => action.payload),
-      exhaustMap( ({ postId, commentId  } : {postId: string, commentId: string}) => {
+      exhaustMap( ({ postId, commentId  }: {postId: string, commentId: string}) => {
        return this.commentsService.deleteComment(postId, commentId).pipe(
         map((data) => {
           return new WorkshopCommentDeleted({commentId: commentId});

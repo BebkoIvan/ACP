@@ -13,7 +13,7 @@ import {
 import { UserInfoService } from 'src/app/services/user-info.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { CommentsService } from '../services/comments-service/comments.service';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { Store, select } from '@ngrx/store';
 import { AppState } from 'src/app/reducers';
 import { selectAuthData } from 'src/app/auth/store/auth.selectors';
@@ -28,6 +28,7 @@ export class CommentCardComponent implements OnInit {
     likeActive = false;
     isEditable: boolean;
     author$: Observable<any>;
+    authSubscription: Subscription;
     editing = false;
 
     @Input() comment:Comment1;
@@ -41,7 +42,7 @@ export class CommentCardComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.store.pipe(select(selectAuthData)).subscribe(user => {
+        this.authSubscription = this.store.pipe(select(selectAuthData)).subscribe(user => {
             if (this.comment._author === user._id) {
                 this.isEditable = true;
             }
@@ -76,5 +77,9 @@ export class CommentCardComponent implements OnInit {
         this._commentsService.updateComment(this.comment._post, this.comment.id, comment.text).subscribe(data =>
             { this.comment.text = comment.text; this.cdr.detectChanges()} );
         this.editing = false;
+    }
+
+    ngOnDestroy(): void {
+        this.authSubscription.unsubscribe();
     }
 }
