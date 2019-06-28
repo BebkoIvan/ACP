@@ -17,6 +17,7 @@ import { Observable, Subscription } from 'rxjs';
 import { Store, select } from '@ngrx/store';
 import { AppState } from 'src/app/reducers';
 import { selectAuthData } from 'src/app/auth/store/auth.selectors';
+import { WorkshopUpdateComment } from 'src/app/workshops/store/workshops.actions';
 
 @Component({
     selector: 'app-comment-card',
@@ -68,17 +69,15 @@ export class CommentCardComponent implements OnInit {
         this.commentDeleted.emit(this.comment);
     }
 
-    editComment(e: Event){
+    editComment(e: Event) {
         e.preventDefault();
         this.editing = true;
     }
 
     updateComment(comment: Comment1) {
-        this._commentsService.updateComment(this.comment._post, this.comment.id, comment.text).subscribe(data =>
-            { this.comment.text = comment.text; this.cdr.detectChanges()} );
+        this.store.dispatch(new WorkshopUpdateComment({postId: this.comment._post, commentId: this.comment.id, text: comment.text}));
         this.editing = false;
     }
-
     ngOnDestroy(): void {
         this.authSubscription.unsubscribe();
     }

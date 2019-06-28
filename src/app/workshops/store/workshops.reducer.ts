@@ -79,6 +79,9 @@ export function workshopsReducer(state = initialState, action: WorkshopsActions)
     case WorkshopsActionTypes.WorkshopCommentDeleted:
     return { ...state, comments: adapterComments.removeOne(action.payload.commentId, state.comments) };
 
+    case WorkshopsActionTypes.WorkshopCommentUpdated:
+    return { ...state, comments: adapterComments.updateOne(action.payload, state.comments) };
+
     case WorkshopsActionTypes.WorkshopLoaded:
     return { ...state, workshopSelected: { workshop: action.payload.workshop } };
 

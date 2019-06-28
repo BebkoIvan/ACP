@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { WorkshopsService } from '../services/workshops.service';
 import { map, exhaustMap, catchError, take } from 'rxjs/operators';
-import { ArticlesRequested, WorkshopsActionTypes, ArticlesLoaded, ArticlesLoadingFailed, TagsRequested, TagsLoaded, TagsLoadingFailed, WorkshopRequested, WorkshopLoaded, WorkshopLoadingFailed, WorkshopCommentsRequested, WorkshopCommentsLoaded, WorkshopCommentsLoadingFailed, WorkshopAddComment, WorkshopCommentAdded, WorkshopDeleteComment, WorkshopCommentDeleted } from './workshops.actions';
+import { ArticlesRequested, WorkshopsActionTypes, ArticlesLoaded, ArticlesLoadingFailed, TagsRequested, TagsLoaded, TagsLoadingFailed, WorkshopRequested, WorkshopLoaded, WorkshopLoadingFailed, WorkshopCommentsRequested, WorkshopCommentsLoaded, WorkshopCommentsLoadingFailed, WorkshopAddComment, WorkshopCommentAdded, WorkshopDeleteComment, WorkshopCommentDeleted, WorkshopUpdateComment, WorkshopCommentUpdated } from './workshops.actions';
 import { of } from 'rxjs';
 import { TagsService } from 'src/app/shared/services/tags-service/tags.service';
 import { CommentsService } from 'src/app/shared/services/comments-service/comments.service';
@@ -119,6 +119,7 @@ export class WorkshopsEffects {
       })
     );
 
+
     @Effect()
     WorkshopDeleteComment$ = this.actions$
     .pipe(
@@ -128,6 +129,25 @@ export class WorkshopsEffects {
        return this.commentsService.deleteComment(postId, commentId).pipe(
         map((data) => {
           return new WorkshopCommentDeleted({commentId: commentId});
+        }),
+        catchError((error) => {
+          return of(new WorkshopCommentsLoadingFailed({error}));
+        })
+        );
+      })
+    );
+
+    @Effect()
+    WorkshopUpdateComment$ = this.actions$
+    .pipe(
+      ofType<WorkshopUpdateComment>(WorkshopsActionTypes.WorkshopUpdateComment),
+      map( (action: WorkshopUpdateComment) => action.payload),
+      exhaustMap( ({ postId, commentId, text  }: {postId: string, commentId: string, text: string}) => {
+       return this.commentsService.updateComment(postId, commentId, text).pipe(
+        map((data) => {
+          data = data.comment;
+          console.log(data);
+          return new WorkshopCommentUpdated({id: data._id, changes: {text: data.text} });
         }),
         catchError((error) => {
           return of(new WorkshopCommentsLoadingFailed({error}));

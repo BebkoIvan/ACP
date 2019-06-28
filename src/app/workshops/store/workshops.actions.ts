@@ -1,5 +1,6 @@
 import { Action } from '@ngrx/store';
 import '../models/workshop-interface';
+import { Update } from '@ngrx/entity';
 
 export enum WorkshopsActionTypes {
   ArticlesRequested = '[Workshops Feed] Articles Requested',
@@ -23,6 +24,9 @@ export enum WorkshopsActionTypes {
 
   WorkshopDeleteComment = '[Workshops page]  Workshop Delete Comment',
   WorkshopCommentDeleted = '[Workshops page]  Workshop Comment Deleted',
+
+  WorkshopUpdateComment = '[Workshops page]  Workshop Update Comment',
+  WorkshopCommentUpdated = '[Workshops page]  Workshop Comment Updated'
 
 
   
@@ -121,6 +125,16 @@ export class WorkshopCommentDeleted implements Action {
 }
 
 
+export class WorkshopUpdateComment implements Action {
+  readonly type = WorkshopsActionTypes.WorkshopUpdateComment;
+  constructor(public payload: { postId: string, commentId: string, text: string }) {}
+}
+
+export class WorkshopCommentUpdated implements Action {
+  readonly type = WorkshopsActionTypes.WorkshopCommentUpdated;
+  constructor(public payload: Update<Comment1> ) {}
+}
+
 
 
 export type WorkshopsActions =
@@ -139,5 +153,8 @@ WorkshopCommentsRequested |
 WorkshopAddComment |
 WorkshopDeleteComment |
 WorkshopCommentAdded |
-WorkshopCommentDeleted
+WorkshopCommentDeleted |
+WorkshopCommentUpdated |
+WorkshopUpdateComment 
+
 ;
