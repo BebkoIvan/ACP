@@ -107,7 +107,6 @@ export class QuizzesService {
 
       return this._api.getRequest(`quizzes/${id}`, null, {id: `${id}`});
 
-      // return this.allQuizzes.find(x => x.id == id);
     }
 
     getQuizzes(): Observable<any> {
@@ -119,6 +118,15 @@ export class QuizzesService {
       quiz.author =  'Ivan Bebko';
       quiz.date = '2019-06-12T18:33:00.447Z';
       this.allQuizzes.push(quiz);
+    }
+
+    createQuiz(quiz: any) {
+      const body = {
+        posts: ['5d16700caed59b49b6ef057b'],
+        ...quiz
+      };
+
+      return this._api.postRequest('quizzes', body);
     }
 
 }

@@ -62,8 +62,8 @@ export class QuizConstructorComponent implements OnInit {
   }
 
   onSubmit(): void {
-    const res = this.form.value;
-    this._quizS.addQuiz(res);
+    const quiz = this.form.value;
+    this._quizS.createQuiz(quiz)
 
 }
 
