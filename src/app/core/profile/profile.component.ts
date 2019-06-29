@@ -6,6 +6,7 @@ import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/reducers';
 import { SignedOut } from 'src/app/auth/store/auth.actions';
 import { selectAuthData } from 'src/app/auth/store/auth.selectors';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-profile',
@@ -35,7 +36,7 @@ export class ProfileComponent implements OnInit {
     this.userService.signOut();
   }
 
-  changePassword(e:Event){
+  changePassword(e: Event) {
     this.passwordChanging = true;
   }
 
@@ -52,12 +53,14 @@ export class ProfileComponent implements OnInit {
 
     const body = {
       newPassword : this.f.password.value
-     }
+     };
 
-    this.userService.updateUser(this.profile.id, body).subscribe(data => alert("Password has changed"));
+
+
+    this.userService.updateUser(this.profile.id, body).subscribe(data => alert('Password has changed'));
     this.hideForm();
     this.passwordForm.reset();
-  
-
 }
+
+
 }

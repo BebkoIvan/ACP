@@ -9,7 +9,7 @@ app-card
    a(routerLink="../{{workshop.id}}" ) Read more
  .footer
   .article-footer
-   .tags-list('*ngIf'='allTags.length')
+   .tags-list('*ngIf'='allTags')
     span('*ngFor'="let tag of tagsList" '[class.active]'="tag.isActive" appQueryParamsActive [tag]="tag") {{tag.tagTitle}}
    .likes
     span {{workshop.likes}} 

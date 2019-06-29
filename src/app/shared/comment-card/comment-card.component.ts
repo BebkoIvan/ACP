@@ -18,6 +18,8 @@ import { Store, select } from '@ngrx/store';
 import { AppState } from 'src/app/reducers';
 import { selectAuthData } from 'src/app/auth/store/auth.selectors';
 import { WorkshopUpdateComment } from 'src/app/workshops/store/workshops.actions';
+import { selectAllComments } from 'src/app/workshops/store/workshops.selectors';
+import { take, map } from 'rxjs/operators';
 
 @Component({
     selector: 'app-comment-card',
@@ -76,7 +78,9 @@ export class CommentCardComponent implements OnInit {
 
     updateComment(comment: Comment1) {
         this.store.dispatch(new WorkshopUpdateComment({postId: this.comment._post, commentId: this.comment.id, text: comment.text}));
-        this.editing = false;
+        this.store.pipe(select(selectAllComments),
+        take(1),
+        map(() => this.editing = false));
     }
     ngOnDestroy(): void {
         this.authSubscription.unsubscribe();
