@@ -32,8 +32,9 @@ export class WorkshopsService {
         }
 
         if (queryParams.queryParams.category === 'My Workshops' || queryParams.queryParams.category === 'Favorite') {
-            user.subscribe(user =>{if(user){
-                params.authorId = user._id;
+            user.subscribe(authData =>{
+                if (authData) {
+                params.authorId = authData._id;
             } });
         }
         return this._api.getRequest(`posts`, null, params);

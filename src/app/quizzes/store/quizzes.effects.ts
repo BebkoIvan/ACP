@@ -3,7 +3,7 @@ import { Actions, Effect, ofType } from '@ngrx/effects';
 import { map, exhaustMap, catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { QuizzesService } from '../services/quizzes.service';
-import { QuizzesRequested, QuizzesActionTypes, QuizzesLoaded, QuizzesLoadingFailed } from './quizzes.actions';
+import { QuizzesRequested, QuizzesActionTypes, QuizzesLoaded, QuizzesLoadingFailed, QuizRequested, QuizLoaded, QuizLoadingFailed } from './quizzes.actions';
 
 
 
@@ -30,5 +30,25 @@ export class QuizzesEffects {
       );
     })
   );
+
+  @Effect()
+  QuizRequested$ = this.actions$
+    .pipe(
+      ofType<QuizRequested>(QuizzesActionTypes.QuizRequested),
+      map( (action: QuizRequested) => action.payload),
+      exhaustMap( ({id}) => {
+        return this.quizzesService.getOneQuiz(id).pipe(
+          map((quiz: any) => {
+            quiz = quiz[0];
+            return new QuizLoaded({quiz});
+          }),
+          catchError((error) => {
+            return of(new QuizLoadingFailed({error}));
+          })
+
+        );
+      })
+    );
+
 
 }

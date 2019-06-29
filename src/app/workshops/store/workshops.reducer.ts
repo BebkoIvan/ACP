@@ -46,6 +46,7 @@ const tagsInitialState: TagsState = {
   tags: null
 }
 const commentsInitialState: CommentsState = adapterComments.getInitialState({ });
+
 const WorkshopInitialState: WorkshopState = {
   workshop: null
 };

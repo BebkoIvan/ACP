@@ -3,7 +3,11 @@ import * as fromQuizzes from './quizzes.reducer';
  
 export const selectQuizzesState = createFeatureSelector<fromQuizzes.QuizzesState>('quizzes');
 
-export const selectQuizzes = createSelector(
+export const selectQuizzesFeedState = createSelector(selectQuizzesState, fromQuizzes.selectQuizzesFeedState);
+
+export const selectQuizzes = createSelector(selectQuizzesFeedState, fromQuizzes.selectAllQuizzes);
+
+export const selectOneQuiz = createSelector(
     selectQuizzesState,
-    fromQuizzes.selectAll
-    );
+    (state: fromQuizzes.QuizzesState) => state.quiz.quiz
+);
