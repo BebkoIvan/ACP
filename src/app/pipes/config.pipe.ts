@@ -8,6 +8,9 @@ export class ConfigPipe implements PipeTransform {
   transform(value: any, args?: any): any {
     let config = [];
     value.questions.forEach((el,i) => {
+      if (!el) {
+        return;
+      }
       if ( el.questionType === 'input' || el.questionType === 'Short answer') {
         config.push(
           {
