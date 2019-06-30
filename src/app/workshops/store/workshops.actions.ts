@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import '../models/workshop-interface';
+import '../models/workshop.interface';
 import { Update } from '@ngrx/entity';
 
 export enum WorkshopsActionTypes {
