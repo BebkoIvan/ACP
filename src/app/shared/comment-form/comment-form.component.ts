@@ -52,7 +52,6 @@ export class CommentFormComponent implements OnInit {
       this.commentForm.reset('commentText');
     }
 
-  
   }
 
 }

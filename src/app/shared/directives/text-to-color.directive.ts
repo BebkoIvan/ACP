@@ -136,7 +136,7 @@ export class TextToColorDirective implements OnChanges {
         return color;
     }
 
-    LightenColor = (color, percent) => {
+    lightenColor = (color, percent) => {
         if (color[0] === '#') {
             color = color.slice(1);
         }
@@ -160,7 +160,7 @@ export class TextToColorDirective implements OnChanges {
                 this.renderer.setElementStyle(
                     this.el.nativeElement,
                     'backgroundColor',
-                    this.LightenColor(
+                    this.lightenColor(
                         this.color,
                         this.config.hoverLighten ? 20 : -20
                     )
