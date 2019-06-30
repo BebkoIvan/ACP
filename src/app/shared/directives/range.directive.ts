@@ -14,7 +14,7 @@ export class RangeDirective implements OnChanges {
     this.viewContainer.clear();
 
     const elements = this.appRangeOf;
-    const range = typeof this.appRangeRange === 'number' ? [0, this.appRangeRange] : [this.appRangeRange[0], this.appRangeRange[1]];
+    const range = typeof this.appRangeRange === 'number' ? [0, this.appRangeRange] : this.appRangeRange;
 
     for (let k: number = range[0]; k < range[1]; k++) {
       this.viewContainer.createEmbeddedView(this.templateRef, {
