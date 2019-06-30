@@ -73,17 +73,21 @@ export class TextToColorDirective implements OnChanges {
     
     constructor(private el: ElementRef, private renderer: Renderer) { }
 
+     setBackground = () => {
+        this.renderer.setElementStyle(
+            this.el.nativeElement,
+            'backgroundColor',
+            this.getColor()
+        );
+    }
+
     ngOnChanges(): void {
         if (this.config.disabled) {
             this.color = 'grey';
         }
         else {
             this.color = this.getColor();
-            this.renderer.setElementStyle(
-                this.el.nativeElement,
-                'backgroundColor',
-                this.getColor()
-            );
+            this.setBackground();
         }
         
     }
@@ -171,11 +175,7 @@ export class TextToColorDirective implements OnChanges {
 
     @HostListener('mouseout') onMouseOut() {
         if (this.config.hoverReact) {
-            this.renderer.setElementStyle(
-                this.el.nativeElement,
-                'backgroundColor',
-                this.color
-            );
+            this.setBackground();
             this.ishovering = false;
         }
     }
