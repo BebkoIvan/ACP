@@ -24,9 +24,7 @@ export class CommentFormComponent implements OnInit {
       Validators.required
     ]),
   });
-
   @Output() commentCreated: EventEmitter<Comment1> =   new EventEmitter();
-
   ngOnInit() {
     this.store.select(selectAuthData).subscribe(data => this.user = data);
     if (this.value) {
