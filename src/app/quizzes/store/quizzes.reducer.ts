@@ -37,6 +37,13 @@ export function quizzesReducer(state = initialState, action: QuizzesActions): Qu
     case QuizzesActionTypes.QuizLoaded:
     return { ...state, quiz: { quiz: action.payload.quiz } };
 
+    case QuizzesActionTypes.QuizAdded:
+    return { ...state, quizzesFeed: adapterQuizzesFeed.addOne(action.payload.quiz, state.quizzesFeed) };
+
+    case QuizzesActionTypes.QuizDeleted:
+    return { ...state, quizzesFeed: adapterQuizzesFeed.removeOne(action.payload.quizId, state.quizzesFeed) };
+
+
     default:
       return state;
   }

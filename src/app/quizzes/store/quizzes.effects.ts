@@ -3,7 +3,7 @@ import { Actions, Effect, ofType } from '@ngrx/effects';
 import { map, exhaustMap, catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { QuizzesService } from '../services/quizzes.service';
-import { QuizzesRequested, QuizzesActionTypes, QuizzesLoaded, QuizzesLoadingFailed, QuizRequested, QuizLoaded, QuizLoadingFailed } from './quizzes.actions';
+import { QuizzesRequested, QuizzesActionTypes, QuizzesLoaded, QuizzesLoadingFailed, QuizRequested, QuizLoaded, QuizLoadingFailed, AddQuiz, QuizAdded, DeleteQuiz, QuizDeleted } from './quizzes.actions';
 
 
 
@@ -46,6 +46,42 @@ export class QuizzesEffects {
             return of(new QuizLoadingFailed({error}));
           })
 
+        );
+      })
+    );
+
+
+    @Effect()
+    AddQuiz$ = this.actions$
+    .pipe(
+      ofType<AddQuiz>(QuizzesActionTypes.AddQuiz),
+      map( (action: AddQuiz) => action.payload),
+      exhaustMap( (quiz: any) => {
+       return this.quizzesService.createQuiz(quiz.quiz).pipe(
+        map((data) => {
+          data = data.quiz[0];
+          return new QuizAdded({quiz: data});
+        }),
+        catchError((error) => {
+          return of(new QuizLoadingFailed({error}));
+        })
+        );
+      })
+    );
+
+    @Effect()
+    DeleteQuiz$ = this.actions$
+    .pipe(
+      ofType<DeleteQuiz>(QuizzesActionTypes.DeleteQuiz),
+      map( (action: DeleteQuiz) => action.payload),
+      exhaustMap( (payload) => {
+       return this.quizzesService.deleteQuiz(payload.quizId).pipe(
+        map((data) => {
+          return new QuizDeleted({quizId: payload.quizId});
+        }),
+        catchError((error) => {
+          return of(new QuizLoadingFailed({error}));
+        })
         );
       })
     );

@@ -5,5 +5,5 @@
    .card-footer
     app-timestamp([date]="quiz.createdAt", [format]="'fullDate'") 
     span {{author$ | async}}
-    button('(click)'='deleteQuiz(quiz)')
+    button('(click)'='deleteQuiz($event)')
      i.icon-cross

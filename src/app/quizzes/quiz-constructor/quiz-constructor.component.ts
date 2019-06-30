@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormArray, Validators, FormControl } from '@angular/forms';
 import { QuizzesService } from '../services/quizzes.service';
+import { AppState } from 'src/app/reducers';
+import { Store } from '@ngrx/store';
+import { AddQuiz } from '../store/quizzes.actions';
 
 
 @Component({
@@ -13,7 +16,7 @@ export class QuizConstructorComponent implements OnInit {
   form: FormGroup;
   questionTypes = ['Short answer', 'Choice'];
 
-  constructor(private fb: FormBuilder, private _quizS: QuizzesService) { }
+  constructor(private fb: FormBuilder, private _quizS: QuizzesService, private store: Store<AppState>) { }
 
   ngOnInit() {
     this.form = this.fb.group({
@@ -62,8 +65,12 @@ export class QuizConstructorComponent implements OnInit {
   }
 
   onSubmit(): void {
-    const quiz = this.form.value;
-    this._quizS.createQuiz(quiz)
+    const newQuiz = {
+      posts: ['5d16700caed59b49b6ef057b'],
+      ...this.form.value
+    };
+    // this._quizS.createQuiz(newQuiz).subscribe(console.log);
+    this.store.dispatch(new AddQuiz({quiz: newQuiz}));
 
 }
 

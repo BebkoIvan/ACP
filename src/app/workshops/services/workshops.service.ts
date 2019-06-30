@@ -32,7 +32,7 @@ export class WorkshopsService {
         }
 
         if (queryParams.queryParams.category === 'My Workshops' || queryParams.queryParams.category === 'Favorite') {
-            user.subscribe(authData =>{
+            user.subscribe(authData => {
                 if (authData) {
                 params.authorId = authData._id;
             } });
