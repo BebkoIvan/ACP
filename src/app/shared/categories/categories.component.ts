@@ -8,12 +8,26 @@ import { Router } from '@angular/router';
 })
 export class CategoriesComponent implements OnInit {
 
-  @Input() categories: string[];
+  @Input() categories: Array<any>;
 
   constructor(private router: Router) { }
 
   ngOnInit() {
+
   }
 
+  selectCategory(category: any) {
+    this.categories.forEach(el => el.isActive = false);
+    category.isActive = true;
+    if (category.name === 'All') {
+      this.router.navigate([''], {
+        queryParams: {category: null}
+    });
+    return;
+    }
+    this.router.navigate([''], {
+      queryParams: {category: category.name}
+  });
 
+  }
 }

@@ -22,7 +22,7 @@
         padding: 0;
         margin: 0;
 
-        li>a{
+        li>button{
 
             &.active{
                 border-bottom: 1.5px solid $red_color;
@@ -35,6 +35,7 @@
             padding: 4px;
             display: flex;
             font-size: 15px;
+            width: 100%;
             border: none;
             border-bottom: 1.5px solid $grey2;
             cursor: pointer;

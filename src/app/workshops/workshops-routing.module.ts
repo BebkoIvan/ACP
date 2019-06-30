@@ -25,7 +25,7 @@ const WorkShopsroutes: Routes = [
         pathMatch: 'full',
         canActivate: [AuthGuard],
         resolve: {workshops: WorkshopResolverService},
-        runGuardsAndResolvers: 'paramsOrQueryParamsChange'
+        runGuardsAndResolvers: 'paramsOrQueryParamsChange',
     },
 
     {

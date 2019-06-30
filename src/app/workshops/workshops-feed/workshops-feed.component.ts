@@ -24,7 +24,22 @@ export class WorkshopsFeedComponent implements OnInit {
     paramsSubscription: Subscription;
     tagsSubscription: Subscription;
     tags$: Observable<any>;
-    categories: string[] = ['All', 'My Workshops', 'Favorite'];
+    categories = [
+        {
+            name: 'All',
+            isActive: false
+        },
+        
+        {
+         name: 'My Workshops',
+         isActive: false
+        },
+
+        {
+         name: 'Favorite',
+         isActive: false
+        }
+    ];
     user: User;
     intialParams;
     serverTags = [];
@@ -33,12 +48,14 @@ export class WorkshopsFeedComponent implements OnInit {
                 private workshopsService: WorkshopsService,
                 private store: Store<AppState>, private router: Router,
                 private _tagsService: TagsService) {
+
                     if (!route.snapshot.queryParams.category) {
-                        this.router.navigate([''], {
-                            queryParams: {  category: 'All' },
-                            queryParamsHandling: 'merge'
-                        });
+                        this.categories.find(x => x.name === 'All').isActive = true;
                     }
+                    else {
+                        this.categories.find(x => x.name === route.snapshot.queryParams.category ).isActive = true;
+                    }
+
                     this.workshops$ = this.store.pipe(
                         select(selectAllArticles)
                         );
