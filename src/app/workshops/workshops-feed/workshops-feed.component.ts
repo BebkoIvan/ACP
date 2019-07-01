@@ -19,7 +19,6 @@ import { selectAuthenticated } from 'src/app/auth/store/auth.selectors';
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class WorkshopsFeedComponent implements OnInit {
-    workshops;
     workshops$: Observable<any>;
     paramsSubscription: Subscription;
     tagsSubscription: Subscription;

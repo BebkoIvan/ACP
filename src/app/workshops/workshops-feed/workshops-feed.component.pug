@@ -1,5 +1,7 @@
 app-viewport
- app-article('*ngFor'="let workshop of workshops$ | async" '[allTags]'="tags$ | async" '[workshop]'="workshop" '(scrollTop)'="scrollTop()")
+ .articles('*ngIf' = 'workshops$ | async as workshops')
+  app-article('*ngFor'="let workshop of workshops" '[allTags]'="tags$ | async" '[workshop]'="workshop" '(scrollTop)'="scrollTop()") 
+  .noArticlesMsg('*ngIf' = '!workshops.length') Currently there are no articles in this category
  app-tag-cloud('[tagsList]'="tags$ | async")  
  app-categories('[categories]'="categories")
 
