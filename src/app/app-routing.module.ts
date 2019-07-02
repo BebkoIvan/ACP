@@ -19,11 +19,6 @@ const routes: Routes = [
     },
 
     {
-        path: 'dashboard',
-        loadChildren: './dashboard/dashboard.module#DashboardModule'
-    },
-
-    {
         path: 'quizzes',
         loadChildren: './quizzes/quizzes.module#QuizzesModule'
     },

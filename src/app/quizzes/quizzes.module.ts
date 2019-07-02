@@ -14,6 +14,7 @@ import { quizzesReducer } from './store/quizzes.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { QuizzesEffects } from './store/quizzes.effects';
 import { QuizCardComponent } from './quizz-card/quizz-card.component';
+import { ConfirmPopupService } from '../core/services/confirm-popup.service';
 
 
 @NgModule({

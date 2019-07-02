@@ -10,11 +10,6 @@ export class SideMenuComponent implements OnInit {
     @Output() menuClick = new EventEmitter();
     menuItems: MenuData[] = [
         {
-            label: 'Dashboard',
-            icon: 'icon-dashboard',
-            link: '/dashboard'
-        },
-        {
             label: 'Workshops',
             icon: 'icon-study',
             link: '/workshops'

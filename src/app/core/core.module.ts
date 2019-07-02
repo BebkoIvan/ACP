@@ -15,6 +15,7 @@ import { ConfirmPopupService } from './services/confirm-popup.service';
   imports: [
     CommonModule, SharedModule, OverlayModule , RouterModule, ReactiveFormsModule
   ],
+  providers: [ConfirmPopupService],
   exports: [TopPaneComponent, ConfirmPopupComponent, SideMenuComponent],
   entryComponents: [ConfirmPopupComponent]
 })
