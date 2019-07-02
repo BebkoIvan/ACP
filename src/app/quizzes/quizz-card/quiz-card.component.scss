@@ -7,18 +7,27 @@ a{
     cursor: pointer;
 }
 
+.quizCard__header{
+    display: flex;
+    justify-content: space-between;
+
+    .quizName{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+i{
+    color: red;
+    cursor: pointer;
+}
+
+}
 .quizCard{
     background-color: $tag-color2;
     color: white;
     border-radius: 8px;
     padding: 10px;
     margin: 10px 0;
-    position: relative;
-
-    .quizName{
-        font-size: 20px;
-        font-weight: bold;
-    }
 
     .card-footer{
         margin: 15px 0 5px 0;
@@ -31,15 +40,8 @@ a{
             color: black;
         }
 
-        i{
-            color: red;
-            cursor: pointer;
-        }
     }
 }
 
 .deleteQuiz {
-    position: absolute;
-    top: 10px;
-    right: 10px;
 }

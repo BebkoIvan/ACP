@@ -1,9 +1,10 @@
 .quizCard('*ngIf'='quiz')
-   .quizName
-    a(routerLink="../{{quiz.id}}" )
-     span {{quiz.name}}
-   .card-footer
-    app-timestamp([date]="quiz.createdAt", [format]="'fullDate'") 
-    span {{author$ | async}}
-    button.deleteQuiz('*ngIf'='isEditable' '(click)'='deleteQuiz($event)')
-     i.icon-bin
+ .quizCard__header
+  .quizName
+   a(routerLink="../{{quiz.id}}" )
+    span {{quiz.name}}
+  button.deleteQuiz('*ngIf'='isEditable' '(click)'='deleteQuiz($event)')
+   i.icon-bin  
+ .card-footer
+  app-timestamp([date]="quiz.createdAt", [format]="'fullDate'") 
+  span {{author$ | async}}
