@@ -6,12 +6,14 @@ a{
     text-decoration: none;
     cursor: pointer;
 }
+
 .quizCard{
     background-color: $tag-color2;
     color: white;
     border-radius: 8px;
     padding: 10px;
     margin: 10px 0;
+    position: relative;
 
     .quizName{
         font-size: 20px;
@@ -34,4 +36,10 @@ a{
             cursor: pointer;
         }
     }
+}
+
+.deleteQuiz {
+    position: absolute;
+    top: 10px;
+    right: 10px;
 }

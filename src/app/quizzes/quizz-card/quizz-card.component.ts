@@ -1,12 +1,13 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 import { map } from 'rxjs/operators';
 import { QuizzesService } from '../services/quizzes.service';
-import { Store } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
 import { AppState } from 'src/app/reducers';
 import { DeleteQuiz } from '../store/quizzes.actions';
 import { ConfirmPopupService } from 'src/app/core/services/confirm-popup.service';
+import { selectAuthData } from 'src/app/auth/store/auth.selectors';
 
 @Component({
   selector: 'app-quiz-card',
@@ -17,7 +18,8 @@ export class QuizCardComponent implements OnInit {
 
   @Input() quiz;
   author$: Observable<any>;
-
+  authSubscription: Subscription;
+  isEditable = false;
   constructor(private authService: AuthService, private confirmPopupService: ConfirmPopupService,
               private store: Store<AppState>, private quizService: QuizzesService) { }
 
@@ -25,6 +27,16 @@ export class QuizCardComponent implements OnInit {
     this.author$ = this.authService.getUserById(this.quiz.author).pipe(
       map((user) => user.username)
     );
+
+    this.authSubscription = this.store.pipe(select(selectAuthData)).subscribe(user => {
+      if (this.quiz.author === user._id) {
+          this.isEditable = true;
+      }
+      else{
+          this.isEditable = false;
+      }
+  });
+
   }
 
   deleteQuiz(e: Event) {
@@ -34,6 +46,10 @@ export class QuizCardComponent implements OnInit {
     }).subscribe((confirmed: boolean) => {
       this.store.dispatch(new DeleteQuiz({quizId: this.quiz.id}));
     });
+  }
+
+  ngOnDestroy(): void {
+    this.authSubscription.unsubscribe();
   }
 
 }

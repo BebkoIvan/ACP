@@ -52,7 +52,7 @@ export class CommentCardComponent implements OnInit {
             else{
                 this.isEditable = false;
             }
-        })
+        });
         this.author$ = this.authService.getUserById(this.comment._author);
         
     }
