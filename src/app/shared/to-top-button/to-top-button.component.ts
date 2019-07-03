@@ -1,9 +1,10 @@
-import { Component, OnInit, Input, Renderer2 } from '@angular/core';
+import { Component, OnInit, Input, Renderer2, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-to-top-button',
   templateUrl: './to-top-button.component.pug',
   styleUrls: ['./to-top-button.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ToTopButtonComponent implements OnInit {
 
@@ -12,7 +13,7 @@ export class ToTopButtonComponent implements OnInit {
   topPosToStartShowing = 150;
   active = false;
 
-  constructor(private _renderer2: Renderer2) {}
+  constructor(private _renderer2: Renderer2, private cdr: ChangeDetectorRef) {}
  
   ngOnInit() {
 
@@ -23,6 +24,7 @@ export class ToTopButtonComponent implements OnInit {
       else {
         this.active = false;
       }
+      this.cdr.detectChanges();
     } )
   }
 

@@ -1,0 +1,93 @@
+@import "../../../scss/abstracts/variables";
+
+:host{
+    display: flex;
+    flex: 1;
+}
+
+h2{
+    display: flex;
+    justify-content: center;
+}
+
+.required::before{
+     content: '*';
+    color: red;
+}
+
+.workshopForm{
+    width: 100%;
+    background: white;
+    padding: 10px 10px 20px 10px;
+    margin: 20px 0;
+}
+
+.form-group{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+
+    label{
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+
+    input[type='text']{
+        border-bottom: 2px solid $grey1;
+        margin: 5px 0;
+        padding: 8px;
+        &:focus{
+            border-bottom: 2px solid $red_color;
+        }
+}
+
+textarea{
+    border: 2px solid $grey1;
+}
+}
+
+.tagsSelection__form{
+    display: flex; 
+    align-items: center
+}
+
+button{
+    border-radius: 5px;
+    border: 2px solid $grey1;
+    color: white;
+    cursor: pointer;
+}
+
+.addTag{
+    padding: 8px 20px;
+    margin-left: 30px;
+    background-color: $tag-color;
+}
+
+.submitForm{
+    padding: 8px 30px;
+    background-color: $red_color;
+}
+
+.tagsSelected{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+
+    .tag{
+        display: flex;
+        padding: 5px;
+        border-radius: 5px;
+        border: 2px solid $red_color;
+        background:$grey1;
+        margin-bottom: 10px;
+        margin-right: 15px;
+
+        i{
+            cursor: pointer;
+            color: #e83f57;
+            margin-left: 10px;
+            font-size: 15px;
+        }
+    }
+}

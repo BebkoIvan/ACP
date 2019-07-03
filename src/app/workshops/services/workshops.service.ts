@@ -16,7 +16,6 @@ import { selectAuthData } from 'src/app/auth/store/auth.selectors';
 export class WorkshopsService {
     constructor(private _userService: AuthService, private store: Store<AppState>, private _api: ApiService) {}
 
-    allWorkshops: [];
     totalPosts;
 
 
@@ -45,6 +44,10 @@ export class WorkshopsService {
         return this._api.putRequest(`posts/${id}`, body);
     }
 
+    createPost(body){
+        return this._api.postRequest('posts', body);
+    }
+    
     deletePost(id) {
         return this._api.deleteRequest(`posts/${id}`);
     }

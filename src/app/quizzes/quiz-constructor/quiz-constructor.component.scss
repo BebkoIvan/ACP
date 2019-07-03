@@ -11,6 +11,12 @@ h3::before {
 
 }
 
+h4::before {
+    content: '*';
+    color: red;
+
+}
+
 .mainContent{
     padding: 15px;
     background-color: white;

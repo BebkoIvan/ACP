@@ -1,0 +1,30 @@
+app-viewport
+ .workshopForm
+  h2 New Workshop
+  form('[formGroup]'="workshopForm" '(submit)'='createWorkshop($event)')
+   .form-group
+    label.required(for="title") Title
+    app-text-input('formControlName'='title' '[placeHolder]'='"Type here..."')
+   .form-group
+    label.required(for="image") Image Link
+    app-text-input('formControlName'='image' '[placeHolder]'='"Please provide an image link"')
+   .form-group
+    label.required(for="description") Short Description
+    textarea(rows="5" formControlName="description" class="form-control" placeholder='Type here...')
+   .form-group
+    label.required(for="text") Content
+    textarea(rows='8' formControlName="text" class="form-control" placeholder='Type here...')  
+   .form-group('*ngIf'='allTagsNames')
+    label.required(for="tags") Tags
+    .tagSelection
+     form('[formGroup]'="tagSelectionForm" '(submit)'='addTag($event)')
+      .tagsSelection__form
+       app-dropdown('[options]'='allTagsNames'  'formControlName'='tag')
+       button.addTag('type'='submit') Add
+      .tagsSelected
+       .tag('*ngFor'='let tag of tagsSelected')
+        span {{tag.name}}
+        i.icon-cross('(click)' = 'removeTag(tag)')
+   button.submitForm('type'='submit') Publish     
+
+           

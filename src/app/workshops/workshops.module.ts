@@ -13,6 +13,9 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { workshopsReducer } from './store/workshops.reducer';
 import { WorkshopsEffects } from './store/workshops.effects';
+import { CreateWorkshopPageComponent } from './create-workshop-page/create-workshop-page.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { FormControlsModule } from '../form-controls/form-controls.module';
 
 
 
@@ -24,8 +27,9 @@ import { WorkshopsEffects } from './store/workshops.effects';
         WorkshopResourcesComponent,
         WorkshopCommentsComponent,
         WorkshopQuizzesComponent,
+        CreateWorkshopPageComponent,
     ],
-    imports: [CommonModule, SharedModule,
+    imports: [CommonModule, SharedModule, ReactiveFormsModule,FormControlsModule,
         StoreModule.forFeature('workshops', workshopsReducer),
         EffectsModule.forFeature([WorkshopsEffects]),
      WorkshopsRoutingModule],

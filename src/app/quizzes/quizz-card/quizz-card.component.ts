@@ -29,6 +29,9 @@ export class QuizCardComponent implements OnInit {
     );
 
     this.authSubscription = this.store.pipe(select(selectAuthData)).subscribe(user => {
+      if (!user) {
+        return;
+      }
       if (this.quiz.author === user._id) {
           this.isEditable = true;
       }

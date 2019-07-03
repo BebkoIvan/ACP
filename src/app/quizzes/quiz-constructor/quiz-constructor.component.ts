@@ -21,6 +21,7 @@ export class QuizConstructorComponent implements OnInit {
   ngOnInit() {
     this.form = this.fb.group({
       name: ['', Validators.required],
+      workshopConnected: ['', Validators.required],
       questions: this.fb.array([])
     })
   }
@@ -48,7 +49,7 @@ export class QuizConstructorComponent implements OnInit {
     
     (question.get('answerVariants') as FormArray).push(
             this.fb.group({
-                answer: ['', Validators.required],
+                answer: [Validators.required],
                 isCorrect: [false]
             })
         );
@@ -69,7 +70,6 @@ export class QuizConstructorComponent implements OnInit {
       posts: ['5d16700caed59b49b6ef057b'],
       ...this.form.value
     };
-    // this._quizS.createQuiz(newQuiz).subscribe(console.log);
     this.store.dispatch(new AddQuiz({quiz: newQuiz}));
 
 }

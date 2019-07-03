@@ -11,6 +11,7 @@ import { WorkshopQuizzesComponent } from './workshop-quizzes/workshop-quizzes.co
 import { WorkshopCommentsComponent } from './workshop-comments/workshop-comments.component';
 import { WorkshopResourcesComponent } from './workshop-resources/workshop-resources.component';
 import { OneWorkshopResolverService } from './services/one-workshop-resolver.service';
+import { CreateWorkshopPageComponent } from './create-workshop-page/create-workshop-page.component';
 
 const WorkShopsroutes: Routes = [
     {
@@ -24,8 +25,12 @@ const WorkShopsroutes: Routes = [
         component: WorkshopsFeedComponent,
         pathMatch: 'full',
         canActivate: [AuthGuard],
-        resolve: {workshops: WorkshopResolverService},
-        runGuardsAndResolvers: 'paramsOrQueryParamsChange',
+    },
+
+    {
+        path: 'create',
+        component: CreateWorkshopPageComponent,
+        pathMatch: 'full'
     },
 
     {
