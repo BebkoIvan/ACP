@@ -5,12 +5,36 @@
         cursor: pointer;
         margin-bottom: 20px;
     }
+
+    .articles{
+        margin-top: 34px;
+    }
     
 
    :host{
        flex: 1; 
        display: flex;
        position: relative;
+   }
+
+   .topPanel{
+       position: absolute;
+       width: 100%;
+       background-color: $red_color;
+       height: 40px;
+       display: flex;
+       justify-content: flex-end;
+       align-items: center;
+
+       button{
+           padding: 5px 30px;
+           border-radius: 5px;
+           background: $tag-color;
+           color: white;
+           margin-right: 15px;
+           cursor: pointer;
+
+       }
    }
 
    .to-top{
@@ -32,7 +56,7 @@
 
    .tagCloud{
     position: absolute;
-    top:6vh;
+    top:55px;
     width: 15vw;
     @include mq($from:mobile){
         right: 4vw;
@@ -45,7 +69,7 @@
 
    .categories{
        position: absolute;
-       top:10vh;
+       top:55px;
        left:2vw;
 
 

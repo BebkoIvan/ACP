@@ -76,6 +76,10 @@ export class WorkshopsFeedComponent implements OnInit {
 
     }
 
+    goCreateWs() {
+        this.router.navigate(['workshops/create']);
+    }
+
     ngOnDestroy(): void {
         this.paramsSubscription.unsubscribe();
         this.tagsSubscription.unsubscribe();
