@@ -1,8 +1,7 @@
 .quizCard('*ngIf'='quiz')
  .quizCard__header
   .quizName
-   a(routerLink="../{{quiz.id}}" )
-    span {{quiz.name}}
+   span('(click)' = 'navigateTo()') {{quiz.name}}
   button.deleteQuiz('*ngIf'='isEditable' '(click)'='deleteQuiz($event)')
    i.icon-bin  
  .card-footer

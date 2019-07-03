@@ -8,6 +8,7 @@ import { AppState } from 'src/app/reducers';
 import { DeleteQuiz } from '../../quizzes/store/quizzes.actions';
 import { ConfirmPopupService } from 'src/app/core/services/confirm-popup.service';
 import { selectAuthData } from 'src/app/auth/store/auth.selectors';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-quiz-card',
@@ -21,7 +22,7 @@ export class QuizCardComponent implements OnInit {
   authSubscription: Subscription;
   isEditable = false;
   constructor(private authService: AuthService, private confirmPopupService: ConfirmPopupService,
-              private store: Store<AppState>, private quizService: QuizzesService) { }
+              private store: Store<AppState>, private quizService: QuizzesService,private router:Router) { }
 
   ngOnInit() {
     this.author$ = this.authService.getUserById(this.quiz.author).pipe(
@@ -53,6 +54,10 @@ export class QuizCardComponent implements OnInit {
 
   ngOnDestroy(): void {
     this.authSubscription.unsubscribe();
+  }
+
+  navigateTo() {
+    this.router.navigateByUrl(`/quizzes/${this.quiz.id}`);
   }
 
 }
