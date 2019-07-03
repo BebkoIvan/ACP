@@ -70,7 +70,7 @@ export class WorkshopsFeedComponent implements OnInit {
 
 
     ngOnInit() {
-     this.tagsSubscription = this.tags$.pipe(take(1)).subscribe(tags => {
+        this.tagsSubscription = this.tags$.pipe(take(1)).subscribe(tags => {
          if (!tags) {
             this.store.dispatch(new TagsRequested({}));
          }

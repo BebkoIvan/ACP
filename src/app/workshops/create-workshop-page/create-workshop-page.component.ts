@@ -83,6 +83,7 @@ export class CreateWorkshopPageComponent implements OnInit {
     const workshopCreated = {
      title: this.f.title.value,
      description: this.f.description.value,
+     image: this.f.image.value,
      text: this.f.text.value,
      tags: this.tagsSelected.map(el => el.seq)
     };

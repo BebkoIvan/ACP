@@ -57,9 +57,11 @@
    .tagCloud{
     position: absolute;
     top:55px;
-    width: 15vw;
+    height: 70vh;
+    overflow: auto;
+    width: 17vw;
     @include mq($from:mobile){
-        right: 4vw;
+        right: 2vw;
     }
 
     @include mq($until:mobile){
