@@ -26,9 +26,15 @@ export class WorkshopsService {
             authorId: '',
             tags: ''
         };
+
         if (queryParams.tags) {
             params.tags = queryParams.tags.split(',').join('|');
         }
+
+        if (queryParams.page) {
+            params.page = queryParams.page;
+        }
+
 
         if (queryParams.category === 'My Workshops' || queryParams.category === 'Favorite') {
             user.subscribe(authData => {

@@ -22,6 +22,7 @@ export class WorkshopsFeedComponent implements OnInit {
     paramsSubscription: Subscription;
     tagsSubscription: Subscription;
     tags$: Observable<any>;
+    page;
     categories = [
         {
             name: 'All',
@@ -62,8 +63,9 @@ export class WorkshopsFeedComponent implements OnInit {
                          select(selectTags)
                      );
 
-                    this.paramsSubscription = route.queryParams.subscribe(p =>
-                this.store.dispatch(new ArticlesRequested({queryParams: p })));
+                    this.paramsSubscription = route.queryParams.subscribe(p => {
+                 this.page = p.page ? p.page : 0;
+                 this.store.dispatch(new ArticlesRequested({queryParams: p }))} );
     }
 
 
@@ -78,6 +80,29 @@ export class WorkshopsFeedComponent implements OnInit {
 
     goCreateWs() {
         this.router.navigate(['workshops/create']);
+    }
+
+    nextPage() {
+
+        this.router.navigate([''], {
+            queryParams: {  page: ++this.page},
+            queryParamsHandling: 'merge'
+        });
+    }
+
+    previousPage() {
+        let pageTonavigate;
+        if (this.page === '1') {
+            pageTonavigate = null;
+        }
+        else {
+            pageTonavigate = this.page - 1;
+        }
+
+        this.router.navigate([''], {
+            queryParams: {  page: pageTonavigate },
+            queryParamsHandling: 'merge'
+        });
     }
 
     ngOnDestroy(): void {

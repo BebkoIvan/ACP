@@ -20,7 +20,7 @@
    .topPanel{
        position: absolute;
        width: 100%;
-       background-color: $red_color;
+       background-color: darken($grey2,30);
        height: 40px;
        display: flex;
        justify-content: flex-end;
@@ -80,4 +80,28 @@
     @include mq($until:mobile){
         display:none;
     }
+   }
+
+   .navigationButtons{
+       display: flex;
+       justify-content: center;
+
+       button{
+           padding: 5px 20px;
+           margin: 0 5px 20px 5px;
+           background: $tag-color;
+           cursor: pointer;
+           color: white;
+           display: flex;
+           align-items: center;
+           border-radius: 5px;
+
+           span{
+               margin: 0 10px;
+           }
+
+           i{
+               font-size: 25px;
+           }
+       }
    }

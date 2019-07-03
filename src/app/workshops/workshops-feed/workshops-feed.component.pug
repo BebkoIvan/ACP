@@ -2,6 +2,13 @@ app-viewport
  .articles('*ngIf' = 'workshops$ | async as workshops')
   app-article('*ngFor'="let workshop of workshops" '[allTags]'="tags$ | async" '[workshop]'="workshop" '(scrollTop)'="scrollTop()") 
   .noArticlesMsg('*ngIf' = '!workshops.length') Currently there are no articles in this category
+  .navigationButtons
+   button('*ngIf'='page' '(click)'='previousPage()')
+    i.icon-circle-left
+    span Previous page
+   button('*ngIf'='workshops.length === 10' '(click)'='nextPage()')
+    span Next page
+    i.icon-circle-right
  .tagCloud
   app-tag-cloud('[tagsList]'="tags$ | async")  
  .categories 
