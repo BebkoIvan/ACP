@@ -3,7 +3,8 @@
   h3 Quiz name
   app-text-input(placeholder='Type here...' 'formControlName'='name')
   h4 Connected workshop
-  app-dropdown('[options]'='posts'  'formControlName'='postId')
+  .selet
+   app-dropdown('[options]'='posts'  'formControlName'='postId')
   .questions('formArrayName'='questions')
    .question('*ngFor'='let question of form.controls.questions["controls"];let i = index' '[formGroupName]'='i')
     button#deleteQuestion('(click)'='deleteQuestion(i)')
@@ -14,10 +15,10 @@
     .form-control
      label Question Type
      app-dropdown('[options]'='questionTypes'  'formControlName'='questionType')
-    .form-control('*ngIf'="this.questionsForms.controls[i].get('questionType').value === 'Short answer'")
+    .form-control('*ngIf'="this.questionsForms.controls[i].get('questionType').value === 'input'")
      label Correct Answer
      app-text-input(placeholder='Type here...' 'formControlName'='correctAnswer')
-    .form-control.answer-options('*ngIf'="this.questionsForms.controls[i].get('questionType').value === 'Choice'")
+    .form-control.answer-options('*ngIf'="this.questionsForms.controls[i].get('questionType').value === 'select'")
      label Answer variants
      .answer-variant('*ngFor'='let variant of question.controls.answerVariants["controls"]; let j = index')
       .check-box

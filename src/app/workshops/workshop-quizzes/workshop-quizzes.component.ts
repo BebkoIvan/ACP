@@ -23,11 +23,10 @@ export class WorkshopQuizzesComponent implements OnInit {
 
   ngOnInit() {
     const params = {
-      postId: '5d16700caed59b49b6ef057b'
+      postId: this.postId
     };
 
     this.quizzes$ = this.quizzesService.getQuizzes(params).pipe(map((data) => data.quizzes));
-    this.quizzes$.subscribe(console.log);
   }
 
 }

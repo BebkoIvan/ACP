@@ -30,7 +30,7 @@ export class WorkshopsEffects {
     ofType<ArticlesRequested>(WorkshopsActionTypes.ArticlesRequested),
     map( (action: ArticlesRequested) => action.payload),
     exhaustMap((queryParams: any) => {
-      return this.workshopsService.getWorkshops(queryParams).pipe(
+      return this.workshopsService.getWorkshops(queryParams.queryParams).pipe(
         map((workshops) => {
           if (workshops.posts) {
             workshops = workshops.posts;

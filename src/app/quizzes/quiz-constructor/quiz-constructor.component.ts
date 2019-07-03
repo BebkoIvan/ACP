@@ -14,7 +14,7 @@ import { AddQuiz } from '../store/quizzes.actions';
 export class QuizConstructorComponent implements OnInit {
 
   form: FormGroup;
-  questionTypes = ['Short answer', 'Choice'];
+  questionTypes = ['input', 'select'];
   posts = ['5cfff7a31169ca285e4aa0cf'];
 
   constructor(private fb: FormBuilder, private _quizS: QuizzesService, private store: Store<AppState>) { }
@@ -50,7 +50,7 @@ export class QuizConstructorComponent implements OnInit {
     
     (question.get('answerVariants') as FormArray).push(
             this.fb.group({
-                answer: [Validators.required],
+                answer: ['', Validators.required],
                 isCorrect: [false]
             })
         );

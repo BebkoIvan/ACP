@@ -27,7 +27,7 @@ export class TextInputComponent implements ControlValueAccessor {
   private propagateChange = (value: string) => {}
   private propagateTouched = (value: FocusEvent) => {}
 
-  writeValue(value: string) : void {
+  writeValue(value: string): void {
     this.value = value;
    }
 

@@ -16,7 +16,7 @@ export class FormInputComponent implements Field {
   constructor() { }
 
   ngOnInit() {
-    console.log(this.config);
+
   }
 
 }

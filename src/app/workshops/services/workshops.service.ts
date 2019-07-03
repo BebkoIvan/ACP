@@ -20,17 +20,18 @@ export class WorkshopsService {
 
 
     getWorkshops(queryParams: any) {
+        console.log(queryParams);
         let user = this.store.select(selectAuthData);
         const   params = {
             page: '',
             authorId: '',
             tags: ''
         };
-        if (queryParams.queryParams.tags) {
-            params.tags = queryParams.queryParams.tags.split(',').join('|');
+        if (queryParams.tags) {
+            params.tags = queryParams.tags.split(',').join('|');
         }
 
-        if (queryParams.queryParams.category === 'My Workshops' || queryParams.queryParams.category === 'Favorite') {
+        if (queryParams.category === 'My Workshops' || queryParams.category === 'Favorite') {
             user.subscribe(authData => {
                 if (authData) {
                 params.authorId = authData._id;
