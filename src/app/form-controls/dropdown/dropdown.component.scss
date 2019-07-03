@@ -4,3 +4,10 @@
 select{
     @include input();       
 }
+
+option{
+    max-width: 100%;
+    overflow: hidden;
+    white-space: normal;
+}
+

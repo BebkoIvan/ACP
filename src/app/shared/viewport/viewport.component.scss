@@ -3,6 +3,23 @@
 :host{
     display: flex;
     flex:1;
+    position: absolute;
+
+    @include mq($from:mobile, $until:tablet){
+        width: calc(100% - #{$side-menu-w-tablet});
+        left:$side-menu-w-tablet;
+    }
+
+    @include mq($from:tablet){
+        width: calc(100% - #{$side-menu-w-laptop});
+        left:$side-menu-w-laptop;
+    }
+
+    @include mq($until:mobile){
+        width: 100%;
+        left:0;
+    }
+    
 }
    
    .mainContent{ 

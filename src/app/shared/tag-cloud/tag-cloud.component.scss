@@ -1,16 +1,7 @@
 @import "../../../scss/abstracts/variables";
 
 .tagCloud{
-    position: absolute;
-    top:10vh;
     display: flex;
     flex-wrap: wrap;
-    width: 15vw;
-    @include mq($from:mobile){
-        right: 4vw;
-    }
-
-    @include mq($until:mobile){
-        display:none;
-    }
+    width: 100%;
 }

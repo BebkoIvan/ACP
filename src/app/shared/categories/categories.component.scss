@@ -1,22 +1,8 @@
 @import "../../../scss/abstracts/variables";
 
 .categories{
-    position: absolute;
-    top:10vh;
     background: $white;
     border-radius: 5px;
-    @include mq($from:mobile){
-        left: 9vw;
-    }
-
-    @include mq($from:tablet){
-        left: 8vw;
-        width: 20vw;
-    }
-
-    @include mq($until:mobile){
-        display:none;
-    }
 
     ul{
         padding: 0;

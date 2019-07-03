@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { AppState } from 'src/app/reducers';
-import { QuizzesRequested } from 'src/app/quizzes/store/quizzes.actions';
+import { QuizzesRequested, QuizzesLoaded } from 'src/app/quizzes/store/quizzes.actions';
 import { selectQuizzes } from 'src/app/quizzes/store/quizzes.selectors';
 import { QuizzesService } from 'src/app/quizzes/services/quizzes.service';
 import { map } from 'rxjs/operators';
@@ -25,8 +25,12 @@ export class WorkshopQuizzesComponent implements OnInit {
     const params = {
       postId: this.postId
     };
-
-    this.quizzes$ = this.quizzesService.getQuizzes(params).pipe(map((data) => data.quizzes));
+    this.store.dispatch(new QuizzesRequested({queryParams: params}));
+    this.quizzes$ = this.store.pipe(select(selectQuizzes));
   }
+
+  ngOnDestroy(): void {
+    this.store.dispatch(new QuizzesLoaded({quizzes: []}));
+    }
 
 }

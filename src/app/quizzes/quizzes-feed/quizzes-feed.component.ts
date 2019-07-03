@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { QuizzesService } from '../services/quizzes.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { Store, select } from '@ngrx/store';
 import { AppState } from 'src/app/reducers';
 import { selectQuizzes } from '../store/quizzes.selectors';
-import { QuizzesRequested } from '../store/quizzes.actions';
+import { QuizzesRequested, QuizzesLoaded } from '../store/quizzes.actions';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -16,9 +16,10 @@ import { AuthService } from 'src/app/services/auth.service';
 export class QuizzesFeedComponent implements OnInit {
   acaActive = true;
   quizzes$;
+  paramsSubscription: Subscription;
   constructor(public quizS: QuizzesService, private router: Router, private route: ActivatedRoute,
               private authService: AuthService, private store: Store<AppState>) {
-    route.queryParams.subscribe(p => this.store.dispatch(new QuizzesRequested({queryParams: p })));
+    this.paramsSubscription = route.queryParams.subscribe(p => this.store.dispatch(new QuizzesRequested({queryParams: p })));
     this.quizzes$ = this.store.pipe(
       select(selectQuizzes)
       );
@@ -30,5 +31,11 @@ export class QuizzesFeedComponent implements OnInit {
   acaHandler(): void {
     this.acaActive = !this.acaActive;
 }
+
+ngOnDestroy(): void {
+  this.store.dispatch(new QuizzesLoaded({quizzes: []}));
+  this.paramsSubscription.unsubscribe();
+  }
+
 
 }

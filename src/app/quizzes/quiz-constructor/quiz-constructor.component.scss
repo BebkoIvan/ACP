@@ -28,9 +28,10 @@ form{
     flex-direction: column;
 }
 
-input{
+input,select{
     @include input();       
 }
+
 
 .question{
     border: 2px solid $red_color;

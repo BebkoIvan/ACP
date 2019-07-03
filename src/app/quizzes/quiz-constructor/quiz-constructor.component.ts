@@ -4,6 +4,9 @@ import { QuizzesService } from '../services/quizzes.service';
 import { AppState } from 'src/app/reducers';
 import { Store } from '@ngrx/store';
 import { AddQuiz } from '../store/quizzes.actions';
+import { Observable } from 'rxjs';
+import { WorkshopsService } from 'src/app/workshops/services/workshops.service';
+import { map } from 'rxjs/operators';
 
 
 @Component({
@@ -15,16 +18,18 @@ export class QuizConstructorComponent implements OnInit {
 
   form: FormGroup;
   questionTypes = ['input', 'select'];
-  posts = ['5cfff7a31169ca285e4aa0cf'];
-
-  constructor(private fb: FormBuilder, private _quizS: QuizzesService, private store: Store<AppState>) { }
+  posts$: Observable<any>;
+  constructor(private fb: FormBuilder, private _quizS: QuizzesService,private workshopsService: WorkshopsService,
+               private store: Store<AppState>) { }
 
   ngOnInit() {
     this.form = this.fb.group({
       name: ['', Validators.required],
-      postId: ['', Validators.required],
+      posts: [null, Validators.required],
       questions: this.fb.array([])
-    })
+    });
+
+    this.posts$ = this.workshopsService.getWorkshops({}).pipe(map((data) => data.posts));
   }
 
   get questionsForms() {
@@ -37,7 +42,7 @@ export class QuizConstructorComponent implements OnInit {
     const question = this.fb.group({
       question: ['', Validators.required],
       questionType: this.questionTypes[0],
-      correctAnswer: [],
+      correctAnswer: [''],
       answerVariants: new FormArray([])
     })
 
@@ -70,6 +75,7 @@ export class QuizConstructorComponent implements OnInit {
     const newQuiz = {
       ...this.form.value
     };
+    newQuiz.posts = [newQuiz.posts];
     this.store.dispatch(new AddQuiz({quiz: newQuiz}));
     this.form.reset();
 

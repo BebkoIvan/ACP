@@ -28,6 +28,7 @@
         border-bottom: 2px solid $red_color;
     }
 }
+
 @mixin tagsList() {
     display: flex;
     flex-wrap: wrap;

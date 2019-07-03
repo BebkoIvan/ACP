@@ -10,6 +10,7 @@
    :host{
        flex: 1; 
        display: flex;
+       position: relative;
    }
 
    .to-top{
@@ -27,4 +28,32 @@
     margin-top: 20vh;
     font-size: 16px;
     font-weight: bold;
+   }
+
+   .tagCloud{
+    position: absolute;
+    top:6vh;
+    width: 15vw;
+    @include mq($from:mobile){
+        right: 4vw;
+    }
+
+    @include mq($until:mobile){
+        display:none;
+    }
+   }
+
+   .categories{
+       position: absolute;
+       top:10vh;
+       left:2vw;
+
+
+    @include mq($from:tablet){
+        width: 20vw;
+    }
+
+    @include mq($until:mobile){
+        display:none;
+    }
    }
