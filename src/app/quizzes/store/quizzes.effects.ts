@@ -18,7 +18,7 @@ export class QuizzesEffects {
     ofType<QuizzesRequested>(QuizzesActionTypes.QuizzesRequested),
     map( (action: QuizzesRequested) => action.payload),
     exhaustMap((queryParams: any) => {
-      return this.quizzesService.getQuizzes().pipe(
+      return this.quizzesService.getQuizzes(queryParams.queryParams).pipe(
         map((quizzes) => {
             quizzes = quizzes.quizzes;
             return new QuizzesLoaded({quizzes});

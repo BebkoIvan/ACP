@@ -7,6 +7,7 @@ import { AppState } from 'src/app/reducers';
 import { Store, select } from '@ngrx/store';
 import { WorkshopCommentsRequested, WorkshopAddComment, WorkshopDeleteComment } from '../store/workshops.actions';
 import { selectAllComments } from '../store/workshops.selectors';
+import { QuizzesRequested } from 'src/app/quizzes/store/quizzes.actions';
 
 @Component({
     selector: 'app-workshop-comments',

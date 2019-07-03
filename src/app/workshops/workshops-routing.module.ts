@@ -9,7 +9,6 @@ import { AuxiliaryContentComponent } from '../shared/auxiliary-content/auxiliary
 import { CommentFormComponent } from '../shared/comment-form/comment-form.component';
 import { WorkshopQuizzesComponent } from './workshop-quizzes/workshop-quizzes.component';
 import { WorkshopCommentsComponent } from './workshop-comments/workshop-comments.component';
-import { WorkshopResourcesComponent } from './workshop-resources/workshop-resources.component';
 import { OneWorkshopResolverService } from './services/one-workshop-resolver.service';
 import { CreateWorkshopPageComponent } from './create-workshop-page/create-workshop-page.component';
 
@@ -44,19 +43,13 @@ const WorkShopsroutes: Routes = [
             {
                 path: '',
                 outlet: 'aside',
-                redirectTo: 'resources'
+                redirectTo: 'comments'
             },
 
             {
                 path: 'comments',
                 outlet: 'aside',
                 component: WorkshopCommentsComponent
-            },
-
-            {
-                path: 'resources',
-                outlet: 'aside',
-                component: WorkshopResourcesComponent
             },
 
             {

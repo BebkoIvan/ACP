@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, HostListener, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute, Router, ActivatedRouteSnapshot } from '@angular/router';
-import { UserInfoService } from 'src/app/services/user-info.service';
 import { WorkshopsService } from '../services/workshops.service';
 import { Tags } from '../workshops-data/tags';
 import { TagsService } from 'src/app/shared/services/tags-service/tags.service';

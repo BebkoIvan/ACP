@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { WorkshopsService } from '../services/workshops.service';
 import { map, exhaustMap, catchError, take } from 'rxjs/operators';
-import { ArticlesRequested, WorkshopsActionTypes, ArticlesLoaded, ArticlesLoadingFailed, TagsRequested, TagsLoaded, TagsLoadingFailed, WorkshopRequested, WorkshopLoaded, WorkshopLoadingFailed, WorkshopCommentsRequested, WorkshopCommentsLoaded, WorkshopCommentsLoadingFailed, WorkshopAddComment, WorkshopCommentAdded, WorkshopDeleteComment, WorkshopCommentDeleted, WorkshopUpdateComment, WorkshopCommentUpdated } from './workshops.actions';
+import { ArticlesRequested, WorkshopsActionTypes, ArticlesLoaded, ArticlesLoadingFailed, TagsRequested, TagsLoaded, TagsLoadingFailed, WorkshopRequested, WorkshopLoaded, WorkshopLoadingFailed, WorkshopCommentsRequested, WorkshopCommentsLoaded, WorkshopCommentsLoadingFailed, WorkshopAddComment, WorkshopCommentAdded, WorkshopDeleteComment, WorkshopCommentDeleted, WorkshopUpdateComment, WorkshopCommentUpdated, AddWrokshop, WorkshopAdded, DeleteWorkshop, WorkshopDeleted } from './workshops.actions';
 import { of } from 'rxjs';
 import { TagsService } from 'src/app/shared/services/tags-service/tags.service';
 import { CommentsService } from 'src/app/shared/services/comments-service/comments.service';
 import { AppState } from 'src/app/reducers';
 import { Store, select } from '@ngrx/store';
 import { selectTags, selectAllComments } from './workshops.selectors';
+import { Router } from '@angular/router';
 
 
 
@@ -20,6 +21,7 @@ export class WorkshopsEffects {
   constructor(private actions$: Actions, private workshopsService: WorkshopsService,
               private store: Store<AppState>,
               private commentsService: CommentsService,
+              private router: Router,
               private tagsService: TagsService) {}
 
   @Effect()
@@ -45,7 +47,47 @@ export class WorkshopsEffects {
     })
   );
 
-  
+
+  @Effect()
+    AddWorkshop$ = this.actions$
+    .pipe(
+      ofType<AddWrokshop>(WorkshopsActionTypes.AddWorkshop),
+      map( (action: AddWrokshop) => action.payload),
+      exhaustMap( (workshop: any) => {
+        console.log(workshop);
+        return this.workshopsService.createPost(workshop.workshop).pipe(
+        map((data) => {
+          data = data.post;
+          this.router.navigate([`workshops/${data.id}`]);
+          return new WorkshopAdded({workshop: data});
+        }),
+        catchError((error) => {
+          return of(new WorkshopLoadingFailed({error}));
+        })
+        );
+      })
+    );
+
+
+
+    @Effect()
+    DeleteWorkshop$ = this.actions$
+    .pipe(
+      ofType<DeleteWorkshop>(WorkshopsActionTypes.DeleteWorkshop),
+      map( (action: DeleteWorkshop) => action.payload),
+      exhaustMap( (payload) => {
+       return this.workshopsService.deletePost(payload.workshopId).pipe(
+        map((data) => {
+          return new WorkshopDeleted({workshopId: payload.workshopId});
+        }),
+        catchError((error) => {
+          return of(new WorkshopLoadingFailed({error}));
+        })
+        );
+      })
+    );
+
+
 
   @Effect()
   TagsRequested$ = this.actions$
@@ -132,7 +174,7 @@ export class WorkshopsEffects {
       exhaustMap( ({ postId, commentId  }: {postId: string, commentId: string}) => {
        return this.commentsService.deleteComment(postId, commentId).pipe(
         map((data) => {
-          return new WorkshopCommentDeleted({commentId: commentId});
+          return new WorkshopCommentDeleted({commentId});
         }),
         catchError((error) => {
           return of(new WorkshopCommentsLoadingFailed({error}));

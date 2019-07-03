@@ -17,6 +17,7 @@ import { AppEffects } from './store/app.effects';
 import { AuthModule } from './auth/auth.module';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
+import { QuizzesModule } from './quizzes/quizzes.module';
 
 
 

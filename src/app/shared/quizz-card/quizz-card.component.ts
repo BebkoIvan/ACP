@@ -2,10 +2,10 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 import { map } from 'rxjs/operators';
-import { QuizzesService } from '../services/quizzes.service';
+import { QuizzesService } from '../../quizzes/services/quizzes.service';
 import { Store, select } from '@ngrx/store';
 import { AppState } from 'src/app/reducers';
-import { DeleteQuiz } from '../store/quizzes.actions';
+import { DeleteQuiz } from '../../quizzes/store/quizzes.actions';
 import { ConfirmPopupService } from 'src/app/core/services/confirm-popup.service';
 import { selectAuthData } from 'src/app/auth/store/auth.selectors';
 

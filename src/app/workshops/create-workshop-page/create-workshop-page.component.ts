@@ -3,9 +3,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store, select } from '@ngrx/store';
 import { AppState } from 'src/app/reducers';
 import { ActivatedRoute, Router } from '@angular/router';
-import { TagsRequested } from '../store/workshops.actions';
+import { TagsRequested, AddWrokshop } from '../store/workshops.actions';
 import { Subscription } from 'rxjs';
-import { selectTags } from '../store/workshops.selectors';
+import { selectTags, selectAllArticles } from '../store/workshops.selectors';
 import { WorkshopsService } from '../services/workshops.service';
 
 
@@ -76,14 +76,17 @@ export class CreateWorkshopPageComponent implements OnInit {
   createWorkshop(e: Event) {
     e.preventDefault();
 
-    const workshop = {
+    if (this.workshopForm.invalid) {
+      return;
+    }
+
+    const workshopCreated = {
      title: this.f.title.value,
      description: this.f.description.value,
      text: this.f.text.value,
      tags: this.tagsSelected.map(el => el.seq)
     };
-
-    this.ws.createPost(workshop).subscribe(console.log);
+    this.store.dispatch(new AddWrokshop({workshop: workshopCreated}));
   }
 
   ngOnDestroy(): void {

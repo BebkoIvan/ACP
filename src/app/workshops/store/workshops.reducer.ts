@@ -68,6 +68,12 @@ export function workshopsReducer(state = initialState, action: WorkshopsActions)
     case WorkshopsActionTypes.ArticlesLoaded:
     return { ...state, articles: adapterArticles.addAll(action.payload.workshops, state.articles) };
 
+    case WorkshopsActionTypes.WorkshopAdded:
+    return { ...state, articles: adapterArticles.addOne(action.payload.workshop, state.articles) };
+
+    case WorkshopsActionTypes.WorkshopDeleted:
+    return { ...state, articles: adapterArticles.removeOne(action.payload.workshopId, state.articles) };
+
     case WorkshopsActionTypes.TagsLoaded:
     return { ...state, tags: { tags: action.payload.tags } };
 

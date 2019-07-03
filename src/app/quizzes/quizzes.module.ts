@@ -13,12 +13,11 @@ import { StoreModule } from '@ngrx/store';
 import { quizzesReducer } from './store/quizzes.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { QuizzesEffects } from './store/quizzes.effects';
-import { QuizCardComponent } from './quizz-card/quizz-card.component';
 import { ConfirmPopupService } from '../core/services/confirm-popup.service';
 
 
 @NgModule({
-  declarations: [ConfigPipe, QuizzesFeedComponent, QuizPageComponent, QuizConstructorComponent, QuizCardComponent],
+  declarations: [ConfigPipe, QuizzesFeedComponent, QuizPageComponent, QuizConstructorComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,

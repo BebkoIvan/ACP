@@ -6,7 +6,6 @@ import { ArticleComponent } from "./article/article.component";
 import { SharedModule } from "../shared/shared.module";
 import { WorkshopsRoutingModule } from './workshops-routing.module';
 import { WorkshopsService } from './services/workshops.service';
-import { WorkshopResourcesComponent } from './workshop-resources/workshop-resources.component';
 import { WorkshopCommentsComponent } from './workshop-comments/workshop-comments.component';
 import { WorkshopQuizzesComponent } from './workshop-quizzes/workshop-quizzes.component';
 import { StoreModule } from '@ngrx/store';
@@ -16,6 +15,8 @@ import { WorkshopsEffects } from './store/workshops.effects';
 import { CreateWorkshopPageComponent } from './create-workshop-page/create-workshop-page.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormControlsModule } from '../form-controls/form-controls.module';
+import { QuizzesEffects } from '../quizzes/store/quizzes.effects';
+
 
 
 
@@ -24,14 +25,13 @@ import { FormControlsModule } from '../form-controls/form-controls.module';
         WorkshopsFeedComponent,
         WorkshopPageComponent,
         ArticleComponent,
-        WorkshopResourcesComponent,
         WorkshopCommentsComponent,
         WorkshopQuizzesComponent,
         CreateWorkshopPageComponent,
     ],
-    imports: [CommonModule, SharedModule, ReactiveFormsModule,FormControlsModule,
+    imports: [CommonModule, SharedModule, ReactiveFormsModule, FormControlsModule,
         StoreModule.forFeature('workshops', workshopsReducer),
-        EffectsModule.forFeature([WorkshopsEffects]),
+        EffectsModule.forFeature([WorkshopsEffects, QuizzesEffects]),
      WorkshopsRoutingModule],
     exports: [WorkshopsFeedComponent, ArticleComponent],
     providers: [WorkshopsService]

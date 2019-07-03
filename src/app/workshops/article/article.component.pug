@@ -13,7 +13,9 @@ app-card
     span('*ngFor'="let tag of tagsList"  appQueryParamsActive [tag]="tag") {{tag.tagTitle}}
    .likes
     span {{workshop.likes}} 
-    app-like([likeActive]="likeactive",(likeClicked)="likec()")  
-  app-timestamp([date]="workshop.createdAt",[format]="'fullDate'") 
+    app-like([likeActive]="likeactive",(likeClicked)="likec()")
+  .date_delete    
+   app-timestamp([date]="workshop.createdAt",[format]="'fullDate'")
+   i('*ngIf'='isEditable' '(click)'='deletePost()').icon-bin 
      
 

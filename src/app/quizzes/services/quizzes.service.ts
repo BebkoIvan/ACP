@@ -15,8 +15,8 @@ export class QuizzesService {
       return this._api.getRequest(`quizzes/${id}`, null, {id: `${id}`});
     }
 
-    getQuizzes(): Observable<any> {
-      return this._api.getRequest(`quizzes/all`);
+    getQuizzes(queryParams: any): Observable<any> {
+      return this._api.getRequest(`quizzes`, null, queryParams);
     }
 
     createQuiz(quiz: any) {

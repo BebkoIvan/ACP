@@ -31,7 +31,4 @@ export class QuizzesFeedComponent implements OnInit {
     this.acaActive = !this.acaActive;
 }
 
-  deleteQuiz(quiz: any) {
-    // this.quizzes.splice(this.quizzes.indexOf(quiz), 1);
-  }
 }

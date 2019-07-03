@@ -15,6 +15,12 @@ export enum WorkshopsActionTypes {
   WorkshopLoaded= '[Workshops page]  Workshop Loaded',
   WorkshopLoadingFailed = '[Workshops page]  Workshop Loading Failed',
 
+  WorkshopAdded = '[Workshops Feed] Workshop Added',
+  AddWorkshop = '[Workshops Feed] Add Workshop',
+
+  WorkshopDeleted = '[Workshops Feed] Workshop Deleted',
+  DeleteWorkshop = '[Workshops Feed] Delete Workshop',
+
   WorkshopCommentsRequested = '[Workshops page]  Workshop Comments Requested',
   WorkshopCommentsLoaded= '[Workshops page]  Workshop Comments Loaded',
   WorkshopCommentsLoadingFailed = '[Workshops page]  Workshop Comments Loading Failed',
@@ -136,6 +142,27 @@ export class WorkshopCommentUpdated implements Action {
 }
 
 
+export class AddWrokshop implements Action {
+  readonly type = WorkshopsActionTypes.AddWorkshop;
+  constructor(public payload: { workshop: any  }) {}
+}
+
+export class WorkshopAdded implements Action {
+  readonly type = WorkshopsActionTypes.WorkshopAdded;
+  constructor(public payload: { workshop: any }) {}
+}
+
+
+export class DeleteWorkshop implements Action {
+  readonly type = WorkshopsActionTypes.DeleteWorkshop;
+  constructor(public payload: { workshopId: string }) {}
+}
+
+export class WorkshopDeleted implements Action {
+  readonly type = WorkshopsActionTypes.WorkshopDeleted;
+  constructor(public payload: { workshopId: string }) {}
+}
+
 
 export type WorkshopsActions =
 ArticlesLoaded |
@@ -155,6 +182,10 @@ WorkshopDeleteComment |
 WorkshopCommentAdded |
 WorkshopCommentDeleted |
 WorkshopCommentUpdated |
-WorkshopUpdateComment 
+WorkshopUpdateComment |
+AddWrokshop |
+WorkshopAdded |
+WorkshopDeleted |
+DeleteWorkshop
 
 ;

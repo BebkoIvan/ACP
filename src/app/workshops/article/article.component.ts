@@ -3,10 +3,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Tags } from '../workshops-data/tags';
 import { TagsService } from 'src/app/shared/services/tags-service/tags.service';
 import { map, take } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { Store, select } from '@ngrx/store';
 import { AppState } from 'src/app/reducers';
- 
+import { ConfirmPopupService } from 'src/app/core/services/confirm-popup.service';
+import { DeleteWorkshop } from '../store/workshops.actions';
+import { AuthService } from 'src/app/services/auth.service';
+import { selectAuthData } from 'src/app/auth/store/auth.selectors';
+
 
 @Component({
     selector: 'app-article',
@@ -16,11 +20,15 @@ import { AppState } from 'src/app/reducers';
 })
 export class ArticleComponent implements OnChanges {
     constructor(private route: ActivatedRoute, private router: Router, private store: Store<AppState>,
-                private _tagsService: TagsService) {}
+                private _tagsService: TagsService, private confirmPopupService: ConfirmPopupService,
+                private authService: AuthService) {}
     @Input() workshop: any;
     tagsList: Array<any> = [] ;
     tags$: Observable<any>;
     likeactive = false;
+    isEditable = false;
+    authSubscription: Subscription;
+    author$;
     @Input() allTags = [];
 
     likec() {
@@ -34,7 +42,20 @@ export class ArticleComponent implements OnChanges {
     }
 
     ngOnInit() {
-            
+        this.author$ = this.authService.getUserById(this.workshop.author).pipe(
+            map((user) => user.username)
+          );
+
+        this.authSubscription = this.store.pipe(select(selectAuthData)).subscribe(user => {
+            if (!user) {
+              return;
+            }
+            if (this.workshop.author === user._id || user.role === 'admin') {
+                this.isEditable = true;
+            } else {
+                this.isEditable = false;
+            }
+        });
     }
 
     ngOnChanges(): void {
@@ -45,5 +66,14 @@ export class ArticleComponent implements OnChanges {
                 )
             );
         }
+    }
+
+    deletePost() {
+        this.confirmPopupService.confirm({
+            title: 'Delete workshop',
+            message: 'Do you want to delete this workshop?'
+          }).subscribe((confirmed: boolean) => {
+            this.store.dispatch(new DeleteWorkshop({workshopId: this.workshop.id}));
+          });
     }
 }

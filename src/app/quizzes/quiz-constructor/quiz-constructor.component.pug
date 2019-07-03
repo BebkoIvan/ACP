@@ -3,7 +3,7 @@
   h3 Quiz name
   app-text-input(placeholder='Type here...' 'formControlName'='name')
   h4 Connected workshop
-  app-dropdown('[options]'='questionTypes'  'formControlName'='workshopConnected')
+  app-dropdown('[options]'='posts'  'formControlName'='postId')
   .questions('formArrayName'='questions')
    .question('*ngFor'='let question of form.controls.questions["controls"];let i = index' '[formGroupName]'='i')
     button#deleteQuestion('(click)'='deleteQuestion(i)')

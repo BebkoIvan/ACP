@@ -23,17 +23,18 @@ import { QueryParamsActiveDirective } from './directives/query-params-active.dir
 import { CollapsableDirective } from './directives/collapsable.directive';
 import { RangeDirective } from './directives/range.directive';
 import { HoverGrowDirective } from './directives/hover-grow.directive';
+import { QuizCardComponent } from './quizz-card/quizz-card.component';
 
 
 
 
 @NgModule({
-  declarations: [TabComponent, RangeDirective, TextToColorDirective,CollapsableDirective, QueryParamsActiveDirective, TabGroupComponent, UserPicComponent, ViewportComponent, CardComponent, TagComponent, TimestampComponent, CommentCardComponent, ToTopButtonComponent, LikeComponent, AuxiliaryContentComponent, UnderConstructionComponent, CommentFormComponent, PageNotFoundComponent, TagCloudComponent, CategoriesComponent, HoverGrowDirective],
+  declarations: [TabComponent, RangeDirective,QuizCardComponent, TextToColorDirective,CollapsableDirective, QueryParamsActiveDirective, TabGroupComponent, UserPicComponent, ViewportComponent, CardComponent, TagComponent, TimestampComponent, CommentCardComponent, ToTopButtonComponent, LikeComponent, AuxiliaryContentComponent, UnderConstructionComponent, CommentFormComponent, PageNotFoundComponent, TagCloudComponent, CategoriesComponent, HoverGrowDirective],
   imports: [
     CommonModule,
     SharedRoutingModule,
     ReactiveFormsModule
   ],
-  exports: [TabComponent, CategoriesComponent, RangeDirective, CollapsableDirective,TextToColorDirective, QueryParamsActiveDirective, CommentFormComponent, CommentCardComponent, UnderConstructionComponent, TabGroupComponent, AuxiliaryContentComponent, LikeComponent, TimestampComponent, TagComponent, UserPicComponent, ViewportComponent, CardComponent, ToTopButtonComponent, TagCloudComponent]
+  exports: [TabComponent,QuizCardComponent, CategoriesComponent, RangeDirective, CollapsableDirective,TextToColorDirective, QueryParamsActiveDirective, CommentFormComponent, CommentCardComponent, UnderConstructionComponent, TabGroupComponent, AuxiliaryContentComponent, LikeComponent, TimestampComponent, TagComponent, UserPicComponent, ViewportComponent, CardComponent, ToTopButtonComponent, TagCloudComponent]
 })
 export class SharedModule { }
