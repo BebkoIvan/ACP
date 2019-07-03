@@ -54,6 +54,7 @@ export class WorkshopPageComponent implements OnInit {
         this.unitedSubscription =  combineLatest(this.store.pipe(select(selectTags), take(2)), this.workshop$).subscribe(
             data => {
                 if (data[0] && data[1]) {
+                    this.tagsList = [];
                     data[1].tags.forEach(el =>
                                     this.tagsList.push(
                                         {tagTitle: data[0].find(x => x.seq === el).name, isActive: false, seq: el }

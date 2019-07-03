@@ -58,15 +58,23 @@ img{
     }
 }
 
-.date_delete{
+.date_icons{
     margin: 15px 0;
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
+}
+
+.icons{
+
+    &>i:not(.icon-pencil2){
+        color: red;
+    }
 
     i{
         cursor: pointer;
-        color: red;
         font-size: 20px;
+        color: green;
+        margin: 0 10px;
     }
 }

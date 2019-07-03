@@ -76,4 +76,8 @@ export class ArticleComponent implements OnChanges {
             this.store.dispatch(new DeleteWorkshop({workshopId: this.workshop.id}));
           });
     }
+
+    goEdit() {
+        this.router.navigate([`workshops/${this.workshop.id}/edit`]);
+    }
 }

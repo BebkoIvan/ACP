@@ -1,0 +1,4 @@
+app-viewport
+ .workshopForm
+  h2 Edit Workshop
+  app-workshop-form('*ngIf'='workshop$ | async as workshop' '(submitted)'="updateWorkshop($event)" '[workshop]'='workshop')

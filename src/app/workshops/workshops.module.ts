@@ -16,6 +16,8 @@ import { CreateWorkshopPageComponent } from './create-workshop-page/create-works
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormControlsModule } from '../form-controls/form-controls.module';
 import { QuizzesEffects } from '../quizzes/store/quizzes.effects';
+import { WorkshopFormComponent } from './workshop-form/workshop-form.component';
+import { EditWorkshopPageComponent } from './edit-workshop-page/edit-workshop-page.component';
 
 
 
@@ -28,6 +30,8 @@ import { QuizzesEffects } from '../quizzes/store/quizzes.effects';
         WorkshopCommentsComponent,
         WorkshopQuizzesComponent,
         CreateWorkshopPageComponent,
+        WorkshopFormComponent,
+        EditWorkshopPageComponent,
     ],
     imports: [CommonModule, SharedModule, ReactiveFormsModule, FormControlsModule,
         StoreModule.forFeature('workshops', workshopsReducer),

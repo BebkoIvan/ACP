@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { WorkshopsService } from '../services/workshops.service';
 import { map, exhaustMap, catchError, take } from 'rxjs/operators';
-import { ArticlesRequested, WorkshopsActionTypes, ArticlesLoaded, ArticlesLoadingFailed, TagsRequested, TagsLoaded, TagsLoadingFailed, WorkshopRequested, WorkshopLoaded, WorkshopLoadingFailed, WorkshopCommentsRequested, WorkshopCommentsLoaded, WorkshopCommentsLoadingFailed, WorkshopAddComment, WorkshopCommentAdded, WorkshopDeleteComment, WorkshopCommentDeleted, WorkshopUpdateComment, WorkshopCommentUpdated, AddWrokshop, WorkshopAdded, DeleteWorkshop, WorkshopDeleted } from './workshops.actions';
+import { ArticlesRequested, WorkshopsActionTypes, ArticlesLoaded, ArticlesLoadingFailed, TagsRequested, TagsLoaded, TagsLoadingFailed, WorkshopRequested, WorkshopLoaded, WorkshopLoadingFailed, WorkshopCommentsRequested, WorkshopCommentsLoaded, WorkshopCommentsLoadingFailed, WorkshopAddComment, WorkshopCommentAdded, WorkshopDeleteComment, WorkshopCommentDeleted, WorkshopUpdateComment, WorkshopCommentUpdated, AddWrokshop, WorkshopAdded, DeleteWorkshop, WorkshopDeleted, UpdateWorkshop, WorkshopUpdated } from './workshops.actions';
 import { of } from 'rxjs';
 import { TagsService } from 'src/app/shared/services/tags-service/tags.service';
 import { CommentsService } from 'src/app/shared/services/comments-service/comments.service';
@@ -184,6 +184,26 @@ export class WorkshopsEffects {
     );
 
     @Effect()
+    UpdateWorkshop$ = this.actions$
+    .pipe(
+      ofType<UpdateWorkshop>(WorkshopsActionTypes.UpdateWorkshop),
+      map( (action: UpdateWorkshop) => action.payload),
+      exhaustMap( ({ postId, workshop  }: {postId: string, workshop: Workshop}) => {
+       return this.workshopsService.updatePost(postId, workshop).pipe(
+        map((data) => {
+          data = data.post;
+          this.router.navigate([`workshops/${data.id}`]);
+          return new WorkshopUpdated({id: data._id, changes: data });
+        }),
+        catchError((error) => {
+          return of(new WorkshopLoadingFailed({error}));
+        })
+        );
+      })
+    );
+
+
+    @Effect()
     WorkshopUpdateComment$ = this.actions$
     .pipe(
       ofType<WorkshopUpdateComment>(WorkshopsActionTypes.WorkshopUpdateComment),
@@ -192,7 +212,6 @@ export class WorkshopsEffects {
        return this.commentsService.updateComment(postId, commentId, text).pipe(
         map((data) => {
           data = data.comment;
-          console.log(data);
           return new WorkshopCommentUpdated({id: data._id, changes: {text: data.text} });
         }),
         catchError((error) => {

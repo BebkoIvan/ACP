@@ -41,13 +41,13 @@ export class TagCloudComponent implements OnInit {
 
         if (this.tagsActivated) {
             this.router.navigate([''], {
-                queryParams: {  tags: this.tagsActivated },
+                queryParams: {  tags: this.tagsActivated, page: null },
                 queryParamsHandling: 'merge'
             });
         }
         else {
             this.router.navigate([''], {
-                queryParams: {  tags: null },
+                queryParams: {  tags: null, page: null },
                 queryParamsHandling: 'merge'
             });
         }

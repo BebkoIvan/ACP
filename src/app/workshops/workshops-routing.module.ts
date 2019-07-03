@@ -11,6 +11,7 @@ import { WorkshopQuizzesComponent } from './workshop-quizzes/workshop-quizzes.co
 import { WorkshopCommentsComponent } from './workshop-comments/workshop-comments.component';
 import { OneWorkshopResolverService } from './services/one-workshop-resolver.service';
 import { CreateWorkshopPageComponent } from './create-workshop-page/create-workshop-page.component';
+import { EditWorkshopPageComponent } from './edit-workshop-page/edit-workshop-page.component';
 
 const WorkShopsroutes: Routes = [
     {
@@ -33,6 +34,12 @@ const WorkShopsroutes: Routes = [
     },
 
     {
+        path: ':id/edit',
+        component: EditWorkshopPageComponent,
+        pathMatch: 'full'
+    },
+
+    {
         path: ':id',
         component: WorkshopPageComponent,
         canActivate: [AuthGuard],
@@ -45,6 +52,7 @@ const WorkShopsroutes: Routes = [
                 outlet: 'aside',
                 redirectTo: 'comments'
             },
+
 
             {
                 path: 'comments',

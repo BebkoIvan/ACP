@@ -71,6 +71,9 @@ export function workshopsReducer(state = initialState, action: WorkshopsActions)
     case WorkshopsActionTypes.WorkshopAdded:
     return { ...state, articles: adapterArticles.addOne(action.payload.workshop, state.articles) };
 
+    case WorkshopsActionTypes.WorkshopUpdated:
+    return { ...state, articles: adapterArticles.updateOne(action.payload, state.articles) };
+
     case WorkshopsActionTypes.WorkshopDeleted:
     return { ...state, articles: adapterArticles.removeOne(action.payload.workshopId, state.articles) };
 

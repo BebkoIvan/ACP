@@ -32,7 +32,10 @@ export enum WorkshopsActionTypes {
   WorkshopCommentDeleted = '[Workshops page]  Workshop Comment Deleted',
 
   WorkshopUpdateComment = '[Workshops page]  Workshop Update Comment',
-  WorkshopCommentUpdated = '[Workshops page]  Workshop Comment Updated'
+  WorkshopCommentUpdated = '[Workshops page]  Workshop Comment Updated',
+
+  UpdateWorkshop = '[Workshops page] Update Workshop ',
+  WorkshopUpdated = '[Workshops page]  Workshop Updated ',
 
 
   
@@ -87,6 +90,19 @@ export class WorkshopLoadingFailed implements Action {
   readonly type = WorkshopsActionTypes.WorkshopLoadingFailed;
   constructor(public payload: { error: any }) {}
 }
+
+
+export class UpdateWorkshop implements Action {
+  readonly type = WorkshopsActionTypes.UpdateWorkshop;
+  constructor(public payload: { postId: string, workshop: Workshop }) {}
+}
+
+export class WorkshopUpdated implements Action {
+  readonly type = WorkshopsActionTypes.WorkshopUpdated;
+  constructor(public payload: Update<Workshop> ) {}
+}
+
+
 
 
 
@@ -186,6 +202,8 @@ WorkshopUpdateComment |
 AddWrokshop |
 WorkshopAdded |
 WorkshopDeleted |
-DeleteWorkshop
+DeleteWorkshop |
+UpdateWorkshop |
+WorkshopUpdated
 
 ;

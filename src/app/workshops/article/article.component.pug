@@ -14,8 +14,11 @@ app-card
    .likes
     span {{workshop.likes}} 
     app-like([likeActive]="likeactive",(likeClicked)="likec()")
-  .date_delete    
+  .date_icons    
    app-timestamp([date]="workshop.createdAt",[format]="'fullDate'")
-   i('*ngIf'='isEditable' '(click)'='deletePost()').icon-bin 
+   .icons
+    i('*ngIf'='isEditable' '(click)'='goEdit()').icon-pencil2 
+    i('*ngIf'='isEditable' '(click)'='deletePost()').icon-bin
+
      
 
