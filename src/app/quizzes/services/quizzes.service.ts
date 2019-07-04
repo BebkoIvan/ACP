@@ -27,4 +27,8 @@ export class QuizzesService {
       return this._api.deleteRequest(`quizzes/${id}`);
     }
 
+    validateQuiz(id: string, body: any) {
+      return this._api.postRequest(`quizzes/validate/${id}`, body);
+    }
+
 }
