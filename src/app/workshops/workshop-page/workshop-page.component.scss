@@ -12,6 +12,7 @@
     flex-direction: column;
     height: fit-content;
     background: $white;
+    padding-bottom: 20px;
 
     @include mq($from: tablet) {
         margin:15px 20% 15px 20%;
@@ -89,6 +90,10 @@ img{
        .date{
            display: flex;
            align-items: center;
+           margin-top: 15px;
+           span{
+               margin-right: 15px;
+           }
        }
     }
 

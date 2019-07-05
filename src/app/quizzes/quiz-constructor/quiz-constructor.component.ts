@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, FormArray, Validators, FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder, FormArray, Validators, FormControl, AbstractControl, ValidatorFn } from '@angular/forms';
 import { QuizzesService } from '../services/quizzes.service';
 import { AppState } from 'src/app/reducers';
 import { Store } from '@ngrx/store';
@@ -36,12 +36,28 @@ export class QuizConstructorComponent implements OnInit {
     return this.form.get('questions') as FormArray;
   }
 
+  correctAnswerValidator(questionType: AbstractControl): ValidatorFn {
+    return (control: AbstractControl): { [key: string]: boolean } | null => {
+      if (questionType.value === 'select') {
+        return { correctAnswer: true };
+      }
+      else {
+        if (control.value !== undefined && (isNaN(control.value))) {
+          return { 'ageRange': true };
+      }
+      else{
+        return null;
+      }
+      }
 
+
+    };
+}
 
   addQuestion() {
     const question = this.fb.group({
       question: ['', Validators.required],
-      questionType: this.questionTypes[0],
+      questionType: [this.questionTypes[0], Validators.required],
       correctAnswer: [''],
       answerVariants: new FormArray([])
     })
@@ -52,7 +68,6 @@ export class QuizConstructorComponent implements OnInit {
   addAnswer(i) {
     
     const question = this.questionsForms.at(i);
-    
     (question.get('answerVariants') as FormArray).push(
             this.fb.group({
                 answer: ['', Validators.required],
@@ -72,6 +87,9 @@ export class QuizConstructorComponent implements OnInit {
   }
 
   onSubmit(): void {
+    if (this.form.invalid) {
+      return;
+    }
     const newQuiz = {
       ...this.form.value
     };

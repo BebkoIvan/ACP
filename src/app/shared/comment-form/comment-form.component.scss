@@ -1,7 +1,8 @@
+@import "../../../scss/abstracts/variables.scss";
 form{
     display: flex;
     flex-direction: column;
-    margin: 8px;
+    position: relative;
 }
 
 .form-footer{
@@ -10,9 +11,9 @@ form{
     
     button{
         padding: 5px;
-        border-radius: 10px;
-        background-color: green;
-        margin:5px 0;
+        border-radius: 5px;
+        margin-top: 10px;
+        background-color: $tag-color;
         color:white;
         cursor: pointer;
     }
@@ -20,17 +21,23 @@ form{
 
 .comment-field{
     display: flex;
-    margin:5px 0;
     align-items: flex-start;
 
 }
 
 #commentInput{
     outline: none;
-    margin: 3px;
     border-radius: 16px;
     border:2px solid grey;
     padding:10px;
     word-break: break-all;
     flex: 1;
+}
+
+i{
+    position: absolute;
+    color: $red_color;
+    right: 6px;
+    top: 6px;
+    cursor: pointer;
 }

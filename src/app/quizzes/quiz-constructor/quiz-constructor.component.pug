@@ -7,7 +7,7 @@
    select('formControlName'='posts')
     option('*ngFor'='let post of posts$ | async' '[ngValue]'="post.id") {{ post.title }}
   .questions('formArrayName'='questions')
-   .question('*ngFor'='let question of form.controls.questions["controls"];let i = index' '[formGroupName]'='i')
+   .question('*ngFor'='let question of form.controls.questions["controls"];let i = index' '[formGroupName]'='i' '[class.invalid]'='this.questionsForms.controls[i].invalid')
     button#deleteQuestion('(click)'='deleteQuestion(i)')
      i.icon-cross
     .form-control
@@ -31,5 +31,5 @@
        i.icon-cross
      button('type'='button' '(click)'="addAnswer(i)") Add answer 
   button('type'='button' '(click)'="addQuestion()") Add question
-  button('type'='submit') Submit
+  button('type'='submit' '[disabled]'="form.invalid") Submit
  

@@ -82,6 +82,7 @@ export class CommentCardComponent implements OnInit {
         take(1),
         map(() => this.editing = false));
     }
+    
     ngOnDestroy(): void {
         this.authSubscription.unsubscribe();
     }

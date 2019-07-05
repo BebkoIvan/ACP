@@ -2,4 +2,5 @@ form.comment-form([formGroup]="commentForm")
  .comment-field
   textarea('rows'="2" 'id'="commentInput" 'formControlName'="commentText"  'placeholder'="Enter your comment") 
  .form-footer
-  button('type'="submit" '(click)'="createComment($event)") Submit
+  button('type'="submit" '(click)'="createComment($event)") {{buttonTitle}}
+ i.icon-cross('*ngIf'='value' '(click)'="closeForm($event)") 

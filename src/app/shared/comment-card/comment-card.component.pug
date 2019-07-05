@@ -8,12 +8,13 @@
   p {{comment.text}}
  .commentFooter
   .time    
-   app-timestamp('[date]'="comment.createdAt" '[format]'="'short'") 
+   app-timestamp('[date]'="comment.updatedAt" '[format]'="'short'") 
   .edit-delete
    button('*ngIf'="isEditable" '(click)'="editComment($event)") Edit
    button('*ngIf'="isEditable" '(click)'="deleteComment($event)") Delete 
   .likes 
   //-  span 
   //-  app-like('[likeActive]'="likeActive" '(likeClicked)'="likeClick()") 
-app-comment-form('*ngIf'="editing" '[value]'="comment.text" '(commentCreated)'="updateComment($event)")   
+app-comment-form('*ngIf'="editing" '[value]'="comment.text" '[buttonTitle]'='"Update"'
+                 '(closedForm)'='(editing=false)' '(commentCreated)'="updateComment($event)")   
 

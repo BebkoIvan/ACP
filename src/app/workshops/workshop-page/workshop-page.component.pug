@@ -14,7 +14,8 @@ app-viewport
     .likes
      span {{workshop.likes}} 
      app-like('[likeActive]'="likeActive" '(likeClicked)'="likec()")  
-   .date published at
+   .date 
+    span published at
     app-timestamp([date]="workshop.createdAt",[format]="'short'") 
  app-auxiliary-content([auxContActive]="acaActive",(acaClick)="acaHandler()") 
   .tabGroup 

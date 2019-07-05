@@ -43,7 +43,7 @@ export class QuizPageComponent implements OnInit {
 
     this.quizService.validateQuiz(this.id, {formData: answers}).subscribe(data => {
       let rightAnswers = data.results.filter(x => x === true);
-      alert(`${data.message} \n${rightAnswers.length} of ${data.results.length} answers is right`)
+      alert(`${data.message} \n${rightAnswers.length} of ${data.results.length} answers is right`);
     });
 
   }

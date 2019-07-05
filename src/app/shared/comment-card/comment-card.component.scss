@@ -7,7 +7,6 @@
 
 .header{
     display: flex;
-    padding: 5px;
 }
 
 .user{
@@ -15,9 +14,9 @@
     outline: none;
     border: none;
     align-items: center;
-    padding: 7px;
     font-weight: bold;
     display: flex;
+    margin-bottom: 10px;
     cursor: pointer;
 
     span{
@@ -35,7 +34,6 @@
 }
 
 .main-content{
-    margin:0 8px;
     background-color: $white;
     border-radius:16px;
     word-break: break-all;
@@ -49,9 +47,9 @@
 .commentFooter{
     display: flex;
     justify-content: space-between;
-    padding: 6px;
     font-size: 14px;
-
+    padding: 0 10px;
+    
     .edit-delete{
         display: flex;
 

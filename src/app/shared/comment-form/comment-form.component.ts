@@ -16,6 +16,7 @@ export class CommentFormComponent implements OnInit {
   user;
   comment: Comment1;
   @Input() value?: string;
+  @Input() buttonTitle = 'Submit';
   commentForm: FormGroup = new FormGroup({
 
     commentText: new FormControl('', [
@@ -25,6 +26,8 @@ export class CommentFormComponent implements OnInit {
     ]),
   });
   @Output() commentCreated: EventEmitter<Comment1> =   new EventEmitter();
+  @Output() closedForm: EventEmitter<any> =   new EventEmitter();
+
   ngOnInit() {
     this.store.select(selectAuthData).subscribe(data => this.user = data);
     if (this.value) {
@@ -50,6 +53,11 @@ export class CommentFormComponent implements OnInit {
       this.commentForm.reset('commentText');
     }
 
+  }
+
+  closeForm(e: Event){
+    e.preventDefault();
+    this.closedForm.emit();
   }
 
 }
