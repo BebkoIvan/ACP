@@ -20,6 +20,7 @@ export class ProfileComponent implements OnInit {
   constructor(public userService: AuthService,
               private store: Store<AppState>, private formBuilder: FormBuilder, private router: Router) { }
 
+
   ngOnInit() {
 
     this.passwordForm = this.formBuilder.group({

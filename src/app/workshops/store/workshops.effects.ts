@@ -25,7 +25,7 @@ export class WorkshopsEffects {
               private tagsService: TagsService) {}
 
   @Effect()
-  ArticlesRequested$ = this.actions$
+  articlesRequested$ = this.actions$
   .pipe(
     ofType<ArticlesRequested>(WorkshopsActionTypes.ArticlesRequested),
     map( (action: ArticlesRequested) => action.payload),
@@ -49,7 +49,7 @@ export class WorkshopsEffects {
 
 
   @Effect()
-    AddWorkshop$ = this.actions$
+    dddWorkshop$ = this.actions$
     .pipe(
       ofType<AddWrokshop>(WorkshopsActionTypes.AddWorkshop),
       map( (action: AddWrokshop) => action.payload),
@@ -71,7 +71,7 @@ export class WorkshopsEffects {
 
 
     @Effect()
-    DeleteWorkshop$ = this.actions$
+    deleteWorkshop$ = this.actions$
     .pipe(
       ofType<DeleteWorkshop>(WorkshopsActionTypes.DeleteWorkshop),
       map( (action: DeleteWorkshop) => action.payload),
@@ -90,7 +90,7 @@ export class WorkshopsEffects {
 
 
   @Effect()
-  TagsRequested$ = this.actions$
+  tagsRequested$ = this.actions$
   .pipe(
     ofType<TagsRequested>(WorkshopsActionTypes.TagsRequested),
     map( (action: TagsRequested) => action.payload),
@@ -110,7 +110,7 @@ export class WorkshopsEffects {
 
 
   @Effect()
-    WorkshopRequested$ = this.actions$
+    workshopRequested$ = this.actions$
     .pipe(
       ofType<WorkshopRequested>(WorkshopsActionTypes.WorkshopRequested),
       map( (action: WorkshopRequested) => action.payload),
@@ -129,7 +129,7 @@ export class WorkshopsEffects {
 
 
     @Effect()
-    WorkshopCommentsRequested$ = this.actions$
+    workshopCommentsRequested$ = this.actions$
     .pipe(
       ofType<WorkshopCommentsRequested>(WorkshopsActionTypes.WorkshopCommentsRequested),
       map( (action: WorkshopCommentsRequested) => action.payload),
@@ -148,7 +148,7 @@ export class WorkshopsEffects {
 
 
     @Effect()
-    WorkshopAddComment$ = this.actions$
+    workshopAddComment$ = this.actions$
     .pipe(
       ofType<WorkshopAddComment>(WorkshopsActionTypes.WorkshopAddComment),
       map( (action: WorkshopAddComment) => action.payload),
@@ -167,7 +167,7 @@ export class WorkshopsEffects {
 
 
     @Effect()
-    WorkshopDeleteComment$ = this.actions$
+    workshopDeleteComment$ = this.actions$
     .pipe(
       ofType<WorkshopDeleteComment>(WorkshopsActionTypes.WorkshopDeleteComment),
       map( (action: WorkshopDeleteComment) => action.payload),
@@ -184,7 +184,7 @@ export class WorkshopsEffects {
     );
 
     @Effect()
-    UpdateWorkshop$ = this.actions$
+    updateWorkshop$ = this.actions$
     .pipe(
       ofType<UpdateWorkshop>(WorkshopsActionTypes.UpdateWorkshop),
       map( (action: UpdateWorkshop) => action.payload),
@@ -204,7 +204,7 @@ export class WorkshopsEffects {
 
 
     @Effect()
-    WorkshopUpdateComment$ = this.actions$
+    workshopUpdateComment$ = this.actions$
     .pipe(
       ofType<WorkshopUpdateComment>(WorkshopsActionTypes.WorkshopUpdateComment),
       map( (action: WorkshopUpdateComment) => action.payload),
@@ -212,7 +212,7 @@ export class WorkshopsEffects {
        return this.commentsService.updateComment(postId, commentId, text).pipe(
         map((data) => {
           data = data.comment;
-          return new WorkshopCommentUpdated({id: data._id, changes: {text: data.text} });
+          return new WorkshopCommentUpdated({id: data._id, changes: data });
         }),
         catchError((error) => {
           return of(new WorkshopCommentsLoadingFailed({error}));

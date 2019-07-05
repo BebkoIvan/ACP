@@ -13,7 +13,7 @@ export class QuizzesEffects {
   constructor(private actions$: Actions, private quizzesService: QuizzesService) {}
 
   @Effect()
-  QuizzesRequested$ = this.actions$
+  quizzesRequested$ = this.actions$
   .pipe(
     ofType<QuizzesRequested>(QuizzesActionTypes.QuizzesRequested),
     map( (action: QuizzesRequested) => action.payload),
@@ -32,7 +32,7 @@ export class QuizzesEffects {
   );
 
   @Effect()
-  QuizRequested$ = this.actions$
+  quizRequested$ = this.actions$
     .pipe(
       ofType<QuizRequested>(QuizzesActionTypes.QuizRequested),
       map( (action: QuizRequested) => action.payload),
@@ -52,7 +52,7 @@ export class QuizzesEffects {
 
 
     @Effect()
-    AddQuiz$ = this.actions$
+    addQuiz$ = this.actions$
     .pipe(
       ofType<AddQuiz>(QuizzesActionTypes.AddQuiz),
       map( (action: AddQuiz) => action.payload),
@@ -70,7 +70,7 @@ export class QuizzesEffects {
     );
 
     @Effect()
-    DeleteQuiz$ = this.actions$
+    deleteQuiz$ = this.actions$
     .pipe(
       ofType<DeleteQuiz>(QuizzesActionTypes.DeleteQuiz),
       map( (action: DeleteQuiz) => action.payload),

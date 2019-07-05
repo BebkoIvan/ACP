@@ -1,7 +1,7 @@
 import { Action } from '@ngrx/store';
 import {createEntityAdapter, EntityAdapter, EntityState} from '@ngrx/entity';
 import { QuizzesActions, QuizzesActionTypes } from './quizzes.actions';
-import { ɵConsole } from '@angular/core';
+
 
 interface QuizzesFeedState extends EntityState<any> {}
 // export const adapter: EntityAdapter<any> = createEntityAdapter<any>();

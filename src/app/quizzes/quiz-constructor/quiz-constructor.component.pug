@@ -20,7 +20,8 @@
       option([ngValue]="'select'") {{ 'Choice' }}
     .form-control('*ngIf'="this.questionsForms.controls[i].get('questionType').value === 'input'")
      label Correct Answer
-     app-text-input(placeholder='Type here...' 'formControlName'='correctAnswer')
+     input(type='number' placeholder='Type here...' 'formControlName'='correctAnswer')
+    //-  app-text-input(placeholder='Type here...' 'formControlName'='correctAnswer')
     .form-control.answer-options('*ngIf'="this.questionsForms.controls[i].get('questionType').value === 'select'")
      label Answer variants
      .answer-variant('*ngFor'='let variant of question.controls.answerVariants["controls"]; let j = index')

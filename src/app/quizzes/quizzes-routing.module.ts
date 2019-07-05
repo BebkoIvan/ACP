@@ -4,6 +4,7 @@ import { UnderConstructionComponent } from '../shared/under-construction/under-c
 import { QuizzesFeedComponent } from './quizzes-feed/quizzes-feed.component';
 import { QuizPageComponent } from './quiz-page/quiz-page.component';
 import { QuizConstructorComponent } from './quiz-constructor/quiz-constructor.component';
+import { AuthGuard } from '../guards/auth-guard.guard';
 
 
 const routes: Routes = [
@@ -23,7 +24,8 @@ const routes: Routes = [
                 component:QuizConstructorComponent
             }
 
-        ]
+        ],
+        canActivate: [AuthGuard]
     },
     
     {
