@@ -14,4 +14,4 @@
    label(for="password") Password
    input(type="password" formControlName="password" class="form-control") 
   .form-group
-   button('(click)'="onSubmit($event)") Sign Up
+   button('(click)'="onSubmit($event)" '[disabled]'='signUpForm.invalid') Sign Up

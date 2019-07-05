@@ -1,4 +1,5 @@
 @import "../../../scss/abstracts/variables";
+@import "../../../scss/abstracts/mixins";
 
 :host{
     display: flex;
@@ -23,17 +24,9 @@
     }
 
     button{
-        padding: 10px;
-        background-color: $grey1;
-        margin: 10px 0;
-        color: $grey2;
-        cursor: pointer;
-        border-radius: 6px;
-        &:hover{
-            background-color:$tag-color;
-            color: white;
-        }
+        @include authButton();
     }
+        
 }
 
 .loginForm{

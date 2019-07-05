@@ -29,6 +29,27 @@
     }
 }
 
+@mixin authButton{
+    padding: 10px;
+        border: 2px solid $tag-color;
+        color: $tag-color;
+        margin: 10px 0;
+
+        cursor: pointer;
+        border-radius: 6px;
+
+        &:disabled{
+            color: $grey2;
+            border: none;
+            background-color: $grey1;
+        }
+
+        &:active:hover{
+            background-color:$tag-color;
+            color: white;
+        }
+    }
+
 @mixin tagsList() {
     display: flex;
     flex-wrap: wrap;
