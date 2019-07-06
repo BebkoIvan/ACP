@@ -10,6 +10,8 @@ import { ConfirmPopupService } from 'src/app/core/services/confirm-popup.service
 import { DeleteWorkshop } from '../store/workshops.actions';
 import { AuthService } from 'src/app/services/auth.service';
 import { selectAuthData } from 'src/app/auth/store/auth.selectors';
+import { WorkshopsService } from '../services/workshops.service';
+import { ReactionsService } from 'src/app/shared/services/reactions.service';
 
 
 @Component({
@@ -19,26 +21,23 @@ import { selectAuthData } from 'src/app/auth/store/auth.selectors';
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ArticleComponent implements OnChanges {
-    constructor(private route: ActivatedRoute, private router: Router, private store: Store<AppState>,
-                private _tagsService: TagsService, private confirmPopupService: ConfirmPopupService,
-                private authService: AuthService) {}
+    constructor(private route: ActivatedRoute, private router: Router,
+                private store: Store<AppState>, private reactionsService: ReactionsService,
+                private _tagsService: TagsService, private workshopsService: WorkshopsService,
+                private confirmPopupService: ConfirmPopupService, private authService: AuthService) {}
+
     @Input() workshop: any;
     tagsList: Array<any> = [] ;
     tags$: Observable<any>;
-    likeactive = false;
+    likeActive = false;
     isEditable = false;
     authSubscription: Subscription;
     author$;
     @Input() allTags = [];
 
     likec() {
-        if (this.likeactive) {
-            this.workshop.likes -= 1;
-        } else {
-            this.workshop.likes += 1;
-        }
-
-        this.likeactive = !this.likeactive;
+        this.reactionsService.toggleReaction('likes', this.workshop.id);
+        this.likeActive = !this.likeActive;
     }
 
     ngOnInit() {
@@ -50,12 +49,19 @@ export class ArticleComponent implements OnChanges {
             if (!user) {
               return;
             }
+            if (this.workshop.reactionsAuthors.likes.includes(user._id)) {
+                this.likeActive = true;
+            }
             if (this.workshop.author === user._id || user.role === 'admin') {
                 this.isEditable = true;
             } else {
                 this.isEditable = false;
             }
         });
+
+
+
+
     }
 
     ngOnChanges(): void {

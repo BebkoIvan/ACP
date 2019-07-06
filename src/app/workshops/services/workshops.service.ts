@@ -24,9 +24,13 @@ export class WorkshopsService {
         const   params = {
             page: '',
             authorId: '',
-            tags: ''
+            tags: '',
+            withComments: 1
         };
 
+        if (queryParams.withComments) {
+            params.withComments = queryParams.withComments;
+        }
         if (queryParams.tags) {
             params.tags = queryParams.tags.split(',').join('|');
         }
@@ -61,6 +65,15 @@ export class WorkshopsService {
     getPostById(id) {
         return this._api.getRequest(`posts/${id}`);
     }
+
+    getUsers(users: any) {
+        return this._api.postRequest('users/manyusers', users);
+    }
+
+    getReactionsByPost(postId: string, answerType: number) {
+        return this._api.getRequest(`reactions/getreactions/${postId}/${answerType}`);
+    }
+
 
 
 }

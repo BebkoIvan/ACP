@@ -28,7 +28,7 @@ export class WorkshopsFeedComponent implements OnInit {
             name: 'All',
             isActive: false
         },
-        
+
         {
          name: 'My Workshops',
          isActive: false
@@ -50,8 +50,7 @@ export class WorkshopsFeedComponent implements OnInit {
 
                     if (!route.snapshot.queryParams.category) {
                         this.categories.find(x => x.name === 'All').isActive = true;
-                    }
-                    else {
+                    } else {
                         this.categories.find(x => x.name === route.snapshot.queryParams.category ).isActive = true;
                     }
 
@@ -65,7 +64,7 @@ export class WorkshopsFeedComponent implements OnInit {
 
                     this.paramsSubscription = route.queryParams.subscribe(p => {
                  this.page = p.page ? p.page : 0;
-                 this.store.dispatch(new ArticlesRequested({queryParams: p }))} );
+                 this.store.dispatch(new ArticlesRequested({queryParams: p }));} );
     }
 
 
@@ -75,6 +74,10 @@ export class WorkshopsFeedComponent implements OnInit {
             this.store.dispatch(new TagsRequested({}));
          }
      });
+
+     
+
+     
 
     }
 
@@ -94,8 +97,7 @@ export class WorkshopsFeedComponent implements OnInit {
         let pageTonavigate;
         if (this.page === '1') {
             pageTonavigate = null;
-        }
-        else {
+        } else {
             pageTonavigate = this.page - 1;
         }
 

@@ -65,7 +65,7 @@ export class WorkshopPageComponent implements OnInit {
             }
         );
 
-
+        this._workshopsService.getReactionsByPost(this.id, 1).subscribe(console.log);
     }
 
     ngOnDestroy(): void {

@@ -1,5 +1,5 @@
 interface Workshop {
-    _author: string;
+    author: string;
     title: string;
     image: string;
     description: string;
