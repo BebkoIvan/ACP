@@ -37,6 +37,8 @@ export enum WorkshopsActionTypes {
   UpdateWorkshop = '[Workshops page] Update Workshop ',
   WorkshopUpdated = '[Workshops page]  Workshop Updated ',
 
+  ToggleReaction = '[Workshop] Toggle Reaction '
+
 
   
 }
@@ -102,6 +104,11 @@ export class WorkshopUpdated implements Action {
   constructor(public payload: Update<Workshop> ) {}
 }
 
+
+export class ToggleReaction implements Action {
+  readonly type = WorkshopsActionTypes.ToggleReaction;
+  constructor(public payload: { reactionType: string, postId: string, withAthourIds?: number }) {}
+}
 
 
 
@@ -204,6 +211,7 @@ WorkshopAdded |
 WorkshopDeleted |
 DeleteWorkshop |
 UpdateWorkshop |
-WorkshopUpdated
+WorkshopUpdated |
+ToggleReaction
 
 ;

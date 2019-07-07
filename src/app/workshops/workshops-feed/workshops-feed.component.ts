@@ -39,6 +39,7 @@ export class WorkshopsFeedComponent implements OnInit {
          isActive: false
         }
     ];
+
     user: User;
     intialParams;
     serverTags = [];
@@ -63,8 +64,8 @@ export class WorkshopsFeedComponent implements OnInit {
                      );
 
                     this.paramsSubscription = route.queryParams.subscribe(p => {
-                 this.page = p.page ? p.page : 0;
-                 this.store.dispatch(new ArticlesRequested({queryParams: p }));} );
+                    this.page = p.page ? p.page : 0;
+                    this.store.dispatch(new ArticlesRequested({queryParams: p }));} );
     }
 
 

@@ -1,3 +1,5 @@
+
+
 interface Workshop {
     author: string;
     title: string;
@@ -6,4 +8,15 @@ interface Workshop {
     text: string;
     tags: number[];
     createdAt: string;
+    reactionsCounts?: {
+        likes: number,
+        stars: number,
+        uni: number
+    };
+    comments?: Array<Comment1>;
+    reactionsAuthors?: {
+        likes: Array<string>,
+        stars: Array<string>,
+        uni: Array<string>
+    };
 }

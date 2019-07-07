@@ -7,7 +7,7 @@ import { Observable, Subscription } from 'rxjs';
 import { Store, select } from '@ngrx/store';
 import { AppState } from 'src/app/reducers';
 import { ConfirmPopupService } from 'src/app/core/services/confirm-popup.service';
-import { DeleteWorkshop } from '../store/workshops.actions';
+import { DeleteWorkshop, ToggleReaction } from '../store/workshops.actions';
 import { AuthService } from 'src/app/services/auth.service';
 import { selectAuthData } from 'src/app/auth/store/auth.selectors';
 import { WorkshopsService } from '../services/workshops.service';
@@ -36,7 +36,7 @@ export class ArticleComponent implements OnChanges {
     @Input() allTags = [];
 
     likec() {
-        this.reactionsService.toggleReaction('likes', this.workshop.id);
+        this.store.dispatch(new ToggleReaction({reactionType: 'likes', postId: this.workshop.id}));
         this.likeActive = !this.likeActive;
     }
 

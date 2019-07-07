@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { WorkshopsService } from '../services/workshops.service';
 import { map, exhaustMap, catchError, take } from 'rxjs/operators';
-import { ArticlesRequested, WorkshopsActionTypes, ArticlesLoaded, ArticlesLoadingFailed, TagsRequested, TagsLoaded, TagsLoadingFailed, WorkshopRequested, WorkshopLoaded, WorkshopLoadingFailed, WorkshopCommentsRequested, WorkshopCommentsLoaded, WorkshopCommentsLoadingFailed, WorkshopAddComment, WorkshopCommentAdded, WorkshopDeleteComment, WorkshopCommentDeleted, WorkshopUpdateComment, WorkshopCommentUpdated, AddWrokshop, WorkshopAdded, DeleteWorkshop, WorkshopDeleted, UpdateWorkshop, WorkshopUpdated } from './workshops.actions';
+import { ArticlesRequested, WorkshopsActionTypes, ArticlesLoaded, ArticlesLoadingFailed, TagsRequested, TagsLoaded, TagsLoadingFailed, WorkshopRequested, WorkshopLoaded, WorkshopLoadingFailed, WorkshopCommentsRequested, WorkshopCommentsLoaded, WorkshopCommentsLoadingFailed, WorkshopAddComment, WorkshopCommentAdded, WorkshopDeleteComment, WorkshopCommentDeleted, WorkshopUpdateComment, WorkshopCommentUpdated, AddWrokshop, WorkshopAdded, DeleteWorkshop, WorkshopDeleted, UpdateWorkshop, WorkshopUpdated, ToggleReaction } from './workshops.actions';
 import { of } from 'rxjs';
 import { TagsService } from 'src/app/shared/services/tags-service/tags.service';
 import { CommentsService } from 'src/app/shared/services/comments-service/comments.service';
@@ -10,6 +10,7 @@ import { AppState } from 'src/app/reducers';
 import { Store, select } from '@ngrx/store';
 import { selectTags, selectAllComments } from './workshops.selectors';
 import { Router } from '@angular/router';
+import { ReactionsService } from 'src/app/shared/services/reactions.service';
 
 
 
@@ -22,7 +23,8 @@ export class WorkshopsEffects {
               private store: Store<AppState>,
               private commentsService: CommentsService,
               private router: Router,
-              private tagsService: TagsService) {}
+              private tagsService: TagsService,
+              private reactionsService: ReactionsService) {}
 
   @Effect()
   articlesRequested$ = this.actions$
@@ -49,7 +51,7 @@ export class WorkshopsEffects {
 
 
   @Effect()
-    dddWorkshop$ = this.actions$
+    addWorkshop$ = this.actions$
     .pipe(
       ofType<AddWrokshop>(WorkshopsActionTypes.AddWorkshop),
       map( (action: AddWrokshop) => action.payload),
@@ -194,6 +196,26 @@ export class WorkshopsEffects {
           data = data.post;
           this.router.navigate([`workshops/${data.id}`]);
           return new WorkshopUpdated({id: data._id, changes: data });
+        }),
+        catchError((error) => {
+          return of(new WorkshopLoadingFailed({error}));
+        })
+        );
+      })
+    );
+
+    @Effect()
+    toggleReaction$ = this.actions$
+    .pipe(
+      ofType<ToggleReaction>(WorkshopsActionTypes.ToggleReaction),
+      map( (action: ToggleReaction) => action.payload),
+      exhaustMap( ({ reactionType, postId, withAthourIds }: {reactionType: string, postId: string, withAthourIds?: number}) => {
+       return this.reactionsService.toggleReaction(reactionType, postId).pipe(
+        map((data) => {
+          return new WorkshopUpdated({id: postId, changes: {
+            reactionsCounts: data.reactionsCounts,
+            reactionsAuthors: data.reactionsAuthors
+          } });
         }),
         catchError((error) => {
           return of(new WorkshopLoadingFailed({error}));

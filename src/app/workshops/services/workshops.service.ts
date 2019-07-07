@@ -21,6 +21,7 @@ export class WorkshopsService {
 
     getWorkshops(queryParams: any) {
         let user = this.store.select(selectAuthData);
+        console.log(queryParams);
         const   params = {
             page: '',
             authorId: '',
