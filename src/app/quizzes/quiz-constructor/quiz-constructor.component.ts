@@ -29,7 +29,7 @@ export class QuizConstructorComponent implements OnInit {
       questions: this.fb.array([])
     });
 
-    this.posts$ = this.workshopsService.getWorkshops({}).pipe(map((data) => data.posts));
+    this.posts$ = this.workshopsService.getWorkshops({category: 'My Workshops'}).pipe(map((data) => data.posts));
   }
 
   get questionsForms() {

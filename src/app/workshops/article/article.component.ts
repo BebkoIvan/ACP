@@ -47,7 +47,7 @@ export class ArticleComponent implements OnChanges {
         this.likeActive = !this.likeActive;
     }
 
-    starClick(e: Event) {
+    starClick() {
         this.store.dispatch(new ToggleReaction({reactionType: 'stars', postId: this.workshop.id}));
         this.starActive = !this.starActive;
     }

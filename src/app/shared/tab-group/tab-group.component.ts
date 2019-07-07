@@ -17,8 +17,9 @@ export class TabGroupComponent implements OnInit {
 
   ngAfterContentInit() {
       let activeTabs = this.tabs.filter(tab => tab.active);
+      console.log(activeTabs);
       if (!activeTabs.length) {
-        this.tabs.toArray()[1].active = true;
+        this.tabs.toArray()[0].active = true;
       }
   }
 
