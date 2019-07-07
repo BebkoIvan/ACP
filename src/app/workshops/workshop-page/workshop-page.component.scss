@@ -84,14 +84,14 @@ img{
        .tags-likes{
         display: flex;
         justify-content: space-between;
-        align-items: center;
+        align-items: flex-end;
        }
 
        .date{
            display: flex;
            align-items: center;
            margin-top: 15px;
-           span{
+           i{
                margin-right: 15px;
            }
        }
@@ -102,3 +102,34 @@ img{
        flex: 1; 
        display: flex;
    }
+
+   .reactions{
+    display: flex;
+
+    &>*{
+        display: flex;
+        align-items: center;
+
+        button{
+            margin-left: 10px;
+            font-size: 30px;
+            cursor: pointer;
+        }
+    }
+    .stars{
+        margin: 0 10px;
+        button>i{
+                color: $avatar-background;
+            }
+        }
+    
+    .dislikes>button>i{
+
+        color: black;
+
+        &.active{
+            color:$red_color;
+        }
+
+    }
+    }

@@ -70,9 +70,7 @@ export class WorkshopsService {
         return this._api.postRequest('users/manyusers', users);
     }
 
-    getReactionsByPost(postId: string, answerType: number) {
-        return this._api.getRequest(`reactions/getreactions/${postId}/${answerType}`);
-    }
+
 
 
 

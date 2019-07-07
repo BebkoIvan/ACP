@@ -13,4 +13,8 @@ export class ReactionsService {
   toggleReaction(reactionType: string, postId: string, withAthourIds?: number) {
     return this._api.getRequest(`reactions/toggle/${reactionType}/${postId}/${withAthourIds ? withAthourIds : 1}`);
   }
+
+  getReactionsByPostId(postId: string, withComments?: number){
+    return this._api.getRequest(`reactions/getreactions/${postId}/${withComments ? withComments : 1}`);
+  }
 }

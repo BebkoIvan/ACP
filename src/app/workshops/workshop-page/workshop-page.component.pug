@@ -11,11 +11,20 @@ app-viewport
    .tags-likes
     .tags-list('*ngIf'='tagsList.length')
      span('*ngFor'="let tag of tagsList") {{tag.tagTitle}} 
-    .likes
-     span {{workshop.likes}} 
-     app-like('[likeActive]'="likeActive" '(likeClicked)'="likec()")  
+    .reactions('*ngIf'='reactionsCounts')
+     .dislikes
+      span {{reactionsCounts.uni}} 
+      button('appHoverGrow' '(click)'="dislikeClick($event)")
+       i.icon-dislike('[class.active]'='dislikeActive')
+     .stars
+      span {{reactionsCounts.stars}} 
+      button('appHoverGrow' '(click)'="starClick($event)")
+       i('[ngClass]'="starActive ? 'icon-star-full' : 'icon-star-empty'")
+     .likes
+      span {{reactionsCounts.likes}} 
+      app-like('[likeActive]'="likeActive" '(likeClicked)'="likeClick()")  
    .date 
-    span published at
+    i.icon-calendar
     app-timestamp([date]="workshop.createdAt",[format]="'short'") 
  app-auxiliary-content([auxContActive]="acaActive",(acaClick)="acaHandler()") 
   .tabGroup 
