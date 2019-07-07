@@ -41,7 +41,6 @@ img{
 
 .article-footer{
     display: flex;
-    // flex-direction: column;
     justify-content: space-between;
     align-items: center;
     padding-bottom:8px; 
@@ -87,3 +86,35 @@ img{
         margin: 0 10px;
     }
 }
+
+.reactions{
+    display: flex;
+    &>*{
+        display: flex;
+        align-items: center;
+
+        button{
+            margin-left: 10px;
+            font-size: 30px;
+            cursor: pointer;
+        }
+    }
+    .stars{
+        margin: 0 10px;
+        button>i{
+                color: $avatar-background;
+            }
+        }
+    
+    .dislikes>button>i{
+
+        color: black;
+
+        &.active{
+            color:$red_color;
+        }
+
+    }
+
+
+    }

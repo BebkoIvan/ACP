@@ -11,16 +11,25 @@ app-card
   .article-footer
    .tags-list('*ngIf'='allTags')
     span('*ngFor'="let tag of tagsList"  appQueryParamsActive [tag]="tag") {{tag.tagTitle}}
-   .likes
-    span('*ngIf' = 'workshop.reactionsCounts.likes as likes') {{likes}} 
-    app-like('[likeActive]'="likeActive" '(likeClicked)'="likec()")
+   .reactions
+    .dislikes
+     span {{workshop.reactionsCounts.uni}} 
+     button('appHoverGrow' '(click)'="dislikeClick($event)")
+      i.icon-dislike('[class.active]'='dislikeActive')
+    .stars
+     span {{workshop.reactionsCounts.stars}} 
+     button('appHoverGrow' '(click)'="starClick($event)")
+      i('[ngClass]'="starActive ? 'icon-star-full' : 'icon-star-empty'")
+    .likes
+     span {{workshop.reactionsCounts.likes}} 
+     app-like('[likeActive]'="likeActive" '(likeClicked)'="likec()")
   .date_icons    
    .date
     i.icon-calendar
     app-timestamp([date]="workshop.createdAt",[format]="'fullDate'")
-   .icons
-    i('*ngIf'='isEditable' '(click)'='goEdit()').icon-pencil2 
-    i('*ngIf'='isEditable' '(click)'='deletePost()').icon-bin
+   .icons('*ngIf'='isEditable')
+    i( '(click)'='goEdit()').icon-pencil2 
+    i('(click)'='deletePost()').icon-bin
 
      
 

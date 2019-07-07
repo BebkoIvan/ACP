@@ -16,7 +16,7 @@ export class SideMenuComponent implements OnInit {
         },
         {
             label: 'Quizzes',
-            icon: 'icon-question_answer',
+            icon: 'icon-question-answer',
             link: '/quizzes'
         }
     ];

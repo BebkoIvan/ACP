@@ -30,14 +30,26 @@ export class ArticleComponent implements OnChanges {
     tagsList: Array<any> = [] ;
     tags$: Observable<any>;
     likeActive = false;
+    starActive = false;
+    dislikeActive = false;
     isEditable = false;
     authSubscription: Subscription;
     author$;
     @Input() allTags = [];
 
-    likec() {
+    dislikeClick() {
+        this.store.dispatch(new ToggleReaction({reactionType: 'uni', postId: this.workshop.id}));
+        this.dislikeActive = !this.dislikeActive;
+    }
+
+    likeClick() {
         this.store.dispatch(new ToggleReaction({reactionType: 'likes', postId: this.workshop.id}));
         this.likeActive = !this.likeActive;
+    }
+
+    starClick(e: Event) {
+        this.store.dispatch(new ToggleReaction({reactionType: 'stars', postId: this.workshop.id}));
+        this.starActive = !this.starActive;
     }
 
     ngOnInit() {
@@ -51,6 +63,12 @@ export class ArticleComponent implements OnChanges {
             }
             if (this.workshop.reactionsAuthors.likes.includes(user._id)) {
                 this.likeActive = true;
+            }
+            if (this.workshop.reactionsAuthors.uni.includes(user._id)) {
+                this.dislikeActive = true;
+            }
+            if (this.workshop.reactionsAuthors.stars.includes(user._id)) {
+                this.starActive = true;
             }
             if (this.workshop.author === user._id || user.role === 'admin') {
                 this.isEditable = true;

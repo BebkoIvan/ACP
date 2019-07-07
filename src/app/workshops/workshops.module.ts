@@ -18,6 +18,7 @@ import { FormControlsModule } from '../form-controls/form-controls.module';
 import { QuizzesEffects } from '../quizzes/store/quizzes.effects';
 import { WorkshopFormComponent } from './workshop-form/workshop-form.component';
 import { EditWorkshopPageComponent } from './edit-workshop-page/edit-workshop-page.component';
+import { HoverGrowDirective } from '../shared/directives/hover-grow.directive';
 
 
 
