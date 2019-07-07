@@ -31,9 +31,31 @@ i{
         display: flex;
         justify-content: space-between;
 
-        span{
-            font-weight: bold;
+        .date{
+
+            display: flex;
+            align-items: center;
+            
+            i{
+                margin-right: 10px;
+            }
+        }
+
+
+        .author{
+
+            display: flex;
+            align-items: center;
             color: black;
+            span{
+                font-weight: bold;
+                
+            }
+
+            i{
+                margin-left: 10px;
+            }
+
         }
 
     }

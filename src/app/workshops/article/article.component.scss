@@ -63,6 +63,15 @@ img{
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
+
+    .date{
+        display: flex;
+        align-items: center;
+
+        i{
+            margin-right: 10px;
+        }
+    }
 }
 
 .icons{

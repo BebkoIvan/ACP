@@ -15,7 +15,9 @@ app-card
     span('*ngIf' = 'workshop.reactionsCounts.likes as likes') {{likes}} 
     app-like('[likeActive]'="likeActive" '(likeClicked)'="likec()")
   .date_icons    
-   app-timestamp([date]="workshop.createdAt",[format]="'fullDate'")
+   .date
+    i.icon-calendar
+    app-timestamp([date]="workshop.createdAt",[format]="'fullDate'")
    .icons
     i('*ngIf'='isEditable' '(click)'='goEdit()').icon-pencil2 
     i('*ngIf'='isEditable' '(click)'='deletePost()').icon-bin
