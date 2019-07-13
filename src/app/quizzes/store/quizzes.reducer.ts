@@ -15,7 +15,9 @@ export interface QuizzesState {
   quizzesFeed: QuizzesFeedState;
 }
 
-const adapterQuizzesFeed = createEntityAdapter<any>();
+const adapterQuizzesFeed = createEntityAdapter<any>({
+  sortComparer: (a: any, b: any) => b.updatedAt.localeCompare(a.updatedAt)
+});
 
 const QuizzesFeedInitialState: QuizzesFeedState = adapterQuizzesFeed.getInitialState({ });
 

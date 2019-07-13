@@ -19,7 +19,7 @@ export class QuizConstructorComponent implements OnInit {
   form: FormGroup;
   questionTypes = ['input', 'select'];
   posts$: Observable<any>;
-  constructor(private fb: FormBuilder, private _quizS: QuizzesService,private workshopsService: WorkshopsService,
+  constructor(private fb: FormBuilder, private _quizS: QuizzesService, private workshopsService: WorkshopsService,
                private store: Store<AppState>) { }
 
   ngOnInit() {

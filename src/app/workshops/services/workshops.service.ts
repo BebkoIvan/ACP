@@ -6,7 +6,7 @@ import { ApiService } from 'src/app/shared/services/api-service/api.service';
 import { HttpParams } from '@angular/common/http';
 import { AuthService } from 'src/app/services/auth.service';
 import { mergeMap, tap, map, take } from 'rxjs/operators';
-import { Store } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
 import { AppState } from 'src/app/reducers';
 import { selectAuthData } from 'src/app/auth/store/auth.selectors';
 
@@ -20,7 +20,7 @@ export class WorkshopsService {
 
 
     getWorkshops(queryParams: any) {
-        let user = this.store.select(selectAuthData);
+        let user = this.store.pipe(select(selectAuthData));
         const   params = {
             page: '',
             authorId: '',

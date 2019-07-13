@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Renderer2, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { fromEvent } from 'rxjs';
 
 @Component({
   selector: 'app-to-top-button',
@@ -13,10 +14,10 @@ export class ToTopButtonComponent implements OnInit {
   topPosToStartShowing = 150;
   active = false;
 
+
   constructor(private _renderer2: Renderer2, private cdr: ChangeDetectorRef) {}
  
   ngOnInit() {
-
     this._renderer2.listen(this.scrollElement, 'scroll', () => {
       if (this.scrollElement.scrollTop > this.topPosToStartShowing) {
         this.active = true;
